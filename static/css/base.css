@@ -1,0 +1,5 @@
+/* Bootstrap overide */
+
+.navbar-brand {
+    font-family: 'Galada', cursive !important;
+}

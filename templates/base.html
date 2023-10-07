@@ -14,7 +14,14 @@
     {% endblock %}
 
     {% block corecss %}
+      <!-- Bootstrap -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+      <!-- Google Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Galada&display=swap" rel="stylesheet">
+      <!-- Static CSS -->
       <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
@@ -23,6 +30,7 @@
 
     {% block corejs %}
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/12401a2841.js" crossorigin="anonymous"></script>
     {% endblock %}
 
     {% block extra_js %}
@@ -33,7 +41,32 @@
 
   <body>
 
-    <div class="container"> <h1 class="text-secondary">Hello world</h1></div>
+    <header class="container-fluid sticky-top bg-light-subtle border-bottom my-auto py-2">
+      <div class="row">
+        <div class="text-center col-12 col-lg-3 my-auto">
+          <a class="navbar-brand">
+            <h2 class="navbar-brand logo-font text-black fs-1 my-0"><strong>Magna</strong>Plate</h2>
+          </a>
+          
+        </div>
+        <div class="col-12 col-lg-6 my-auto">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 rounded-4" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-light border" type="submit">Search</button>
+          </form>
+        </div>
+        <div class="col-12 col-lg-3 my-auto d-flex justify-content-end">
+          <div class="text-center nav-link mx-1">
+            <div><i class="fa-regular fa-user fa-lg"></i></div>
+            <p class="my-0">User</p>
+          </div>
+          <div class="text-center nav-link mx-1">
+            <div><i class="fa-solid fa-cart-shopping"></i></div>
+            <p class="my-0">Cart</p>
+          </div>
+        </div>
+      </div>
+    </header>
 
     {% block content %}
 
