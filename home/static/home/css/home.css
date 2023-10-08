@@ -1,0 +1,48 @@
+
+#carouselExampleCaptions {
+    min-height: 470px !important;
+    overflow:hidden !important;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the image */
+    align-items: center; /* Vertically center the image */
+    overflow: hidden; /* Hide overflowing content */
+    width: auto; 
+    height: 450px;
+    object-fit:contain; /* Scale the image to cover the container */
+
+}
+
+.image-carousel {
+    display: flex;
+    justify-content: center; /* Horizontally center the image */
+    align-items: center; /* Vertically center the image */
+    overflow: hidden; /* Hide overflowing content */
+    width: auto;
+    height: 400px;
+
+    object-fit:contain; /* Scale the image to cover the container */
+}
+
+.background-carousel {
+    background: url('/media/carousel/background.jpg') no-repeat center center fixed;
+    background-size:cover;
+}
+
+#test {
+    background-color: none;
+}
+
+.custom-background {
+    background-color: rgb(236, 236, 236); /* Adjust the RGB color and alpha (0.25) for opacity */
+    padding: 5px; /* Add padding for spacing */
+}
+  
+.custom-background p {
+    /* color: #000; */
+    font-size: 18px; /* Set the font size as needed */
+    /* Add other text styles as needed */
+}
+
