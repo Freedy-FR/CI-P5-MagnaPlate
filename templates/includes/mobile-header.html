@@ -1,0 +1,57 @@
+
+<li class="list-inline-item col-2 justify-content-center pt-2 ">
+    <button class="navbar-toggler border-0 w-100 p-3 rounded-0 my-0 d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fa-solid fa-bars border-0"></i></span>
+    </button>
+</li>
+
+<li class="list-inline-item col-2 justify-content-center pt-2 ">
+    <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-search" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="text-center">
+            <div><i class="fas fa-search fa-lg"></i></div>
+            <p class="my-0">Search</p>
+        </div>
+    </a>
+    <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
+        <form class="form" method="GET" action="#">
+            <div class="input-group w-100">
+                <input class="form-control me-0 rounded-start-4" type="search" name="q" placeholder="Search" aria-label="Search">
+                <button class="btn btn-light border rounded-end-4 mx-0" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+</li>
+<li class="list-inline-item dropdown col-2 justify-content-center pt-2 ">
+    <a class="text-black nav-link d-block d-lg-none" href="#" id="account-options" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="text-center">
+            <div><i class="fa-regular fa-user fa-lg"></i></div>
+            <p class="my-0">User</p>
+        </div>
+    </a>
+    <div class="dropdown-menu border-0" aria-labelledby="account-options">
+        {% if request.user.is_authenticated %}
+            {% if request.user.is_superuser %}
+                <a href="#" class="dropdown-item">Product Management</a>
+            {% endif %}
+            <a class="dropdown-item" href="#">My Profile</a>
+            <a class="dropdown-item" href="#">Logout</a>
+        {% else %}
+            <a href="#" class="dropdown-item">Register</a>
+            <a href="#" class="dropdown-item">Login</a>
+        {% endif %}
+    </div>
+</li>
+<li class="list-inline-item col-2 justify-content-center pt-2 ">
+    <a class="nav-link d-block d-lg-none" href="#">
+        <div class="text-center">
+            <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+            <p class="my-0">
+                {% if grand_total %}
+                   
+                {% else %}
+                    $0.00
+                {% endif %}
+            </p>
+        </div>
+    </a>
+</li>

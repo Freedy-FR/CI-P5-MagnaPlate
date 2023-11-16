@@ -31,7 +31,8 @@
     {% endblock %}
 
     {% block corejs %}
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
       <script src="https://kit.fontawesome.com/12401a2841.js" crossorigin="anonymous"></script>
     {% endblock %}
 
@@ -43,21 +44,21 @@
 
   <body>
 
-    <header class="container-fluid sticky-top bg-light-subtle border-bottom my-auto py-1">
+    <header class="container-fluid sticky-top bg-light-subtle border-bottom my-auto">
       <div class="row border-bottom">
         <div class="text-center col-12 col-lg-3 my-auto">
           <a class="navbar-brand" href="#">
             <h2 class="navbar-brand logo-font text-black fs-1 my-0"><strong>Magna</strong>Plate</h2>
-          </a>
-          
+          </a>          
         </div>
-        <div class="col-12 col-lg-6 my-auto">
+
+        <div class="col-12 col-lg-6 my-auto d-none d-lg-block">
           <form class="d-flex input-group" role="search">
-            <input class="form-control me-0 rounded-start-4" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-0 rounded-start-4" type="search" name="q" placeholder="Search" aria-label="Search">
             <button class="btn btn-light border rounded-end-4 mx-0" type="submit">Search</button>
           </form>
         </div>
-        <div class="col-12 col-lg-3 my-auto d-flex justify-content-end">
+        <div class="col-12 col-lg-3 my-auto d-flex justify-content-end d-none d-lg-block">
 
 
           <ul class="nav">
@@ -66,12 +67,10 @@
               <a class="nav-link dropdown text-center text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
                 <i class="fa-regular fa-user fa-lg"></i>
                 <p class="my-0">User</p>
-
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Login</a></li>
                 <li><a class="dropdown-item" href="#">Register</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -81,28 +80,10 @@
               </a>
             </li>
           </ul>
-
-
-
-
-
-
-
-
-
-
-
-          <!-- <div class="text-center nav-link mx-1">
-            <a href="#">
-              <div><i class="fa-regular fa-user fa-lg"></i></div>
-              <p class="my-0">User</p>
-            </a>
-          </div>
-          <div class="text-center nav-link mx-1">
-            <div><i class="fa-solid fa-cart-shopping"></i></div>
-            <p class="my-0">Cart</p>
-          </div> -->
         </div>
+      </div>
+      <div class="row border-bottom justify-content-evenly d-lg-none">
+        {% include 'includes/mobile-header.html' %}
       </div>
       <div class="row bg-light-subtle">
         <nav class="navbar navbar-expand-lg p-0 w-100">
