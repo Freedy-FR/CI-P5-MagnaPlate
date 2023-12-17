@@ -93,12 +93,14 @@
         </nav>
     </div>
     </header>
+    
+    <main class="flex-grow-1">
+        {% block content %}
 
-    {% block content %}
+        {% endblock %}
+    </main>
 
-    {% endblock %}
-
-    <footer>
+    <footer class="border-top mt-auto footer">
       {% include 'includes/footer.html' %}      
     </footer>
 
