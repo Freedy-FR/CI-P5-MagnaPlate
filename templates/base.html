@@ -42,7 +42,7 @@
     <title>MagnaPlate</title>
   </head>
 
-  <body>
+  <body class="d-flex flex-column">
 
     <header class="container-fluid sticky-top bg-light-subtle border-bottom my-auto">
       <div class="row border-bottom">
@@ -65,16 +65,25 @@
 
           <ul class="nav">
             <li class="nav-item dropdown">
-              
               <a class="nav-link dropdown text-center text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
                 <i class="fa-regular fa-user fa-lg"></i>
                 <p class="my-0">User</p>
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Login</a></li>
-                <li><a class="dropdown-item" href="#">Register</a></li>
+                {% if request.user.is_authenticated %}
+                  {% if request.user.is_superuser %}
+                    <li><a class="dropdown-item" href="#">Site Management</a></li>
+                  {% endif %}
+                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                <li><a class="dropdown-item" href="#">My Orders</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                {% else %}
+                  <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
+                  <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
+                {% endif %}
               </ul>
             </li>
+
             <li class="nav-item">
               <a class="nav-link text-center text-black" href="#">
                 <i class="fa-solid fa-cart-shopping"></i>
@@ -94,7 +103,7 @@
     </div>
     </header>
     
-    <main class="flex-grow-1">
+    <main>
         {% block content %}
 
         {% endblock %}

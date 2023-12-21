@@ -5,3 +5,16 @@
 }
 
 /* Custom CSS */
+
+
+/* Keep footer at the bootom and expand main */
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex-grow: 1;
+}
