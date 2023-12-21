@@ -47,7 +47,7 @@
     <header class="container-fluid sticky-top bg-light-subtle border-bottom my-auto">
       <div class="row border-bottom">
         <div class="text-center col-12 col-lg-3 my-auto">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="{% url 'home' %}">
             <h2 class="navbar-brand logo-font text-black fs-1 my-0">
               <strong>Magna</strong>Plate
             </h2>
@@ -109,7 +109,7 @@
         {% endblock %}
     </main>
 
-    <footer class="border-top mt-auto footer">
+    <footer class="border-top mt-auto pt-3 footer">
       {% include 'includes/footer.html' %}      
     </footer>
 
