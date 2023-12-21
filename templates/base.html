@@ -67,7 +67,11 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown text-center text-black" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
                 <i class="fa-regular fa-user fa-lg"></i>
-                <p class="my-0">User</p>
+                {% if request.user.is_authenticated %}
+                  <p class="my-0">{{user.username|capfirst}}</p>
+                {% else %}
+                  <p class="my-0">User</p>
+                {% endif %}
               </a>
               <ul class="dropdown-menu">
                 {% if request.user.is_authenticated %}

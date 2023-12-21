@@ -21,11 +21,15 @@
         </form>
     </div>
 </li>
-<li class="list-inline-item dropdown col-2 justify-content-center pt-2 ">
+<li class="list-inline-item dropdown col-2 justify-content-center pt-2">
     <a class="text-black nav-link d-block d-lg-none" href="#" id="account-options" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="text-center">
             <div><i class="fa-regular fa-user fa-lg"></i></div>
-            <p class="my-0">User</p>
+            {% if request.user.is_authenticated %}
+                <p class="my-0">{{user.username|capfirst}}</p>
+            {% else %}
+                <p class="my-0">User</p>
+            {% endif %}
         </div>
     </a>
     <div class="dropdown-menu border-0" aria-labelledby="account-options">
