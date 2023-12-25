@@ -67,7 +67,7 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
           <div class="card shadow-sm">
-            <img src="{{ MEDIA_URL }}media/media_test/Art-1.jpg" alt="Art-placeholder" class="card-img-top">
+            <img src="{{ MEDIA_URL }}media/product_images/Art-1.jpg" alt="Art-placeholder" class="card-img-top">
             <div class="card-body">
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
               <div class="d-flex justify-content-between align-items-center">
@@ -82,7 +82,7 @@
         </div>
         <div class="col">
           <div class="card shadow-sm">
-            <img src="{{ MEDIA_URL }}media/media_test/Art-1.jpg" alt="Art-placeholder" class="card-img-top">
+            <img src="{{ MEDIA_URL }}media/product_images/Art-2.jpg" alt="Art-placeholder" class="card-img-top">
             <div class="card-body">
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
               <div class="d-flex justify-content-between align-items-center">
@@ -97,7 +97,7 @@
         </div>
         <div class="col">
           <div class="card shadow-sm">
-            <img src="{{ MEDIA_URL }}media/media_test/Art-1.jpg" alt="Art-placeholder" class="card-img-top">
+            <img src="{{ MEDIA_URL }}media/product_images/Art-1.jpg" alt="Art-placeholder" class="card-img-top">
             <div class="card-body">
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
               <div class="d-flex justify-content-between align-items-center">
@@ -126,7 +126,7 @@
                     {% if product.image %}
                       <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top">
                     {% else %}
-                      <img src="{{ MEDIA_URL }}media/media_test/Art-1.jpg" alt="Art-placeholder" class="card-img-top">
+                      <img src="{{ MEDIA_URL }}media/product_images/placeholder-image.png" alt="image-placeholder" class="card-img-top">
                     {% endif %}
                     <div class="card-body">
                       <p class="card-text">{{ product.description|truncatewords:20 }}</p>
