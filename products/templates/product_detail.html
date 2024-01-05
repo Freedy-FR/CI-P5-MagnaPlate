@@ -21,31 +21,6 @@
         <div class="image-container">
           <img src="{{ product.image.url }}" alt="Foreground Image">
         </div>
-      
-
-
-        <!-- <svg width="100%" height="auto" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="imageFill" width="1" height="1">
-              <image href="{{ MEDIA_URL }}/media/carousel/background.jpg" width="800" height="600" />
-            </pattern>
-          </defs>
-
-          <rect width="100%" height="100%" fill="url(#imageFill)" />
-
-          <image href="{{ product.image.url }}" x="50%" y="50%" width="600" height="400" transform="translate(-300, -200)" />
-        
-        </svg> -->
-        
-        
-
-          <!-- <div class="w-50 p-0">
-            {% if product.image %}
-              <img src="{{ product.image.url }}" alt="{{ product.name }}" class=" img-fluid">
-            {% else %}
-              <img src="{{ MEDIA_URL }}media/product_images/placeholder-image.png" alt="image-placeholder" class="img-fluid">
-            {% endif %}
-          </div> -->
       </div>
 
       <div class="col-lg-2 col-sm-12 d-flex justify-content-center align-items-center">
@@ -68,7 +43,7 @@
 
     <div class="container py-5">
       <h2 class="text-center">Check Our Products!</h2>
-      <div class="py-5 bg-body-tertiary">
+      <div class="py-5">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
           {% for product in all_products %}
