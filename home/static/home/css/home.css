@@ -31,10 +31,6 @@
     background-size:cover;
 }
 
-#test {
-    background-color: none;
-}
-
 .custom-background {
     background-color: rgb(236, 236, 236); /* Adjust the RGB color and alpha (0.25) for opacity */
     padding: 5px; /* Add padding for spacing */
