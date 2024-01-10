@@ -18,4 +18,6 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['all_products'] = Product.objects.all()
+        context['range'] = range(1, 6)  # Range for 5 stars
+        context['size_choices'] = Product.SIZE_CHOICES
         return context
