@@ -1,20 +1,41 @@
-
-.image-container {
-    min-height: fit-content;
-    max-height: 50%;
-    width: 100%;
-}
-
-.image-container img {
-    object-fit: contain;
-    height: 100%;
-    width: 100%;
+.icon-hover:hover {
+    border-color: #3b71ca !important;
+    background-color: white !important;
+    color: #3b71ca !important;
+  }
+  
+.icon-hover:hover i {
+color: #3b71ca !important;
 }
 
 
-@media (max-width: 768px) {
-    .image-container {
-        height: auto;
-        width: 100%;
-    }
+
+.product-image {
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
+}
+
+.select-size {
+    min-width: 100px;
+    max-width: 200px;
+}
+
+.select-quantity {
+    min-width: 100px;
+    max-width: 200px;
+}
+
+
+/* For Webkit browsers like Chrome and Safari */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Mozilla Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }

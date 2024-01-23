@@ -17,6 +17,11 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        product = context.get('product')
+        if product and product.category:
+            context['friendly_name'] = product.category.get_friendly_name()
+        else:
+            context['friendly_name'] = None
         context['all_products'] = Product.objects.all()
         context['range'] = range(1, 6)  # Range for 5 stars
         context['size_choices'] = Product.SIZE_CHOICES
