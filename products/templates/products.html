@@ -1,29 +1,17 @@
 {% extends 'base.html' %}
 
-{% block content %}
-  <div class="container mt-4">
-    <div class="row">
-      {% for product in products %}
-        <div class="col-md-4 col-lg-3 mb-3">
-          <div class="card">
-            {% if product.image %}
-                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">           
-            {% endif %}
-            <div class="card-body">
-              <h5 class="card-title">{{ product.name }}</h5>
-              <p class="card-text">{{ product.description|truncatewords:20 }}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <small class="text-muted">€{{ product.price }}</small>
-                {% if product.is_on_deal %}
-                  <span class="badge bg-success">On Deal</span>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
+{% load static %}
 
-  
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static '/css/product.css' %}">
+  <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
 {% endblock %}
+
+
+{% block content %}
+
+    {% include "includes/all_products.html" %}
+
+{% endblock %}
+
+

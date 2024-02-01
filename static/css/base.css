@@ -22,3 +22,26 @@ body {
 main {
     flex-grow: 1;
 }
+
+
+/* Product custom CSS */
+
+.card .card-img-overlay {
+    /* Initially hide the overlay */
+    display: none;
+    /* Add a transition for smooth appearance */
+    transition: all 0.3s ease;
+}
+  
+.card:hover .card-img-overlay {
+    /* Show the overlay when the card is hovered */
+    display: block;
+    background-color: rgba(255, 255, 255, 0.7); 
+    color: #000000; 
+}  
+
+.img-fill {
+    /* Fill up the image div */
+    height: 250px !important;
+    object-fit: cover !important; 
+}

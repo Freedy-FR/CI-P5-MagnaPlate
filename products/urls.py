@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', ProductListView.as_view(), name='all_products'),
+    path('', ProductListView.as_view(), name='products'),
     path('<int:product_id>/', ProductDetailView.as_view(), name='product_detail'),
 ]
 
