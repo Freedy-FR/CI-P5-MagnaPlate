@@ -61,38 +61,42 @@
           </div>
 
           <hr />
+          
+          <form class="form" action="#" method="post">
+            {% csrf_token %}
+            <div class="row mb-4">
 
-          <div class="row mb-4">
-
-            {% if product.size %}
-              <div class="col-md-6 col-12 select-size">
-                <label class="mb-2">Size</label>
-                  <select class="form-control me-0 rounded-4" name="product_size" id='id_product_size'>
-                      {% for size_value, size_name in product.SIZE_CHOICES %}
-                          <option value="{{ size_value }}" {% if product.size == size_value %}selected{% endif %}>
-                              {{ size_name }}
-                          </option>
-                      {% endfor %}
-                  </select>
-              </div>
-            {% endif %}
+              {% if product.size %}
+                <div class="col-md-6 col-12 select-size">
+                  <label class="mb-2">Size</label>
+                    <select class="form-control me-0 rounded-4" name="product_size" id='id_product_size'>
+                        {% for size_value, size_name in product.SIZE_CHOICES %}
+                            <option value="{{ size_value }}" {% if product.size == size_value %}selected{% endif %}>
+                                {{ size_name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+              {% endif %}
 
 
-            <!-- col.// -->
-            <div class="col-md-6 col-12 select-quantity">
-              <label class="mb-2 d-block">Quantity</label>
-              <div class="input-group mb-3">
-                <button type="button" class="decrement-qty btn btn-light border mx-0 rounded-start-4" id="decrement-qty_{{ product.id }}">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <input class="form-control qty_input text-center mx-0" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
-                <button type="button" class="increment-qty btn btn-light border mx-0 rounded-end-4" id="increment-qty_{{ product.id }}">
-                  <i class="fas fa-plus"></i>
-                </button>
+              <div class="col-md-6 col-12 select-quantity">
+                <label class="mb-2 d-block">Quantity</label>
+                <div class="input-group mb-3">
+                  <button type="button" class="decrement-qty btn btn-light border mx-0 rounded-start-4" id="decrement-qty_{{ product.id }}">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input class="form-control qty_input text-center mx-0" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                  <button type="button" class="increment-qty btn btn-light border mx-0 rounded-end-4" id="increment-qty_{{ product.id }}">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <a href="#" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </a>
+            <a href="{% url 'products' %}" class="btn btn-secondary shadow-0 my-1 me-1"><i class="fa-solid fa-chevron-left"></i> Back to Products</a>
+            <button type="submit" class="btn btn-primary shadow-0 my-1"> <i class="fa-solid fa-cart-shopping"></i> Add to cart </button>
+          </form>
+
         </div>
       </main>
     </div>
