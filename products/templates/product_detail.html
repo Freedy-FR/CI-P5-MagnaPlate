@@ -15,7 +15,7 @@
 <section class="py-5 container-fluid">
   <div class="container">
     <div class="row gx-5">
-      <aside class="col-lg-6">
+      <aside class="col-lg-6 my-auto">
         <div class="border rounded-4 d-flex justify-content-center">
             {% if product.image %}
               <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="{{ product.image.url }}">
@@ -55,26 +55,17 @@
             {{ product.description }}
           </p>
 
-          <!-- <div class="row">
-            <dt class="col-3">Type:</dt>
-            <dd class="col-9">Regular</dd>
-
-            <dt class="col-3">Color</dt>
-            <dd class="col-9">Brown</dd>
-
-            <dt class="col-3">Material</dt>
-            <dd class="col-9">Cotton, Jeans</dd>
-
-            <dt class="col-3">Brand</dt>
-            <dd class="col-9">Reebook</dd>
-          </div> -->
+          <div class="row">
+            <dt class="col-3">Category:</dt>
+            <dd class="col-9">{{product.category.friendly_name}}</dd>
+          </div>
 
           <hr />
 
           <div class="row mb-4">
 
             {% if product.size %}
-              <div class="col-md-6 col-6 select-size">
+              <div class="col-md-6 col-12 select-size">
                 <label class="mb-2">Size</label>
                   <select class="form-control me-0 rounded-4" name="product_size" id='id_product_size'>
                       {% for size_value, size_name in product.SIZE_CHOICES %}
@@ -88,7 +79,7 @@
 
 
             <!-- col.// -->
-            <div class="col-md-6 col-6 select-quantity">
+            <div class="col-md-6 col-12 select-quantity">
               <label class="mb-2 d-block">Quantity</label>
               <div class="input-group mb-3">
                 <button type="button" class="decrement-qty btn btn-light border mx-0 rounded-start-4" id="decrement-qty_{{ product.id }}">
