@@ -2,201 +2,253 @@
 
 {% load static %}
 
-
 {% block extra_css %}
   <link rel="stylesheet" href="{% static '/css/product.css' %}">
   <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
-
 {% endblock %}
-
 
 {% block content %}
 
-<section class="py-5 container-fluid">
-  <div class="container">
-    <div class="row gx-5">
-      <aside class="col-lg-6 my-auto px-2">
-        <div class="border rounded-4 d-flex justify-content-center">
+  <section class="py-5 container-fluid">
+    <div class="container">
+      <div class="row gx-5">
+        <aside class="col-lg-6 my-auto px-2">
+          <div class="border rounded-4 d-flex justify-content-center">
             {% if product.image %}
-              <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="{{ product.image.url }}">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image rounded-4 fit">
+              <a data-fslightbox="mygalley"
+                 class="rounded-4"
+                 target="_blank"
+                 data-type="image"
+                 href="{{ product.image.url }}">
+                <img src="{{ product.image.url }}"
+                     alt="{{ product.name }}"
+                     class="product-image rounded-4 fit">
               </a>
             {% else %}
-              <img src="{{ MEDIA_URL }}/media/product_images/placeholder-image.png" alt="image-placeholder" class="product-image rounded-4 fit">
+              <img src="{{ MEDIA_URL }}/media/product_images/placeholder-image.png"
+                   alt="image-placeholder"
+                   class="product-image rounded-4 fit">
             {% endif %}
-        </div>
-      </aside>
-      <main class="col-lg-6">
-        <div class="ps-lg-3 pt-md-1">
-          <h4 class="title text-dark">
-            {{ product.name }} <br />
-          </h4>
-          <div class="d-flex flex-row my-3">
-            <div class="text-warning mb-1 me-2">
-              {% for star in range %}
-              {% if forloop.counter <= product.rating %}
-                <i class="fa-solid fa-star"></i>
-              {% else %}
-                <i class="fa-regular fa-star"></i> <!-- Empty star -->
-              {% endif %}
-              {% endfor %}
-              <span class="ms-1">
-                {{ product.rating }}
-              </span>
+          </div>
+        </aside>
+        <main class="col-lg-6">
+          <div class="ps-lg-3 pt-md-1">
+            <h4 class="title text-dark">
+              {{ product.name }}
+              <br />
+            </h4>
+            <div class="d-flex flex-row my-3">
+              <div class="text-warning mb-1 me-2">
+                {% for star in range %}
+                  {% if forloop.counter <= product.rating %}
+                    <i class="fa-solid fa-star"></i>
+                  {% else %}
+                    <i class="fa-regular fa-star"></i> <!-- Empty star -->
+                  {% endif %}
+                {% endfor %}
+                <span class="ms-1">{{ product.rating }}</span>
+              </div>
             </div>
-          </div>
 
-          <div class="mb-3">
-            <span class="h5">€{{ product.price }}</span>
-          </div>
+            <div class="mb-3">
+              <span class="h5">€{{ product.price }}</span>
+            </div>
 
-          <p>
-            {{ product.description }}
-          </p>
+            <p>{{ product.description }}</p>
 
-          <div class="row">
-            <dt class="col-3">Category:</dt>
-            <dd class="col-9">{{product.category.friendly_name}}</dd>
-          </div>
+            <div class="row">
+              <dt class="col-3">Category:</dt>
+              <dd class="col-9">
+                {{ product.category.friendly_name }}
+              </dd>
+            </div>
 
-          <hr />
-          
-          <form class="form" action="#" method="post">
-            {% csrf_token %}
-            <div class="row mb-4">
+            <hr />
+ 
+            <form class="form" action="#" method="post">
+              {% csrf_token %}
+              <div class="row mb-4">
 
-              {% if product.size %}
-                <div class="col-md-6 col-12 select-size">
-                  <label class="mb-2">Size</label>
-                    <select class="form-control me-0 rounded-4" name="product_size" id='id_product_size'>
-                        {% for size_value, size_name in product.SIZE_CHOICES %}
-                            <option value="{{ size_value }}" {% if product.size == size_value %}selected{% endif %}>
-                                {{ size_name }}
-                            </option>
-                        {% endfor %}
+                {% if product.size %}
+                  <div class="col-md-6 col-12 select-size">
+                    <label class="mb-2">Size</label>
+                    <select class="form-control me-0 rounded-4"
+                            name="product_size"
+                            id="id_product_size">
+                      {% for size_value, size_name in product.SIZE_CHOICES %}
+                        <option value="{{ size_value }}"
+                                {% if product.size == size_value %}selected{% endif %}>{{ size_name }}</option>
+                      {% endfor %}
                     </select>
-                </div>
-              {% endif %}
+                  </div>
+                {% endif %}
 
-
-              <div class="col-md-6 col-12 select-quantity">
-                <label class="mb-2 d-block">Quantity</label>
-                <div class="input-group mb-3">
-                  <button type="button" class="decrement-qty btn btn-light border mx-0 rounded-start-4" id="decrement-qty_{{ product.id }}">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <input class="form-control qty_input text-center mx-0" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
-                  <button type="button" class="increment-qty btn btn-light border mx-0 rounded-end-4" id="increment-qty_{{ product.id }}">
-                    <i class="fas fa-plus"></i>
-                  </button>
+                <div class="col-md-6 col-12 select-quantity">
+                  <label class="mb-2 d-block">Quantity</label>
+                  <div class="input-group mb-3">
+                    <button type="button"
+                            class="decrement-qty btn btn-light border mx-0 rounded-start-4"
+                            id="decrement-qty_{{ product.id }}">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <input class="form-control qty_input text-center mx-0"
+                           type="number"
+                           name="quantity"
+                           value="1"
+                           min="1"
+                           max="99"
+                           data-item_id="{{ product.id }}"
+                           id="id_qty_{{ product.id }}">
+                    <button type="button"
+                            class="increment-qty btn btn-light border mx-0 rounded-end-4"
+                            id="increment-qty_{{ product.id }}">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <a href="{% url 'products' %}" class="btn btn-secondary shadow-0 my-1 me-1"><i class="fa-solid fa-chevron-left"></i> Back to Products</a>
-            <button type="submit" class="btn btn-primary shadow-0 my-1"> <i class="fa-solid fa-cart-shopping"></i> Add to cart </button>
-          </form>
+              <a href="{% url 'products' %}"
+                 class="btn btn-secondary shadow-0 my-1 me-1"><i class="fa-solid fa-chevron-left"></i> Back to Products</a>
+              <button type="submit" class="btn btn-primary shadow-0 my-1">
+                <i class="fa-solid fa-cart-shopping"></i> Add to cart
+              </button>
+            </form>
 
-        </div>
-      </main>
+          </div>
+        </main>
+      </div>
     </div>
-  </div>
-</section>
-<!-- content -->
+  </section>
+  <!-- content -->
 
-<section class="bg-light border-top py-4">
-  <div class="container">
-    <div class="row gx-4">
-      <div class="col-12 mb-4">
-        <div class="border rounded-2 px-md-3 py-md-2 bg-white p-1 m-1">
-          <!-- Pills navs -->
-          <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-            <li class="nav-item d-flex" role="presentation">
-              <a class="nav-link d-flex align-items-center justify-content-center w-100 active" data-mdb-pill-init id="ex1-tab-1" href="#ex1-pills-1" role="tab" aria-controls="ex1-pills-1" aria-selected="true">Specification</a>
-            </li>
-            <li class="nav-item d-flex" role="presentation">
-              <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init id="ex1-tab-2" href="#ex1-pills-2" role="tab" aria-controls="ex1-pills-2" aria-selected="false">Shipping info</a>
-            </li>
-          </ul>
-          <!-- Pills navs -->
+  <section class="bg-light border-top py-4">
+    <div class="container">
+      <div class="row gx-4">
+        <div class="col-12 mb-4">
+          <div class="border rounded-2 px-md-3 py-md-2 bg-white p-1 m-1">
+            <!-- Pills navs -->
+            <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+              <li class="nav-item d-flex" role="presentation">
+                <a class="nav-link d-flex align-items-center justify-content-center w-100 active"
+                   data-mdb-pill-init
+                   id="ex1-tab-1"
+                   href="#ex1-pills-1"
+                   role="tab"
+                   aria-controls="ex1-pills-1"
+                   aria-selected="true">Specification</a>
+              </li>
+              <li class="nav-item d-flex" role="presentation">
+                <a class="nav-link d-flex align-items-center justify-content-center w-100"
+                   data-mdb-pill-init
+                   id="ex1-tab-2"
+                   href="#ex1-pills-2"
+                   role="tab"
+                   aria-controls="ex1-pills-2"
+                   aria-selected="false">Shipping info</a>
+              </li>
+            </ul>
+            <!-- Pills navs -->
 
-          <!-- Pills 1 content -->
-          <div class="tab-content" id="ex1-content">
-            <div class="tab-pane fade show active p-1 table-responsive" id="ex1-pills-1" role="tabpanel">
-              <p>Detailed specifications for high-quality metal posters available in various sizes.</p>
-              <div class="">
-                <ul class="list-unstyled mb-0">
-                  <li><i class="fas fa-check text-success me-2"></i>Material: High-quality metal</li>
-                  <li><i class="fas fa-check text-success me-2"></i>Weight: Lightweight for easy hanging</li>
-                  <li><i class="fas fa-check text-success me-2"></i>Finish: Matte, with anti-glare properties</li>
-                  <li><i class="fas fa-check text-success me-2"></i>Mounting: Includes a magnetic mounting system for easy installation</li>
-                </ul>
-              </div>
-              <div class="table-responsive">
-                <table class="table border mt-3 mb-2 mx-0 px-0 ">
-                  <tr>
+            <!-- Pills 1 content -->
+            <div class="tab-content" id="ex1-content">
+              <div class="tab-pane fade show active p-1 table-responsive"
+                   id="ex1-pills-1"
+                   role="tabpanel">
+                <p>Detailed specifications for high-quality metal posters available in various sizes.</p>
+
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <i class="fas fa-check text-success me-2"></i>Material: High-quality metal
+                    </li>
+                    <li>
+                      <i class="fas fa-check text-success me-2"></i>Weight: Lightweight for easy hanging
+                    </li>
+                    <li>
+                      <i class="fas fa-check text-success me-2"></i>Finish: Matte, with anti-glare properties
+                    </li>
+                    <li>
+                      <i class="fas fa-check text-success me-2"></i>Mounting: Includes a magnetic mounting system for easy installation
+                    </li>
+                  </ul>
+
+                <div class="table-responsive">
+                  <table class="table border mt-3 mb-2 mx-0 px-0 ">
+                    <tr>
                       <th class="py-2">Size</th>
                       <th class="py-2">Width (cm)</th>
                       <th class="py-2">Height (cm)</th>
                       <th class="py-2">Depth (cm)</th>
-                  </tr>
-                  <tr>
+                    </tr>
+                    <tr>
                       <td class="py-2">Small</td>
                       <td class="py-2">45</td>
                       <td class="py-2">25</td>
                       <td class="py-2">0.5</td>
-                  </tr>
-                  <tr>
+                    </tr>
+                    <tr>
                       <td class="py-2">Medium</td>
                       <td class="py-2">68</td>
                       <td class="py-2">38</td>
                       <td class="py-2">0.5</td>
-                  </tr>
-                  <tr>
+                    </tr>
+                    <tr>
                       <td class="py-2">Large</td>
                       <td class="py-2">91</td>
                       <td class="py-2">51</td>
                       <td class="py-2">0.5</td>
-                  </tr>
-                </table>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Pills 2 content -->
+              <div class="tab-pane fade mb-2 p-1" id="ex1-pills-2" role="tabpanel">
+                <!-- Shipping Info Tab -->
+                <p>
+                  Our high-quality metal posters are carefully packaged and shipped to ensure they arrive in perfect condition. Here's what you need to know:
+                </p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-truck-moving text-success me-2"></i> <strong>Packaging:</strong> Protective layers and sturdy, eco-friendly packaging.
+                  </li>
+                  <li>
+                    <i class="fas fa-clock text-success me-2"></i> <strong>Handling Time:</strong> Orders processed within 1-2 business days.
+                  </li>
+                  <li>
+                    <i class="fas fa-shipping-fast text-success me-2"></i> <strong>Delivery:</strong> Standard delivery (Europe Only) within 5-7 business days.
+                  </li>
+                  <li>
+                    <i class="fas fa-globe-americas text-success me-2"></i> <strong>International Shipping:</strong> Available with varying rates and times.
+                  </li>
+                </ul>
+                <p>
+                  If you require specific details about our shipping policies, our customer care team is ready to assist. For personalized support, please connect with us on our <a href="#" class="text-decoration-none">customer service page</a>.
+                </p>
+
               </div>
             </div>
-
-            <!-- Pills 2 content -->
-            <div class="tab-pane fade mb-2 p-1" id="ex1-pills-2" role="tabpanel">
-              <!-- Shipping Info Tab -->
-              <p>Our high-quality metal posters are carefully packaged and shipped to ensure they arrive in perfect condition. Here's what you need to know:</p>
-              <ul class="list-unstyled">
-                <li><i class="fas fa-truck-moving text-success me-2"></i> <strong>Packaging:</strong> Protective layers and sturdy, eco-friendly packaging.</li>
-                <li><i class="fas fa-clock text-success me-2"></i> <strong>Handling Time:</strong> Orders processed within 1-2 business days.</li>
-                <li><i class="fas fa-shipping-fast text-success me-2"></i> <strong>Delivery:</strong> Standard delivery (Europe Only) within 5-7 business days.</li>
-                <li><i class="fas fa-globe-americas text-success me-2"></i> <strong>International Shipping:</strong> Available with varying rates and times.</li>
-              </ul>
-              <p>If you require specific details about our shipping policies, our customer care team is ready to assist. For personalized support, please connect with us on our <a href="#" class="text-decoration-none">customer service page</a>.</p>
-
-            </div>
+            <!-- Pills content -->
           </div>
-          <!-- Pills content -->
         </div>
       </div>
-    </div>
-    
-    <!-- More products includes -->
-    {% include "includes/all_products.html" %}
+ 
+      <!-- More products includes -->
+      {% include "includes/all_products.html" %}
 
-  </div>
-</section>
+    </div>
+  </section>
 
 {% endblock %}
 
 {% block postloadjs %}
 
   <script type="module" src="{% static '/js/product.js' %}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js" integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js"
+          integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
 
   <!-- MDB -->
-  <script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
-  ></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
 {% endblock %}
-
