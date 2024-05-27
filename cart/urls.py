@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', ViewCart.as_view(), name='view_cart'),
+    path('add_to_cart/<int:item_id>/', AddToCartView.as_view(), name='add_to_cart'),
 ]
 
 if settings.DEBUG:

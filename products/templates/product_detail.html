@@ -65,10 +65,10 @@
 
             <hr />
  
-            <form class="form" action="#" method="post">
+            <form class="form" action="{% url 'add_to_cart' product.id %}" method="post">
               {% csrf_token %}
               <div class="row mb-4">
-
+ 
                 {% if product.size %}
                   <div class="col-md-6 col-12 select-size">
                     <label class="mb-2">Size</label>
@@ -82,7 +82,7 @@
                     </select>
                   </div>
                 {% endif %}
-
+ 
                 <div class="col-md-6 col-12 select-quantity">
                   <label class="mb-2 d-block">Quantity</label>
                   <div class="input-group mb-3">
@@ -112,6 +112,7 @@
               <button type="submit" class="btn btn-primary shadow-0 my-1">
                 <i class="fa-solid fa-cart-shopping"></i> Add to cart
               </button>
+              <input type="hidden" name="redirect_url" value="{{ request.path }}">
             </form>
 
           </div>
