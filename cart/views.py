@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 from django.shortcuts import redirect
 from django.views import View
+from products.models import Product #Testing the information being sent to cart
 
 
 class ViewCart(TemplateView):
@@ -27,5 +28,17 @@ class AddToCartView(View):
             cart[item_id] = quantity
 
         request.session['cart'] = cart
-        print(request.session['cart'])
+
+
+        # Printing content in cart
+
+        for key, value in cart.items():
+            product = get_object_or_404(Product, pk=key)
+            print(f"Key: {key}")
+            print(f"Name: {product.name}")
+            print(f"Quantity: {value}")
+            print(f"Size: {product.size}")
+            print(f"Price: {product.price}")
+
+        
         return redirect(redirect_url)
