@@ -20,12 +20,26 @@ class AddToCartView(View):
     def post(self, request, item_id):
         quantity = int(request.POST.get('quantity'))
         redirect_url = request.POST.get('redirect_url')
+
+        size = None
+        if 'product_size' in request.POST:
+            size = request.POST['product_size']
+
         cart = request.session.get('cart', {})
 
-        if item_id in list(cart.keys()):
-            cart[item_id] += quantity
+        if size:
+                if item_id in list(cart.keys()):
+                    if size in cart[item_id]['items_by_size'].keys():
+                        cart[item_id]['items_by_size'][size] += quantity
+                    else:
+                        cart[item_id]['items_by_size'][size] = quantity
+                else:
+                    cart[item_id] = {'items_by_size': {size: quantity}}
         else:
-            cart[item_id] = quantity
+                if item_id in list(cart.keys()):
+                    cart[item_id] += quantity
+                else:
+                    cart[item_id] = quantity
 
         request.session['cart'] = cart
 
@@ -37,7 +51,6 @@ class AddToCartView(View):
             print(f"Key: {key}")
             print(f"Name: {product.name}")
             print(f"Quantity: {value}")
-            print(f"Size: {product.size}")
             print(f"Price: {product.price}")
 
         
