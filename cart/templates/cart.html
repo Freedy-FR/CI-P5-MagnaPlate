@@ -14,6 +14,19 @@
         <div class="row">
             <div class="col">
                 {% if cart_items %}
+                    <!-- Debug: Print the cart items and context -->
+                    <pre>{{ cart_items|safe }}</pre>
+                    <br>
+                    <pre>{{ request.session.cart|safe }}</pre>
+                    <br>
+                    <pre>{{ total }}</pre>
+                    <pre>{{ product_count }}</pre>
+                    <pre>{{ delivery }}</pre>
+                    <pre>{{ free_delivery_delta }}</pre>
+                    <pre>{{ free_delivery_limit }}</pre>
+                    <pre>{{ grand_total }}</pre>
+                    <br>
+ 
                     <div class="table-responsive rounded">
                         <table class="table table-sm table-borderless">
                             <thead class="text-black">
@@ -45,7 +58,11 @@
                                         </p>
                                         <p class="my-0">
                                             <strong>Size:</strong>
-                                            {{ item.product.size|upper }}
+                                            {% if item.product.has_sizes %}
+                                                {{ item.size|upper }}
+                                            {% else %}
+                                                N/A
+                                            {% endif %}
                                         </p>
                                         <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
                                     </td>

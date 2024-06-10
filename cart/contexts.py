@@ -4,7 +4,6 @@ from django.shortcuts import get_object_or_404
 from products.models import Product
 
 def cart_contents(request):
-
     cart_items = []
     total = 0
     product_count = 0
@@ -12,29 +11,24 @@ def cart_contents(request):
 
     for item_id, item_data in cart.items():
         product = get_object_or_404(Product, pk=item_id)
-
         if isinstance(item_data, int):
-            quantity = item_data
-            total += quantity * product.price
-            product_count += quantity
-
+            total += item_data * product.price
+            product_count += item_data
             cart_items.append({
                 'item_id': item_id,
-                'quantity': quantity,
+                'quantity': item_data,
                 'product': product,
             })
-        elif isinstance(item_data, dict):
-            if 'items_by_size' in item_data:
-                for size, quantity in item_data['items_by_size'].items():
-                    total += quantity * product.price
-                    product_count += quantity
-
-                    cart_items.append({
-                        'item_id': item_id,
-                        'quantity': quantity,
-                        'product': product,
-                        'size': size,
-                    })
+        else:
+            for size, quantity in item_data['items_by_size'].items():
+                total += quantity * product.price
+                product_count += quantity
+                cart_items.append({
+                    'item_id': item_id,
+                    'quantity': quantity,
+                    'product': product,
+                    'size': size,
+                })
 
     if total < settings.FREE_DELIVERY_LIMIT:
         delivery = total * Decimal(settings.DELIVERY_PERCENTAGE / 100)
@@ -42,9 +36,9 @@ def cart_contents(request):
     else:
         delivery = 0
         free_delivery_delta = 0
-    
+
     grand_total = delivery + total
-    
+
     context = {
         'cart_items': cart_items,
         'total': total,
