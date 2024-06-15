@@ -2,7 +2,7 @@
 
 Project milestone 5 for Code Institute Full-stack development program: Django Framework.<br>
 
-[Live Project Here](https:)
+[Live Project Here](https://magnaplate-3f8ee7baac73.herokuapp.com/)
 
 <p align="center"><img src=""
         alt="MagnaPlate webpage on multiple devices"></p>
@@ -16,10 +16,10 @@ README Table Content
     - [The Scope](#the-scope)
       - [Main Site Goals](#main-site-goals)
   - [Design](#design)
-      - [Colours](#colours)
-      - [Typography](#typography)
-      - [Imagery](#imagery)
-      - [Video](#video)
+    - [Colours](#colours)
+    - [Typography](#typography)
+    - [Imagery](#imagery)
+    - [Video](#video)
     - [Wireframes](#wireframes)
   - [Database Diagram](#database-diagram)
   - [Features](#features)
@@ -166,7 +166,11 @@ All functionality and development of this project were managed using GitHub whic
 
 #### Typography
 
-- .
+[Google Fonts](https://fonts.google.com/) were used as below:
+
+* Galada is used for the Logo.
+* Signika Negative is used for the Headings.
+* Roboto is used for the body of the text.
 
 #### Imagery
 
@@ -178,7 +182,40 @@ All functionality and development of this project were managed using GitHub whic
 
 ### Wireframes
 
-Wireframes for this project are located [here]()
+Wireframes were created for desktop/laptop, tablet and mobile.
+
+<details><summary>Home</summary>
+<img src="assets/readme/wireframes/Home.webp">
+</details>
+
+<details><summary>Products</summary>
+<img src="assets/readme/wireframes/Products.webp">
+</details>
+
+<details><summary> Products Detail</summary>
+<img src="assets/readme/wireframes/Products Detail.webp">
+</details>
+
+<details><summary>Cart</summary>
+<img src="assets/readme/wireframes/Cart.webp">
+</details>
+
+<details><summary>My Profile - Basic Information</summary>
+<img src="assets/readme/wireframes/My Profile - Basic Info.webp">
+</details>
+
+<details><summary>My Profile - Shipping Address</summary>
+<img src="assets/readme/wireframes/My Profile - Shipping.webp">
+</details>
+
+<details><summary>My Profile - Orders</summary>
+<img src="assets/readme/wireframes/My profile - Order.webp">
+</details>
+
+<details><summary>Admin - Product Management</summary>
+<img src="assets/readme/wireframes/Admin - Product Management.webp">
+</details>
+
 
 ## Database Diagram
 
@@ -191,21 +228,21 @@ Wireframes for this project are located [here]()
 ![Landing page](.)
 
 - The Landing page works as the website cover. Users will see a background video playing in a loop, a slogan text about
-the available collection, and two social media buttons. There is also a button to go to the website's Home Page.<br>
+  the available collection, and two social media buttons. There is also a button to go to the website's Home Page.<br>
 
 ### Home Page - Images Carousel
 
 ![Home Page - Images Carousel](.)
 
 - The home page is equipped with a 3 images carousel on the
-top.<br>
+  top.<br>
 
 ### Home Page - Selected Products
 
 ![Home Page - Selected Products](.)
 
 - In this feature, users will see a variety of products selected by the website admin. It can be used to highlight special
-or popular products.<br>
+  or popular products.<br>
 
 ### Home Page - Image Banner
 
@@ -356,7 +393,7 @@ or popular products.<br>
 
 ![Page 404 - Page Not Found](.)
 
-- .<br>  
+- .<br>
 
 ## Messages and Interaction with Users
 
@@ -402,7 +439,7 @@ or popular products.<br>
 
 ![Service Review - Update Review 1](.)
 
--  <br>
+- <br>
 
 ### Service Review - Update Review 2
 
@@ -507,7 +544,7 @@ or popular products.<br>
 - On the Admin Panel and as an admin/superuser I have full access to CRUD functionality. This means I can view, create, edit and
   delete the following apps:
 
-1. 
+1.
 2. Checkout
 3. Products
 4. Profiles
@@ -541,16 +578,16 @@ or popular products.<br>
 ### Mailchimp Subscription Service
 
 - Users are encouraged to signup for newsletters, discounts and information about the products sold at MagnaPlate.
-The signup form is available on the website footer and is present on any page. The email subscription service is run through
-Mailchimp, allowing the website admin to send marketing emails through the platform, increasing engagement within the site. Below
-is a screenshot of the MagnaPlate - Mailchimp dashboard.
+  The signup form is available on the website footer and is present on any page. The email subscription service is run through
+  Mailchimp, allowing the website admin to send marketing emails through the platform, increasing engagement within the site. Below
+  is a screenshot of the MagnaPlate - Mailchimp dashboard.
 
 ![ Mailchimp Subscription Service](.)<br>
 
 ## Privacy Policy
 
-- In order to add a page with the MagnaPlate Privacy Policy I used the service [Privacy Policy Generator](https://) to ensure 
-that the website is compliant with the European Privacy Policy Rules.<br>
+- In order to add a page with the MagnaPlate Privacy Policy I used the service [Privacy Policy Generator](https://) to ensure
+  that the website is compliant with the European Privacy Policy Rules.<br>
 
 ![Privacy Policy](.)
 
@@ -585,7 +622,7 @@ that the website is compliant with the European Privacy Policy Rules.<br>
 
 ## AWS Setup Process
 
-### AWS S3 Bucket 
+### AWS S3 Bucket
 
 The deployed site uses AWS S3 Buckets to store the webpages static and media files. More information on how you can set up an AWS S3 Bucket can be found below:
 
@@ -598,27 +635,27 @@ The deployed site uses AWS S3 Buckets to store the webpages static and media fil
 7. Inside the created bucket click on the "Properties" tab. Below "Static Website Hosting" click "Edit" and change the Static website hosting option to "Enabled". Copy the default values for the index and error documents and click "Save Changes".
 8. Click on the "Permissions" tab, below "Cross-origin Resource Sharing (CORS)", click "Edit" and then paste in the following code:
 
-  ```
-    [
-        {
-            "AllowedHeaders": [
-            "Authorization"
-            ],
-            "AllowedMethods": [
-            "GET"
-            ],
-            "AllowedOrigins": [
-            "*"
-            ],
-            "ExposeHeaders": []
-        }
-    ]
-  ```
+```
+  [
+      {
+          "AllowedHeaders": [
+          "Authorization"
+          ],
+          "AllowedMethods": [
+          "GET"
+          ],
+          "AllowedOrigins": [
+          "*"
+          ],
+          "ExposeHeaders": []
+      }
+  ]
+```
 
-9. Within the "Bucket Policy" section. Click "Edit" and then "Policy Generator". Click the "Select Type of Policy" dropdown and select "S3 Bucket Policy" and within "Principle" allow all principals by typing "*".
+9. Within the "Bucket Policy" section. Click "Edit" and then "Policy Generator". Click the "Select Type of Policy" dropdown and select "S3 Bucket Policy" and within "Principle" allow all principals by typing "\*".
 10. Within the "Actions" dropdown menu select "Get Object" and in the previous tab copy the "Bucket ARN number". Paste this within the policy generator within the field labelled "Amazon Resource Name (ARN)".
 11. Click "Add statement > Generate Policy" and copy the policy that's been generated and paste this into the "Bucket Policy Editor".
-12. Before saving, add /* at the end of your "Resource Key", this will allow access to all resources within the bucket.
+12. Before saving, add /\* at the end of your "Resource Key", this will allow access to all resources within the bucket.
 13. Once saved, scroll down to the "Access Control List (ACL)" and click "Edit".
 14. Next to "Everyone (public access)", check the "list" checkbox and save your changes.
 
@@ -628,8 +665,8 @@ The deployed site uses AWS S3 Buckets to store the webpages static and media fil
 2. Click "User Groups" that can be seen in the side bar and then click "Create group" and name the group 'manage-your-project-name'.
 3. Click "Policies" and then "Create policy".
 4. Navigate to the JSON tab and click "Import Managed Policy", within here search "S3" and select "AmazonS3FullAccess" followed by "Import".
-5. Navigate back to the recently created S3 bucket and copy your "ARN Number". Go back to "This Policy" and update the "Resource Key" to include your ARN Number, and another line with your ARN followed by a "/*".
-   
+5. Navigate back to the recently created S3 bucket and copy your "ARN Number". Go back to "This Policy" and update the "Resource Key" to include your ARN Number, and another line with your ARN followed by a "/\*".
+
 - Below is an example of what this should look like:
 
 ```
@@ -661,12 +698,12 @@ The deployed site uses AWS S3 Buckets to store the webpages static and media fil
 
 ### Connecting AWS to the Project
 
-1. Within your terminal install the following packages by typing 
+1. Within your terminal install the following packages by typing
 
 ```
   pip3 install boto3
-  pip3 install django-storages 
-```  
+  pip3 install django-storages
+```
 
 2. Freeze the requirements by typing:
 
@@ -684,14 +721,16 @@ if 'USE_AWS' in os.environ:
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 ```
+
 5. Add the following keys within Heroku: "AWS_ACCESS_KEY_ID" and "AWS_SECRET_ACCESS_KEY". These can be found in your CSV file.
 6. Add the key "USE_AWS", and set the value to True within Heroku.
-6. Remove the "DISABLE_COLLECTSTAIC" variable from Heroku.
-7. Within your settings.py file inside the code just written add: 
+7. Remove the "DISABLE_COLLECTSTAIC" variable from Heroku.
+8. Within your settings.py file inside the code just written add:
 
 ```
   AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 ```
+
 8. Inside the settings.py file inside the bucket config if statement add the following lines of code:
 
 ```
@@ -727,10 +766,11 @@ AWS_S3_OBJECT_PARAMETERS = {
 
 ## Stripe Payments
 
-- The Stripe payments system is set up as the online payment processing and credit card processing platform for the purchases. 
-You will need a stripe account which you can sign up for [here](https://stripe.com/en-ie)
+- The Stripe payments system is set up as the online payment processing and credit card processing platform for the purchases.
+  You will need a stripe account which you can sign up for [here](https://stripe.com/en-ie)
 
-### Payments 
+### Payments
+
 - To set up stripe payments you can follow their guid [here](https://stripe.com/docs/payments/accept-a-payment#web-collect-card-details)
 
 ### Webhooks
@@ -738,28 +778,30 @@ You will need a stripe account which you can sign up for [here](https://stripe.c
 1. To set up a webhook, sign into your stripe account and click 'Developers' located in the top right of the navbar.
 2. Then in the side-nav under the Developers title, click on "Webhooks", then "Add endpoint".
 3. On the next page you will need to input the link to your heroku app followed by /checkout/wh/. It should look something like this:
-   
-    ```
-    https://your-app-name.herokuapp.com/checkout/wh/
-    ```
+
+   ```
+   https://your-app-name.herokuapp.com/checkout/wh/
+   ```
 
 4. Then click "+ Select events" and check the "Select all events" checkbox at the top before clicking "Add events" at the bottom. Once this is done finish the form by clicking "Add endpoint".
 5. Your webhook is now created and you should see that it has generated a secret key. You will need this to add to your heroku config vars.
 6. Head over to your app in heroku and navigate to the config vars section under settings. You will need the secret key you just generated for your webhook, in addition to your Publishable key and secret key that you can find in the API keys section back in stripe.
 7. Add these values under these keys:
-   
-    ```
-    STRIPE_PUBLIC_KEY = 'insert your stripe publishable key'
-    STRIPE_SECRET_KEY = 'insert your secret key'
-    STRIPE_WH_SECRET = 'insert your webhooks secret key'
 
-    ```
-8. Finally, back in your settings.py file in django, insert the following near the bottom of the file:  
-    ```
-    STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
-    STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
-    STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
-    ```
+   ```
+   STRIPE_PUBLIC_KEY = 'insert your stripe publishable key'
+   STRIPE_SECRET_KEY = 'insert your secret key'
+   STRIPE_WH_SECRET = 'insert your webhooks secret key'
+
+   ```
+
+8. Finally, back in your settings.py file in django, insert the following near the bottom of the file:
+   ```
+   STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+   STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+   STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+   ```
+
 - Below is a screenshot of the MagnaPlate - Stripe dashboard.
 
 ![ Stripe Payments](.)<br>
@@ -855,23 +897,25 @@ Testing results are [here](TESTING.md)
 5. Click on the Create App button
 6. Click in resources and select Heroku Postgres database
 7. Click Reveal Config Vars and add:
- * A new record with SECRET_KEY
- * A new record with the AWS_ACCESS_KEY_ID
- * A new record with the AWS_SECRET_ACCESS_KEY
- * A new record with the EMAIL_HOST_PASS
- * A new record with the EMAIL_HOST_USER 
- * A new record with the STRIPE_PUBLIC_KEY
- * A new record with the STRIPE_SECRET_KEY
- * A new record with the STRIPE_WH_SECRET
- * A new record with the DISABLE_COLLECTSTATIC = 1
+
+- A new record with SECRET_KEY
+- A new record with the AWS_ACCESS_KEY_ID
+- A new record with the AWS_SECRET_ACCESS_KEY
+- A new record with the EMAIL_HOST_PASS
+- A new record with the EMAIL_HOST_USER
+- A new record with the STRIPE_PUBLIC_KEY
+- A new record with the STRIPE_SECRET_KEY
+- A new record with the STRIPE_WH_SECRET
+- A new record with the DISABLE_COLLECTSTATIC = 1
+
 8.  The next page is the project’s Deploy Tab. Click on the Settings Tab and scroll down to Config Vars
 9.  Next, scroll down to the Buildpack section click Add Buildpack select python and click Save Changes
 10. Scroll to the top of the page and choose the Deploy tab
 11. Select Github as the deployment method
-15. Confirm you want to connect to GitHub
-16. Search for the repository name and click the connect button
-17. Scroll to the bottom of the deploy page and select the preferred deployment type
-18. Click Enable Automatic Deploys for automatic deployment when you push updates to Github<br>
+12. Confirm you want to connect to GitHub
+13. Search for the repository name and click the connect button
+14. Scroll to the bottom of the deploy page and select the preferred deployment type
+15. Click Enable Automatic Deploys for automatic deployment when you push updates to Github<br>
 
 ## Final Deployment
 
