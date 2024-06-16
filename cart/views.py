@@ -71,3 +71,32 @@ class AddToCartView(View):
                 print(f"Items by Size: {value['items_by_size']}")
 
         return redirect(redirect_url)
+
+
+class UpdateCartView(View):
+    def post(self, request, item_id):
+        quantity = int(request.POST.get('quantity'))
+
+        size = None
+        if 'product_size' in request.POST:
+            size = request.POST['product_size']
+
+        cart = request.session.get('cart', {})
+
+        if size:
+            if str(item_id) in cart and 'items_by_size' in cart[str(item_id)] and size in cart[str(item_id)]['items_by_size']:
+                if quantity > 0:
+                    cart[str(item_id)]['items_by_size'][size] = quantity
+                else:
+                    del cart[str(item_id)]['items_by_size'][size]
+                    if not cart[str(item_id)]['items_by_size']:
+                        del cart[str(item_id)]
+        else:
+            if str(item_id) in cart:
+                if quantity > 0:
+                    cart[str(item_id)] = quantity
+                else:
+                    del cart[str(item_id)]
+
+        request.session['cart'] = cart
+        return redirect('view_cart')

@@ -69,24 +69,24 @@
                             <p class="my-0">€{{ item.product.price }}</p>
                         </td>
                         <td class="py-3 w-25">
-                            <form class="form update-form" method="post" action="#">
+                            <form class="form update-form" method="post" action="{% url 'update_cart' item.item_id %}">
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <div class="input-group mb-3">
                                         <button type="button"
                                             class="decrement-qty btn btn-light border rounded-start-4 w-25"
-                                            id="decrement-qty_{{ item.item_id }}">
+                                            data-item_id="{{ item.item_id }}" data-item_size="{{ item.size }}">
                                             <i class="fas fa-minus"></i>
                                         </button>
                                         <input class="form-control qty_input text-center input-number" type="number"
                                             name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                            data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                                            data-item_id="{{ item.item_id }}" data-item_size="{{ item.size }}"
+                                            id="id_qty_{{ item.item_id }}_{{ item.size }}">
                                         <button type="button"
                                             class="increment-qty btn btn-light border rounded-end-4 w-25"
-                                            id="increment-qty_{{ item.item_id }}">
+                                            data-item_id="{{ item.item_id }}" data-item_size="{{ item.size }}">
                                             <i class="fas fa-plus"></i>
                                         </button>
-
                                         {% if item.product.has_sizes %}
                                         <input type="hidden" name="product_size" value="{{ item.size }}">
                                         {% endif %}
@@ -100,6 +100,7 @@
                         </td>
                     </tr>
                     {% endfor %}
+
                     <tr>
                         <td colspan="5" class="pt-5 text-right">
                             <h6>
@@ -150,5 +151,5 @@
 {% endblock %}
 
 {% block postloadjs %}
-<script type="module" src="{% static '/js/product.js' %}"></script>
+<script type="module" src="{% static 'cart/js/cart.js' %}"></script>
 {% endblock %}

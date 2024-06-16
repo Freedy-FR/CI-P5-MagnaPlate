@@ -68,7 +68,7 @@
                 <label class="mb-2">Size</label>
                 <select class="form-control me-0 rounded-4" name="product_size" id="id_product_size">
                   {% for size_value, size_name in product.SIZE_CHOICES %}
-                  <option value="{{ size_value }}" {% if product.size==size_value %}selected{% endif %}>{{ size_name }}
+                  <option value="{{ size_value }}" {% if product.size == size_value %}selected{% endif %}>{{ size_name }}
                   </option>
                   {% endfor %}
                 </select>
