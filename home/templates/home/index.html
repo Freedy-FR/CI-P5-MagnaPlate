@@ -2,110 +2,110 @@
 {% load static %}
 
 {% block extra_css %}
-  <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
 {% endblock %}
-
 
 {% block content %}
 
-  <div id="myCarousel" class="carousel slide">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active " aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<div id="myCarousel" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active " aria-current="true"
+      aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner background-carousel">
+    <div class="carousel-item active">
+      <div class="w-100">
+        <a class="img-container" href="#">
+          <img src="{{ MEDIA_URL }}media/carousel/group-1.jpg" class="image-carousel d-block" alt="...">
+        </a>
       </div>
-      <div class="carousel-inner background-carousel">
-        <div class="carousel-item active">
-          <div class="w-100">
-            <a class="img-container" href="#">
-              <img src="{{ MEDIA_URL }}media/carousel/group-1.jpg" class="image-carousel d-block" alt="...">
-            </a>
-          </div>
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Motivational Collection</h5>
-            <p>Check out the Latest Motivational Plates!.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="w-100">
-            <div class="img-container">
-              <img src="{{ MEDIA_URL }}media/carousel/group-2.jpg" class="image-carousel d-block" alt="...">
-            </div>
-          </div>
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="w-100">
-            <div class="img-container">
-              <img src="{{ MEDIA_URL }}media/carousel/group-3.jpg" class="image-carousel d-block" alt="...">
-            </div>
-          </div>
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
-          </div>
-        </div>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Motivational Collection</h5>
+        <p>Check out the Latest Motivational Plates!.</p>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
+    <div class="carousel-item">
+      <div class="w-100">
+        <div class="img-container">
+          <img src="{{ MEDIA_URL }}media/carousel/group-2.jpg" class="image-carousel d-block" alt="...">
+        </div>
+      </div>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="w-100">
+        <div class="img-container">
+          <img src="{{ MEDIA_URL }}media/carousel/group-3.jpg" class="image-carousel d-block" alt="...">
+        </div>
+      </div>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
-    <!-- Deals section -->
-    {% if deal_products %}
-    <div class="deals container">
-      <h2 class="text-center" >Check out our deals!</h2>
-      <div class="py-5">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+<!-- Deals section -->
+{% if deal_products %}
+<div class="deals container">
+  <h2 class="text-center">Check out our deals!</h2>
+  <div class="py-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-          {% for product in deal_products %}
-          <div class="col">
-            <div class="card p-0">
-              <a href="{% url 'product_detail' product_id=product.id %}">
-                {% if product.image %}
-                  <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
-                {% else %}
-                  <img src="{{ MEDIA_URL }}media/product_images/placeholder-image.png" alt="image-placeholder" class="card-img img-fluid img-fill">
+      {% for product in deal_products %}
+      <div class="col">
+        <div class="card p-0">
+          <a href="{% url 'product_detail' product_id=product.id %}">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
+            {% else %}
+            <img src="{{ MEDIA_URL }}media/product_images/placeholder-image.png" alt="image-placeholder"
+              class="card-img img-fluid img-fill">
+            {% endif %}
+            <div class="d-none d-lg-block">
+              <div class="card-img-overlay justify-content-between align-items-center">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.description|truncatewords:20 }}</p>
+                {% if product.price %}
+                <p class="text-end"><strong class="text-body-secondary">€{{ product.price }}</strong></p>
                 {% endif %}
-                <div class="d-none d-lg-block">
-                  <div class="card-img-overlay justify-content-between align-items-center">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.description|truncatewords:20 }}</p>
-                    {% if product.price %}
-                      <p class="text-end"><strong class="text-body-secondary">€{{ product.price }}</strong></p>
-                    {% endif %}
-                  </div>
-                </div>
-                <div class="d-block d-lg-none">
-                  <div class="card-body d-flex justify-content-between align-items-center p-1 d-inline">
-                    <p class="card-text m-0">{{ product.name }}</p>
-                    {% if product.price %}
-                      <strong class="text-body-secondary">€{{ product.price }}</strong>
-                    {% endif %}
-                  </div>                
-                </div>
-              </a>
+              </div>
             </div>
-          </div>
-          {% endfor %}
+            <div class="d-block d-lg-none">
+              <div class="card-body d-flex justify-content-between align-items-center p-1 d-inline">
+                <p class="card-text m-0">{{ product.name }}</p>
+                {% if product.price %}
+                <strong class="text-body-secondary">€{{ product.price }}</strong>
+                {% endif %}
+              </div>
+            </div>
+          </a>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endif %}
+  </div>
+</div>
+{% endif %}
 
-
-    {% include "includes/all_products.html" %}
+{% include "includes/all_products.html" %}
 
 {% endblock %}
 
 {% block postloadjs %}
-    <script src="{% static 'home/js/home.js' %}"></script>
+<script src="{% static 'home/js/home.js' %}"></script>
 {% endblock %}

@@ -3,15 +3,12 @@
 {% load static %}
 
 {% block extra_css %}
-  <link rel="stylesheet" href="{% static '/css/product.css' %}">
-  <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'products/css/product.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/product.css' %}">
 {% endblock %}
-
 
 {% block content %}
 
-    {% include "includes/all_products.html" %}
+{% include "includes/all_products.html" %}
 
 {% endblock %}
-
-

@@ -3,8 +3,8 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static '/css/product.css' %}">
-<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'products/css/product.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/product.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -68,7 +68,7 @@
                 <label class="mb-2">Size</label>
                 <select class="form-control me-0 rounded-4" name="product_size" id="id_product_size">
                   {% for size_value, size_name in product.SIZE_CHOICES %}
-                  <option value="{{ size_value }}" {% if product.size == size_value %}selected{% endif %}>{{ size_name }}
+                  <option value="{{ size_value }}" {% if product.size == ize_value %}selected{% endif %}>{{ size_name }}
                   </option>
                   {% endfor %}
                 </select>
@@ -228,7 +228,7 @@
 
 {% block postloadjs %}
 
-<script type="module" src="{% static '/js/product.js' %}"></script>
+<script type="module" src="{% static 'products/js/product.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js"
   integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
