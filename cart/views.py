@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 from django.shortcuts import redirect
 from django.views import View
+from django.contrib import messages
 from cart.contexts import cart_contents  # Import the cart_contents function
-from products.models import Product #Testing the information being sent to cart
+from products.models import Product
 
 
 class ViewCart(TemplateView):
@@ -23,6 +24,7 @@ class AddToCartView(View):
     def post(self, request, item_id):
         quantity = int(request.POST.get('quantity'))
         redirect_url = request.POST.get('redirect_url')
+        product = get_object_or_404(Product, pk=item_id)
 
         size = None
         if 'product_size' in request.POST:
@@ -39,20 +41,27 @@ class AddToCartView(View):
                 if 'items_by_size' in cart[str(item_id)]:
                     if size in cart[str(item_id)]['items_by_size']:
                         cart[str(item_id)]['items_by_size'][size] += quantity
+                        messages.success(request, f'Updated {product.name} quantity to {cart[item_id]}!')
                     else:
                         cart[str(item_id)]['items_by_size'][size] = quantity
+                        messages.success(request, f'Added {product.name} to your cart!')
                 else:
                     cart[str(item_id)]['items_by_size'] = {size: quantity}
+                    messages.success(request, f'Added {product.name} to your cart!')
             else:
                 cart[str(item_id)] = {'items_by_size': {size: quantity}}
+                messages.success(request, f'Added {product.name} to your cart!')
         else:
             if str(item_id) in cart:
                 if isinstance(cart[str(item_id)], dict):
                     cart[str(item_id)]['quantity'] += quantity
+                    messages.success(request, f'Updated {product.name} quantity to {cart[item_id]}!')
                 else:
                     cart[str(item_id)] += quantity
+                    messages.success(request, f'Updated {product.name} quantity to {cart[item_id]}!')
             else:
                 cart[str(item_id)] = quantity
+                messages.success(request, f'Added {product.name} to your cart!')
 
         request.session['cart'] = cart
 
