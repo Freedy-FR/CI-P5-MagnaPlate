@@ -1,8 +1,10 @@
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.core.paginator import Paginator
+from django.db.models import Q
+from django.contrib import messages
+from django.shortcuts import redirect, reverse
 from .models import Product
-
 
 class ProductListView(ListView):
     model = Product
@@ -10,6 +12,28 @@ class ProductListView(ListView):
     context_object_name = 'products'
     paginate_by = 6
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queryset = queryset.filter(queries)
+        
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        query = self.request.GET.get('q')
+        if query:
+            context['search_term'] = query
+        return context
+
+    def get(self, request, *args, **kwargs):
+        if 'q' in request.GET and not request.GET['q']:
+            messages.error(request, "You didn't enter any search criteria!")
+            return redirect(reverse('products'))
+        return super().get(request, *args, **kwargs)
 
 
 class ProductDetailView(DetailView):
