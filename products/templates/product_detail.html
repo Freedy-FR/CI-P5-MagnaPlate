@@ -9,7 +9,7 @@
 
 {% block content %}
 
-<section class="py-5 container-fluid">
+<section class="py-4 container-fluid">
   <div class="container">
     <div class="row gx-5">
       <aside class="col-lg-6 my-auto px-2">
@@ -25,12 +25,14 @@
           {% endif %}
         </div>
       </aside>
-      <main class="col-lg-6">
+      <main class="col-lg-6 pt-md-2">
         <div class="ps-lg-3 pt-md-1">
           <h4 class="title text-dark">
             {{ product.name }}
-            <br />
           </h4>
+          <h6 class="text-dark">
+            <p>By <span class="badge text-bg-secondary">{{ product.creator }}</span></p>
+          </h6>
           <div class="d-flex flex-row my-3">
             <div class="text-warning mb-1 me-2">
               {% for star in range %}
@@ -50,8 +52,14 @@
           <p>{{ product.description }}</p>
 
           <div class="row">
-            <dt class="col-3">Category:</dt>
+            <dt class="col-3 fw-bold">Collections:</dt>
             <dd class="col-9">
+              {{ product.collection.friendly_name }}
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-3 fst-italic">Category:</dt>
+            <dd class="col-9 fw-light">
               {{ product.category.friendly_name }}
             </dd>
           </div>
@@ -68,7 +76,7 @@
                 <label class="mb-2">Size</label>
                 <select class="form-control me-0 rounded-4" name="product_size" id="id_product_size">
                   {% for size_value, size_name in product.SIZE_CHOICES %}
-                  <option value="{{ size_value }}" {% if product.size == ize_value %}selected{% endif %}>{{ size_name }}
+                  <option value="{{ size_value }}" {% if product.size == size_value %}selected{% endif %}>{{ size_name }}
                   </option>
                   {% endfor %}
                 </select>
