@@ -35,30 +35,25 @@ class AddToCartView(View):
         # Debugging: Print the current cart contents before modification
         print("Current Cart Contents Before Modification:", cart)
 
-        if size:
-            if str(item_id) in cart:
-                # Check if 'items_by_size' already exists for the item
-                if 'items_by_size' in cart[str(item_id)]:
-                    if size in cart[str(item_id)]['items_by_size']:
-                        cart[str(item_id)]['items_by_size'][size] += quantity
-                        messages.success(request, f'Updated {product.name} quantity to {cart[item_id]}!')
-                    else:
-                        cart[str(item_id)]['items_by_size'][size] = quantity
-                        messages.success(request, f'Added {product.name} to your cart!')
-                else:
-                    cart[str(item_id)]['items_by_size'] = {size: quantity}
-                    messages.success(request, f'Added {product.name} to your cart!')
+        if size:  # If the product has a size
+            if str(item_id) not in cart:
+                cart[str(item_id)] = {'items_by_size': {}}  # Initialize items_by_size if the item_id is not in the cart
+
+            items_by_size = cart[str(item_id)].setdefault('items_by_size', {})
+            if size in items_by_size:
+                items_by_size[size] += quantity
+                messages.success(request, f'Updated {product.name} (size {size}) quantity to {items_by_size[size]}!')
             else:
-                cart[str(item_id)] = {'items_by_size': {size: quantity}}
-                messages.success(request, f'Added {product.name} to your cart!')
-        else:
+                items_by_size[size] = quantity
+                messages.success(request, f'Added {product.name} (size {size}) to your cart!')
+        else:  # If the product does not have a size
             if str(item_id) in cart:
-                if isinstance(cart[str(item_id)], dict):
+                if 'quantity' in cart[str(item_id)]:
                     cart[str(item_id)]['quantity'] += quantity
-                    messages.success(request, f'Updated {product.name} quantity to {cart[item_id]}!')
+                    messages.success(request, f'Updated {product.name} quantity to {cart[str(item_id)]["quantity"]}!')
                 else:
                     cart[str(item_id)] += quantity
-                    messages.success(request, f'Updated {product.name} quantity to {cart[item_id]}!')
+                    messages.success(request, f'Updated {product.name} quantity to {cart[str(item_id)]}!')
             else:
                 cart[str(item_id)] = quantity
                 messages.success(request, f'Added {product.name} to your cart!')
