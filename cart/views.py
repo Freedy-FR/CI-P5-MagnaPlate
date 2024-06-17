@@ -100,3 +100,24 @@ class UpdateCartView(View):
 
         request.session['cart'] = cart
         return redirect('view_cart')
+
+        
+class RemoveFromCartView(View):
+    def post(self, request, item_id):
+        size = None
+        if 'product_size' in request.POST:
+            size = request.POST['product_size']
+
+        cart = request.session.get('cart', {})
+
+        if size:
+            if str(item_id) in cart and 'items_by_size' in cart[str(item_id)] and size in cart[str(item_id)]['items_by_size']:
+                del cart[str(item_id)]['items_by_size'][size]
+                if not cart[str(item_id)]['items_by_size']:
+                    del cart[str(item_id)]
+        else:
+            if str(item_id) in cart:
+                del cart[str(item_id)]
+
+        request.session['cart'] = cart
+        return redirect('view_cart')

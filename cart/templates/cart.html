@@ -69,9 +69,10 @@
                             <p class="my-0">€{{ item.product.price }}</p>
                         </td>
                         <td class="py-3 w-25">
-                            <form class="form update-form" method="post" action="{% url 'update_cart' item.item_id %}">
-                                {% csrf_token %}
-                                <div class="form-group">
+                            <div class="form-group">
+                                <form class="form update-form d-inline" method="post"
+                                    action="{% url 'update_cart' item.item_id %}">
+                                    {% csrf_token %}
                                     <div class="input-group mb-3">
                                         <button type="button"
                                             class="decrement-qty btn btn-light border rounded-start-4 w-25"
@@ -91,9 +92,18 @@
                                         <input type="hidden" name="product_size" value="{{ item.size }}">
                                         {% endif %}
                                     </div>
-                                </div>
-                                <button type="submit" class="btn btn-sm btn-info">Update</button>
-                            </form>
+                                    <button type="submit" class="btn btn-sm btn-info">Update</button>
+                                </form>
+                                <form class="form remove-form d-inline" method="post"
+                                    action="{% url 'remove_from_cart' item.item_id %}">
+                                    {% csrf_token %}
+                                    {% if item.product.has_sizes %}
+                                    <input type="hidden" name="product_size" value="{{ item.size }}">
+                                    {% endif %}
+                                    <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                                </form>
+                            </div>
+
                         </td>
                         <td class="py-3">
                             <p class="my-0">€{{ item.subtotal|floatformat:2 }}</p> <!-- Display the subtotal -->
@@ -119,6 +129,7 @@
                         </td>
                     </tr>
                     <tr>
+                        <!-- Mudar botoes -->
                         <td colspan="5" class="text-right">
                             <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
                                 <span class="icon">
