@@ -31,7 +31,7 @@ class ProductListView(ListView):
 
     def get(self, request, *args, **kwargs):
         if 'q' in request.GET and not request.GET['q']:
-            messages.error(request, "You didn't enter any search criteria!")
+            messages.error(request, "Please enter a search criteria!")
             return redirect(reverse('products'))
         return super().get(request, *args, **kwargs)
 
