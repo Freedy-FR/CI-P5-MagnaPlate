@@ -6,10 +6,9 @@
                 All Plates
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="menu-1">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item">By Rating</a>
-                <a href="" class="dropdown-item">By Category</a>
-                <a href="" class="dropdown-item">All Products</a>
+                {% for option in sort_options %}
+                <a href="{% url 'products' %}?sort={{ option.value }}" class="dropdown-item">{{ option.label }}</a>
+                {% endfor %}
             </div>
         </li>
 
@@ -19,10 +18,10 @@
                 Collections
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="menu-2">
-                <a href="" class="dropdown-item">Sub-menu 1</a>
-                <a href="" class="dropdown-item">Sub-menu 2</a>
-                <a href="" class="dropdown-item">Sub-menu 3</a>
-                <a href="" class="dropdown-item">Sub-menu 4</a>
+                {% for collection in collections %}
+                <a href="{% url 'products' %}?collection={{ collection.id }}"
+                    class="dropdown-item">{{collection.friendly_name }}</a>
+                {% endfor %}
             </div>
         </li>
 
@@ -32,10 +31,9 @@
                 Creators
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="menu-3">
-                <a href="" class="dropdown-item">Sub-menu 1</a>
-                <a href="" class="dropdown-item">Sub-menu 2</a>
-                <a href="" class="dropdown-item">Sub-menu 3</a>
-                <a href="" class="dropdown-item">Sub-menu 4</a>
+                {% for creator in creators %}
+                <a href="{% url 'products' %}?creator={{ creator.id }}" class="dropdown-item">{{ creator.name }}</a>
+                {% endfor %}
             </div>
         </li>
 
@@ -45,10 +43,8 @@
                 Special Offers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="menu-4">
-                <a href="" class="dropdown-item">Sub-menu 1</a>
-                <a href="" class="dropdown-item">Sub-menu 2</a>
-                <a href="" class="dropdown-item">Sub-menu 3</a>
-                <a href="" class="dropdown-item">Sub-menu 4</a>
+                <a href="{% url 'products' %}?is_on_deal=true" class="dropdown-item">Deals</a>
+                <a href="{% url 'products' %}?new_arrivals=true" class="dropdown-item">New Arrivals</a>
             </div>
         </li>
     </ul>

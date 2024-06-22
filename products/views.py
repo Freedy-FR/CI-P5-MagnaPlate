@@ -4,23 +4,48 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib import messages
 from django.shortcuts import redirect, reverse
-from .models import Product
+from django.utils import timezone
+from .models import Product, Collection, Creator
+import datetime
 
-class ProductListView(ListView):
+class FilteredProductListView(ListView):
     model = Product
-    template_name = 'products.html'
-    context_object_name = 'products'
-    paginate_by = 6
 
     def get_queryset(self):
         queryset = super().get_queryset()
         query = self.request.GET.get('q')
+        sort = self.request.GET.get('sort')
+        collection = self.request.GET.get('collection')
+        creator = self.request.GET.get('creator')
+        is_on_deal = self.request.GET.get('is_on_deal')
+        new_arrivals = self.request.GET.get('new_arrivals')
 
         if query:
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             queryset = queryset.filter(queries)
-        
+
+        if collection:
+            queryset = queryset.filter(collection__id=collection)
+
+        if creator:
+            queryset = queryset.filter(creator__id=creator)
+
+        if is_on_deal:
+            queryset = queryset.filter(is_on_deal=True)
+
+        if new_arrivals:
+            thirty_days_ago = timezone.now() - datetime.timedelta(days=30)
+            queryset = queryset.filter(created_at__gte=thirty_days_ago)
+
+        if sort:
+            queryset = queryset.order_by(sort)
+
         return queryset
+
+class ProductListView(FilteredProductListView):
+    template_name = 'products.html'
+    context_object_name = 'products'
+    paginate_by = 6
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -34,7 +59,6 @@ class ProductListView(ListView):
             messages.error(request, "Please enter search criteria!")
             return redirect(reverse('products'))
         return super().get(request, *args, **kwargs)
-
 
 class ProductDetailView(DetailView):
     model = Product

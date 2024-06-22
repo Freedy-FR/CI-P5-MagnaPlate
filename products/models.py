@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Collection(models.Model):
     name = models.CharField(max_length=254)
@@ -54,6 +55,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='product_images', null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     is_on_deal = models.BooleanField(default=False)
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.name

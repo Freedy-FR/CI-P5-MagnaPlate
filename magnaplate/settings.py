@@ -89,6 +89,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'cart.contexts.cart_contents',
+                'products.context_processors.global_collections_and_creators', # Global sorting options
+                'products.context_processors.sorting_options',  # sorting options processor
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
