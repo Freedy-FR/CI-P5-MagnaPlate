@@ -38,7 +38,16 @@ class FilteredProductListView(ListView):
             queryset = queryset.filter(created_at__gte=thirty_days_ago)
 
         if sort:
-            queryset = queryset.order_by(sort)
+            if sort == 'name_asc':
+                queryset = queryset.order_by('name')
+            elif sort == 'name_desc':
+                queryset = queryset.order_by('-name')
+            elif sort == 'price_asc':
+                queryset = queryset.order_by('price')
+            elif sort == 'price_desc':
+                queryset = queryset.order_by('-price')
+            elif sort == 'rating_desc':
+                queryset = queryset.order_by('-rating')
 
         return queryset
 
@@ -50,8 +59,21 @@ class ProductListView(FilteredProductListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         query = self.request.GET.get('q')
+        sort = self.request.GET.get('sort', 'name_asc')
+        collection = self.request.GET.get('collection')
+        creator = self.request.GET.get('creator')
+        is_on_deal = self.request.GET.get('is_on_deal')
+        new_arrivals = self.request.GET.get('new_arrivals')
+        
         if query:
             context['search_term'] = query
+        context['current_sorting'] = sort
+        context['current_filter'] = {
+            'collection': collection,
+            'creator': creator,
+            'is_on_deal': is_on_deal,
+            'new_arrivals': new_arrivals,
+        }
         return context
 
     def get(self, request, *args, **kwargs):
