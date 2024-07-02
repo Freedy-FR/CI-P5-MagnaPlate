@@ -67,8 +67,8 @@ class ProductListView(FilteredProductListView):
         
         if query:
             context['search_term'] = query
-        context['current_sorting'] = sort
-        context['current_filter'] = {
+            context['current_sorting'] = sort
+            context['current_filter'] = {
             'collection': collection,
             'creator': creator,
             'is_on_deal': is_on_deal,

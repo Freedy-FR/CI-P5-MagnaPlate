@@ -1,13 +1,3 @@
-
-// Cursor position logic
-document.querySelectorAll('.pagination-link').forEach(function(link) {
-    link.addEventListener('click', function() {
-        // Store the scroll position
-        localStorage.setItem('scrollPosition', window.scrollY);
-    });
-});
-
-
 document.addEventListener('DOMContentLoaded', function() {
 
     var allQtyInputs = document.getElementsByClassName('qty_input');
@@ -57,18 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             decrementQuantity(itemId);
         });
     }
-   
-
-    // Cursor position logic
-
-    // Retrieve the scroll position if it exists
-    const scrollPosition = localStorage.getItem('scrollPosition');
-    if (scrollPosition) {
-        window.scrollTo(0, parseInt(scrollPosition));
-        localStorage.removeItem('scrollPosition'); // Clear the stored position
-    }
-
-    
+       
 });
 
 
