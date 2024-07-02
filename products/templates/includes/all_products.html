@@ -1,29 +1,8 @@
 <div id="allproducts" class="container p-2" data-scroll-target="true">
     <div class="row gx-2">
         <div class="rounded-2 px-3 py-2 bg-white">
-            <!-- Display the current sorting and filtering criteria -->
             <h2 class="text-center">
                 Our Products!
-                {% if current_filter.creator %}
-                    - Sorted by {{ current_filter.creator }} Creator
-                {% elif current_filter.collection %}
-                    - Sorted by {{ current_filter.collection }} Collection
-                {% elif current_filter.is_on_deal %}
-                    - Special Offers
-                {% elif current_filter.new_arrivals %}
-                    - New Arrivals
-                {% endif %}
-                {% if current_sorting == 'name_asc' %}
-                    - Name (A-Z)
-                {% elif current_sorting == 'name_desc' %}
-                    - Name (Z-A)
-                {% elif current_sorting == 'price_asc' %}
-                    - Price (Low-High)
-                {% elif current_sorting == 'price_desc' %}
-                    - Price (High-Low)
-                {% elif current_sorting == 'rating_desc' %}
-                    - Rating
-                {% endif %}
             </h2>
             
             <!-- Sorting select tag -->
@@ -43,6 +22,33 @@
                     </select>
                 </form>
             </div>
+
+            <h6 class="text-center inline-block">
+                {% if current_filter.creator %}
+                    {{ current_filter.creator.name }} by
+                {% elif current_filter.collection %}
+                    {{ current_filter.collection.friendly_name }} by
+                {% elif current_filter.category %}
+                    {{ current_filter.category.friendly_name }} by
+                {% elif current_filter.is_on_deal %}
+                    Special Offers
+                {% elif current_filter.new_arrivals %}
+                    New Arrivals
+                {% endif %}
+                {% if current_sorting == 'name_asc' %}
+                    Name (A-Z)
+                {% elif current_sorting == 'category' %}
+                    Categories
+                {% elif current_sorting == 'name_desc' %}
+                    Name (Z-A)
+                {% elif current_sorting == 'price_asc' %}
+                    Price (Low-High)
+                {% elif current_sorting == 'price_desc' %}
+                    Price (High-Low)
+                {% elif current_sorting == 'rating_desc' %}
+                    Rating
+                {% endif %}
+            </h6>
             
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                 {% for product in products %}

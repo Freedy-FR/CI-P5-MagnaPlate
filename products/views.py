@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.contrib import messages
 from django.shortcuts import redirect, reverse
 from django.utils import timezone
-from .models import Product, Collection, Creator
+from .models import Product, Collection, Creator, Category
 import datetime
 
 class FilteredProductListView(ListView):
@@ -16,6 +16,7 @@ class FilteredProductListView(ListView):
         query = self.request.GET.get('q')
         sort = self.request.GET.get('sort')
         collection = self.request.GET.get('collection')
+        category = self.request.GET.get('category')
         creator = self.request.GET.get('creator')
         is_on_deal = self.request.GET.get('is_on_deal')
         new_arrivals = self.request.GET.get('new_arrivals')
@@ -26,6 +27,9 @@ class FilteredProductListView(ListView):
 
         if collection:
             queryset = queryset.filter(collection__id=collection)
+        
+        if category:
+            queryset = queryset.filter(category__id=category)
 
         if creator:
             queryset = queryset.filter(creator__id=creator)
@@ -60,20 +64,32 @@ class ProductListView(FilteredProductListView):
         context = super().get_context_data(**kwargs)
         query = self.request.GET.get('q')
         sort = self.request.GET.get('sort', 'name_asc')
-        collection = self.request.GET.get('collection')
-        creator = self.request.GET.get('creator')
+        collection_id = self.request.GET.get('collection')
+        category_id = self.request.GET.get('category')
+        creator_id = self.request.GET.get('creator')
         is_on_deal = self.request.GET.get('is_on_deal')
         new_arrivals = self.request.GET.get('new_arrivals')
         
-        if query:
-            context['search_term'] = query
-            context['current_sorting'] = sort
-            context['current_filter'] = {
-            'collection': collection,
-            'creator': creator,
+        context['search_term'] = query
+        context['current_sorting'] = sort
+        
+        current_filter = {
+            'collection': None,
+            'category': None,
+            'creator': None,
             'is_on_deal': is_on_deal,
             'new_arrivals': new_arrivals,
         }
+        
+        if collection_id:
+            current_filter['collection'] = Collection.objects.get(id=collection_id)
+        if category_id:
+            current_filter['category'] = Category.objects.get(id=category_id)
+        if creator_id:
+            current_filter['creator'] = Creator.objects.get(id=creator_id)
+        
+        context['current_filter'] = current_filter
+        
         return context
 
     def get(self, request, *args, **kwargs):
@@ -81,6 +97,7 @@ class ProductListView(FilteredProductListView):
             messages.error(request, "Please enter search criteria!")
             return redirect(reverse('products'))
         return super().get(request, *args, **kwargs)
+
 
 class ProductDetailView(DetailView):
     model = Product

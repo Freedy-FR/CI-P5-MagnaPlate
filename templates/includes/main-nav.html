@@ -6,6 +6,7 @@
                 All Plates
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="menu-1">
+                <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
                 {% for option in sort_options %}
                 <a href="{% url 'products' %}?sort={{ option.value }}" class="dropdown-item">{{ option.label }}</a>
                 {% endfor %}
@@ -21,6 +22,18 @@
                 {% for collection in collections %}
                 <a href="{% url 'products' %}?collection={{ collection.id }}"
                     class="dropdown-item">{{collection.friendly_name }}</a>
+                {% endfor %}
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="dropdown nav-link text-black" data-bs-toggle="dropdown" href="#" id="menu-3" aria-haspopup="true"
+                aria-expanded="false">
+                Categories
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="menu-3">
+                {% for category in categories %}
+                <a href="{% url 'products' %}?category={{ category.id }}" class="dropdown-item">{{category.friendly_name}}</a>
                 {% endfor %}
             </div>
         </li>
