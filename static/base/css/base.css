@@ -65,3 +65,20 @@ main {
 .toast-capper {
     height: 2px;
 }
+
+.card a {
+    color: black !important;
+    text-decoration: none !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+/* Custom styles for price positioning */
+.price-container {
+    position: absolute;
+    bottom: 10px !important; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    color: black !important;
+}
