@@ -59,3 +59,14 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.sku:
+            self.sku = self.generate_sku()
+        super().save(*args, **kwargs)
+
+    def generate_sku(self):
+        collection_code = self.collection.name[:3].upper() if self.collection else 'XXX'
+        category_code = self.category.name[:3].upper() if self.category else 'XXX'
+        unique_number = str(Product.objects.count() + 1).zfill(5)
+        return f"{collection_code}-{category_code}-{unique_number}"
