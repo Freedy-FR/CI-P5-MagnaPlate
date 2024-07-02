@@ -37,8 +37,6 @@
                 {% endif %}
                 {% if current_sorting == 'name_asc' %}
                     Name (A-Z)
-                {% elif current_sorting == 'category' %}
-                    Categories
                 {% elif current_sorting == 'name_desc' %}
                     Name (Z-A)
                 {% elif current_sorting == 'price_asc' %}
@@ -47,6 +45,8 @@
                     Price (High-Low)
                 {% elif current_sorting == 'rating_desc' %}
                     Rating
+                {% elif current_sorting == 'category' %}
+                    Categories
                 {% endif %}
             </h6>
             

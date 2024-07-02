@@ -52,6 +52,11 @@ class FilteredProductListView(ListView):
                 queryset = queryset.order_by('-price')
             elif sort == 'rating_desc':
                 queryset = queryset.order_by('-rating')
+            elif sort == 'category':
+                queryset = queryset.order_by('category__friendly_name')
+        else:
+            # Default ordering
+            queryset = queryset.order_by('name')
 
         return queryset
 
@@ -62,7 +67,7 @@ class ProductListView(FilteredProductListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        query = self.request.GET.get('q')
+        query = self.request.GET.get('q', '')
         sort = self.request.GET.get('sort', 'name_asc')
         collection_id = self.request.GET.get('collection')
         category_id = self.request.GET.get('category')
@@ -70,7 +75,7 @@ class ProductListView(FilteredProductListView):
         is_on_deal = self.request.GET.get('is_on_deal')
         new_arrivals = self.request.GET.get('new_arrivals')
         
-        context['search_term'] = query
+        context['search_term'] = query or ''
         context['current_sorting'] = sort
         
         current_filter = {

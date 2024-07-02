@@ -11,7 +11,7 @@ class IndexView(View):
         context = {}
 
         # Pagination for deal products
-        deals_list = Product.objects.filter(is_on_deal=True)
+        deals_list = Product.objects.filter(is_on_deal=True).order_by('name')  # Add ordering
         deals_paginator = Paginator(deals_list, 6)  # Paginate by 6 items for deals
         deals_page = request.GET.get('deals_page')
         deals = deals_paginator.get_page(deals_page)
@@ -20,7 +20,7 @@ class IndexView(View):
         context['is_deal_paginated'] = deals.has_other_pages()
 
         # Pagination for all products
-        products_list = Product.objects.all()
+        products_list = Product.objects.all().order_by('name')  # Add ordering
         paginator = Paginator(products_list, 12)  # Paginate by 12 items for all products
         page = request.GET.get('page')
         products = paginator.get_page(page)
