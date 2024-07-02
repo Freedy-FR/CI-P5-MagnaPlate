@@ -22,7 +22,10 @@ class FilteredProductListView(ListView):
         new_arrivals = self.request.GET.get('new_arrivals')
 
         if query:
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = (Q(name__icontains=query) | 
+                       Q(description__icontains=query) | 
+                       Q(collection__friendly_name__icontains=query) | 
+                       Q(creator__name__icontains=query))
             queryset = queryset.filter(queries)
 
         if collection:
