@@ -54,7 +54,7 @@ class FilteredProductListView(ListView):
 class ProductListView(FilteredProductListView):
     template_name = 'products.html'
     context_object_name = 'products'
-    paginate_by = 6
+    paginate_by = 12
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

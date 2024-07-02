@@ -61,9 +61,9 @@
 
 <!-- Deals section -->
 {% if deal_products %}
-<div class="deals container">
+<div id="deal" class="deals container pt-4" data-scroll-target="true">
   <h2 class="text-center">Check out our deals!</h2>
-  <div class="py-5">
+  <div class="py-2">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
       {% for product in deal_products %}
@@ -129,8 +129,70 @@
 </div>
 {% endif %}
 
-{% include "includes/all_products.html" %}
+<!-- All Products section -->
+<div id="product" class="container" data-scroll-target="true">
+  <h2 class="text-center">Check our Products!</h2>
+  <div class="py-2">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for product in all_products %}
+      <div class="col">
+        <div class="card p-0">
+          <a href="{% url 'product_detail' product_id=product.id %}">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
+            {% else %}
+            <img src="{{ MEDIA_URL }}media/product_images/placeholder-image.png" alt="image-placeholder"
+              class="card-img img-fluid img-fill">
+            {% endif %}
+            <div class="d-none d-lg-block">
+              <div class="card-img-overlay justify-content-between align-items-center">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.description|truncatewords:20 }}</p>
+                {% if product.price %}
+                <p class="text-end"><strong class="text-body-secondary">€{{ product.price }}</strong></p>
+                {% endif %}
+              </div>
+            </div>
+            <div class="d-block d-lg-none">
+              <div class="card-body d-flex justify-content-between align-items-center p-1 d-inline">
+                <p class="card-text m-0">{{ product.name }}</p>
+                {% if product.price %}
+                <strong class="text-body-secondary">€{{ product.price }}</strong>
+                {% endif %}
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
 
+    <!-- Pagination for all products -->
+    <div class="container pt-4" id="anchor">
+      {% if is_all_paginated %}
+      <nav aria-label="Page navigation" class="">
+        <ul class="pagination justify-content-center">
+          {% if all_page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link pagination-link" href="?page={{ all_page_obj.previous_page_number }}">Previous</a>
+          </li>
+          {% endif %}
+          {% for num in all_page_obj.paginator.page_range %}
+          <li class="page-item {% if all_page_obj.number == num %}active{% endif %}">
+            <a class="page-link pagination-link" href="?page={{ num }}">{{ num }}</a>
+          </li>
+          {% endfor %}
+          {% if all_page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link pagination-link" href="?page={{ all_page_obj.next_page_number }}">Next</a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block postloadjs %}
