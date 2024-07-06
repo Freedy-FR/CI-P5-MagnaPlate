@@ -93,6 +93,7 @@ TEMPLATES = [
                 'django.template.context_processors.request', # Required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 'cart.contexts.cart_contents',
                 'products.context_processors.global_collections_and_creators', # Global sorting options
                 'products.context_processors.sorting_options',  # sorting options processor
