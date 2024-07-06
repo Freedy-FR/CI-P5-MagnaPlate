@@ -8,6 +8,119 @@
 
 {% block content %}
 
-{% include "includes/all_products.html" %}
+<div id="allproducts" class="container p-2" data-scroll-target="true">
+    <div class="row gx-2">
+        <div class="rounded-2 px-3 py-2 bg-white">
+            <h2 class="text-center">
+                Our Products!
+            </h2>
+            
+            <!-- Sorting select tag -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <form method="get" class="d-flex">
+                    {% for key, value in request.GET.items %}
+                        {% if key != 'sort' and key != 'direction' %}
+                            <input type="hidden" name="{{ key }}" value="{{ value }}">
+                        {% endif %}
+                    {% endfor %}
+                    <select name="sort" class="form-select" onchange="this.form.submit()">
+                        <option value="name_asc" {% if request.GET.sort == 'name_asc' %}selected{% endif %}>Sort by Name (A-Z)</option>
+                        <option value="name_desc" {% if request.GET.sort == 'name_desc' %}selected{% endif %}>Sort by Name (Z-A)</option>
+                        <option value="price_asc" {% if request.GET.sort == 'price_asc' %}selected{% endif %}>Sort by Price (Low-High)</option>
+                        <option value="price_desc" {% if request.GET.sort == 'price_desc' %}selected{% endif %}>Sort by Price (High-Low)</option>
+                        <option value="rating_desc" {% if request.GET.sort == 'rating_desc' %}selected{% endif %}>Sort by Rating</option>
+                    </select>
+                </form>
+            </div>
+
+            <h6 class="text-center inline-block">
+                {% if current_filter.creator %}
+                    {{ current_filter.creator.name }} by
+                {% elif current_filter.collection %}
+                    {{ current_filter.collection.friendly_name }} by
+                {% elif current_filter.category %}
+                    {{ current_filter.category.friendly_name }} by
+                {% elif current_filter.is_on_deal %}
+                    Special Offers
+                {% elif current_filter.new_arrivals %}
+                    New Arrivals
+                {% endif %}
+                {% if current_sorting == 'name_asc' %}
+                    Name (A-Z)
+                {% elif current_sorting == 'name_desc' %}
+                    Name (Z-A)
+                {% elif current_sorting == 'price_asc' %}
+                    Price (Low-High)
+                {% elif current_sorting == 'price_desc' %}
+                    Price (High-Low)
+                {% elif current_sorting == 'rating_desc' %}
+                    Rating
+                {% elif current_sorting == 'category' %}
+                    Categories
+                {% endif %}
+            </h6>
+            
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                {% for product in products %}
+                <div class="col g-3">
+                    <div class="card p-0">
+                        <a class="link-underline-opacity-0" href="{% url 'product_detail' product_id=product.id %}">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
+                        {% else %}
+                            <img src="{{ MEDIA_URL }}/media/product_images/placeholder-image.png" alt="image-placeholder" class="card-img img-fluid img-fill">
+                        {% endif %}
+                        <div class="d-none d-lg-block">
+                            <div class="card-img-overlay justify-content-between align-items-center">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text text-black">{{ product.description|truncatewords:20 }}</p>
+                            {% if product.price %}
+                            <div class="price-container">
+                                <p class="card-text"><strong class="text-black">€{{ product.price }}</strong></p>
+                            </div>
+                            {% endif %}
+                            </div>
+                        </div>
+                        <div class="d-block d-lg-none">
+                            <div class="card-body d-flex justify-content-between align-items-center px-2 py-1 d-inline">
+                                <p class="card-text m-0">{{ product.name }}</p>
+                                {% if product.price %}
+                                    <strong class="text-black">€{{ product.price }}</strong>
+                                {% endif %}
+                            </div>                
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="container pt-4" id="anchor">
+                {% if is_paginated %}
+                    <nav aria-label="Page navigation" class="">
+                        <ul class="pagination justify-content-center">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link pagination-link" href="?page={{ page_obj.previous_page_number }}&sort={{ request.GET.sort }}">Previous</a>
+                                </li>
+                            {% endif %}
+                            {% for num in page_obj.paginator.page_range %}
+                                <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                                    <a class="page-link pagination-link" href="?page={{ num }}&sort={{ request.GET.sort }}">{{ num }}</a>
+                                </li>
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link pagination-link" href="?page={{ page_obj.next_page_number }}&sort={{ request.GET.sort }}">Next</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

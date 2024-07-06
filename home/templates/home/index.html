@@ -101,21 +101,23 @@
       {% endfor %}
     </div>
 
-    <!-- Pagination for deals -->
     <div class="container pt-4" id="anchor">
       {% if is_deal_paginated %}
       <nav aria-label="Page navigation" class="">
         <ul class="pagination justify-content-center">
           {% if deal_page_obj.has_previous %}
           <li class="page-item">
-            <a class="page-link pagination-link"
-              href="?deals_page={{ deal_page_obj.previous_page_number }}">Previous</a>
+            <a class="page-link pagination-link" href="?deals_page={{ deal_page_obj.previous_page_number }}">Previous</a>
           </li>
           {% endif %}
-          {% for num in deal_page_obj.paginator.page_range %}
-          <li class="page-item {% if deal_page_obj.number == num %}active{% endif %}">
-            <a class="page-link pagination-link" href="?deals_page={{ num }}">{{ num }}</a>
-          </li>
+          {% for num in deal_page_range %}
+            {% if num == '...' %}
+              <li class="page-item"><span class="page-link">...</span></li>
+            {% else %}
+              <li class="page-item {% if deal_page_obj.number == num %}active{% endif %}">
+                <a class="page-link pagination-link" href="?deals_page={{ num }}">{{ num }}</a>
+              </li>
+            {% endif %}
           {% endfor %}
           {% if deal_page_obj.has_next %}
           <li class="page-item">
@@ -181,10 +183,14 @@
             <a class="page-link pagination-link" href="?page={{ all_page_obj.previous_page_number }}">Previous</a>
           </li>
           {% endif %}
-          {% for num in all_page_obj.paginator.page_range %}
-          <li class="page-item {% if all_page_obj.number == num %}active{% endif %}">
-            <a class="page-link pagination-link" href="?page={{ num }}">{{ num }}</a>
-          </li>
+          {% for num in all_page_range %}
+            {% if num == '...' %}
+              <li class="page-item"><span class="page-link">...</span></li>
+            {% else %}
+              <li class="page-item {% if all_page_obj.number == num %}active{% endif %}">
+                <a class="page-link pagination-link" href="?page={{ num }}">{{ num }}</a>
+              </li>
+            {% endif %}
           {% endfor %}
           {% if all_page_obj.has_next %}
           <li class="page-item">

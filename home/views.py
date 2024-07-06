@@ -6,6 +6,27 @@ from products.models import Product
 class IndexView(View):
     """ A view to return the index page with products and deal products. """
 
+    def get_pagination_range(self, page_obj):
+        if not page_obj:
+            return []
+
+        num_pages = page_obj.paginator.num_pages
+        current_page = page_obj.number
+
+        # Set the range of pages to display
+        start = max(current_page - 1, 1)  # Show 1 page before the current page
+        end = min(current_page + 1, num_pages)  # Show 1 page after the current page
+        
+        page_range = range(start, end + 1)
+
+        # Add ellipses if necessary
+        if start > 2:
+            page_range = [1, '...'] + list(page_range)
+        if end < num_pages - 1:
+            page_range = list(page_range) + ['...', num_pages]
+
+        return page_range
+
     def get(self, request):
         # Prepare the context
         context = {}
@@ -18,6 +39,7 @@ class IndexView(View):
         context['deal_products'] = deals
         context['deal_page_obj'] = deals
         context['is_deal_paginated'] = deals.has_other_pages()
+        context['deal_page_range'] = self.get_pagination_range(deals)
 
         # Pagination for all products
         products_list = Product.objects.all().order_by('name')  # Add ordering
@@ -27,6 +49,7 @@ class IndexView(View):
         context['all_products'] = products
         context['all_page_obj'] = products
         context['is_all_paginated'] = products.has_other_pages()
+        context['all_page_range'] = self.get_pagination_range(products)
 
         # Render the template with context
         return render(request, 'home/index.html', context)

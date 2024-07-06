@@ -132,5 +132,27 @@ class ProductDetailView(DetailView):
         context['products'] = products
         context['page_obj'] = products
         context['is_paginated'] = products.has_other_pages()
+        context['page_range'] = self.get_pagination_range(products)
 
         return context
+
+    def get_pagination_range(self, page_obj):
+        if not page_obj:
+            return []
+
+        num_pages = page_obj.paginator.num_pages
+        current_page = page_obj.number
+
+        # Set the range of pages to display
+        start = max(current_page - 1, 1)
+        end = min(current_page + 1, num_pages)
+        
+        page_range = range(start, end + 1)
+
+        # Add ellipses if necessary
+        if start > 2:
+            page_range = [1, '...'] + list(page_range)
+        if end < num_pages - 1:
+            page_range = list(page_range) + ['...', num_pages]
+
+        return page_range
