@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from dotenv import load_dotenv
+
+load_dotenv()
 
 if os.path.exists("env.py"):
   import env 
@@ -30,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["8000-freedyfr-cip5magnaplate-1nlmnchpxib.ws-eu114.gitpod.io", "magnaplate-3f8ee7baac73.herokuapp.com"]
+ALLOWED_HOSTS = ["8000-freedyfr-cip5magnaplate-emtip546hvm.ws.codeinstitute-ide.net", "magnaplate-3f8ee7baac73.herokuapp.com"]
 
 
 # Application definition
@@ -66,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware', 
 ]
 
 ROOT_URLCONF = 'magnaplate.urls'
@@ -185,7 +189,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 if 'USE_AWS' in os.environ:
-
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
