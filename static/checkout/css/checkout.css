@@ -57,3 +57,26 @@
   margin: 0;
   height: 100%;
 }
+
+/* Countries custom CSS  */
+
+select,
+select option {
+    color: #000000;
+    margin-bottom: 2px;
+    margin-top: 0px;
+    padding-bottom: 2px;
+}
+
+select:invalid,
+select option[value=""] {
+    color: #aab7c4 !important;
+}
+
+.select-wrapper {
+  display: flex;
+  align-items: center;
+  padding-bottom: 2px;
+  padding-top: 0px;
+  margin-top: 0px;
+}
