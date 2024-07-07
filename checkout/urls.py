@@ -4,12 +4,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import CheckoutView, CheckoutSuccessView
 from products.views import ProductListView
+from .webhooks import webhook
 
 
 urlpatterns = [
-    path('checkout/', CheckoutView.as_view(), name='checkout'),
+    path('', CheckoutView.as_view(), name='checkout'),
     path('products/', ProductListView.as_view(), name='products'),
-    path('checkout/success/<order_number>/', CheckoutSuccessView.as_view(), name='checkout_success'),
+    path('success/<order_number>/', CheckoutSuccessView.as_view(), name='checkout_success'),
+    path('wh/', webhook, name='webhook'),
 
 ]
 
