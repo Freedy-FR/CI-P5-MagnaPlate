@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
 from django.views import View
 from django.views.generic import DetailView
@@ -10,6 +10,23 @@ from products.models import Product
 from cart.contexts import cart_contents
 
 import stripe
+import json
+
+
+class CacheCheckoutDataView(View):
+    def post(self, request, *args, **kwargs):
+        try:
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            stripe.api_key = settings.STRIPE_SECRET_KEY
+            stripe.PaymentIntent.modify(pid, metadata={
+                'cart': json.dumps(request.session.get('cart', {})),
+                'save_info': request.POST.get('save_info'),
+                'username': request.user,
+            })
+            return HttpResponse(status=200)
+        except Exception as e:
+            messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.')
+            return HttpResponse(content=str(e), status=400)
 
 
 class CheckoutView(View):
@@ -64,7 +81,12 @@ class CheckoutView(View):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_cart = json.dumps(cart)
+            order.save()
+
             for item_id, item_data in cart.items():
                 try:
                     product = Product.objects.get(id=item_id)
@@ -119,7 +141,6 @@ class CheckoutView(View):
         }
 
         return render(request, template, context)
-
 
 class CheckoutSuccessView(DetailView):
     model = Order

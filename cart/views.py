@@ -12,10 +12,6 @@ class ViewCart(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        # Debugging: Print the context
-        print("Context passed to template:", context)
-
         return context
 
 class AddToCartView(View):
@@ -32,9 +28,6 @@ class AddToCartView(View):
                 size = request.POST['product_size']
 
             cart = request.session.get('cart', {})
-
-            # Debugging: Print the current cart contents before modification
-            print("Current Cart Contents Before Modification:", cart)
 
             if size:  # If the product has a size
                 if str(item_id) not in cart:
@@ -60,20 +53,6 @@ class AddToCartView(View):
                     messages.success(request, f'Added {product.name} to your cart!')
 
             request.session['cart'] = cart
-
-            # Debugging: Print the updated cart contents after modification
-            print("Updated Cart Contents After Modification:", cart)
-
-            # Printing content in cart for debugging
-            print("POST Data:", request.POST)
-            print("Cart Contents:")
-            for key, value in cart.items():
-                product = get_object_or_404(Product, pk=key)
-                print(f"Item ID: {key}, Product: {product.name}")
-                if isinstance(value, int):
-                    print(f"Quantity: {value}")
-                else:
-                    print(f"Items by Size: {value['items_by_size']}")
 
             return redirect(redirect_url)
         except Exception as e:
