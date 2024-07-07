@@ -35,3 +35,25 @@
     color: #000;
     border: 1px solid #000;
 }
+
+
+/* Spinner */
+
+#loading-overlay {
+  display: none;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: #133298b2 !important;
+  z-index: 9999 !important;
+}
+
+.loading-spinner {
+	display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
+}
