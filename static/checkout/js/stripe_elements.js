@@ -70,7 +70,7 @@ form.addEventListener('submit', function(ev) {
                 card: card,
                 billing_details: {
                     name: form.full_name.value.trim(),
-                    phone: form.phone_number.value.trim(),
+                    phone: form.delivery_phone_number.value.trim(),
                     email: form.email.value.trim(),
                     address:{
                         line1: form.street_address1.value.trim(),
@@ -83,7 +83,7 @@ form.addEventListener('submit', function(ev) {
             },
             shipping: {
                 name: form.full_name.value.trim(),
-                phone: form.phone_number.value.trim(),
+                phone: form.delivery_phone_number.value.trim(),
                 address: {
                     line1: form.street_address1.value.trim(),
                     line2: form.street_address2.value.trim(),

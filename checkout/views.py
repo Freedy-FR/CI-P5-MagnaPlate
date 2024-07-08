@@ -8,6 +8,7 @@ from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
 from cart.contexts import cart_contents
 
 import stripe
@@ -178,7 +179,7 @@ class CheckoutSuccessView(DetailView):
         context = super().get_context_data(**kwargs)
         order = self.get_object()
         save_info = self.request.session.get('save_info')
-        
+
         # Attach the user's profile to the order if authenticated
         if self.request.user.is_authenticated:
             profile = get_object_or_404(UserProfile, user=self.request.user)
@@ -188,7 +189,10 @@ class CheckoutSuccessView(DetailView):
             # Save the user's info if save_info is true
             if save_info:
                 profile_data = {
-                    'delivery_phone_number': order.delivery_phone_number,  # Corrected field name
+                    'default_contact_full_name': profile.default_contact_full_name,
+                    'default_contact_email': profile.default_contact_email,
+                    'default_contact_phone_number': profile.default_contact_phone_number,
+                    'default_delivery_phone_number': order.delivery_phone_number,
                     'default_country': order.country,
                     'default_postcode': order.postcode,
                     'default_town_or_city': order.town_or_city,

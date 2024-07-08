@@ -22,7 +22,7 @@ class ProfileView(LoginRequiredMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         profile = self.get_object()
         context['form'] = self.form_class(instance=profile)
-        context['orders'] = profile.orders.all() if hasattr(profile, 'orders') else []
+        context['orders'] = profile.orders.order_by('-date') if hasattr(profile, 'orders') else []
         context['on_profile_page'] = True
         return context
 
