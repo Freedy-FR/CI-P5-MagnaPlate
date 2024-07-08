@@ -1,15 +1,15 @@
+# profiles/forms.py
 from django import forms
 from .models import UserProfile
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = (
-            'default_contact_full_name', 'default_contact_email', 'default_contact_phone_number',
-            'default_delivery_email', 'default_delivery_phone_number', 'default_country', 
-            'default_postcode', 'default_town_or_city', 'default_street_address1', 
-            'default_street_address2', 'default_county'
-        )
+        fields = ('default_contact_full_name', 'default_contact_email', 'default_contact_phone_number',
+                  'default_delivery_phone_number', 'default_country',
+                  'default_postcode', 'default_town_or_city', 'default_street_address1', 'default_street_address2', 'default_county'
+                  )
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -17,7 +17,6 @@ class UserProfileForm(forms.ModelForm):
             'default_contact_full_name': 'Full Name',
             'default_contact_email': 'Email Address',
             'default_contact_phone_number': 'Contact Phone Number',
-            'default_delivery_email': 'Delivery Email',
             'default_delivery_phone_number': 'Delivery Phone Number',
             'default_postcode': 'Postal Code',
             'default_town_or_city': 'Town or City',

@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="container mb-2">
     <div class="row">
@@ -10,7 +14,6 @@
             <hr>
         </div>
     </div>
-
     <div class="row">
         <div class="col">
             {% if cart_items %}
@@ -18,49 +21,49 @@
                 <table class="table table-sm table-borderless">
                     <thead class="text-black">
                         <tr>
-                            <th scope="col">Product Info</th>
-                            <th scope="col"></th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Qty</th>
-                            <th scope="col">Subtotal</th>
+                            <th class="col text-center">Product Info</th>
+                            <th class="col text-center">Qty</th>
+                            <th class="col text-center">Price</th>
+                            <th class="col text-center">Subtotal</th>
                         </tr>
                     </thead>
 
                     {% for item in cart_items %}
                     <tr>
                         <td class="p-3 w-25">
-                            {% if item.product.image %}
-                            <img class="img-fluid rounded" src="{{ item.product.image.url }}"
-                                alt="{{ item.product.name }}">
-                            {% else %}
-                            <img class="img-fluid rounded"
-                                src="{{ MEDIA_URL }}/media/product_images/placeholder-image.png"
-                                alt="{{ item.product.name }}">
-                            {% endif %}
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    {% if item.product.image %}
+                                    <img class="img-fluid rounded" src="{{ item.product.image.url }}"
+                                        alt="{{ item.product.name }}">
+                                    {% else %}
+                                    <img class="img-fluid rounded"
+                                        src="{{ MEDIA_URL }}/media/product_images/placeholder-image.png"
+                                        alt="{{ item.product.name }}">
+                                    {% endif %}
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <p class="my-0">
+                                        <strong>{{ item.product.name }}</strong>
+                                    </p>
+                                    <p class="my-0">
+                                        <strong>Size:</strong>
+                                        {% if item.product.has_sizes %}
+                                        {{ item.size|upper }}
+                                        {% else %}
+                                        N/A
+                                        {% endif %}
+                                    </p>
+                                    <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
+                                </div>
+                            </div>
                         </td>
-                        <td class="py-3">
-                            <p class="my-0">
-                                <strong>{{ item.product.name }}</strong>
-                            </p>
-                            <p class="my-0">
-                                <strong>Size:</strong>
-                                {% if item.product.has_sizes %}
-                                {{ item.size|upper }}
-                                {% else %}
-                                N/A
-                                {% endif %}
-                            </p>
-                            <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
-                        </td>
-                        <td class="py-3">
-                            <p class="my-0">€{{ item.product.price }}</p>
-                        </td>
-                        <td class="py-3 w-25">
+                        <td class="py-3 w-25 text-center">
                             <div class="form-group">
                                 <form class="form update-form d-inline" method="post"
                                     action="{% url 'update_cart' item.item_id %}">
                                     {% csrf_token %}
-                                    <div class="input-group mb-3">
+                                    <div class="input-group mb-3 my-0">
                                         <button type="button"
                                             class="decrement-qty btn btn-light border rounded-start-4 w-25"
                                             data-item_id="{{ item.item_id }}" data-item_size="{{ item.size }}">
@@ -92,7 +95,10 @@
                             </div>
 
                         </td>
-                        <td class="py-3">
+                        <td class="py-3 text-center">
+                            <p class="my-0">€{{ item.product.price }}</p>
+                        </td>
+                        <td class="py-3 text-center">
                             <p class="my-0">€{{ item.subtotal|floatformat:2 }}</p> <!-- Display the subtotal -->
                         </td>
                     </tr>

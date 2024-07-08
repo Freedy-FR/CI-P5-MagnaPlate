@@ -1,10 +1,12 @@
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import UserProfile
 from .forms import UserProfileForm
+from checkout.models import Order
+
 
 class ProfileView(LoginRequiredMixin, UpdateView):
     model = UserProfile
@@ -42,3 +44,22 @@ class ProfileView(LoginRequiredMixin, UpdateView):
         context = self.get_context_data(form=form)
         messages.error(self.request, 'Please correct the error below.')
         return self.render_to_response(context)
+
+
+class OrderHistoryView(LoginRequiredMixin, DetailView):
+    model = Order
+    template_name = 'checkout_success.html'
+    context_object_name = 'order'
+
+    def get_object(self):
+        order_number = self.kwargs.get('order_number')
+        return get_object_or_404(Order, order_number=order_number)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        messages.info(self.request, (
+            f'This is a past confirmation for order number {self.object.order_number}. '
+            'A confirmation email was sent on the order date.'
+        ))
+        context['from_profile'] = True
+        return context
