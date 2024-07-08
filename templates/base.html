@@ -28,7 +28,6 @@
   <!-- Static CSS -->
   <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
 
-
   <!-- MDB -->
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -40,7 +39,6 @@
   {% endblock %}
 
   {% block extra_css %}
-
   {% endblock %}
 
   {% block corejs %}
@@ -51,8 +49,8 @@
   <script type="module" src="{% static 'base/js/base.js' %}"></script>
 
   <!-- Jquery -->
-
-  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
 
   <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -102,14 +100,13 @@
         </form>
       </div>
       <div class="col-12 col-lg-3 my-auto d-flex justify-content-end d-none d-lg-block">
-
-        <ul class="nav">
+        <ul class="nav justify-content-end">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown text-center text-black" data-bs-toggle="dropdown" href="#" role="button"
               aria-expanded="false">
               <i class="fa-regular fa-user fa-lg"></i>
               {% if request.user.is_authenticated %}
-              <p class="my-0">{{user.username|capfirst}}</p>
+              <p class="my-0">{{ user.username|capfirst }}</p>
               {% else %}
               <p class="my-0">User</p>
               {% endif %}
@@ -128,11 +125,18 @@
               {% endif %}
             </ul>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link text-center text-black" href="{% url 'view_cart' %}">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <p class="my-0">Cart</p>
+            <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_cart' %}">
+              <div class="text-center">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <p class="my-0">
+                  {% if grand_total %}
+                    €{{ grand_total|floatformat:2 }}
+                  {% else %}
+                    €0.00
+                  {% endif %}
+                </p>
+              </div>
             </a>
           </li>
         </ul>
@@ -173,7 +177,6 @@
 
   <main class="mb-2">
     {% block content %}
-
     {% endblock %}
   </main>
 
@@ -182,7 +185,6 @@
   </footer>
 
   {% block postloadjs %}
-
   {% endblock %}
 
 </body>

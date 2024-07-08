@@ -49,16 +49,16 @@
     </div>
 </li>
 <li class="list-inline-item col-2 justify-content-center pt-2 ">
-    <a class="nav-link d-block d-lg-none" href="{% url 'view_cart' %}">
+    <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} d-block d-lg-none" href="{% url 'view_cart' %}">
         <div class="text-center">
-            <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+            <i class="fa-solid fa-cart-shopping"></i>
             <p class="my-0">
                 {% if grand_total %}
-
+                  €{{ grand_total|floatformat:2 }}
                 {% else %}
-                €0.00
+                  €0.00
                 {% endif %}
-            </p>
+              </p>
         </div>
     </a>
 </li>
