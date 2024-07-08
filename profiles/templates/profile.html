@@ -6,61 +6,112 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <hr>
-                <h2 class="logo-font mb-4">My Profile</h2>
-                <section class="bg-light border-top py-4">
-                    <div class="container">
-                      <div class="row gx-4">
-                        <div class="col-12 mb-4">
-                          <div class="border rounded-2 px-md-3 py-md-2 bg-white p-1 m-1">
-                            <!-- Pills navs -->
-                            <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-                              <li class="nav-item d-flex" role="presentation">
-                                <a class="nav-link d-flex align-items-center justify-content-center w-100 active" data-mdb-pill-init
-                                  id="ex1-tab-1" href="#ex1-pills-1" role="tab" aria-controls="ex1-pills-1"
-                                  aria-selected="true">Basic Information</a>
-                              </li>
-                              <li class="nav-item d-flex" role="presentation">
-                                <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
-                                  id="ex1-tab-2" href="#ex1-pills-2" role="tab" aria-controls="ex1-pills-2" aria-selected="false">Shipping
-                                  info</a>
-                              </li>
-                              <li class="nav-item d-flex" role="presentation">
-                                <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
-                                  id="ex1-tab-3" href="#ex1-pills-3" role="tab" aria-controls="ex1-pills-3" aria-selected="false">Orders
-                                  info</a>
-                              </li>
-                            </ul>
-                            <!-- Pills navs -->
-                  
-                            <!-- Pills 1 content -->
-                            <div class="tab-content" id="ex1-content">
-                              <div class="tab-pane fade show active p-1 table-responsive" id="ex1-pills-1" role="tabpanel">
-                                <!-- Content for the Specification tab goes here -->
-                              </div>
-                  
-                              <!-- Pills 2 content -->
-                              <div class="tab-pane fade mb-2 p-1" id="ex1-pills-2" role="tabpanel">
-                                <!-- Content for the Shipping info tab goes here -->
-                              </div>
+<div class="container">
+    <div class="row">
+        <section class="bg-light border-top py-4">
+            <div class="container">
+                <div class="row gx-4">
+                    <div class="col-12 mb-4">
+                        <form class="mt-3" action="{% url 'profile' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="border rounded-2 px-md-3 py-md-2 bg-white p-1 m-1">
+                                <!-- Pills navs -->
+                                <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                                    <li class="nav-item d-flex" role="presentation">
+                                        <a class="nav-link d-flex align-items-center justify-content-center w-100 active" data-mdb-pill-init
+                                           id="ex1-tab-1" href="#ex1-pills-1" role="tab" aria-controls="ex1-pills-1"
+                                           aria-selected="true">Basic Information</a>
+                                    </li>
+                                    <li class="nav-item d-flex" role="presentation">
+                                        <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
+                                           id="ex1-tab-2" href="#ex1-pills-2" role="tab" aria-controls="ex1-pills-2" aria-selected="false">Shipping
+                                            Information</a>
+                                    </li>
+                                    <li class="nav-item d-flex" role="presentation">
+                                        <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
+                                           id="ex1-tab-3" href="#ex1-pills-3" role="tab" aria-controls="ex1-pills-3" aria-selected="false">Orders
+                                            Information</a>
+                                    </li>
+                                </ul>
+                                <!-- Pills navs -->
+
+                                <!-- Pills content -->
+                                <div class="tab-content" id="ex1-content">
+                                    <!-- Pills 1 content -->
+                                    <div class="tab-pane fade show active p-1" id="ex1-pills-1" role="tabpanel">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <hr>
+                                                    <h2 class="logo-font mb-4">Basic Information</h2>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-lg-6">
+                                                    {{ form.default_contact_full_name|as_crispy_field }}
+                                                    {{ form.default_contact_email|as_crispy_field }}
+                                                    {{ form.default_contact_phone_number|as_crispy_field }}
+                                                    <button class="btn btn-outline-black rounded-pill">Update Information</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Pills 2 content -->
+                                    <div class="tab-pane fade mb-2 p-1" id="ex1-pills-2" role="tabpanel">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <hr>
+                                                    <h2 class="logo-font mb-4">Shipping Information</h2>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-lg-6">
+                                                    {{ form.default_delivery_email|as_crispy_field }}
+                                                    {{ form.default_delivery_phone_number|as_crispy_field }}
+                                                    {{ form.default_postcode|as_crispy_field }}
+                                                    {{ form.default_town_or_city|as_crispy_field }}
+                                                    {{ form.default_street_address1|as_crispy_field }}
+                                                    {{ form.default_street_address2|as_crispy_field }}
+                                                    {{ form.default_county|as_crispy_field }}
+                                                    {{ form.default_country|as_crispy_field }}
+                                                    <button class="btn btn-outline-black rounded-pill">Update Information</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Pills 3 content -->
+                                    <div class="tab-pane fade mb-2 p-1" id="ex1-pills-3" role="tabpanel">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <hr>
+                                                    <h2 class="logo-font mb-4">Order History</h2>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-lg-6">
+                                                    {{ orders }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Pills content -->
                             </div>
-                            <!-- Pills content -->
-                          </div>
-                        </div>
-                      </div>
+                        </form>
                     </div>
-                  </section>
+                </div>
             </div>
-        </div>
+        </section>
+    </div>
+</div>
 {% endblock %}
 
-
-
 {% block postloadjs %}
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js"
   integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
