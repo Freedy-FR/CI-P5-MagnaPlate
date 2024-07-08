@@ -1,0 +1,33 @@
+Hello {{ order.full_name }}!
+
+Thank you for your purchase from MagnaPlate. Below is the confirmation and details of your order:
+
+Order Information:
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Cost Breakdown:
+
+Order Total: €{{ order.order_total }}
+Delivery Cost: €{{ order.delivery_cost }}
+Grand Total: €{{ order.grand_total }}
+
+Shipping Information:
+
+Your order will be shipped to:
+
+{{ order.street_address1 }}
+{{ order.street_address2 }}
+{{ order.town_or_city }}, {{ order.county }}
+{{ order.country }}
+
+We have your contact number as {{ order.delivery_phone_number }}.
+
+If you have any questions or need further assistance, please feel free to contact us at {{ contact_email }}.
+
+Thank you once again for choosing MagnaPlate!
+
+Best regards,
+
+The MagnaPlate Team
