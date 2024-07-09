@@ -21,10 +21,10 @@ urlpatterns = [
     path('categories/delete/<int:pk>/', CategoryDeleteView.as_view(), name='delete_category'),
 
     # Collections Management
+    path('collection_management/', CollectionManagementView.as_view(), name='collection_management'),
     path('collections/add/', CollectionCreateView.as_view(), name='add_collection'),
     path('collections/edit/<int:pk>/', CollectionUpdateView.as_view(), name='edit_collection'),
     path('collections/delete/<int:pk>/', CollectionDeleteView.as_view(), name='delete_collection'),
-
 ]
 
 if settings.DEBUG:
