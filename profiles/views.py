@@ -1,12 +1,11 @@
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
-from django.views.generic import UpdateView, DetailView
+from django.views.generic import UpdateView, DetailView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import UserProfile
 from .forms import UserProfileForm
 from checkout.models import Order
-
 
 class ProfileView(LoginRequiredMixin, UpdateView):
     model = UserProfile
@@ -63,3 +62,7 @@ class OrderHistoryView(LoginRequiredMixin, DetailView):
         ))
         context['from_profile'] = True
         return context
+
+
+class SiteManagementView(LoginRequiredMixin, TemplateView):
+    template_name = 'site_management.html'

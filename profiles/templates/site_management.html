@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <section class="bg-light border-top py-4">
+            <div class="container">
+                <div class="row gx-4">
+                    <div class="col-12 mb-4">
+                        <form class="mt-3" action="{% url 'profile' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="border rounded-2 px-md-3 py-md-2 bg-white p-1 m-1">
+                                <!-- Pills navs -->
+                                <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                                    <li class="nav-item d-flex" role="presentation">
+                                        <a class="nav-link d-flex align-items-center justify-content-center w-100 active" data-mdb-pill-init
+                                           id="ex1-tab-1" href="#ex1-pills-1" role="tab" aria-controls="ex1-pills-1"
+                                           aria-selected="true">Products</a>
+                                    </li>
+                                    <li class="nav-item d-flex" role="presentation">
+                                        <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
+                                           id="ex1-tab-2" href="#ex1-pills-2" role="tab" aria-controls="ex1-pills-2" aria-selected="false">Creators</a>
+                                    </li>
+                                    <li class="nav-item d-flex" role="presentation">
+                                        <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
+                                           id="ex1-tab-3" href="#ex1-pills-3" role="tab" aria-controls="ex1-pills-3" aria-selected="false">Collections</a>
+                                    </li>
+                                </ul>
+                                <!-- Pills navs -->
+
+                                <!-- Pills content -->
+                                <div class="tab-content" id="ex1-content">
+                                    <!-- Pills 1 content -->
+                                    <div class="tab-pane fade show active p-1" id="ex1-pills-1" role="tabpanel">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    <hr>
+                                                    <h2 class="logo-font mb-4">Products</h2>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-12 col-lg-6 mb-3">
+                                                    <a type="button" class="btn btn-outline-black rounded-pill w-100" href="{% url 'add_product' %}">Add Product</a>
+                                                </div>
+                                                <div class="col-12 col-lg-6">
+                                                    <a class="btn btn-outline-black rounded-pill w-100" href="#">Edit/Delete Product</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Pills 2 content -->
+                                    <div class="tab-pane fade mb-2 p-1" id="ex1-pills-2" role="tabpanel">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    <hr>
+                                                    <h2 class="logo-font mb-4">Creators</h2>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-12 col-lg-6 mb-3">
+                                                    <a class="btn btn-outline-black rounded-pill w-100" href="#">Add Creator</a>
+                                                </div>
+                                                <div class="col-12 col-lg-6">
+                                                    <a class="btn btn-outline-black rounded-pill w-100" href="#">Edit/Delete Creator</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Pills 3 content -->
+                                    <div class="tab-pane fade mb-2 p-1" id="ex1-pills-3" role="tabpanel">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    <hr>
+                                                    <h2 class="logo-font mb-4">Collections</h2>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-12 col-lg-6 mb-3">
+                                                    <a class="btn btn-outline-black rounded-pill w-100" href="#">Add Collection</a>
+                                                </div>
+                                                <div class="col-12 col-lg-6">
+                                                    <a class="btn btn-outline-black rounded-pill w-100" href="#">Edit/Delete Collection</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Pills content -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js"
+  integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+{% endblock %}
