@@ -1,11 +1,14 @@
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.core.paginator import Paginator
+from django.views.generic.edit import View
+from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib import messages
-from django.shortcuts import redirect, reverse
+from django.shortcuts import render, redirect, reverse
 from django.utils import timezone
 from .models import Product, Collection, Creator, Category
+from .forms import ProductForm
 import datetime
 
 class FilteredProductListView(ListView):
@@ -156,3 +159,30 @@ class ProductDetailView(DetailView):
             page_range = list(page_range) + ['...', num_pages]
 
         return page_range
+
+
+class AddProductView(View):
+    """ Add a product to the store """
+
+    def get(self, request, *args, **kwargs):
+        form = ProductForm()
+        template = 'add_product.html'
+        context = {
+            'form': form,
+        }
+        return render(request, template, context)
+
+    def post(self, request, *args, **kwargs):
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added product!')
+            return redirect(reverse('add_product'))
+        else:
+            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+        
+        template = 'add_product.html'
+        context = {
+            'form': form,
+        }
+        return render(request, template, context)

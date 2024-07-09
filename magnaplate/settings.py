@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["8000-freedyfr-cip5magnaplate-emtip546hvm.ws.codeinstitute-ide.net", "magnaplate-3f8ee7baac73.herokuapp.com"]
 
