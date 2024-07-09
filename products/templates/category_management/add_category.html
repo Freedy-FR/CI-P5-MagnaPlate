@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <hr>
+                <h2 class="logo-font mb-4">Category Management</h2>
+                <h5 class="text-muted">Add a Category</h5>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <form id="addCategoryForm" method="POST" action="{% url 'add_category' %}" class="form mb-2">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="text-right">
+                        <a href="{% url 'site_management' %}">
+                            <button type="button" class="btn rounded-pill my-2 border-black btn-secondary">
+                                Cancel
+                            </button>
+                        </a>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn rounded-pill my-2 border-black btn-primary" data-toggle="modal" data-target="#confirmAddCategoryModal">
+                            Add Category
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmAddCategoryModal" tabindex="-1" role="dialog" aria-labelledby="confirmAddCategoryModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="w-100 toast-capper"></div>
+                <div class="modal-header bg-white text-dark d-flex justify-content-between">
+                    <h5 class="modal-title" id="confirmAddCategoryModalLabel">Confirm Add Category</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to add this category?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn rounded-pill my-2 border-black btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn rounded-pill my-2 border-black btn-primary" id="confirmAddCategoryButton">Add Category</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    <script>
+        $(document).ready(function() {
+            $('#confirmAddCategoryButton').click(function() {
+                $('#addCategoryForm').submit();
+            });
+        });
+    </script>
+{% endblock %}

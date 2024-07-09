@@ -9,13 +9,14 @@
 <div id="allproducts" class="container p-2" data-scroll-target="true">
     <div class="row gx-2">
         <div class="rounded-2 px-3 py-2 bg-white">
+            
             <h2 class="text-center">
                 Product Management
             </h2>
-            
+
             <!-- Sorting select tag -->
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <form method="get" class="d-flex">
+                <form method="get" class="d-flex" action="{% url 'product_management' %}">
                     {% for key, value in request.GET.items %}
                         {% if key != 'sort' and key != 'direction' %}
                             <input type="hidden" name="{{ key }}" value="{{ value }}">
@@ -28,7 +29,7 @@
                         <option value="price_desc" {% if request.GET.sort == 'price_desc' %}selected{% endif %}>Sort by Price (High-Low)</option>
                         <option value="rating_desc" {% if request.GET.sort == 'rating_desc' %}selected{% endif %}>Sort by Rating</option>
                     </select>
-                </form>
+                </form> 
             </div>
 
             <h6 class="text-center inline-block">
@@ -118,6 +119,21 @@
                     </nav>
                 {% endif %}
             </div>
+
+        </div>
+        <div class="col-6 g-3 text-center">
+            <a href="{% url 'site_management' %}">
+                <button type="button" class="btn rounded-pill my-2 border-black btn-danger">
+                    Back to Management
+                </button>
+            </a>
+        </div>
+        <div class="col-6 g-3 text-center">
+            <a href="{% url 'add_product' %}">
+                <button type="button" class="btn rounded-pill my-2 border-black btn-success">
+                    Add Product
+                </button>
+            </a>
         </div>
     </div>
 </div>

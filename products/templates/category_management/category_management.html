@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/product.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="allcategories" class="container p-2" data-scroll-target="true">
+    <div class="row gx-2">
+        <div class="rounded-2 px-3 py-2 bg-white">
+            
+            <h2 class="text-center">
+                Category Management
+            </h2>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                {% for category in categories %}
+                <div class="col g-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Name: {{ category.name }}</h5>
+                            <p class="card-text">Friendly Name: {{ category.friendly_name }}</p>
+                            <div class="d-flex justify-content-between">
+                                <form action="{% url 'edit_category' category.id %}" method="get" style="display:inline;">
+                                    <button type="submit" class="btn rounded-pill my-2 border-black btn-primary">Edit</button>
+                                </form>
+                                <button type="button" class="btn rounded-pill my-2 border-black btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" data-category-id="{{ category.id }}">
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="container pt-4" id="anchor">
+                {% if is_paginated %}
+                    <nav aria-label="Page navigation" class="">
+                        <ul class="pagination justify-content-center">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link pagination-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                                </li>
+                            {% endif %}
+                            {% for num in page_obj.paginator.page_range %}
+                                <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                                    <a class="page-link pagination-link" href="?page={{ num }}">{{ num }}</a>
+                                </li>
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link pagination-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div>
+
+        </div>
+        <div class="col-6 g-3 text-center">
+            <a href="{% url 'site_management' %}">
+                <button type="button" class="btn rounded-pill my-2 border-black btn-danger">
+                    Back to Management
+                </button>
+            </a>
+        </div>
+        <div class="col-6 g-3 text-center">
+            <a href="{% url 'add_category' %}">
+                <button type="button" class="btn rounded-pill my-2 border-black btn-success">
+                    Add Category
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-white text-dark d-flex justify-content-between">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this category?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                <form id="deleteForm" action="" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js"
+  integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#confirmDeleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var categoryId = button.data('category-id') // Extract info from data-* attributes
+            var action = "{% url 'delete_category' 1 %}".replace('1', categoryId)
+            $('#deleteForm').attr('action', action)
+        });
+    });
+</script>
+{% endblock %}

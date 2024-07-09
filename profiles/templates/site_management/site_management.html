@@ -30,6 +30,10 @@
                                         <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
                                            id="ex1-tab-3" href="#ex1-pills-3" role="tab" aria-controls="ex1-pills-3" aria-selected="false">Collections</a>
                                     </li>
+                                    <li class="nav-item d-flex" role="presentation">
+                                        <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
+                                           id="ex1-tab-4" href="#ex1-pills-4" role="tab" aria-controls="ex1-pills-4" aria-selected="false">Categories</a>
+                                    </li>
                                 </ul>
                                 <!-- Pills navs -->
 
@@ -91,6 +95,26 @@
                                                 </div>
                                                 <div class="col-12 col-lg-6">
                                                     <a class="btn btn-outline-black rounded-pill w-100" href="#">Edit/Delete Collection</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Pills 4 content -->
+                                    <div class="tab-pane fade mb-2 p-1" id="ex1-pills-4" role="tabpanel">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    <hr>
+                                                    <h2 class="logo-font mb-4">Categories</h2>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-12 col-lg-6 mb-3">
+                                                    <a class="btn btn-outline-black rounded-pill w-100" href="{% url 'add_category' %}">Add Category</a>
+                                                </div>
+                                                <div class="col-12 col-lg-6">
+                                                    <a class="btn btn-outline-black rounded-pill w-100" href="{% url 'category_management' %}">Edit/Delete Category</a>
                                                 </div>
                                             </div>
                                         </div>

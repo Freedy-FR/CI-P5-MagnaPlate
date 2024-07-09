@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <hr>
+                <h2 class="logo-font mb-4">Category Management</h2>
+                <h5 class="text-muted">{% if form.instance.pk %}Edit{% else %}Add{% endif %} a Category</h5>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <form id="categoryForm" method="POST" action="{% if form.instance.pk %}{% url 'edit_category' form.instance.pk %}{% else %}{% url 'add_category' %}{% endif %}" class="form mb-2" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="text-right">
+                        <a class="btn btn-outline-black rounded-0" href="{% url 'category_management' %}">Cancel</a>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-black rounded-0" data-toggle="modal" data-target="#confirmCategoryModal">
+                            {% if form.instance.pk %}Update Category{% else %}Add Category{% endif %}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmCategoryModal" tabindex="-1" role="dialog" aria-labelledby="confirmCategoryModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="w-100 toast-capper"></div>
+                <div class="modal-header bg-white text-dark d-flex justify-content-between">
+                    <h5 class="modal-title" id="confirmCategoryModalLabel">Confirm {% if form.instance.pk %}Update{% else %}Add{% endif %} Category</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to {% if form.instance.pk %}update{% else %}add{% endif %} this category?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-black" id="confirmCategoryButton">{% if form.instance.pk %}Update Category{% else %}Add Category{% endif %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    <script>
+        $(document).ready(function() {
+            $('#confirmCategoryButton').click(function() {
+                $('#categoryForm').submit();
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,14 +1,14 @@
 from django.views.generic.list import ListView
 from django.views.generic import DetailView, TemplateView
 from django.core.paginator import Paginator
-from django.views.generic.edit import View, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib import messages
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.utils import timezone
 from .models import Product, Collection, Creator, Category
-from .forms import ProductForm
+from .forms import ProductForm, CategoryForm, CollectionForm
 import datetime
 
 class FilteredProductListView(ListView):
@@ -315,3 +315,90 @@ class ProductManagementView(ListView):
             messages.error(request, "Please enter search criteria!")
             return redirect(reverse('product_management'))
         return super().get(request, *args, **kwargs)
+
+
+class CategoryManagementView(ListView):
+    model = Category
+    template_name = 'category_management/category_management.html'
+    context_object_name = 'categories'
+    paginate_by = 12
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CategoryForm()
+        return context
+
+
+class CategoryCreateView(CreateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'category_management/add_category.html'
+    success_url = reverse_lazy('category_management')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Successfully added category!')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Failed to add category. Please ensure the form is valid.')
+        return super().form_invalid(form)
+
+class CategoryUpdateView(UpdateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'category_management/edit_category.html'
+    success_url = reverse_lazy('category_management')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Successfully updated category!')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Failed to update category. Please ensure the form is valid.')
+        return super().form_invalid(form)
+
+class CategoryDeleteView(DeleteView):
+    model = Category
+    template_name = 'category_management/delete_category.html'
+    success_url = reverse_lazy('category_management')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, 'Category deleted successfully!')
+        return super().delete(request, *args, **kwargs)
+
+class CollectionCreateView(CreateView):
+    model = Collection
+    form_class = CollectionForm
+    template_name = 'collection_management/add_collection.html'
+    success_url = reverse_lazy('collection_management')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Successfully added collection!')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Failed to add collection. Please ensure the form is valid.')
+        return super().form_invalid(form)
+
+class CollectionUpdateView(UpdateView):
+    model = Collection
+    form_class = CollectionForm
+    template_name = 'collection_management/edit_collection.html'
+    success_url = reverse_lazy('collection_management')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Successfully updated collection!')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Failed to update collection. Please ensure the form is valid.')
+        return super().form_invalid(form)
+
+class CollectionDeleteView(DeleteView):
+    model = Collection
+    template_name = 'collection_management/delete_collection.html'
+    success_url = reverse_lazy('collection_management')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, 'Collection deleted successfully!')
+        return super().delete(request, *args, **kwargs)
