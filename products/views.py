@@ -1,11 +1,11 @@
 from django.views.generic.list import ListView
-from django.views.generic import DetailView
+from django.views.generic import DetailView, DeleteView
 from django.core.paginator import Paginator
-from django.views.generic.edit import View
+from django.views.generic.edit import View, UpdateView
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib import messages
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.utils import timezone
 from .models import Product, Collection, Creator, Category
 from .forms import ProductForm
@@ -175,14 +175,47 @@ class AddProductView(View):
     def post(self, request, *args, **kwargs):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            product = form.save()
             messages.success(request, 'Successfully added product!')
-            return redirect(reverse('add_product'))
+            return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
-        
+
         template = 'add_product.html'
         context = {
             'form': form,
         }
         return render(request, template, context)
+
+
+class EditProductView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'edit_product.html'
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'Successfully updated product!')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Failed to update product. Please ensure the form is valid.')
+        return super().form_invalid(form)
+
+    def get_success_url(self):
+        return reverse('product_detail', args=[self.object.id])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['product'] = self.object
+        messages.info(self.request, f'You are editing {self.object.name}')
+        return context
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy('products')
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.delete()
+        messages.success(request, 'Product deleted!')
+        return redirect(self.success_url)
