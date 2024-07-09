@@ -160,65 +160,7 @@ class ProductDetailView(DetailView):
 
         return page_range
 
-
-class AddProductView(View):
-    """ Add a product to the store """
-
-    def get(self, request, *args, **kwargs):
-        form = ProductForm()
-        template = 'product_management/add_product.html'
-        context = {
-            'form': form,
-        }
-        return render(request, template, context)
-
-    def post(self, request, *args, **kwargs):
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            product = form.save()
-            messages.success(request, 'Successfully added product!')
-            return redirect(reverse('product_detail', args=[product.id]))
-        else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
-
-        template = 'add_product.html'
-        context = {
-            'form': form,
-        }
-        return render(request, template, context)
-
-
-class EditProductView(UpdateView):
-    model = Product
-    form_class = ProductForm
-    template_name = 'product_management/edit_product.html'
-    
-    def form_valid(self, form):
-        messages.success(self.request, 'Successfully updated product!')
-        return super().form_valid(form)
-
-    def form_invalid(self, form):
-        messages.error(self.request, 'Failed to update product. Please ensure the form is valid.')
-        return super().form_invalid(form)
-
-    def get_success_url(self):
-        return reverse('product_detail', args=[self.object.id])
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['product'] = self.object
-        messages.info(self.request, f'You are editing {self.object.name}')
-        return context
-
-
-class ProductDeleteView(View):
-    def post(self, request, *args, **kwargs):
-        product_id = kwargs.get('product_id')
-        product = get_object_or_404(Product, id=product_id)
-        product.delete()
-        messages.success(request, 'Product deleted successfully!')
-        return redirect(reverse_lazy('product_management'))
-
+# Product Management Views
 
 class ProductManagementView(ListView):
     template_name = 'product_management/product_management.html'
@@ -317,6 +259,67 @@ class ProductManagementView(ListView):
         return super().get(request, *args, **kwargs)
 
 
+class AddProductView(View):
+    """ Add a product to the store """
+
+    def get(self, request, *args, **kwargs):
+        form = ProductForm()
+        template = 'product_management/add_product.html'
+        context = {
+            'form': form,
+        }
+        return render(request, template, context)
+
+    def post(self, request, *args, **kwargs):
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            messages.success(request, 'Successfully added product!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+
+        template = 'add_product.html'
+        context = {
+            'form': form,
+        }
+        return render(request, template, context)
+
+
+class EditProductView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'product_management/edit_product.html'
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'Successfully updated product!')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Failed to update product. Please ensure the form is valid.')
+        return super().form_invalid(form)
+
+    def get_success_url(self):
+        return reverse('product_detail', args=[self.object.id])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['product'] = self.object
+        messages.info(self.request, f'You are editing {self.object.name}')
+        return context
+
+
+class ProductDeleteView(View):
+    def post(self, request, *args, **kwargs):
+        product_id = kwargs.get('product_id')
+        product = get_object_or_404(Product, id=product_id)
+        product.delete()
+        messages.success(request, 'Product deleted successfully!')
+        return redirect(reverse_lazy('product_management'))
+
+
+# Category Management Views
+
 class CategoryManagementView(ListView):
     model = Category
     template_name = 'category_management/category_management.html'
@@ -364,43 +367,6 @@ class CategoryDeleteView(DeleteView):
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, 'Category deleted successfully!')
-        return super().delete(request, *args, **kwargs)
-
-class CollectionCreateView(CreateView):
-    model = Collection
-    form_class = CollectionForm
-    template_name = 'collection_management/add_collection.html'
-    success_url = reverse_lazy('collection_management')
-
-    def form_valid(self, form):
-        messages.success(self.request, 'Successfully added collection!')
-        return super().form_valid(form)
-
-    def form_invalid(self, form):
-        messages.error(self.request, 'Failed to add collection. Please ensure the form is valid.')
-        return super().form_invalid(form)
-
-class CollectionUpdateView(UpdateView):
-    model = Collection
-    form_class = CollectionForm
-    template_name = 'collection_management/edit_collection.html'
-    success_url = reverse_lazy('collection_management')
-
-    def form_valid(self, form):
-        messages.success(self.request, 'Successfully updated collection!')
-        return super().form_valid(form)
-
-    def form_invalid(self, form):
-        messages.error(self.request, 'Failed to update collection. Please ensure the form is valid.')
-        return super().form_invalid(form)
-
-class CollectionDeleteView(DeleteView):
-    model = Collection
-    template_name = 'collection_management/delete_collection.html'
-    success_url = reverse_lazy('collection_management')
-
-    def delete(self, request, *args, **kwargs):
-        messages.success(self.request, 'Collection deleted successfully!')
         return super().delete(request, *args, **kwargs)
 
 
