@@ -18,7 +18,7 @@
                     {% csrf_token %}
                     {{ form|crispy }}
                     <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'products' %}">Cancel</a>
+                        <a class="btn btn-outline-black rounded-0" href="{% url 'product_management' %}">Cancel</a>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-black rounded-0" data-toggle="modal" data-target="#confirmProductModal">
                             {% if form.instance.pk %}Update Product{% else %}Add Product{% endif %}

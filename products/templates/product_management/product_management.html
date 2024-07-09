@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/product.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="allproducts" class="container p-2" data-scroll-target="true">
+    <div class="row gx-2">
+        <div class="rounded-2 px-3 py-2 bg-white">
+            <h2 class="text-center">
+                Product Management
+            </h2>
+            
+            <!-- Sorting select tag -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <form method="get" class="d-flex">
+                    {% for key, value in request.GET.items %}
+                        {% if key != 'sort' and key != 'direction' %}
+                            <input type="hidden" name="{{ key }}" value="{{ value }}">
+                        {% endif %}
+                    {% endfor %}
+                    <select name="sort" class="form-select" onchange="this.form.submit()">
+                        <option value="name_asc" {% if request.GET.sort == 'name_asc' %}selected{% endif %}>Sort by Name (A-Z)</option>
+                        <option value="name_desc" {% if request.GET.sort == 'name_desc' %}selected{% endif %}>Sort by Name (Z-A)</option>
+                        <option value="price_asc" {% if request.GET.sort == 'price_asc' %}selected{% endif %}>Sort by Price (Low-High)</option>
+                        <option value="price_desc" {% if request.GET.sort == 'price_desc' %}selected{% endif %}>Sort by Price (High-Low)</option>
+                        <option value="rating_desc" {% if request.GET.sort == 'rating_desc' %}selected{% endif %}>Sort by Rating</option>
+                    </select>
+                </form>
+            </div>
+
+            <h6 class="text-center inline-block">
+                {% if current_filter.creator %}
+                    {{ current_filter.creator.name }} by
+                {% elif current_filter.collection %}
+                    {{ current_filter.collection.friendly_name }} by
+                {% elif current_filter.category %}
+                    {{ current_filter.category.friendly_name }} by
+                {% elif current_filter.is_on_deal %}
+                    Special Offers
+                {% elif current_filter.new_arrivals %}
+                    New Arrivals
+                {% endif %}
+                {% if current_sorting == 'name_asc' %}
+                    Name (A-Z)
+                {% elif current_sorting == 'name_desc' %}
+                    Name (Z-A)
+                {% elif current_sorting == 'price_asc' %}
+                    Price (Low-High)
+                {% elif current_sorting == 'price_desc' %}
+                    Price (High-Low)
+                {% elif current_sorting == 'rating_desc' %}
+                    Rating
+                {% elif current_sorting == 'category' %}
+                    Categories
+                {% endif %}
+            </h6>
+            
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                {% for product in products %}
+                <div class="col g-3">
+                    <div class="card">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top img-fluid">
+                        {% else %}
+                            <img src="{{ MEDIA_URL }}product_images/placeholder-image.png" alt="image-placeholder" class="card-img-top img-fluid">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }} 
+                                {% if product.is_on_deal %}
+                                <span class="badge text-bg-danger">On Deal!</span>
+                                {% endif %}
+                            </h5>
+                            <p class="card-text">
+                                <strong>Creator:</strong> {{ product.creator.name }}<br>
+                                <strong>Collection:</strong> {{ product.collection.friendly_name }}<br>
+                                <strong>Category:</strong> {{ product.category.friendly_name }}<br>
+                                <strong>Rating:</strong> {{ product.rating }}<br>
+                                <strong>Price:</strong> €{{ product.price }}<br>
+                                {{ product.description|truncatewords:10 }}
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <form action="{% url 'edit_product' product.id %}" method="get" style="display:inline;">
+                                    <button type="submit" class="btn rounded-pill my-2 border-black btn-primary">Edit</button>
+                                </form>
+                                <button type="button" class="btn rounded-pill my-2 border-black btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" data-product-id="{{ product.id }}">
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="container pt-4" id="anchor">
+                {% if is_paginated %}
+                    <nav aria-label="Page navigation" class="">
+                        <ul class="pagination justify-content-center">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link pagination-link" href="?page={{ page_obj.previous_page_number }}&sort={{ request.GET.sort }}">Previous</a>
+                                </li>
+                            {% endif %}
+                            {% for num in page_obj.paginator.page_range %}
+                                <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                                    <a class="page-link pagination-link" href="?page={{ num }}&sort={{ request.GET.sort }}">{{ num }}</a>
+                                </li>
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link pagination-link" href="?page={{ page_obj.next_page_number }}&sort={{ request.GET.sort }}">Next</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-white text-dark d-flex justify-content-between">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this product?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                <form id="deleteForm" action="" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js"
+  integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#confirmDeleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var productId = button.data('product-id') // Extract info from data-* attributes
+            var action = "{% url 'delete_product' 1 %}".replace('1', productId)
+            $('#deleteForm').attr('action', action)
+        });
+    });
+</script>
+{% endblock %}

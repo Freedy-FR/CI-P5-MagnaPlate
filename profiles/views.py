@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
-from django.views.generic import UpdateView, DetailView, TemplateView
+from django.views.generic import UpdateView, DetailView, TemplateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import UserProfile
+from checkout.models import Product
 from .forms import UserProfileForm
 from checkout.models import Order
 
@@ -65,4 +66,4 @@ class OrderHistoryView(LoginRequiredMixin, DetailView):
 
 
 class SiteManagementView(LoginRequiredMixin, TemplateView):
-    template_name = 'site_management.html'
+    template_name = 'site_management/site_management.html'

@@ -10,6 +10,7 @@ urlpatterns = [
     path('order_history/<str:order_number>/', OrderHistoryView.as_view(), name='order_history'),
     path('site_management/', SiteManagementView.as_view(), name='site_management'),
 
+
 ]
 
 
