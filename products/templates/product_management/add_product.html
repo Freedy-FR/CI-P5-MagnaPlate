@@ -1,5 +1,10 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/product.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -17,9 +22,32 @@
                 <form id="addProductForm" method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form|crispy }}
+                    
+                    <!-- Preview Card -->
+                    <div class="row g-4 mt-4" id="productPreview" style="display: none;">
+                        <div class="col g-3">
+                            <div class="card p-0">
+                                <a class="link-underline-opacity-0" href="#">
+                                    <img id="imagePreview" src="#" alt="Image Preview" style="display: none;" class="card-img img-fluid img-fill">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="previewName"></h5>
+                                        <p class="card-text">
+                                            <strong>Creator:</strong> <span id="previewCreator"></span><br>
+                                            <strong>Collection:</strong> <span id="previewCollection"></span><br>
+                                            <strong>Category:</strong> <span id="previewCategory"></span><br>
+                                            <strong>Rating:</strong> <span id="previewRating"></span><br>
+                                            <strong>Price:</strong> €<span id="previewPrice"></span><br>
+                                            <span id="previewDescription"></span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="text-right">
                         <a href="{% url 'site_management' %}">
-                            <button type="button" class="btn rounded-pill my-2 border-black btn-secondary" >
+                            <button type="button" class="btn rounded-pill my-2 border-black btn-secondary">
                                 Cancel
                             </button>
                         </a>
@@ -55,11 +83,72 @@
 {% endblock %}
 
 {% block postloadjs %}
-    <script>
-        $(document).ready(function() {
-            $('#confirmAddProductButton').click(function() {
-                $('#addProductForm').submit();
-            });
+<script>
+    $(document).ready(function() {
+        $('#confirmAddProductButton').click(function() {
+            $('#addProductForm').submit();
         });
-    </script>
+
+        // Function to display preview image
+        document.getElementById('id_image').onchange = function (event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('imagePreview');
+                output.src = reader.result;
+                output.style.display = 'block';
+                document.getElementById('productPreview').style.display = 'flex';
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        };
+
+        // Function to update name preview
+        document.getElementById('id_name').onkeyup = function (event) {
+            var name = event.target.value;
+            document.getElementById('previewName').innerText = name;
+            document.getElementById('productPreview').style.display = 'flex';
+        };
+
+        // Function to update description preview
+        document.getElementById('id_description').onkeyup = function (event) {
+            var description = event.target.value;
+            document.getElementById('previewDescription').innerText = description;
+            document.getElementById('productPreview').style.display = 'flex';
+        };
+
+        // Function to update price preview
+        document.getElementById('id_price').onkeyup = function (event) {
+            var price = event.target.value;
+            document.getElementById('previewPrice').innerText = price;
+            document.getElementById('productPreview').style.display = 'flex';
+        };
+
+        // Function to update rating preview
+        document.getElementById('id_rating').onkeyup = function (event) {
+            var rating = event.target.value;
+            document.getElementById('previewRating').innerText = rating;
+            document.getElementById('productPreview').style.display = 'flex';
+        };
+
+        // Function to update creator preview
+        document.getElementById('id_creator').onchange = function (event) {
+            var creator = event.target.options[event.target.selectedIndex].text;
+            document.getElementById('previewCreator').innerText = creator;
+            document.getElementById('productPreview').style.display = 'flex';
+        };
+
+        // Function to update collection preview
+        document.getElementById('id_collection').onchange = function (event) {
+            var collection = event.target.options[event.target.selectedIndex].text;
+            document.getElementById('previewCollection').innerText = collection;
+            document.getElementById('productPreview').style.display = 'flex';
+        };
+
+        // Function to update category preview
+        document.getElementById('id_category').onchange = function (event) {
+            var category = event.target.options[event.target.selectedIndex].text;
+            document.getElementById('previewCategory').innerText = category;
+            document.getElementById('productPreview').style.display = 'flex';
+        };
+    });
+</script>
 {% endblock %}
