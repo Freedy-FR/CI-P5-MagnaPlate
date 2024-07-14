@@ -39,14 +39,15 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="dropdown nav-link text-black" data-bs-toggle="dropdown" href="#" id="menu-3" aria-haspopup="true"
+            <a class="dropdown nav-link text-black" data-bs-toggle="dropdown" href="#" id="menu-4" aria-haspopup="true"
                 aria-expanded="false">
                 Creators
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="menu-3">
-                {% for creator in creators %}
-                <a href="{% url 'products' %}?creator={{ creator.id }}" class="dropdown-item">{{ creator.name }}</a>
+            <div class="dropdown-menu border-0" aria-labelledby="menu-4">
+                {% for creator in random_creators %}
+                    <a href="{% url 'creator_detail' creator.pk %}" class="dropdown-item">{{ creator.name }}</a>
                 {% endfor %}
+                <a href="#" class="dropdown-item">More Creators</a>
             </div>
         </li>
 

@@ -1,12 +1,16 @@
 from .models import Product, Collection, Creator, Category
+import random
 
 def global_collections_and_creators(request):
     collections = Collection.objects.all()
     creators = Creator.objects.all()
     categories = Category.objects.all()
+    all_creators = list(Creator.objects.all())
+    random_creators = random.sample(all_creators, min(len(all_creators), 5))
     return {
         'collections': collections,
         'creators': creators,
+        'random_creators': random_creators,
         'categories': categories,
     }
 
