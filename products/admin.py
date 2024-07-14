@@ -17,8 +17,14 @@ class CategoryAdmin(admin.ModelAdmin):
 class CreatorAdmin(admin.ModelAdmin):
     list_display = (
         'name',
+        'description',
+        'image',
     )
-
+    search_fields = (
+        'name',
+        'description',
+    )
+    
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'id',
