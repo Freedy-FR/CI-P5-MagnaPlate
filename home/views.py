@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.core.paginator import Paginator
 from products.models import Product
+import random
 
 class IndexView(View):
     """ A view to return the index page with products and deal products. """
@@ -32,7 +33,8 @@ class IndexView(View):
         context = {}
 
         # Pagination for deal products
-        deals_list = Product.objects.filter(is_on_deal=True).order_by('name')  # Add ordering
+        deals_list = list(Product.objects.filter(is_on_deal=True))  # Convert to list
+        random.shuffle(deals_list)  # Shuffle the list
         deals_paginator = Paginator(deals_list, 6)  # Paginate by 6 items for deals
         deals_page = request.GET.get('deals_page')
         deals = deals_paginator.get_page(deals_page)
@@ -42,7 +44,8 @@ class IndexView(View):
         context['deal_page_range'] = self.get_pagination_range(deals)
 
         # Pagination for all products
-        products_list = Product.objects.all().order_by('name')  # Add ordering
+        products_list = list(Product.objects.all())  # Convert to list
+        random.shuffle(products_list)  # Shuffle the list
         paginator = Paginator(products_list, 12)  # Paginate by 12 items for all products
         page = request.GET.get('page')
         products = paginator.get_page(page)
