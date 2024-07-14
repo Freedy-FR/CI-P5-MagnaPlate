@@ -36,6 +36,18 @@ class Creator(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        # Check if the image field has a file
+        if self.image:
+            # Extract the file extension
+            ext = self.image.name.split('.')[-1]
+            # Construct the new image name
+            new_image_name = f"creators-{self.name}.{ext}"
+            # Set the new image name
+            self.image.name = new_image_name
+
+        super().save(*args, **kwargs)
+
 
 class Product(models.Model):
 
