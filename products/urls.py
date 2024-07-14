@@ -12,7 +12,11 @@ urlpatterns = [
     path('creators/', AllCreatorsView.as_view(), name='all_creators'),
     path('creator/<int:pk>/', CreatorDetailView.as_view(), name='creator_detail'),
 
-
+    # Creators Management
+    path('creator_management/', CreatorManagementView.as_view(), name='creator_management'),
+    path('creators/add/', CreatorCreateView.as_view(), name='add_creator'),
+    path('creators/edit/<int:pk>/', CreatorUpdateView.as_view(), name='edit_creator'),
+    path('creators/delete/<int:pk>/', CreatorDeleteView.as_view(), name='delete_creator'),
 
     # Product Management
     path('add/', AddProductView.as_view(), name='add_product'),

@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.utils import timezone
 from .models import Product, Collection, Creator, Category, Creator
-from .forms import ProductForm, CategoryForm, CollectionForm
+from .forms import *
 import datetime
 
 class FilteredProductListView(ListView):
@@ -399,6 +399,55 @@ class ProductDeleteView(LoginRequiredMixin, View):
         product.delete()
         messages.success(request, 'Product deleted successfully!')
         return redirect(reverse_lazy('product_management'))
+
+
+# Creators Management Views
+
+class CreatorManagementView(LoginRequiredMixin, ListView):
+    model = Creator
+    template_name = 'creator_management/creator_management.html'
+    context_object_name = 'creators'
+    paginate_by = 12
+
+class CreatorCreateView(LoginRequiredMixin, CreateView):
+    model = Creator
+    form_class = CreatorForm
+    template_name = 'creator_management/add_creator.html'
+    success_url = reverse_lazy('creator_management')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, f'Successfully added creator: {self.object.name}!')
+        return response
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Failed to add creator. Please ensure the form is valid.')
+        return super().form_invalid(form)
+
+class CreatorUpdateView(LoginRequiredMixin, UpdateView):
+    model = Creator
+    form_class = CreatorForm
+    template_name = 'creator_management/edit_creator.html'
+    success_url = reverse_lazy('creator_management')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, f'Successfully updated creator: {self.object.name}!')
+        return response
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Failed to update creator. Please ensure the form is valid.')
+        return super().form_invalid(form)
+
+class CreatorDeleteView(LoginRequiredMixin, DeleteView):
+    model = Creator
+    template_name = 'creator_management/delete_creator.html'
+    success_url = reverse_lazy('creator_management')
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        messages.success(self.request, f'Creator {self.object.name} deleted successfully!')
+        return super().delete(request, *args, **kwargs)
 
 
 # Category Management Views
