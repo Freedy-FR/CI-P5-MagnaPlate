@@ -164,14 +164,54 @@ class ProductDetailView(DetailView):
 
 # Creators Views
 
+class AllCreatorsView(ListView):
+    model = Creator
+    template_name = 'creators/all_creators.html'
+    context_object_name = 'creators'
+    paginate_by = 6  
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_range'] = self.get_pagination_range(context['page_obj'])
+        return context
+
+    def get_pagination_range(self, page_obj):
+        if not page_obj:
+            return []
+
+        num_pages = page_obj.paginator.num_pages
+        current_page = page_obj.number
+
+        # Set the range of pages to display
+        start = max(current_page - 1, 1)
+        end = min(current_page + 1, num_pages)
+        
+        page_range = range(start, end + 1)
+
+        # Add ellipses if necessary
+        if start > 2:
+            page_range = [1, '...'] + list(page_range)
+        if end < num_pages - 1:
+            page_range = list(page_range) + ['...', num_pages]
+
+        return page_range
+
 class CreatorDetailView(DetailView):
     model = Creator
     template_name = 'creators/creator_detail.html'
     context_object_name = 'creator'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        products_list = self.object.products.all()
+        creator = self.get_object()
+
+        collections = creator.products.values_list('collection__friendly_name', flat=True).distinct()
+        categories = creator.products.values_list('category__friendly_name', flat=True).distinct()
+
+        context['collections'] = collections
+        context['categories'] = categories
+
+        products_list = creator.products.all()
         paginator = Paginator(products_list, 6)
         page = self.request.GET.get('page')
         products = paginator.get_page(page)
@@ -179,6 +219,7 @@ class CreatorDetailView(DetailView):
         context['page_obj'] = products
         context['is_paginated'] = products.has_other_pages()
         context['page_range'] = self.get_pagination_range(products)
+        
         return context
 
     def get_pagination_range(self, page_obj):

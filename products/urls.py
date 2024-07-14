@@ -9,7 +9,9 @@ urlpatterns = [
     path('<int:product_id>/', ProductDetailView.as_view(), name='product_detail'),
 
     # Creators
+    path('creators/', AllCreatorsView.as_view(), name='all_creators'),
     path('creator/<int:pk>/', CreatorDetailView.as_view(), name='creator_detail'),
+
 
 
     # Product Management

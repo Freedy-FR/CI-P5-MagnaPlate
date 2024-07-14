@@ -47,7 +47,7 @@
                 {% for creator in random_creators %}
                     <a href="{% url 'creator_detail' creator.pk %}" class="dropdown-item">{{ creator.name }}</a>
                 {% endfor %}
-                <a href="#" class="dropdown-item">More Creators</a>
+                <a href="{% url 'all_creators' %}" class="dropdown-item">More Creators</a>
             </div>
         </li>
 
