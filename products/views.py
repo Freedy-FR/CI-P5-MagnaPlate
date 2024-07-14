@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.utils import timezone
-from .models import Product, Collection, Creator, Category
+from .models import Product, Collection, Creator, Category, Creator
 from .forms import ProductForm, CategoryForm, CollectionForm
 import datetime
 
@@ -138,6 +138,47 @@ class ProductDetailView(DetailView):
         context['is_paginated'] = products.has_other_pages()
         context['page_range'] = self.get_pagination_range(products)
 
+        return context
+
+    def get_pagination_range(self, page_obj):
+        if not page_obj:
+            return []
+
+        num_pages = page_obj.paginator.num_pages
+        current_page = page_obj.number
+
+        # Set the range of pages to display
+        start = max(current_page - 1, 1)
+        end = min(current_page + 1, num_pages)
+        
+        page_range = range(start, end + 1)
+
+        # Add ellipses if necessary
+        if start > 2:
+            page_range = [1, '...'] + list(page_range)
+        if end < num_pages - 1:
+            page_range = list(page_range) + ['...', num_pages]
+
+        return page_range
+
+
+# Creators Views
+
+class CreatorDetailView(DetailView):
+    model = Creator
+    template_name = 'creators/creator_detail.html'
+    context_object_name = 'creator'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        products_list = self.object.products.all()
+        paginator = Paginator(products_list, 6)
+        page = self.request.GET.get('page')
+        products = paginator.get_page(page)
+        context['products'] = products
+        context['page_obj'] = products
+        context['is_paginated'] = products.has_other_pages()
+        context['page_range'] = self.get_pagination_range(products)
         return context
 
     def get_pagination_range(self, page_obj):

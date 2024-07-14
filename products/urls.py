@@ -8,6 +8,10 @@ urlpatterns = [
     path('', ProductListView.as_view(), name='products'),
     path('<int:product_id>/', ProductDetailView.as_view(), name='product_detail'),
 
+    # Creators
+    path('creator/<int:pk>/', CreatorDetailView.as_view(), name='creator_detail'),
+
+
     # Product Management
     path('add/', AddProductView.as_view(), name='add_product'),
     path('edit/<int:pk>/', EditProductView.as_view(), name='edit_product'),
@@ -25,6 +29,8 @@ urlpatterns = [
     path('collections/add/', CollectionCreateView.as_view(), name='add_collection'),
     path('collections/edit/<int:pk>/', CollectionUpdateView.as_view(), name='edit_collection'),
     path('collections/delete/<int:pk>/', CollectionDeleteView.as_view(), name='delete_collection'),
+
+
 ]
 
 if settings.DEBUG:

@@ -30,9 +30,12 @@ class Category(models.Model):
 
 class Creator(models.Model):
     name = models.CharField(max_length=254)
+    image = models.ImageField(upload_to='creator_images', null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
+
 
 class Product(models.Model):
 
@@ -44,7 +47,7 @@ class Product(models.Model):
 
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     collection = models.ForeignKey('Collection', null=True, blank=True, on_delete=models.SET_NULL)
-    creator = models.ForeignKey('Creator', null=True, blank=True, on_delete=models.SET_NULL)
+    creator = models.ForeignKey('Creator', null=True, blank=True, on_delete=models.SET_NULL, related_name='products')
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
     description = models.TextField()
