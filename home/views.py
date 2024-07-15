@@ -3,9 +3,10 @@ from django.views import View
 from django.core.paginator import Paginator
 from products.models import Product
 import random
+from .models import Carousel
 
 class IndexView(View):
-    """ A view to return the index page with products and deal products. """
+    """ A view to return the index page with products, deal products, and carousel items. """
 
     def get_pagination_range(self, page_obj):
         if not page_obj:
@@ -53,6 +54,10 @@ class IndexView(View):
         context['all_page_obj'] = products
         context['is_all_paginated'] = products.has_other_pages()
         context['all_page_range'] = self.get_pagination_range(products)
+
+        # Add carousel items to the context
+        carousel_items = Carousel.objects.all()
+        context['carousel_items'] = carousel_items
 
         # Render the template with context
         return render(request, 'home/index.html', context)
