@@ -38,6 +38,10 @@
                                         <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
                                            id="ex1-tab-5" href="#ex1-pills-5" role="tab" aria-controls="ex1-pills-5" aria-selected="false">Carousel</a>
                                     </li>
+                                    <li class="nav-item d-flex" role="presentation">
+                                        <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
+                                           id="ex1-tab-6" href="#ex1-pills-6" role="tab" aria-controls="ex1-pills-6" aria-selected="false">Newsletter</a>
+                                    </li>
                                 </ul>
                                 <!-- Pills navs -->
 
@@ -139,6 +143,26 @@
                                                 </div>
                                                 <div class="col-12 col-lg-6">
                                                     <a class="btn btn-outline-black rounded-pill" href="{% url 'carousel_list' %}">Edit/Delete Carousel Item</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Pills 6 content -->
+                                    <div class="tab-pane fade mb-2 p-1" id="ex1-pills-6" role="tabpanel">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    <hr>
+                                                    <h2 class="logo-font mb-4">Newsletter</h2>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-evenly text-center">
+                                                <div class="col-12 col-lg-6 mb-3">
+                                                    <a class="btn btn-outline-black rounded-pill" href="{% url 'send_newsletters' %}">Send Newsletter</a>
+                                                </div>
+                                                <div class="col-12 col-lg-6">
+                                                    <a class="btn btn-outline-black rounded-pill" href="{% url 'create_newsletter' %}">Create Newsletter</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <hr>
+            <h2 class="logo-font mb-4">Send Newsletters</h2>
+            <h5 class="text-muted">Select newsletters to send</h5>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <form id="sendNewslettersForm" method="POST" action="{% url 'send_newsletters' %}" class="form mb-2">
+                {% csrf_token %}
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col"><input type="checkbox" id="select-all-newsletters"></th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Body</th>
+                            <th scope="col">Created At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for newsletter in form.newsletters.field.queryset %}
+                        <tr>
+                            <td><input type="checkbox" name="newsletters" value="{{ newsletter.id }}"></td>
+                            <td>{{ newsletter.subject }}</td>
+                            <td>{{ newsletter.body|truncatewords:20 }}</td>
+                            <td>{{ newsletter.created_at }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="text-right">
+                    <a href="{% url 'site_management' %}">
+                        <button type="button" class="btn rounded-pill my-2 border-black btn-secondary">
+                            Cancel
+                        </button>
+                    </a>
+                    <button type="submit" class="btn rounded-pill my-2 border-black btn-primary">
+                        Send Selected Newsletters
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+    $(document).ready(function() {
+        $('#select-all-newsletters').click(function() {
+            var checkedStatus = this.checked;
+            $('input[name="newsletters"]').each(function() {
+                $(this).prop('checked', checkedStatus);
+            });
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <hr>
+            <h2 class="logo-font mb-4">Create Newsletter</h2>
+            <h5 class="text-muted">Compose a new newsletter</h5>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <form id="createNewsletterForm" method="POST" action="{% url 'create_newsletter' %}" class="form mb-2">
+                {% csrf_token %}
+                {{ form.subject|as_crispy_field }}
+                {{ form.body|as_crispy_field }}
+                {{ form.send_now|as_crispy_field }}
+                <div class="text-right">
+                    <a href="{% url 'site_management' %}">
+                        <button type="button" class="btn rounded-pill my-2 border-black btn-secondary">
+                            Cancel
+                        </button>
+                    </a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn rounded-pill my-2 border-black btn-primary" data-toggle="modal" data-target="#confirmSendNewsletterModal">
+                        Send/Save
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <h5>Recipients</h5>
+            <button type="button" class="btn btn-secondary mb-3" id="toggle-select">Select All</button>
+            {{ form.recipients|as_crispy_field }}
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmSendNewsletterModal" tabindex="-1" role="dialog" aria-labelledby="confirmSendNewsletterModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="w-100 toast-capper"></div>
+            <div class="modal-header bg-white text-dark d-flex justify-content-between">
+                <h5 class="modal-title" id="confirmSendNewsletterModalLabel">Confirm Send Newsletter</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to send this newsletter?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn rounded-pill my-2 border-black btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn rounded-pill my-2 border-black btn-primary" id="confirmSendNewsletterButton">Send Newsletter</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+    $(document).ready(function() {
+        $('#confirmSendNewsletterButton').click(function() {
+            $('#createNewsletterForm').submit();
+        });
+
+        $('#toggle-select').click(function() {
+            let isAllSelected = $('input[name="recipients"]:checked').length === $('input[name="recipients"]').length;
+            $('input[name="recipients"]').prop('checked', !isAllSelected);
+            $(this).text(isAllSelected ? 'Select All' : 'Deselect All');
+        });
+    });
+</script>
+{% endblock %}

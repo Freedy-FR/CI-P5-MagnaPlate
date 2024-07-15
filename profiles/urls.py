@@ -9,10 +9,7 @@ urlpatterns = [
     path('', ProfileView.as_view(), name='profile'),
     path('order_history/<str:order_number>/', OrderHistoryView.as_view(), name='order_history'),
     path('site_management/', SiteManagementView.as_view(), name='site_management'),
-
-
 ]
-
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
