@@ -9,7 +9,7 @@
 <section class="py-4 px-0 container-fluid">
   <div class="container">
     <div class="row gx-5">
-      <aside class="col-lg-6 my-auto px-2">
+      <aside class="col-lg-6 my-auto px-2 position-relative">
         <div class="border rounded-4 d-flex justify-content-center">
           {% if creator.image %}
           <img src="{{ creator.image.url }}" alt="{{ creator.name }}" class="product-image rounded-4 fit">
@@ -17,6 +17,18 @@
           <img src="{{ MEDIA_URL }}creator_images/creators-placeholder.webp" alt="image-placeholder" class="product-image rounded-4 fit">
           {% endif %}
         </div>
+        <form method="post" action="{% url 'favorites:toggle_favorite_creator' creator.id %}">
+          {% csrf_token %}
+          <button type="submit" class="favorite-icon-creator">
+              <div class="icon-background">
+                  {% if is_favorite %}
+                  <i class="fa-solid fa-heart full_heart"></i>
+                  {% else %}
+                  <i class="fa-regular fa-heart regular_heart"></i>
+                  {% endif %}
+              </div>
+          </button>
+        </form>
       </aside>
       <main class="col-lg-6 pt-md-2 d-flex flex-column">
         <div class="ps-lg-3 pt-md-1 flex-grow-1">

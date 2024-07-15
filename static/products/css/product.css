@@ -38,6 +38,7 @@ input::-webkit-inner-spin-button {
 /* For Mozilla Firefox */
 input[type=number] {
     -moz-appearance: textfield;
+    appearance: none;
 }
 
 
@@ -56,6 +57,30 @@ input[type=number] {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.favorite-icon-creator {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-icon-creator .icon-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
 }
 
 .favorite-icon .icon-background {
