@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.utils import timezone
 from .models import Product, Collection, Creator, Category, Creator
+from favorites.models import FavoriteProduct
 from .forms import *
 import datetime
 
@@ -137,6 +138,12 @@ class ProductDetailView(DetailView):
         context['page_obj'] = products
         context['is_paginated'] = products.has_other_pages()
         context['page_range'] = self.get_pagination_range(products)
+
+        user = self.request.user
+        if user.is_authenticated:
+            context['is_favorite'] = FavoriteProduct.objects.filter(user=user, product=self.object, is_favorite=True).exists()
+        else:
+            context['is_favorite'] = False
 
         return context
 

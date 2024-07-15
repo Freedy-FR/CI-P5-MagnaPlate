@@ -12,7 +12,7 @@
   <div class="container">
     <div class="row gx-5">
       <aside class="col-lg-6 my-auto px-2">
-        <div class="border rounded-4 d-flex justify-content-center">
+        <div class="border rounded-4 d-flex justify-content-center position-relative">
           {% if product.image %}
           <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
             href="{{ product.image.url }}">
@@ -22,6 +22,18 @@
           <img src="{{ MEDIA_URL }}product_images/placeholder-image.png" alt="image-placeholder"
             class="product-image rounded-4 fit">
           {% endif %}
+          <form method="post" action="{% url 'favorites:toggle_favorite_product' product.id %}">
+            {% csrf_token %}
+            <button type="submit" class="favorite-icon">
+                <div class="icon-background">
+                    {% if is_favorite %}
+                    <i class="fa-solid fa-heart full_heart"></i>
+                    {% else %}
+                    <i class="fa-regular fa-heart regular_heart"></i>
+                    {% endif %}
+                </div>
+            </button>
+        </form>
         </div>
       </aside>
       <main class="col-lg-6 pt-md-2">
@@ -220,14 +232,11 @@
 
             </div>
           </div>
-          <!-- Pills content -->
         </div>
       </div>
     </div>
 
-    <!-- More products includes -->
     {% include "includes/all_products.html" %}
-
   </div>
 </section>
 
@@ -242,4 +251,5 @@
 
 <!-- MDB -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+
 {% endblock %}

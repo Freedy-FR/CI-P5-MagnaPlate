@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Favorites</h2>
+
+<h3>Products</h3>
+<ul>
+    {% for favorite in favorite_products %}
+    <li>{{ favorite.product.name }} - Added on: {{ favorite.created_at }}
+        <form method="post" action="{% url 'favorites:toggle_favorite_product' favorite.product.id %}">
+            {% csrf_token %}
+            <button type="submit">{% if favorite.is_favorite %}Remove from favorites{% else %}Add to favorites{% endif %}</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+
+<h3>Creators</h3>
+<ul>
+    {% for favorite in favorite_creators %}
+    <li>{{ favorite.creator.name }} - Added on: {{ favorite.created_at }}
+        <form method="post" action="{% url 'favorites:toggle_favorite_creator' favorite.creator.id %}">
+            {% csrf_token %}
+            <button type="submit">{% if favorite.is_favorite %}Remove from favorites{% else %}Add to favorites{% endif %}</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

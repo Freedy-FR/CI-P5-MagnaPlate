@@ -39,3 +39,39 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+
+
+/* Favorites */
+
+.favorite-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 3px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-icon .icon-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.full_heart {
+    color: red;
+}
+
+.regular_heart {
+    color: blue;
+}
