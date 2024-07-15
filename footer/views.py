@@ -34,11 +34,12 @@ class NewsletterSubscriptionView(View):
     def send_confirmation_email(self, request, subscription):
         subject = 'Subscription Confirmation'
         body = render_to_string('footer/emails/subscription_confirmation.html', {'name': subscription.name})
+        plain_message = strip_tags(body)  # Add this line for debugging
         from_email = settings.DEFAULT_FROM_EMAIL
         to = subscription.email
 
         try:
-            send_mail(subject, body, from_email, [to])
+            send_mail(subject, plain_message, from_email, [to], html_message=body)
             print("Email sent successfully")  # Add this line for debugging
         except BadHeaderError:
             messages.error(request, "Invalid header found.")
