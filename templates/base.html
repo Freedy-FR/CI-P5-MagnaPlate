@@ -117,6 +117,7 @@
               <li><a class="dropdown-item" href="{% url 'site_management' %}">Site Management</a></li>
               {% endif %}
               <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'favorites:favorite_list' %}">My Favorites</a></li>
               <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
               {% else %}
               <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>

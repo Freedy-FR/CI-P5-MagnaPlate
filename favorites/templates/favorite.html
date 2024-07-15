@@ -1,28 +1,160 @@
 {% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'favorites/css/favorites.css' %}">
+{% endblock %}
+
 {% block content %}
-<h2>Favorites</h2>
+<div class="container py-4">
+    <h2 class="text-center">{{ username|capfirst }} Favorites</h2>
 
-<h3>Products</h3>
-<ul>
-    {% for favorite in favorite_products %}
-    <li>{{ favorite.product.name }} - Added on: {{ favorite.created_at }}
-        <form method="post" action="{% url 'favorites:toggle_favorite_product' favorite.product.id %}">
-            {% csrf_token %}
-            <button type="submit">{% if favorite.is_favorite %}Remove from favorites{% else %}Add to favorites{% endif %}</button>
-        </form>
-    </li>
-    {% endfor %}
-</ul>
+    <div class="col py-4 border-top"><h3 class="text-center">Products</h3></div>
+    {% if favorite_products %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        {% for item in favorite_products %}
+        <div class="col">
+            <div class="card h-100">
+                <div class="position-relative">
+                    <a href="{% url 'product_detail' item.product.id %}" class="text-decoration-none">
+                        {% if item.product.image %}
+                        <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}">
+                        {% else %}
+                        <img src="{{ MEDIA_URL }}product_images/placeholder-image.png" class="card-img-top" alt="{{ item.product.name }}">
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.product.name }}</h5>
+                    <p class="card-text text-truncate">{{ item.product.description }}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Added on: {{ item.created_at }}</small>
+                    <button type="button" class="btn btn-danger btn-sm position-absolute bottom-0 end-0 m-2" data-bs-toggle="modal" data-bs-target="#confirmModal" data-product-id="{{ item.product.id }}" data-product-name="{{ item.product.name }}">
+                        Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-center">You have no favorite products, please check out our <a href="{% url 'products' %}">products</a>.</p>
+    {% endif %}
 
-<h3>Creators</h3>
-<ul>
-    {% for favorite in favorite_creators %}
-    <li>{{ favorite.creator.name }} - Added on: {{ favorite.created_at }}
-        <form method="post" action="{% url 'favorites:toggle_favorite_creator' favorite.creator.id %}">
-            {% csrf_token %}
-            <button type="submit">{% if favorite.is_favorite %}Remove from favorites{% else %}Add to favorites{% endif %}</button>
-        </form>
-    </li>
-    {% endfor %}
-</ul>
+    <div class="col py-4 border-top mt-4"><h3 class="text-center">Creators</h3></div>
+    {% if favorite_creators %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        {% for item in favorite_creators %}
+        <div class="col">
+            <div class="card h-100 position-relative">
+                <a href="{% url 'creator_detail' item.creator.id %}" class="text-decoration-none">
+                    {% if item.creator.image %}
+                    <img src="{{ item.creator.image.url }}" class="card-img-top" alt="{{ item.creator.name }}">
+                    {% else %}
+                    <img src="{{ MEDIA_URL }}creator_images/creators-placeholder.webp" class="card-img-top" alt="{{ item.creator.name }}">
+                    {% endif %}
+                </a>
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.creator.name }}</h5>
+                    <p class="card-text text-truncate">{{ item.creator.description }}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Added on: {{ item.created_at }}</small>
+                    <button type="button" class="btn btn-danger btn-sm position-absolute bottom-0 end-0 m-2" data-bs-toggle="modal" data-bs-target="#confirmModalCreator" data-creator-id="{{ item.creator.id }}" data-creator-name="{{ item.creator.name }}">
+                        Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-center">You have no favorite creators, please check out our <a href="{% url 'all_creators' %}">creators</a>.</p>
+    {% endif %}
+</div>
+
+<!-- Modal for Products -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirm Removal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to remove <span id="product-name"></span> from your favorites?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="post" id="productDeleteForm">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Creators -->
+<div class="modal fade" id="confirmModalCreator" tabindex="-1" aria-labelledby="confirmModalLabelCreator" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabelCreator">Confirm Removal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to remove <span id="creator-name"></span> from your favorites?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="post" id="creatorDeleteForm">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlY8R/U4x2r+UhdPO9H61 + 5qFN5WYdV11UVtq3lDJjzQFfjnnCUOG8ifwB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9KpQ5fT + XJ6t6AKT +3bb84C4hmiVYXyl1PdpnY+PQMAFj4V0PQ5Bh44" crossorigin="anonymous"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var confirmModal = document.getElementById('confirmModal');
+        confirmModal.addEventListener('show.bs.modal', function(event) {
+            var button = event.relatedTarget;
+            var productId = button.getAttribute('data-product-id');
+            var productName = button.getAttribute('data-product-name');
+            var formAction = "{% url 'favorites:toggle_favorite_product' 1 %}".replace('1', productId);
+            
+            var modalBodyProductName = confirmModal.querySelector('#product-name');
+            modalBodyProductName.textContent = productName;
+            
+            var productDeleteForm = confirmModal.querySelector('#productDeleteForm');
+            productDeleteForm.setAttribute('action', formAction);
+        });
+
+        var confirmModalCreator = document.getElementById('confirmModalCreator');
+        confirmModalCreator.addEventListener('show.bs.modal', function(event) {
+            var button = event.relatedTarget;
+            var creatorId = button.getAttribute('data-creator-id');
+            var creatorName = button.getAttribute('data-creator-name');
+            var formAction = "{% url 'favorites:toggle_favorite_creator' 1 %}".replace('1', creatorId);
+            
+            var modalBodyCreatorName = confirmModalCreator.querySelector('#creator-name');
+            modalBodyCreatorName.textContent = creatorName;
+            
+            var creatorDeleteForm = confirmModalCreator.querySelector('#creatorDeleteForm');
+            creatorDeleteForm.setAttribute('action', formAction);
+        });
+    });
+</script>
 {% endblock %}

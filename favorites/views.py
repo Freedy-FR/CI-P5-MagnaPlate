@@ -1,5 +1,3 @@
-# views.py
-
 from django.views.generic import ListView, View
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -15,8 +13,10 @@ class FavoriteListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['favorite_products'] = FavoriteProduct.objects.filter(user=self.request.user)
-        context['favorite_creators'] = FavoriteCreator.objects.filter(user=self.request.user)
+        user = self.request.user
+        context['favorite_products'] = FavoriteProduct.objects.filter(user=user)
+        context['favorite_creators'] = FavoriteCreator.objects.filter(user=user)
+        context['username'] = user.username
         return context
 
 class ToggleFavoriteProductView(LoginRequiredMixin, View):
