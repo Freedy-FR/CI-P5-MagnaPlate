@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container py-4">
+    <h2 class="text-center">Edit Carousel Item</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn rounded-pill my-2 border-black btn-primary">Save Changes</button>
+        </div>
+    </form>
+    <div class="row mt-4">
+        <div class="col text-center">
+            <a href="{% url 'carousel_list' %}" class="btn rounded-pill my-2 border-black btn-danger">Back to Carousel Management</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

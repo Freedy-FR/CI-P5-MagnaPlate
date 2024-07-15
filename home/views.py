@@ -1,9 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from django.core.paginator import Paginator
+from django.contrib.auth.mixins import LoginRequiredMixin
 from products.models import Product
 import random
 from .models import Carousel
+from .forms import CarouselForm
+
+
+
 
 class IndexView(View):
     """ A view to return the index page with products, deal products, and carousel items. """
@@ -61,3 +66,44 @@ class IndexView(View):
 
         # Render the template with context
         return render(request, 'home/index.html', context)
+
+
+
+# Carousel Management Views
+
+class CarouselListView(LoginRequiredMixin, View):
+    def get(self, request):
+        carousels = Carousel.objects.all()
+        return render(request, 'carousel_management/carousel_management.html', {'carousels': carousels})
+
+class CarouselCreateView(LoginRequiredMixin, View):
+    def get(self, request):
+        form = CarouselForm()
+        return render(request, 'carousel_management/add_carousel.html', {'form': form})
+
+    def post(self, request):
+        form = CarouselForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('carousel_list')
+        return render(request, 'carousel_management/add_carousel.html', {'form': form})
+
+class CarouselUpdateView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        carousel = Carousel.objects.get(pk=pk)
+        form = CarouselForm(instance=carousel)
+        return render(request, 'carousel_management/edit_carousel.html', {'form': form})
+
+    def post(self, request, pk):
+        carousel = Carousel.objects.get(pk=pk)
+        form = CarouselForm(request.POST, request.FILES, instance=carousel)
+        if form.is_valid():
+            form.save()
+            return redirect('carousel_list')
+        return render(request, 'carousel_management/edit_carousel.html', {'form': form})
+
+class CarouselDeleteView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        carousel = Carousel.objects.get(pk=pk)
+        carousel.delete()
+        return redirect('carousel_list')

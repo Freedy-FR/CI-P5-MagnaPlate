@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/product.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h2 class="text-center">Carousel Management</h2>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Link</th>
+                <th>Caption</th>
+                <th>Order</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in carousels %}
+            <tr>
+                <td><img src="{{ item.image.url }}" width="100" class="img-fluid"></td>
+                <td>{{ item.link }}</td>
+                <td>{{ item.caption }}</td>
+                <td>{{ item.order }}</td>
+                <td>
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'carousel_update' item.id %}" class="btn rounded-pill my-2 border-black btn-primary">Edit</a>
+                        <button type="button" class="btn rounded-pill my-2 border-black btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-item-id="{{ item.id }}" data-item-caption="{{ item.caption }}">Delete</button>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="row mt-4">
+        <div class="col-6 text-center">
+            <a href="{% url 'site_management' %}" class="btn rounded-pill my-2 border-black btn-danger">Back to Management</a>
+        </div>
+        <div class="col-6 text-center">
+            <a href="{% url 'carousel_create' %}" class="btn rounded-pill my-2 border-black btn-success">Add New Item</a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Delete Confirmation -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-white text-dark d-flex justify-content-between">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete <span id="modalItemCaption"></span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn rounded-pill border-black btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="post" id="deleteForm">
+                    {% csrf_token %}
+                    <button type="submit" class="btn rounded-pill border-black btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var confirmDeleteModal = document.getElementById('confirmDeleteModal');
+        confirmDeleteModal.addEventListener('show.bs.modal', function(event) {
+            var button = event.relatedTarget;
+            var itemId = button.getAttribute('data-item-id');
+            var itemCaption = button.getAttribute('data-item-caption');
+            var formAction = "{% url 'carousel_delete' 1 %}".replace('1', itemId);
+
+            var modalBodyItemCaption = confirmDeleteModal.querySelector('#modalItemCaption');
+            modalBodyItemCaption.textContent = itemCaption;
+
+            var deleteForm = confirmDeleteModal.querySelector('#deleteForm');
+            deleteForm.setAttribute('action', formAction);
+        });
+    });
+</script>
+{% endblock %}

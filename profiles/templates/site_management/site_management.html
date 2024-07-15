@@ -34,6 +34,10 @@
                                         <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
                                            id="ex1-tab-4" href="#ex1-pills-4" role="tab" aria-controls="ex1-pills-4" aria-selected="false">Categories</a>
                                     </li>
+                                    <li class="nav-item d-flex" role="presentation">
+                                        <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
+                                           id="ex1-tab-5" href="#ex1-pills-5" role="tab" aria-controls="ex1-pills-5" aria-selected="false">Carousel</a>
+                                    </li>
                                 </ul>
                                 <!-- Pills navs -->
 
@@ -49,12 +53,12 @@
                                                     <hr>
                                                 </div>
                                             </div>
-                                            <div class="row justify-content-center">
+                                            <div class="row justify-content-evenly text-center">
                                                 <div class="col-12 col-lg-6 mb-3">
-                                                    <a type="button" class="btn btn-outline-black rounded-pill w-100" href="{% url 'add_product' %}">Add Product</a>
+                                                    <a type="button" class="btn btn-outline-black rounded-pill" href="{% url 'add_product' %}">Add Product</a>
                                                 </div>
                                                 <div class="col-12 col-lg-6">
-                                                    <a class="btn btn-outline-black rounded-pill w-100" href="{% url 'product_management' %}">Edit/Delete Product</a>
+                                                    <a class="btn btn-outline-black rounded-pill" href="{% url 'product_management' %}">Edit/Delete Product</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -69,12 +73,12 @@
                                                     <hr>
                                                 </div>
                                             </div>
-                                            <div class="row justify-content-center">
+                                            <div class="row justify-content-evenly text-center">
                                                 <div class="col-12 col-lg-6 mb-3">
-                                                    <a class="btn btn-outline-black rounded-pill w-100" href="{% url 'add_creator' %}">Add Creator</a> 
+                                                    <a class="btn btn-outline-black rounded-pill" href="{% url 'add_creator' %}">Add Creator</a> 
                                                 </div>
                                                 <div class="col-12 col-lg-6">
-                                                    <a class="btn btn-outline-black rounded-pill w-100" href="{% url 'creator_management' %}">Edit/Delete Creator</a>
+                                                    <a class="btn btn-outline-black rounded-pill" href="{% url 'creator_management' %}">Edit/Delete Creator</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -89,12 +93,12 @@
                                                     <hr>
                                                 </div>
                                             </div>
-                                            <div class="row justify-content-center">
+                                            <div class="row justify-content-evenly text-center">
                                                 <div class="col-12 col-lg-6 mb-3">
-                                                    <a class="btn btn-outline-black rounded-pill w-100" href="{% url 'add_collection' %}">Add Collection</a>
+                                                    <a class="btn btn-outline-black rounded-pill" href="{% url 'add_collection' %}">Add Collection</a>
                                                 </div>
                                                 <div class="col-12 col-lg-6">
-                                                    <a class="btn btn-outline-black rounded-pill w-100" href="{% url 'collection_management' %}">Edit/Delete Collection</a>
+                                                    <a class="btn btn-outline-black rounded-pill" href="{% url 'collection_management' %}">Edit/Delete Collection</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,12 +113,32 @@
                                                     <hr>
                                                 </div>
                                             </div>
-                                            <div class="row justify-content-center">
+                                            <div class="row justify-content-evenly text-center">
                                                 <div class="col-12 col-lg-6 mb-3">
-                                                    <a class="btn btn-outline-black rounded-pill w-100" href="{% url 'add_category' %}">Add Category</a>
+                                                    <a class="btn btn-outline-black rounded-pill" href="{% url 'add_category' %}">Add Category</a>
                                                 </div>
                                                 <div class="col-12 col-lg-6">
-                                                    <a class="btn btn-outline-black rounded-pill w-100" href="{% url 'category_management' %}">Edit/Delete Category</a>
+                                                    <a class="btn btn-outline-black rounded-pill" href="{% url 'category_management' %}">Edit/Delete Category</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Pills 5 content -->
+                                    <div class="tab-pane fade mb-2 p-1" id="ex1-pills-5" role="tabpanel">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    <hr>
+                                                    <h2 class="logo-font mb-4">Carousel</h2>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-evenly text-center">
+                                                <div class="col-12 col-lg-6 mb-3">
+                                                    <a class="btn btn-outline-black rounded-pill" href="{% url 'carousel_create' %}">Add Carousel Item</a>
+                                                </div>
+                                                <div class="col-12 col-lg-6">
+                                                    <a class="btn btn-outline-black rounded-pill" href="{% url 'carousel_list' %}">Edit/Delete Carousel Item</a>
                                                 </div>
                                             </div>
                                         </div>
