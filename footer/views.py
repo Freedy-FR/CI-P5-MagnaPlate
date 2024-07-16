@@ -105,7 +105,8 @@ class EditNewsletterView(View):
             newsletter = form.save(commit=False)
             newsletter.save()
             form.save_m2m()
-            chosen_recipients = request.POST.getlist('recipients')
+            chosen_recipient_ids = request.POST.getlist('recipients')
+            chosen_recipients = NewsletterSubscribedInfo.objects.filter(id__in=chosen_recipient_ids)
             newsletter.recipients.set(chosen_recipients)
 
             if newsletter.send_now:
@@ -116,7 +117,20 @@ class EditNewsletterView(View):
             return redirect('send_newsletters')
         return render(request, 'newsletter_management/edit_newsletter.html', {'form': form, 'newsletter': newsletter})
 
+    def send_newsletter(self, request, newsletter, recipients):
+        subject = newsletter.subject
+        message = newsletter.body
+        from_email = settings.DEFAULT_FROM_EMAIL
+        recipient_emails = [recipient.email for recipient in recipients]
 
+        if recipient_emails:
+            try:
+                send_mail(subject, message, from_email, recipient_emails)
+                newsletter.letter_sent = True
+                newsletter.save()
+                messages.success(request, 'Newsletter sent successfully.')
+            except Exception as e:
+                messages.error(request, f"An error occurred: {e}")
 
 
 class SendNewslettersView(View):
