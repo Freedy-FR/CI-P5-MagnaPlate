@@ -1,0 +1,13 @@
+.select-horizontal {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.select-horizontal select {
+    flex: 1;
+    margin-right: 10px;
+}
+.select-horizontal button {
+    align-self: center;
+}
+

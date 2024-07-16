@@ -8,15 +8,15 @@
     <div class="row">
         <div class="col-12">
             <hr>
-            <h2 class="logo-font mb-4">Create Newsletter</h2>
-            <h5 class="text-muted">Compose your new newsletter</h5>
+            <h2 class="logo-font mb-4">Edit Newsletter</h2>
+            <h5 class="text-muted">Modify your newsletter</h5>
             <hr>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12">
-            <form id="newsletterForm" method="POST" action="{% url 'create_newsletter' %}" class="form mb-2">
+            <form id="newsletterForm" method="POST" action="{% url 'edit_newsletter' newsletter.pk %}" class="form mb-2">
                 {% csrf_token %}
                 {{ form.subject|as_crispy_field }}
                 {{ form.body|as_crispy_field }}

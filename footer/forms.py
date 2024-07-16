@@ -1,29 +1,34 @@
 from django import forms
-from .models import NewsletterSubscription, NewsletterEmailList
+from .models import NewsletterSubscribedInfo, NewsletterSendEmail
 
-class NewsletterSubscriptionForm(forms.ModelForm):
+class NewsletterSubscribedInfoForm(forms.ModelForm):
     class Meta:
-        model = NewsletterSubscription
+        model = NewsletterSubscribedInfo
         fields = ['name', 'email']
 
-
-class NewsletterEmailListForm(forms.ModelForm):
+class NewsletterSendEmailForm(forms.ModelForm):
     recipients = forms.ModelMultipleChoiceField(
-        queryset=NewsletterSubscription.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
+        queryset=NewsletterSubscribedInfo.objects.all(),
         required=False,
         label="Recipients"
     )
 
     class Meta:
-        model = NewsletterEmailList
+        model = NewsletterSendEmail
         fields = ['subject', 'body', 'send_now', 'recipients']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if self.instance and self.instance.pk:
+            self.fields['recipients'].initial = self.instance.recipients.all()
+        else:
+            self.fields['recipients'].initial = []
 
 
 class NewsletterSendForm(forms.Form):
     newsletters = forms.ModelMultipleChoiceField(
-        queryset=NewsletterEmailList.objects.all(),
+        queryset=NewsletterSendEmail.objects.all(),
         widget=forms.CheckboxSelectMultiple,
-        required=True,
+        required=False,
         label="Select Newsletters to Send"
     )

@@ -56,13 +56,17 @@ INSTALLED_APPS = [
     # Apps
     'home',
     'products',
-    'crispy_forms',
-    'storages',
     'cart',
     'checkout',
     'profiles',
     'favorites',
     'footer',
+
+    # Other Apps
+
+    'widget_tweaks',
+    'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [

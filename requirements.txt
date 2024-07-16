@@ -10,6 +10,7 @@ django-allauth==0.63.3
 django-countries==7.2.1
 django-crispy-forms==1.14.0
 django-storages==1.14.2
+django-widget-tweaks==1.5.0
 djlint==1.34.1
 EditorConfig==0.12.3
 gunicorn==21.2.0
