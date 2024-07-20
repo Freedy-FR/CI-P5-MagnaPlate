@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    .border-ruler {
+        border-top: 2px solid #000;
+        margin: 2rem 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="about-us-container container">
+    <h1 class="text-center pt-4">About Us</h1>
+
+    <div class="row my-4 pt-4 align-items-center border-top">
+        <div class="col-md-6 order-md-2">
+            <img src="{{ MEDIA_URL }}about_us/about_us-mission.webp" alt="About Us" class="img-fluid rounded-2">
+            <!-- <img src="{% static 'images/about_us_1.jpg' %}" class="img-fluid" alt="About Us"> -->
+        </div>
+        <div class="col-md-6 order-md-1 pt-2">
+            <section class="mission">
+                <h2>Our Mission</h2>
+                <p>At MagnaPlate, our mission is to revolutionize the way you decorate your walls with our innovative metallic posters. We aim to provide a practical and stylish solution that causes minimal damage to your walls.</p>
+            </section>
+        </div>
+    </div>
+
+    <div class="row my-4 pt-4 align-items-center border-top">
+        <div class="col-md-6 order-md-1">
+            <img src="{{ MEDIA_URL }}about_us/about_us-history.webp" alt="Our History" class="img-fluid rounded-2">
+            <!-- <img src="{% static 'images/about_us_2.jpg' %}" class="img-fluid" alt="Our History"> -->
+        </div>
+        <div class="col-md-6 order-md-2 pt-2">
+            <section class="history">
+                <h2>Our History</h2>
+                <p>Founded in 2024, MagnaPlate has quickly ascended in the market, becoming a leader in wall decoration solutions. Our dedication to quality and innovation has set us apart from the competition.</p>
+            </section>
+        </div>
+    </div>
+
+
+    <div class="row my-4 pt-4 align-items-center border-top">
+        <div class="col-md-6 order-md-2">
+            <img src="{{ MEDIA_URL }}about_us/about_us-core.webp" alt="Our Values" class="img-fluid rounded-2">
+            <!-- <img src="{% static 'images/about_us_3.jpg' %}" class="img-fluid" alt="Our Values"> -->
+        </div>
+        <div class="col-md-6 order-md-1 pt-2">
+            <section class="values">
+                <h2>Our Core Values</h2>
+                <ul>
+                    <li><strong>Innovation:</strong> Constantly striving to improve and innovate our products.</li>
+                    <li><strong>Quality:</strong> Ensuring the highest standards in everything we do.</li>
+                    <li><strong>Customer Satisfaction:</strong> Putting our customers at the heart of our business.</li>
+                    <li><strong>Integrity:</strong> Conducting our business with honesty and transparency.</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+{% endblock %}

@@ -1,4 +1,5 @@
 from django.views import View
+from django.views.generic import TemplateView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import NewsletterSendEmail, NewsletterSubscribedInfo
@@ -170,3 +171,7 @@ class SendNewslettersView(View):
             except Exception as e:
                 messages.error(request, f"An error occurred: {e}")
 
+
+
+class AboutUsView(TemplateView):
+    template_name = 'footer/about_us.html'

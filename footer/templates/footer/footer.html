@@ -1,5 +1,5 @@
 <div class="row justify-content-center w-100">
-  <div class="col-10 pb-5">
+  <div class="col-10 pb-4">
     <form class="text-center" action="{% url 'subscribe_newsletter' %}" method="post">
       {% csrf_token %}
       <h5>Subscribe to our newsletter</h5>
@@ -21,46 +21,42 @@
   </div>
 </div>
 
-<div class="row justify-content-center w-100">
-  <div class="col-3 offset-md-2">
-    <h5>Support</h5>
+<div class="row justify-content-center w-100 text-center">
+  <div class="col-8 col-md-3 pb-2">
+    <h5 class="fs-5">Quick Links</h5>
     <ul class="nav flex-column">
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">F.A.Q</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+      <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-muted fs-6 fs-md-5">Home</a></li>
+      <li class="nav-item mb-2"><a href="{% url 'about_us' %}" class="nav-link p-0 text-muted fs-6 fs-md-5">About Us</a></li>
+      <li class="nav-item mb-2"><a href="{% url 'products' %}" class="nav-link p-0 text-muted fs-6 fs-md-5">Products</a></li>
+      <li class="nav-item mb-2"><a href="{% url 'products' %}?is_on_deal=true" class="nav-link p-0 text-muted fs-6 fs-md-5">Deals</a></li>
     </ul>
   </div>
 
-  <div class="col-3">
-    <h5>Section</h5>
+  <div class="col-8 col-md-3 offset-md-0 pb-2">
+    <h5 class="fs-5">Support</h5>
     <ul class="nav flex-column">
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted fs-6 fs-md-5">F.A.Q</a></li>
+      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted fs-6 fs-md-5">Customer Support</a></li>
+      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted fs-6 fs-md-5">Pricing</a></li>
     </ul>
   </div>
 
-  <div class="col-3">
-    <h5>Section</h5>
+  <div class="col-8 col-md-3 offset-md-0 pb-2">
+    <h5 class="fs-5">Social Media</h5>
     <ul class="nav flex-column">
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-    </ul>
+      <li class="nav-item mb-2"><a href="https://www.facebook.com/profile.php?id=61562070003993" target="_blank" class="nav-link p-0 text-muted fs-6 fs-md-5"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+      <li class="nav-item mb-2"><a href="https://www.instagram.com/magna_plate/" target="_blank" class="nav-link p-0 text-muted fs-6 fs-md-5"><i class="fa-brands fa-square-instagram"></i> Instagram</a></li>
+      <li class="nav-item mb-2"><a href="https://twitter.com/company" target="_blank" class="nav-link p-0 text-muted fs-6 fs-md-5"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
   </div>
 </div>
 
-<div class="d-flex justify-content-between py-1 my-1 border-top w-100">
-  <p>&copy; 2021 Company, Inc. All rights reserved.</p>
-  <ul class="list-unstyled d-flex">
-    <li class="ms-3"><a class="link-dark px-1" href="#"><i class="fa-brands fa-facebook"></i></a></li>
-    <li class="ms-3"><a class="link-dark px-1" href="#"><i class="fa-brands fa-square-instagram"></i></a></li>
-    <li class="ms-3"><a class="link-dark px-1" href="#"><i class="fa-brands fa-square-youtube"></i></a></li>
-  </ul>
+<div class="d-flex justify-content-between align-items-center pt-1 m-1 border-top w-100">
+  <p class="mb-0 fs-6 fs-md-5">This site was made for educational purposes.</p>
+  <div class="d-flex align-items-center">
+    <p class="mb-0 fs-6 fs-md-5 me-2">Freedy-2024</p>
+    <ul class="list-unstyled d-flex mb-0">
+      <li class="ms-md-2 m-1"><a class="link-dark px-2 fs-6 fs-md-5" href="https://github.com/Freedy-FR" target="_blank"><i class="fa-brands fa-github text-center"></i></a></li>
+      <li class="ms-md-2 me-2 m-1"><a class="link-dark px-2 fs-6 fs-md-5" href="https://www.linkedin.com/in/freedy-feliciano-ramos-56619711b/" target="_blank"><i class="fa-brands fa-linkedin text-center"></i></a></li>
+    </ul>
+  </div>
 </div>
