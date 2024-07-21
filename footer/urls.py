@@ -9,6 +9,7 @@ urlpatterns = [
     path('send-newsletters/', SendNewslettersView.as_view(), name='send_newsletters'),
     path('edit-newsletter/<int:pk>/', EditNewsletterView.as_view(), name='edit_newsletter'),
     path('about-us/', AboutUsView.as_view(), name='about_us'),
+    path('faq/', FaqView.as_view(), name='faq'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -175,3 +175,7 @@ class SendNewslettersView(View):
 
 class AboutUsView(TemplateView):
     template_name = 'footer/about_us.html'
+
+
+class FaqView(TemplateView):
+    template_name = 'footer/faq.html'

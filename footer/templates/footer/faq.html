@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    .faq-container .accordion-item {
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="faq-container container">
+    <h1 class="text-center pt-4">Frequently Asked Questions</h1>
+    <p class="text-center pt-2">Find answers to the most commonly asked questions about our products and services below. If you have any further questions, please feel free to <a href="#">contact our customer support</a>.</p>
+
+    <!-- Orders FAQ -->
+    <h2 class="pt-4">Orders FAQ</h2>
+    <div class="accordion mb-4" id="ordersFaq">
+        <!-- Question 1 -->
+        <div class="accordion-item border-top">
+            <h2 class="accordion-header" id="headingOrderOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOrderOne" aria-expanded="true" aria-controls="collapseOrderOne">
+                    How can I check my order?
+                </button>
+            </h2>
+            <div id="collapseOrderOne" class="accordion-collapse collapse show" aria-labelledby="headingOrderOne" data-bs-parent="#ordersFaq">
+                <div class="accordion-body">
+                    You can check your order by logging into your account and navigating to the 'Orders' section.
+                </div>
+            </div>
+        </div>
+        <!-- Question 2 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOrderTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOrderTwo" aria-expanded="false" aria-controls="collapseOrderTwo">
+                    What is your return policy?
+                </button>
+            </h2>
+            <div id="collapseOrderTwo" class="accordion-collapse collapse" aria-labelledby="headingOrderTwo" data-bs-parent="#ordersFaq">
+                <div class="accordion-body">
+                    Our return policy allows you to return products within 30 days of purchase for a full refund. The items must be in their original condition and packaging. Please <a href="#">contact our customer support</a> for assistance with returns.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Installation FAQ -->
+    <h2 class="pt-4">Installation FAQ</h2>
+    <div class="accordion mb-4" id="installationFaq">
+        <!-- Question 1 -->
+        <div class="accordion-item border-top">
+            <h2 class="accordion-header" id="headingInstallOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstallOne" aria-expanded="false" aria-controls="collapseInstallOne">
+                    How do I install a MagnaPlate poster?
+                </button>
+            </h2>
+            <div id="collapseInstallOne" class="accordion-collapse collapse" aria-labelledby="headingInstallOne" data-bs-parent="#installationFaq">
+                <div class="accordion-body">
+                    Installing a MagnaPlate poster is simple. Clean the wall, apply the adhesive magnet to the desired spot, and attach the metallic poster. The magnet allows for easy adjustment and removal.
+                </div>
+            </div>
+        </div>
+        <!-- Question 2 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingInstallTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstallTwo" aria-expanded="false" aria-controls="collapseInstallTwo">
+                    Can I reuse the adhesive magnets?
+                </button>
+            </h2>
+            <div id="collapseInstallTwo" class="accordion-collapse collapse" aria-labelledby="headingInstallTwo" data-bs-parent="#installationFaq">
+                <div class="accordion-body">
+                    Yes, the adhesive magnets can be reused. Simply remove them from the wall and reapply them to a new location.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subscription FAQ -->
+    <h2 class="pt-4 border-top">Subscription FAQ</h2>
+    <div class="accordion mb-4" id="subscriptionFaq">
+        <!-- Question 1 -->
+        <div class="accordion-item border-top">
+            <h2 class="accordion-header" id="headingSubOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSubOne" aria-expanded="false" aria-controls="collapseSubOne">
+                    How do I subscribe to the newsletter?
+                </button>
+            </h2>
+            <div id="collapseSubOne" class="accordion-collapse collapse" aria-labelledby="headingSubOne" data-bs-parent="#subscriptionFaq">
+                <div class="accordion-body">
+                    You can subscribe to our newsletter by entering your email address in the subscription form on our website. You will receive regular updates on new products, special offers, and company news.
+                </div>
+            </div>
+        </div>
+        <!-- Question 2 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSubTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSubTwo" aria-expanded="false" aria-controls="collapseSubTwo">
+                    How can I manage my subscription preferences?
+                </button>
+            </h2>
+            <div id="collapseSubTwo" class="accordion-collapse collapse" aria-labelledby="headingSubTwo" data-bs-parent="#subscriptionFaq">
+                <div class="accordion-body">
+                    To manage your subscription preferences, please <a href="#">get in contact with our customer support</a>. They will assist you with updating your email address, frequency of newsletters, and other preferences.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Media FAQ -->
+    <h2 class="pt-4">Social Media FAQ</h2>
+    <div class="accordion mb-4" id="socialMediaFaq">
+        <!-- Question 1 -->
+        <div class="accordion-item border-top">
+            <h2 class="accordion-header" id="headingSocialOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSocialOne" aria-expanded="false" aria-controls="collapseSocialOne">
+                    Where can I follow MagnaPlate on social media?
+                </button>
+            </h2>
+            <div id="collapseSocialOne" class="accordion-collapse collapse" aria-labelledby="headingSocialOne" data-bs-parent="#socialMediaFaq">
+                <div class="accordion-body">
+                    You can follow MagnaPlate on various social media platforms including Facebook, Instagram, Twitter, and LinkedIn. Stay updated with our latest news, products, and promotions by following us.
+                </div>
+            </div>
+        </div>
+        <!-- Question 2 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSocialTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSocialTwo" aria-expanded="false" aria-controls="collapseSocialTwo">
+                    How can I share my MagnaPlate experience on social media?
+                </button>
+            </h2>
+            <div id="collapseSocialTwo" class="accordion-collapse collapse" aria-labelledby="headingSocialTwo" data-bs-parent="#socialMediaFaq">
+                <div class="accordion-body">
+                    Share your MagnaPlate experience by tagging us in your posts and using the hashtag #MagnaPlate. We love seeing our customers' creative uses of our products and may feature your post on our official pages.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+{% endblock %}

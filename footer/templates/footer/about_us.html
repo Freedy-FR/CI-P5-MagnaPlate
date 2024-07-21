@@ -2,12 +2,6 @@
 {% load static %}
 
 {% block extra_css %}
-<style>
-    .border-ruler {
-        border-top: 2px solid #000;
-        margin: 2rem 0;
-    }
-</style>
 {% endblock %}
 
 {% block content %}
@@ -17,7 +11,6 @@
     <div class="row my-4 pt-4 align-items-center border-top">
         <div class="col-md-6 order-md-2">
             <img src="{{ MEDIA_URL }}about_us/about_us-mission.webp" alt="About Us" class="img-fluid rounded-2">
-            <!-- <img src="{% static 'images/about_us_1.jpg' %}" class="img-fluid" alt="About Us"> -->
         </div>
         <div class="col-md-6 order-md-1 pt-2">
             <section class="mission">
@@ -30,7 +23,6 @@
     <div class="row my-4 pt-4 align-items-center border-top">
         <div class="col-md-6 order-md-1">
             <img src="{{ MEDIA_URL }}about_us/about_us-history.webp" alt="Our History" class="img-fluid rounded-2">
-            <!-- <img src="{% static 'images/about_us_2.jpg' %}" class="img-fluid" alt="Our History"> -->
         </div>
         <div class="col-md-6 order-md-2 pt-2">
             <section class="history">
@@ -44,7 +36,6 @@
     <div class="row my-4 pt-4 align-items-center border-top">
         <div class="col-md-6 order-md-2">
             <img src="{{ MEDIA_URL }}about_us/about_us-core.webp" alt="Our Values" class="img-fluid rounded-2">
-            <!-- <img src="{% static 'images/about_us_3.jpg' %}" class="img-fluid" alt="Our Values"> -->
         </div>
         <div class="col-md-6 order-md-1 pt-2">
             <section class="values">
