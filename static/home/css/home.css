@@ -37,8 +37,21 @@
 }
 
 .background-carousel {
-    background: url('/media/carousel_images/background.webp') no-repeat center center fixed;
-    background-size:cover;
+    background: linear-gradient(-45deg, #B81916, #A10F0D, #1C4AB2, #133398, #2846A1);
+    background-size: 400% 400%;
+    animation: gradient 20s ease-in-out infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .custom-background {
