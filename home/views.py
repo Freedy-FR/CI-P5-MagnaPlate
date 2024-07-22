@@ -1,13 +1,16 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.core.paginator import Paginator
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from products.models import Product
 import random
 from .models import Carousel
 from .forms import CarouselForm
 
 
+class AdminOrSuperuserRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_staff or self.request.user.is_superuser
 
 
 class IndexView(View):
@@ -68,15 +71,14 @@ class IndexView(View):
         return render(request, 'home/index.html', context)
 
 
-
 # Carousel Management Views
 
-class CarouselListView(LoginRequiredMixin, View):
+class CarouselListView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
     def get(self, request):
         carousels = Carousel.objects.all()
         return render(request, 'carousel_management/carousel_management.html', {'carousels': carousels})
 
-class CarouselCreateView(LoginRequiredMixin, View):
+class CarouselCreateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
     def get(self, request):
         form = CarouselForm()
         return render(request, 'carousel_management/add_carousel.html', {'form': form})
@@ -88,22 +90,22 @@ class CarouselCreateView(LoginRequiredMixin, View):
             return redirect('carousel_list')
         return render(request, 'carousel_management/add_carousel.html', {'form': form})
 
-class CarouselUpdateView(LoginRequiredMixin, View):
+class CarouselUpdateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
     def get(self, request, pk):
-        carousel = Carousel.objects.get(pk=pk)
+        carousel = get_object_or_404(Carousel, pk=pk)
         form = CarouselForm(instance=carousel)
         return render(request, 'carousel_management/edit_carousel.html', {'form': form})
 
     def post(self, request, pk):
-        carousel = Carousel.objects.get(pk=pk)
+        carousel = get_object_or_404(Carousel, pk=pk)
         form = CarouselForm(request.POST, request.FILES, instance=carousel)
         if form.is_valid():
             form.save()
             return redirect('carousel_list')
         return render(request, 'carousel_management/edit_carousel.html', {'form': form})
 
-class CarouselDeleteView(LoginRequiredMixin, View):
+class CarouselDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
     def post(self, request, pk):
-        carousel = Carousel.objects.get(pk=pk)
+        carousel = get_object_or_404(Carousel, pk=pk)
         carousel.delete()
         return redirect('carousel_list')

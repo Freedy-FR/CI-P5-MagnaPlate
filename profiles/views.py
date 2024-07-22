@@ -1,12 +1,16 @@
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from django.views.generic import UpdateView, DetailView, TemplateView, ListView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from .models import UserProfile
 from checkout.models import Product
 from .forms import UserProfileForm
 from checkout.models import Order
+
+class AdminOrSuperuserRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_staff or self.request.user.is_superuser
 
 class ProfileView(LoginRequiredMixin, UpdateView):
     model = UserProfile
@@ -65,5 +69,5 @@ class OrderHistoryView(LoginRequiredMixin, DetailView):
         return context
 
 
-class SiteManagementView(LoginRequiredMixin, TemplateView):
+class SiteManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, TemplateView):
     template_name = 'site_management/site_management.html'
