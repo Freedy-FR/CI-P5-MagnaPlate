@@ -42,6 +42,10 @@
                                         <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
                                            id="ex1-tab-6" href="#ex1-pills-6" role="tab" aria-controls="ex1-pills-6" aria-selected="false">Newsletter</a>
                                     </li>
+                                    <li class="nav-item d-flex" role="presentation">
+                                        <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
+                                           id="ex1-tab-7" href="#ex1-pills-7" role="tab" aria-controls="ex1-pills-7" aria-selected="false">Customer Support</a>
+                                    </li>
                                 </ul>
                                 <!-- Pills navs -->
 
@@ -163,6 +167,23 @@
                                                 </div>
                                                 <div class="col-12 col-lg-6">
                                                     <a class="btn btn-outline-black rounded-pill" href="{% url 'send_newsletters' %}">Send/Edit Newsletter</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Pills 7 content -->
+                                    <div class="tab-pane fade mb-2 p-1" id="ex1-pills-7" role="tabpanel">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    <hr>
+                                                    <h2 class="logo-font mb-4">Customer Support</h2>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-evenly text-center">
+                                                <div class="col-12">
+                                                    <a class="btn btn-outline-black rounded-pill" href="{% url 'customer_support_list' %}">View Customer Inquiries</a>
                                                 </div>
                                             </div>
                                         </div>

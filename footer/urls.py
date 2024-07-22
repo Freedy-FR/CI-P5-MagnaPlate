@@ -10,6 +10,10 @@ urlpatterns = [
     path('edit-newsletter/<int:pk>/', EditNewsletterView.as_view(), name='edit_newsletter'),
     path('about-us/', AboutUsView.as_view(), name='about_us'),
     path('faq/', FaqView.as_view(), name='faq'),
+    path('customer-support/', CustomerSupportView.as_view(), name='customer_support'),
+    path('customer-support/list/', CustomerSupportListView.as_view(), name='customer_support_list'),
+    path('customer-support/delete/<int:pk>/', CustomerSupportDeleteView.as_view(), name='customer_support_delete'),
+    path('customer-support/detail/<int:pk>/', CustomerSupportDetailView.as_view(), name='customer_support_detail'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

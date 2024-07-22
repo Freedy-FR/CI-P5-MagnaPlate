@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <hr>
+            <h2 class="logo-font mb-4">Customer Support Inquiry Detail</h2>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>{{ inquiry.subject }}</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Name:</strong> {{ inquiry.name }}</p>
+                    <p><strong>Email:</strong> {{ inquiry.email }}</p>
+                    <p><strong>Enquiry Type:</strong> {{ inquiry.get_enquiry_type_display }}</p>
+                    <p><strong>Order Number:</strong> {{ inquiry.order_number }}</p>
+                    <p><strong>Ticket Number:</strong> {{ inquiry.ticket_number }}</p>
+                    <p><strong>Message:</strong> {{ inquiry.message }}</p>
+                    <p><strong>Created At:</strong> {{ inquiry.created_at }}</p>
+                </div>
+                <div class="card-footer text-right">
+                    <a href="{% url 'customer_support_list' %}" class="btn rounded-pill my-2 border-black btn-secondary">
+                        Back to List
+                    </a>
+                    <button type="button" class="btn rounded-pill my-2 border-black btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" data-inquiry-id="{{ inquiry.id }}">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-white text-dark d-flex justify-content-between">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this inquiry?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                <form id="deleteForm" action="" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+    $(document).ready(function() {
+        $('#confirmDeleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var inquiryId = button.data('inquiry-id') // Extract info from data-* attributes
+            var action = "{% url 'customer_support_delete' 1 %}".replace('1', inquiryId)
+            $('#deleteForm').attr('action', action)
+        });
+    });
+</script>
+{% endblock %}

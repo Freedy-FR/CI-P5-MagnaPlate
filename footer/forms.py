@@ -1,5 +1,5 @@
 from django import forms
-from .models import NewsletterSubscribedInfo, NewsletterSendEmail
+from .models import NewsletterSubscribedInfo, NewsletterSendEmail, CustomerSupportInquiry
 
 class NewsletterSubscribedInfoForm(forms.ModelForm):
     class Meta:
@@ -32,3 +32,9 @@ class NewsletterSendForm(forms.Form):
         required=False,
         label="Select Newsletters to Send"
     )
+
+
+class CustomerSupportForm(forms.ModelForm):
+    class Meta:
+        model = CustomerSupportInquiry
+        fields = ['name', 'email', 'subject', 'message', 'enquiry_type', 'order_number']

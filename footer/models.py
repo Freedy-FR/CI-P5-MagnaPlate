@@ -1,5 +1,7 @@
+import uuid
 from django.db import models
 from django.utils import timezone
+
 
 class NewsletterSubscribedInfo(models.Model):
     name = models.CharField(max_length=255)
@@ -9,6 +11,7 @@ class NewsletterSubscribedInfo(models.Model):
     def __str__(self):
         return self.email
 
+
 class NewsletterSendEmail(models.Model):
     subject = models.CharField(max_length=255)
     body = models.TextField()
@@ -17,5 +20,48 @@ class NewsletterSendEmail(models.Model):
     recipients = models.ManyToManyField(NewsletterSubscribedInfo)
     letter_sent = models.BooleanField(default=False) 
     
+    def __str__(self):
+        return self.subject
+
+
+class CustomerSupportInquiry(models.Model):
+    ENQUIRY_TYPES = [
+        ('order', 'Order Enquiry'),
+        ('product', 'Product Enquiry'),
+        ('returns', 'Returns'),
+        ('complaints', 'Complaints'),
+        ('work', 'Work With Us'),
+        ('others', 'Others'),
+        ('shipping', 'Shipping Inquiry'),
+        ('payment', 'Payment Inquiry'),
+        ('technical', 'Technical Support'),
+        ('feedback', 'Feedback'),
+        ('partnership', 'Partnership Inquiry'),
+    ]
+
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
+    enquiry_type = models.CharField(max_length=50, choices=ENQUIRY_TYPES)
+    order_number = models.CharField(max_length=50, blank=True, null=True)
+    ticket_number = models.CharField(max_length=32, null=False, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def _generate_ticket_number(self):
+        """
+        Generate a random, unique ticket number using UUID
+        """
+        return uuid.uuid4().hex.upper()
+
+    def save(self, *args, **kwargs):
+        """
+        Override the original save method to set the ticket number
+        if it hasn't been set already.
+        """
+        if not self.ticket_number:
+            self.ticket_number = self._generate_ticket_number()
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.subject
