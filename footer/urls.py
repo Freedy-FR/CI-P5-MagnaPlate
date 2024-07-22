@@ -15,6 +15,8 @@ urlpatterns = [
     path('customer-support/delete/<int:pk>/', CustomerSupportDeleteView.as_view(), name='customer_support_delete'),
     path('customer-support/detail/<int:pk>/', CustomerSupportDetailView.as_view(), name='customer_support_detail'),
     path('contact-us/', ContactUsView.as_view(), name='contact_us'),
+    path('subscriptions/', SubscriptionListView.as_view(), name='subscription_list'),
+    path('subscriptions/delete/<int:pk>/', SubscriptionDeleteView.as_view(), name='subscription_delete'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

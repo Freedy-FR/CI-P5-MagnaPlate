@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container p-2">
+    <div class="row gx-2">
+        <div class="rounded-2 px-3 py-2 bg-white">
+            
+            <h2 class="text-center">Subscription List</h2>
+
+            <div class="row mb-3">
+                <div class="col-md-6 offset-md-3">
+                    <form method="GET" action="{% url 'subscription_list' %}">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Search by name or email" value="{{ search_term }}">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                {% if subscriptions %}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for subscription in subscriptions %}
+                                <tr>
+                                    <td>{{ subscription.name }}</td>
+                                    <td>{{ subscription.email }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal" data-subscription-id="{{ subscription.id }}">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>No subscriptions found.</p>
+                {% endif %}
+            </div>
+
+        </div>
+        <div class="col-6 g-3 text-center">
+            <a href="{% url 'site_management' %}">
+                <button type="button" class="btn rounded-pill my-2 border-black btn-danger">
+                    Back to Management
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-white text-dark d-flex justify-content-between">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this subscription?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                <form id="deleteForm" action="" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+    $(document).ready(function() {
+        $('#confirmDeleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var subscriptionId = button.data('subscription-id') // Extract info from data-* attributes
+            var action = "{% url 'subscription_delete' 1 %}".replace('1', subscriptionId)
+            $('#deleteForm').attr('action', action)
+        });
+    });
+</script>
+{% endblock %}

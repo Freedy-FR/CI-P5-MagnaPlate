@@ -1,5 +1,5 @@
 from django.views import View
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DeleteView
 from django.views.generic.detail import DetailView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -13,6 +13,7 @@ from django.utils.html import strip_tags
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from itertools import groupby
+from django.db.models import Q
 
 class NewsletterSubscriptionView(View):
     def post(self, request):
@@ -181,6 +182,39 @@ class SendNewslettersView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, Vie
                 messages.error(request, f"An error occurred: {e}")
 
 
+# Subscription Management
+
+class SubscriptionListView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView):
+    model = NewsletterSubscribedInfo
+    template_name = 'newsletter_management/subscription_list.html'
+    context_object_name = 'subscriptions'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.request.GET.get('q')
+        if query:
+            queryset = queryset.filter(Q(name__icontains=query) | Q(email__icontains=query))
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_term'] = self.request.GET.get('q', '')
+        return context
+
+
+
+class SubscriptionDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, DeleteView):
+    model = NewsletterSubscribedInfo
+    template_name = 'newsletter_management/subscription_confirm_delete.html'
+    success_url = reverse_lazy('subscription_list')
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.delete()
+        messages.success(request, 'Subscription deleted successfully!')
+        return redirect(self.success_url)
+
+
 class AboutUsView(TemplateView):
     template_name = 'footer/about_us.html'
 
@@ -207,7 +241,6 @@ class CustomerSupportListView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin,
     model = CustomerSupportInquiry
     template_name = 'customer_management/customer_support_list.html'
     context_object_name = 'grouped_inquiries'
-    paginate_by = 10
 
     def get_queryset(self):
         # Retrieve all inquiries ordered by enquiry_type and created_at
