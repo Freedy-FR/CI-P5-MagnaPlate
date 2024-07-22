@@ -40,15 +40,4 @@ document.addEventListener('DOMContentLoaded', () => {
     decrementButtons.forEach(button => {
         button.addEventListener('click', handleDecrement);
     });
-
-    // Update the form when quantity input changes manually
-    // qtyInputs.forEach(input => {
-    //     input.addEventListener('change', (e) => {
-    //         console.log('Quantity changed for item', e.target.dataset.item_id, 'size', e.target.dataset.item_size, 'to', e.target.value);
-    //         const form = e.target.closest('form');
-    //         if (form) {
-    //             form.submit();
-    //         }
-    //     });
-    // });
 });
