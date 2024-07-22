@@ -11,6 +11,7 @@ from django.core.mail import send_mail, BadHeaderError
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from itertools import groupby
 
 class NewsletterSubscriptionView(View):
@@ -45,7 +46,11 @@ class NewsletterSubscriptionView(View):
         except Exception as e:
             messages.error(request, f"An error occurred: {e}")
 
-class CreateNewsletterEmailView(View):
+class AdminOrSuperuserRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_superuser or self.request.user.is_staff
+
+class CreateNewsletterEmailView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
     def get(self, request):
         form = NewsletterSendEmailForm()
         available_recipients = NewsletterSubscribedInfo.objects.all()
@@ -91,7 +96,7 @@ class CreateNewsletterEmailView(View):
                 messages.error(request, f"An error occurred: {e}")
 
 
-class EditNewsletterView(View):
+class EditNewsletterView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
     def get(self, request, pk):
         newsletter = get_object_or_404(NewsletterSendEmail, pk=pk)
         form = NewsletterSendEmailForm(instance=newsletter)
@@ -138,7 +143,7 @@ class EditNewsletterView(View):
                 messages.error(request, f"An error occurred: {e}")
 
 
-class SendNewslettersView(View):
+class SendNewslettersView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
     def get(self, request):
         form = NewsletterSendForm()
         return render(request, 'newsletter_management/send_newsletters.html', {'form': form})
@@ -176,7 +181,6 @@ class SendNewslettersView(View):
                 messages.error(request, f"An error occurred: {e}")
 
 
-
 class AboutUsView(TemplateView):
     template_name = 'footer/about_us.html'
 
@@ -199,7 +203,7 @@ class CustomerSupportView(View):
         return render(request, 'footer/customer_support.html', {'form': form})
 
 
-class CustomerSupportListView(ListView):
+class CustomerSupportListView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView):
     model = CustomerSupportInquiry
     template_name = 'customer_management/customer_support_list.html'
     context_object_name = 'grouped_inquiries'
@@ -220,7 +224,7 @@ class CustomerSupportListView(ListView):
         return grouped_inquiries
 
 
-class CustomerSupportDeleteView(View):
+class CustomerSupportDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
         inquiry = get_object_or_404(CustomerSupportInquiry, pk=pk)
         inquiry.delete()
@@ -228,7 +232,7 @@ class CustomerSupportDeleteView(View):
         return redirect('customer_support_list')
 
 
-class CustomerSupportDetailView(DetailView):
+class CustomerSupportDetailView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, DetailView):
     model = CustomerSupportInquiry
     template_name = 'customer_management/customer_support_detail.html'
     context_object_name = 'inquiry'

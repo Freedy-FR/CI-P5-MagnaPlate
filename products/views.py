@@ -5,13 +5,17 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.utils import timezone
 from .models import Product, Collection, Creator, Category, Creator
 from favorites.models import FavoriteProduct, FavoriteCreator
 from .forms import *
 import datetime
+
+class AdminOrSuperuserRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_superuser or self.request.user.is_staff
 
 class FilteredProductListView(ListView):
     model = Product
@@ -258,7 +262,7 @@ class CreatorDetailView(DetailView):
 
 # Product Management Views
 
-class ProductManagementView(LoginRequiredMixin, ListView):
+class ProductManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView):
     template_name = 'product_management/product_management.html'
     model = Product
     context_object_name = 'products'
@@ -355,7 +359,7 @@ class ProductManagementView(LoginRequiredMixin, ListView):
         return super().get(request, *args, **kwargs)
 
 
-class AddProductView(LoginRequiredMixin, View):
+class AddProductView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
     """ Add a product to the store """
 
     def get(self, request, *args, **kwargs):
@@ -382,7 +386,7 @@ class AddProductView(LoginRequiredMixin, View):
         return render(request, template, context)
 
 
-class EditProductView(LoginRequiredMixin, UpdateView):
+class EditProductView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     template_name = 'product_management/edit_product.html'
@@ -405,7 +409,7 @@ class EditProductView(LoginRequiredMixin, UpdateView):
         return context
 
 
-class ProductDeleteView(LoginRequiredMixin, View):
+class ProductDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         product_id = kwargs.get('product_id')
         product = get_object_or_404(Product, id=product_id)
@@ -416,13 +420,13 @@ class ProductDeleteView(LoginRequiredMixin, View):
 
 # Creators Management Views
 
-class CreatorManagementView(LoginRequiredMixin, ListView):
+class CreatorManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView):
     model = Creator
     template_name = 'creator_management/creator_management.html'
     context_object_name = 'creators'
     paginate_by = 12
 
-class CreatorCreateView(LoginRequiredMixin, CreateView):
+class CreatorCreateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, CreateView):
     model = Creator
     form_class = CreatorForm
     template_name = 'creator_management/add_creator.html'
@@ -437,7 +441,7 @@ class CreatorCreateView(LoginRequiredMixin, CreateView):
         messages.error(self.request, 'Failed to add creator. Please ensure the form is valid.')
         return super().form_invalid(form)
 
-class CreatorUpdateView(LoginRequiredMixin, UpdateView):
+class CreatorUpdateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, UpdateView):
     model = Creator
     form_class = CreatorForm
     template_name = 'creator_management/edit_creator.html'
@@ -452,7 +456,7 @@ class CreatorUpdateView(LoginRequiredMixin, UpdateView):
         messages.error(self.request, 'Failed to update creator. Please ensure the form is valid.')
         return super().form_invalid(form)
 
-class CreatorDeleteView(LoginRequiredMixin, DeleteView):
+class CreatorDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, DeleteView):
     model = Creator
     template_name = 'creator_management/delete_creator.html'
     success_url = reverse_lazy('creator_management')
@@ -465,7 +469,7 @@ class CreatorDeleteView(LoginRequiredMixin, DeleteView):
 
 # Category Management Views
 
-class CategoryManagementView(LoginRequiredMixin, ListView):
+class CategoryManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView):
     model = Category
     template_name = 'category_management/category_management.html'
     context_object_name = 'categories'
@@ -477,7 +481,7 @@ class CategoryManagementView(LoginRequiredMixin, ListView):
         return context
 
 
-class CategoryCreateView(LoginRequiredMixin, CreateView):
+class CategoryCreateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, CreateView):
     model = Category
     form_class = CategoryForm
     template_name = 'category_management/add_category.html'
@@ -491,7 +495,7 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
         messages.error(self.request, 'Failed to add category. Please ensure the form is valid.')
         return super().form_invalid(form)
 
-class CategoryUpdateView(LoginRequiredMixin, UpdateView):
+class CategoryUpdateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, UpdateView):
     model = Category
     form_class = CategoryForm
     template_name = 'category_management/edit_category.html'
@@ -505,7 +509,7 @@ class CategoryUpdateView(LoginRequiredMixin, UpdateView):
         messages.error(self.request, 'Failed to update category. Please ensure the form is valid.')
         return super().form_invalid(form)
 
-class CategoryDeleteView(LoginRequiredMixin, DeleteView):
+class CategoryDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, DeleteView):
     model = Category
     template_name = 'category_management/delete_category.html'
     success_url = reverse_lazy('category_management')
@@ -517,7 +521,7 @@ class CategoryDeleteView(LoginRequiredMixin, DeleteView):
 
 # Collection Management Views
 
-class CollectionManagementView(LoginRequiredMixin, ListView):
+class CollectionManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView):
     model = Collection
     template_name = 'collection_management/collection_management.html'
     context_object_name = 'collections'
@@ -528,7 +532,7 @@ class CollectionManagementView(LoginRequiredMixin, ListView):
         context['form'] = CollectionForm()
         return context
 
-class CollectionCreateView(LoginRequiredMixin, CreateView):
+class CollectionCreateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, CreateView):
     model = Collection
     form_class = CollectionForm
     template_name = 'collection_management/add_collection.html'
@@ -542,7 +546,7 @@ class CollectionCreateView(LoginRequiredMixin, CreateView):
         messages.error(self.request, 'Failed to add collection. Please ensure the form is valid.')
         return super().form_invalid(form)
 
-class CollectionUpdateView(LoginRequiredMixin, UpdateView):
+class CollectionUpdateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, UpdateView):
     model = Collection
     form_class = CollectionForm
     template_name = 'collection_management/edit_collection.html'
@@ -556,7 +560,7 @@ class CollectionUpdateView(LoginRequiredMixin, UpdateView):
         messages.error(self.request, 'Failed to update collection. Please ensure the form is valid.')
         return super().form_invalid(form)
 
-class CollectionDeleteView(LoginRequiredMixin, DeleteView):
+class CollectionDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, DeleteView):
     model = Collection
     template_name = 'collection_management/delete_collection.html'
     success_url = reverse_lazy('collection_management')
