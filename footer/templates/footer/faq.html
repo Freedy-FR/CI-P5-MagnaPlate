@@ -1,21 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
-<style>
-    .faq-container .accordion-item {
-        border-bottom: 1px solid #ddd;
-    }
-</style>
-{% endblock %}
-
 {% block content %}
 <div class="faq-container container">
     <h1 class="text-center pt-4">Frequently Asked Questions</h1>
-    <p class="text-center pt-2">Find answers to the most commonly asked questions about our products and services below. If you have any further questions, please feel free to <a href="#">contact our customer support</a>.</p>
+    <p class="text-center pt-2">Find answers to the most commonly asked questions about our products and services below. If you have any further questions, please feel free to <a href="{% url 'customer_support' %}">contact our customer support</a>.</p>
 
     <!-- Orders FAQ -->
-    <h2 class="pt-4">Orders FAQ</h2>
+    <h2 class="pt-4 border-top">Orders FAQ</h2>
     <div class="accordion mb-4" id="ordersFaq">
         <!-- Question 1 -->
         <div class="accordion-item border-top">
@@ -39,14 +31,14 @@
             </h2>
             <div id="collapseOrderTwo" class="accordion-collapse collapse" aria-labelledby="headingOrderTwo" data-bs-parent="#ordersFaq">
                 <div class="accordion-body">
-                    Our return policy allows you to return products within 30 days of purchase for a full refund. The items must be in their original condition and packaging. Please <a href="#">contact our customer support</a> for assistance with returns.
+                    Our return policy allows you to return products within 30 days of purchase for a full refund. The items must be in their original condition and packaging. Please <a href="{% url 'customer_support' %}">contact our customer support</a> for assistance with returns.
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Installation FAQ -->
-    <h2 class="pt-4">Installation FAQ</h2>
+    <h2 class="pt-4 border-top">Installation FAQ</h2>
     <div class="accordion mb-4" id="installationFaq">
         <!-- Question 1 -->
         <div class="accordion-item border-top">
@@ -101,14 +93,14 @@
             </h2>
             <div id="collapseSubTwo" class="accordion-collapse collapse" aria-labelledby="headingSubTwo" data-bs-parent="#subscriptionFaq">
                 <div class="accordion-body">
-                    To manage your subscription preferences, please <a href="#">get in contact with our customer support</a>. They will assist you with updating your email address, frequency of newsletters, and other preferences.
+                    To manage your subscription preferences, please <a href="{% url 'customer_support' %}">get in contact with our customer support</a>. They will assist you with updating your email address, frequency of newsletters, and other preferences.
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Social Media FAQ -->
-    <h2 class="pt-4">Social Media FAQ</h2>
+    <h2 class="pt-4 border-top">Social Media FAQ</h2>
     <div class="accordion mb-4" id="socialMediaFaq">
         <!-- Question 1 -->
         <div class="accordion-item border-top">

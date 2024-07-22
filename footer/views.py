@@ -236,3 +236,7 @@ class CustomerSupportDetailView(LoginRequiredMixin, AdminOrSuperuserRequiredMixi
     model = CustomerSupportInquiry
     template_name = 'customer_management/customer_support_detail.html'
     context_object_name = 'inquiry'
+
+
+class ContactUsView(TemplateView):
+    template_name = 'footer/contact_us.html'

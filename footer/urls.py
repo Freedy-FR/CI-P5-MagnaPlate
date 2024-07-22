@@ -14,6 +14,7 @@ urlpatterns = [
     path('customer-support/list/', CustomerSupportListView.as_view(), name='customer_support_list'),
     path('customer-support/delete/<int:pk>/', CustomerSupportDeleteView.as_view(), name='customer_support_delete'),
     path('customer-support/detail/<int:pk>/', CustomerSupportDetailView.as_view(), name='customer_support_detail'),
+    path('contact-us/', ContactUsView.as_view(), name='contact_us'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
