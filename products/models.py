@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils import timezone
+from easy_thumbnails.fields import ThumbnailerImageField
+from easy_thumbnails.signal_handlers import generate_aliases
+from easy_thumbnails.signals import saved_file
 
 class Collection(models.Model):
     name = models.CharField(max_length=254)
@@ -68,6 +71,7 @@ class Product(models.Model):
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(upload_to='product_images', null=True, blank=True)
+    thumbnail = ThumbnailerImageField(upload_to='product_thumbnails', editable=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     is_on_deal = models.BooleanField(default=False)
     created_at = models.DateTimeField(default=timezone.now)
@@ -78,6 +82,11 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         if not self.sku:
             self.sku = self.generate_sku()
+        
+        # Generate thumbnail if image is present
+        if self.image and not self.thumbnail:
+            self.thumbnail.save(self.image.name, self.image)
+        
         super().save(*args, **kwargs)
 
     def generate_sku(self):
@@ -85,3 +94,5 @@ class Product(models.Model):
         category_code = self.category.name[:3].upper() if self.category else 'XXX'
         unique_number = str(Product.objects.count() + 1).zfill(5)
         return f"{collection_code}-{category_code}-{unique_number}"
+
+saved_file.connect(generate_aliases, sender=Product.image)

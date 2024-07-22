@@ -1,20 +1,17 @@
 {% extends 'base.html' %}
-
 {% load static %}
+{% load thumbnail %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'products/css/product.css' %}">
 {% endblock %}
 
 {% block content %}
-
 <div id="allproducts" class="container p-2" data-scroll-target="true">
     <div class="row gx-2">
         <div class="rounded-2 px-3 py-2 bg-white">
-            <h2 class="text-center">
-                Our Products!
-            </h2>
-            
+            <h2 class="text-center">Our Products!</h2>
+
             <!-- Sorting select tag -->
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <form method="get" class="d-flex">
@@ -59,16 +56,16 @@
                     Categories
                 {% endif %}
             </h6>
-            
+
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                 {% for product in products %}
                 <div class="col g-3">
                     <div class="card p-0">
                         <a class="link-underline-opacity-0" href="{% url 'product_detail' product_id=product.id %}">
                         {% if product.image %}
-                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
+                            <img src="{% thumbnail product.image 'product_thumb' %}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
                         {% else %}
-                            <img src="{{ MEDIA_URL }}product_images/placeholder-image.png" alt="image-placeholder" class="card-img img-fluid img-fill">
+                            <img src="{{ MEDIA_URL }}product_images/placeholder-image.webp" alt="image-placeholder" class="card-img img-fluid img-fill">
                         {% endif %}
                         <div class="d-none d-lg-block">
                             <div class="card-img-overlay justify-content-between align-items-center">
@@ -94,7 +91,7 @@
                 </div>
                 {% endfor %}
             </div>
-            
+
             <div class="container pt-4" id="anchor">
                 {% if is_paginated %}
                     <nav aria-label="Page navigation" class="">
@@ -121,6 +118,4 @@
         </div>
     </div>
 </div>
-
-
 {% endblock %}

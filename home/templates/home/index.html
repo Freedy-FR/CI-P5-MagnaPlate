@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load thumbnail %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
@@ -45,16 +46,14 @@
   <h2 class="text-center">Check out our deals!</h2>
   <div class="py-2">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
       {% for product in deal_products %}
       <div class="col">
         <div class="card p-0">
           <a href="{% url 'product_detail' product_id=product.id %}">
             {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
+            <img src="{% thumbnail product.image 'product_thumb' %}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
             {% else %}
-            <img src="{{ MEDIA_URL }}product_images/placeholder-image.png" alt="image-placeholder"
-              class="card-img img-fluid img-fill">
+            <img src="{{ MEDIA_URL }}product_images/placeholder-image.webp" alt="image-placeholder" class="card-img img-fluid img-fill">
             {% endif %}
             <div class="d-none d-lg-block">
               <div class="card-img-overlay justify-content-between align-items-center">
@@ -108,7 +107,6 @@
       </nav>
       {% endif %}
     </div>
-
   </div>
 </div>
 {% endif %}
@@ -123,10 +121,9 @@
         <div class="card p-0">
           <a href="{% url 'product_detail' product_id=product.id %}">
             {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
+            <img src="{% thumbnail product.image 'product_thumb' %}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
             {% else %}
-            <img src="{{ MEDIA_URL }}product_images/placeholder-image.png" alt="image-placeholder"
-              class="card-img img-fluid img-fill">
+            <img src="{{ MEDIA_URL }}product_images/placeholder-image.webp" alt="image-placeholder" class="card-img img-fluid img-fill">
             {% endif %}
             <div class="d-none d-lg-block">
               <div class="card-img-overlay justify-content-between align-items-center">

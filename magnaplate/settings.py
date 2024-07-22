@@ -64,6 +64,7 @@ INSTALLED_APPS = [
 
     # Other Apps
 
+    'easy_thumbnails',
     'widget_tweaks',
     'crispy_forms',
     'storages',
@@ -254,3 +255,22 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+
+# Easy Thumbnails
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'product_thumb': {
+            'size': (1280, 720),  # Set your desired thumbnail size
+            'crop': True,
+            'quality': 80,  # Adjust the quality to reduce file size
+        },
+    },
+}
+
+THUMBNAIL_DEFAULT_OPTIONS = {
+    'quality': 80,  # Default quality setting
+}
+
+THUMBNAIL_BASEDIR = 'product_thumbnails'

@@ -1,3 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/product.css' %}">
+{% endblock %}
+
+{% block content %}
 <div id="allproducts" class="container p-2" data-scroll-target="true">
     <div class="row gx-2">
         <div class="rounded-2 px-3 py-2 bg-white">
@@ -11,9 +20,9 @@
                     <div class="card p-0">
                         <a class="link-underline-opacity-0" href="{% url 'product_detail' product_id=product.id %}">
                         {% if product.image %}
-                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
+                            <img src="{% thumbnail product.image 'product_thumb' %}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
                         {% else %}
-                            <img src="{{ MEDIA_URL }}/media/product_images/placeholder-image.png" alt="image-placeholder" class="card-img img-fluid img-fill">
+                            <img src="{{ MEDIA_URL }}product_images/placeholder-image.png" alt="image-placeholder" class="card-img img-fluid img-fill">
                         {% endif %}
                         <div class="d-none d-lg-block">
                             <div class="card-img-overlay justify-content-between align-items-center">
@@ -74,3 +83,4 @@
         </div>
     </div>
 </div>
+{% endblock %}
