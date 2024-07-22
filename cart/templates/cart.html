@@ -82,7 +82,7 @@
                                         <input type="hidden" name="product_size" value="{{ item.size }}">
                                         {% endif %}
                                     </div>
-                                    <button type="submit" class="btn btn-sm btn-info">Update</button>
+                                    <button type="submit" class="btn btn-primary rounded-pill btn-sm">Update</button>
                                 </form>
                                 <form class="form remove-form d-inline" method="post"
                                     action="{% url 'remove_from_cart' item.item_id %}">
@@ -90,10 +90,9 @@
                                     {% if item.product.has_sizes %}
                                     <input type="hidden" name="product_size" value="{{ item.size }}">
                                     {% endif %}
-                                    <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                                    <button type="submit" class="btn btn-danger rounded-pill btn-sm">Remove</button>
                                 </form>
                             </div>
-
                         </td>
                         <td class="py-3 text-center">
                             <p class="my-0">€{{ item.product.price }}</p>
@@ -122,15 +121,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <!-- Mudar botoes -->
+                        <!-- Change buttons -->
                         <td colspan="5" class="text-right">
-                            <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                            <a href="{% url 'products' %}" class="btn btn-secondary rounded-pill my-1 me-1">
                                 <span class="icon">
                                     <i class="fas fa-chevron-left"></i>
                                 </span>
                                 <span class="text-uppercase">Keep Shopping</span>
                             </a>
-                            <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
+                            <a href="{% url 'checkout' %}" class="btn btn-primary rounded-pill my-1 me-1">
                                 <span class="text-uppercase">Secure Checkout</span>
                                 <span class="icon">
                                     <i class="fas fa-lock"></i>
@@ -142,7 +141,7 @@
             </div>
             {% else %}
             <p class="lead mb-5">Your Cart is empty.</p>
-            <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+            <a href="{% url 'products' %}" class="btn btn-secondary rounded-pill my-1 me-1">
                 <span class="icon">
                     <i class="fas fa-chevron-left"></i>
                 </span>

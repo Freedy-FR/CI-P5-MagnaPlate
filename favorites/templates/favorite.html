@@ -31,7 +31,7 @@
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">Added on: {{ item.created_at }}</small>
-                    <button type="button" class="btn btn-danger btn-sm position-absolute bottom-0 end-0 m-2" data-bs-toggle="modal" data-bs-target="#confirmModal" data-product-id="{{ item.product.id }}" data-product-name="{{ item.product.name }}">
+                    <button type="button" class="btn btn-danger rounded-pill btn-sm position-absolute bottom-0 end-0 m-2" data-bs-toggle="modal" data-bs-target="#confirmModal" data-product-id="{{ item.product.id }}" data-product-name="{{ item.product.name }}">
                         Remove
                     </button>
                 </div>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">Added on: {{ item.created_at }}</small>
-                    <button type="button" class="btn btn-danger btn-sm position-absolute bottom-0 end-0 m-2" data-bs-toggle="modal" data-bs-target="#confirmModalCreator" data-creator-id="{{ item.creator.id }}" data-creator-name="{{ item.creator.name }}">
+                    <button type="button" class="btn btn-danger rounded-pill btn-sm position-absolute bottom-0 end-0 m-2" data-bs-toggle="modal" data-bs-target="#confirmModalCreator" data-creator-id="{{ item.creator.id }}" data-creator-name="{{ item.creator.name }}">
                         Remove
                     </button>
                 </div>
@@ -88,10 +88,10 @@
                 Are you sure you want to remove <span id="product-name"></span> from your favorites?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-bs-dismiss="modal">Cancel</button>
                 <form method="post" id="productDeleteForm">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Remove</button>
+                    <button type="submit" class="btn btn-danger rounded-pill my-1 me-1">Remove</button>
                 </form>
             </div>
         </div>
@@ -110,10 +110,10 @@
                 Are you sure you want to remove <span id="creator-name"></span> from your favorites?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-bs-dismiss="modal">Cancel</button>
                 <form method="post" id="creatorDeleteForm">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Remove</button>
+                    <button type="submit" class="btn btn-danger rounded-pill my-1 me-1">Remove</button>
                 </form>
             </div>
         </div>

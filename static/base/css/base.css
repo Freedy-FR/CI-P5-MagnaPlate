@@ -1,3 +1,22 @@
+/* Standard Colors */
+:root {
+    --primary-blue: #133398;
+    --light-blue-medium: #2846A1;
+    --light-blue: #1C4AB2;
+
+    --red-color: #A10F0D;
+    --bright-red-color: #B81916;
+
+    --black-color: #000000;
+
+    --gray-color: #4F4F4F;
+    --dark-gray-color: #3a3a3a;
+    --light-gray-color: #EEEEEE;
+
+    --white-color: #FBFBFB;
+}
+
+
 /* Bootstrap overide */
 
 .navbar-brand {
@@ -36,7 +55,7 @@ main {
 .card:hover .card-img-overlay {
     /* Show the overlay when the card is hovered */
     display: block;
-    background-color: rgba(255, 255, 255, 0.7); 
+    background-color: rgba(255, 255, 255, 0.8); 
     color: #000000; 
 }  
 
@@ -66,7 +85,8 @@ main {
     height: 2px;
 }
 
-.card a {
+
+.link {
     color: black !important;
     text-decoration: none !important;
     font-family: 'Roboto', sans-serif !important;
@@ -155,4 +175,114 @@ main {
     border-color: initial;
     border-radius: initial;
     padding: initial;
+}
+
+
+
+
+/* Buttons */
+
+/* Customizing Bootstrap button */
+.btn-primary {
+    color: var(--white-color) !important;
+    background-color: var(--primary-blue) !important;
+    border-color: var(--primary-blue) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    color: var(--white-color) !important;
+    background-color: var(--light-blue-medium) !important;
+    border-color: var(--light-blue-medium) !important;
+}
+
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.25rem rgba(19, 51, 152, 0.5) !important;
+}
+
+.btn-primary:active {
+    color: var(--white-color) !important;
+    background-color: var(--light-blue) !important;
+    border-color: var(--light-blue) !important;
+}
+
+.btn-primary:disabled {
+    color: var(--white-color) !important;
+    background-color: var(--primary-blue) !important;
+    border-color: var(--primary-blue) !important;
+}
+
+/* Customizing Bootstrap secondary button */
+.btn-secondary {
+    color: var(--white-color) !important;
+    background-color: var(--gray-color) !important;
+    border-color: var(--gray-color) !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+    color: var(--white-color) !important;
+    background-color: var(--dark-gray-color) !important;
+    border-color: var(--dark-gray-color) !important;
+}
+
+.btn-secondary:focus {
+    box-shadow: 0 0 0 0.25rem rgba(79, 79, 79, 0.5) !important;
+}
+
+.btn-secondary:active {
+    color: var(--white-color) !important;
+    background-color: var(--light-gray-color) !important;
+    border-color: var(--light-gray-color) !important;
+}
+
+.btn-secondary:disabled {
+    color: var(--white-color) !important;
+    background-color: var(--gray-color) !important;
+    border-color: var(--gray-color) !important;
+}
+
+
+
+/* Custom CSS for Icons */
+.icon-detail {
+    color: var(--light-blue) !important;
+}
+
+/* Button Outline */
+.btn-outline-black {
+    color: var(--dark-gray-color) !important;
+    border-color: var(--dark-gray-color) !important;
+}
+
+.btn-outline-black:hover,
+.btn-outline-black:focus,
+.btn-outline-black:active {
+    color: var(--white-color) !important;
+    background-color: var(--dark-gray-color) !important;
+    border-color: var(--dark-gray-color) !important;
+}
+
+/* Button Danger */
+
+.btn-danger {
+    color: var(--white-color) !important;
+    background-color: var(--red-color) !important;
+    border-color: var(--red-color) !important;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active {
+    color: var(--white-color) !important;
+    background-color: var(--bright-red-color) !important;
+    border-color: var(--bright-red-color) !important;
+}
+
+/* Text Muted */
+
+.text-footer {
+    color: var(--black-color) !important;
 }

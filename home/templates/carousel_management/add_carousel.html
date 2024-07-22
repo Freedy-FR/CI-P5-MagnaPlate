@@ -7,12 +7,12 @@
         {% csrf_token %}
         {{ form|crispy }}
         <div class="d-flex justify-content-end">
-            <button type="submit" class="btn rounded-pill my-2 border-black btn-success">Add</button>
+            <button type="submit" class="btn btn-primary rounded-pill my-1">Add</button>
         </div>
     </form>
     <div class="row mt-4">
         <div class="col text-center">
-            <a href="{% url 'carousel_list' %}" class="btn rounded-pill my-2 border-black btn-danger">Back to Carousel Management</a>
+            <a href="{% url 'carousel_list' %}" class="btn btn-secondary rounded-pill my-1 me-1">Back to Carousel Management</a>
         </div>
     </div>
 </div>

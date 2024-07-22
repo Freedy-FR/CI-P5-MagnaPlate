@@ -18,9 +18,9 @@
                     {% csrf_token %}
                     {{ form|crispy }}
                     <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'collection_management' %}">Cancel</a>
+                        <a class="btn btn-secondary rounded-pill my-1 me-1" href="{% url 'collection_management' %}">Cancel</a>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-black rounded-0" data-toggle="modal" data-target="#confirmCollectionModal">
+                        <button type="button" class="btn btn-primary rounded-pill my-1" data-toggle="modal" data-target="#confirmCollectionModal">
                             {% if form.instance.pk %}Update Collection{% else %}Add Collection{% endif %}
                         </button>
                     </div>
@@ -42,8 +42,8 @@
                     Are you sure you want to {% if form.instance.pk %}update{% else %}add{% endif %} this collection?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-black" id="confirmCollectionButton">{% if form.instance.pk %}Update Collection{% else %}Add Collection{% endif %}</button>
+                    <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary rounded-pill my-1" id="confirmCollectionButton">{% if form.instance.pk %}Update Collection{% else %}Add Collection{% endif %}</button>
                 </div>
             </div>
         </div>

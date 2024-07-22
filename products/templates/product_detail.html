@@ -22,6 +22,9 @@
           <img src="{{ MEDIA_URL }}product_images/placeholder-image.png" alt="image-placeholder"
             class="product-image rounded-4 fit">
           {% endif %}
+          {% if product.is_on_deal %}
+          <span class="badge bg-danger text-black position-absolute top-0 start-0 m-2">On Deal</span>
+          {% endif %}
           <form method="post" action="{% url 'favorites:toggle_favorite_product' product.id %}">
             {% csrf_token %}
             <button type="submit" class="favorite-icon">
@@ -112,9 +115,9 @@
                 </div>
               </div>
             </div>
-            <a href="{% url 'products' %}" class="btn btn-secondary shadow-0 my-1 me-1"><i
+            <a href="{% url 'products' %}" class="btn btn-secondary rounded-pill my-1 me-1"><i
                 class="fa-solid fa-chevron-left"></i> Back to Products</a>
-            <button type="submit" class="btn btn-primary shadow-0 my-1">
+            <button type="submit" class="btn btn-primary rounded-pill my-1">
               <i class="fa-solid fa-cart-shopping"></i> Add to cart
             </button>
             <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -138,12 +141,12 @@
             <li class="nav-item d-flex" role="presentation">
               <a class="nav-link d-flex align-items-center justify-content-center w-100 active" data-mdb-pill-init
                 id="ex1-tab-1" href="#ex1-pills-1" role="tab" aria-controls="ex1-pills-1"
-                aria-selected="true">Specification</a>
+                aria-selected="true"><i class="fas fa-info-circle icon-detail me-1"></i>Specification</a>
             </li>
             <li class="nav-item d-flex" role="presentation">
               <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
-                id="ex1-tab-2" href="#ex1-pills-2" role="tab" aria-controls="ex1-pills-2" aria-selected="false">Shipping
-                info</a>
+                id="ex1-tab-2" href="#ex1-pills-2" role="tab" aria-controls="ex1-pills-2" aria-selected="false"><i
+                  class="fas fa-shipping-fast icon-detail me-1"></i>Shipping info</a>
             </li>
           </ul>
           <!-- Pills navs -->
@@ -155,16 +158,16 @@
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <i class="fas fa-check text-success me-2"></i>Material: High-quality metal
+                  <i class="fas fa-check icon-detail me-2"></i>Material: High-quality metal
                 </li>
                 <li>
-                  <i class="fas fa-check text-success me-2"></i>Weight: Lightweight for easy hanging
+                  <i class="fas fa-check icon-detail me-2"></i>Weight: Lightweight for easy hanging
                 </li>
                 <li>
-                  <i class="fas fa-check text-success me-2"></i>Finish: Matte, with anti-glare properties
+                  <i class="fas fa-check icon-detail me-2"></i>Finish: Matte, with anti-glare properties
                 </li>
                 <li>
-                  <i class="fas fa-check text-success me-2"></i>Mounting: Includes a magnetic mounting system for easy
+                  <i class="fas fa-check icon-detail me-2"></i>Mounting: Includes a magnetic mounting system for easy
                   installation
                 </li>
               </ul>
@@ -208,25 +211,25 @@
               </p>
               <ul class="list-unstyled">
                 <li>
-                  <i class="fas fa-truck-moving text-success me-2"></i> <strong>Packaging:</strong> Protective layers
+                  <i class="fas fa-truck-moving icon-detail me-2"></i> <strong>Packaging:</strong> Protective layers
                   and sturdy, eco-friendly packaging.
                 </li>
                 <li>
-                  <i class="fas fa-clock text-success me-2"></i> <strong>Handling Time:</strong> Orders processed within
+                  <i class="fas fa-clock icon-detail me-2"></i> <strong>Handling Time:</strong> Orders processed within
                   1-2 business days.
                 </li>
                 <li>
-                  <i class="fas fa-shipping-fast text-success me-2"></i> <strong>Delivery:</strong> Standard delivery
+                  <i class="fas fa-shipping-fast icon-detail me-2"></i> <strong>Delivery:</strong> Standard delivery
                   (Europe Only) within 5-7 business days.
                 </li>
                 <li>
-                  <i class="fas fa-globe-americas text-success me-2"></i> <strong>International Shipping:</strong>
+                  <i class="fas fa-globe-americas icon-detail me-2"></i> <strong>International Shipping:</strong>
                   Available with varying rates and times.
                 </li>
               </ul>
               <p>
                 If you require specific details about our shipping policies, our customer care team is ready to assist.
-                For personalized support, please connect with us on our <a href="#"
+                For personalized support, please connect with us on our <a href="{% url 'customer_support' %}"
                   class="text-decoration-none">customer service page</a>.
               </p>
 

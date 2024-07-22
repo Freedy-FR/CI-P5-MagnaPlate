@@ -42,8 +42,8 @@
                     Are you sure you want to {% if form.instance.pk %}update{% else %}add{% endif %} this category?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-black" id="confirmCategoryButton">{% if form.instance.pk %}Update Category{% else %}Add Category{% endif %}</button>
+                    <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary rounded-pill my-1" id="confirmCategoryButton">{% if form.instance.pk %}Update Category{% else %}Add Category{% endif %}</button>
                 </div>
             </div>
         </div>
