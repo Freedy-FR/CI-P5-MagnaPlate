@@ -49,17 +49,17 @@
         {% endif %}
     </div>
 </li>
-<li class="list-inline-item col-2 justify-content-center pt-2 ">
+<li class="list-inline-item col-2 justify-content-center pt-2 px-0 mx-0">
     <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} d-block d-lg-none" href="{% url 'view_cart' %}">
         <div class="text-center">
             <i class="fa-solid fa-cart-shopping"></i>
-            <p class="my-0">
+            <p class="my-0 text-center fs-6 fs-md-5">
                 {% if grand_total %}
                   €{{ grand_total|floatformat:2 }}
                 {% else %}
                   €0.00
                 {% endif %}
-              </p>
+            </p>
         </div>
     </a>
 </li>

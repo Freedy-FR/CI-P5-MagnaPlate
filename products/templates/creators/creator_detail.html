@@ -2,33 +2,33 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'products/css/product.css' %}">
+  <link rel="stylesheet" href="{% static 'products/css/product.css' %}">
 {% endblock %}
 
 {% block content %}
-<section class="py-4 px-0 container-fluid">
+<section class="py-4 container-fluid">
   <div class="container">
     <div class="row gx-5">
-      <aside class="col-lg-6 my-auto px-2 position-relative">
-        <div class="border rounded-4 d-flex justify-content-center">
+      <aside class="col-lg-6 my-auto px-2">
+        <div class="border rounded-4 d-flex justify-content-center position-relative">
           {% if creator.image %}
-          <img src="{{ creator.image.url }}" alt="{{ creator.name }}" class="product-image rounded-4 fit">
+          <img src="{{ creator.image.url }}" alt="{{ creator.name }}" class="creator-image rounded-4 fit">
           {% else %}
-          <img src="{{ MEDIA_URL }}creator_images/creators-placeholder.webp" alt="image-placeholder" class="product-image rounded-4 fit">
+          <img src="{{ MEDIA_URL }}creator_images/creators-placeholder.webp" alt="image-placeholder" class="creator-image rounded-4 fit">
           {% endif %}
+          <form method="post" action="{% url 'favorites:toggle_favorite_creator' creator.id %}">
+            {% csrf_token %}
+            <button type="submit" class="favorite-icon-creator">
+                <div class="icon-background">
+                    {% if is_favorite %}
+                    <i class="fa-solid fa-heart full_heart"></i>
+                    {% else %}
+                    <i class="fa-regular fa-heart regular_heart"></i>
+                    {% endif %}
+                </div>
+            </button>
+          </form>
         </div>
-        <form method="post" action="{% url 'favorites:toggle_favorite_creator' creator.id %}">
-          {% csrf_token %}
-          <button type="submit" class="favorite-icon-creator">
-              <div class="icon-background">
-                  {% if is_favorite %}
-                  <i class="fa-solid fa-heart full_heart"></i>
-                  {% else %}
-                  <i class="fa-regular fa-heart regular_heart"></i>
-                  {% endif %}
-              </div>
-          </button>
-        </form>
       </aside>
       <main class="col-lg-6 pt-md-2 d-flex flex-column">
         <div class="ps-lg-3 pt-md-1 flex-grow-1">
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="ps-lg-3 pt-md-1 mt-auto">
-          <a href="{% url 'all_creators' %}" class="btn btn-secondary shadow-0 my-1 me-1">Back to All Creators</a>
+          <a href="{% url 'all_creators' %}" class="btn btn-secondary rounded-pill my-1 me-1">Back to All Creators</a>
         </div>
       </main>
     </div>
@@ -59,12 +59,18 @@
 
 <section class="py-4 px-0 container-fluid border-top">
   <div class="container">
-    <h2 class="text-center">Plates by {{ creator.name }}</h2>
+        <div class="row">
+          <div class="col text-center">
+              <hr>
+              <h2 class="text-center">Plates by {{ creator.name }}</h2>
+              <hr>
+          </div>
+        </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 pt-1">
           {% for product in products %}
           <div class="col g-3">
             <div class="card p-0">
-              <a class="link-underline-opacity-0" href="{% url 'product_detail' product.pk %}">
+              <a class="link-underline-opacity-0 link" href="{% url 'product_detail' product.pk %}">
                 {% if product.image %}
                     <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
                 {% else %}

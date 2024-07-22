@@ -9,8 +9,13 @@
 {% block content %}
 <div class="container py-4">
     <h2 class="text-center">{{ username|capfirst }} Favorites</h2>
-
-    <div class="col py-4 border-top"><h3 class="text-center">Products</h3></div>
+    <div class="row">
+        <div class="col text-center">
+            <hr>
+            <h3 class="text-center">Products</h3>
+            <hr>
+        </div>
+    </div>
     {% if favorite_products %}
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         {% for item in favorite_products %}
@@ -43,7 +48,13 @@
     <p class="text-center">You have no favorite products, please check out our <a href="{% url 'products' %}">products</a>.</p>
     {% endif %}
 
-    <div class="col py-4 border-top mt-4"><h3 class="text-center">Creators</h3></div>
+    <div class="row">
+        <div class="col text-center">
+            <hr>
+            <h3 class="text-center">Creators</h3>
+            <hr>
+        </div>
+    </div>
     {% if favorite_creators %}
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         {% for item in favorite_creators %}
