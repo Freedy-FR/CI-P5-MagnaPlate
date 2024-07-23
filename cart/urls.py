@@ -1,7 +1,15 @@
-from django.urls import path
-from .views import *
+"""
+URL configuration for the cart application.
+
+This module defines the URL patterns for the cart application,
+including views for viewing, adding to, updating, and removing from the cart.
+"""
+
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path
+
+from .views import ViewCart, AddToCartView, UpdateCartView, RemoveFromCartView
 
 urlpatterns = [
     path('', ViewCart.as_view(), name='view_cart'),

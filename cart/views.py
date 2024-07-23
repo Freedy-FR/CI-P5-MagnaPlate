@@ -1,32 +1,57 @@
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView
-from django.shortcuts import redirect
-from django.views import View
+"""
+Views for the cart application.
+
+This module defines views for viewing, adding to, updating, and removing from the cart.
+"""
+
 from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views import View
+from django.views.generic import TemplateView
+
 from cart.contexts import cart_contents  # Import the cart_contents function
 from products.models import Product
 
 
 class ViewCart(TemplateView):
+    """
+    View to display the contents of the cart.
+    """
     template_name = 'cart.html'
 
     def get_context_data(self, **kwargs):
+        """
+        Get the context data for the cart view.
+
+        Returns:
+            dict: Context data for the template.
+        """
         context = super().get_context_data(**kwargs)
         return context
 
+
 class AddToCartView(View):
-    """Add a quantity of the specified product to the shopping cart"""
+    """
+    Add a quantity of the specified product to the shopping cart.
+    """
 
     def post(self, request, item_id):
+        """
+        Handle POST request to add a product to the cart.
+
+        Args:
+            request: The HTTP request object.
+            item_id (int): The ID of the product to add.
+
+        Returns:
+            HttpResponse: Redirect to the specified URL.
+        """
         try:
             quantity = int(request.POST.get('quantity'))
             redirect_url = request.POST.get('redirect_url')
             product = get_object_or_404(Product, pk=item_id)
 
-            size = None
-            if 'product_size' in request.POST:
-                size = request.POST['product_size']
-
+            size = request.POST.get('product_size', None)
             cart = request.session.get('cart', {})
 
             if size:  # If the product has a size
@@ -53,23 +78,33 @@ class AddToCartView(View):
                     messages.success(request, f'Added {product.name} to your cart!')
 
             request.session['cart'] = cart
-
             return redirect(redirect_url)
         except Exception as e:
             messages.error(request, f'Error adding item to cart: {str(e)}')  # Display error message if an exception occurs
-            return redirect(redirect_url)        
+            return redirect(redirect_url)
 
 
 class UpdateCartView(View):
+    """
+    Update the quantity of a specified product in the shopping cart.
+    """
+
     def post(self, request, item_id):
+        """
+        Handle POST request to update a product in the cart.
+
+        Args:
+            request: The HTTP request object.
+            item_id (int): The ID of the product to update.
+
+        Returns:
+            HttpResponse: Redirect to the cart view.
+        """
         try:
             quantity = int(request.POST.get('quantity'))
             product = get_object_or_404(Product, pk=item_id)
 
-            size = None
-            if 'product_size' in request.POST:
-                size = request.POST['product_size']
-
+            size = request.POST.get('product_size', None)
             cart = request.session.get('cart', {})
 
             if size:
@@ -97,14 +132,25 @@ class UpdateCartView(View):
             messages.error(request, f'Error updating cart: {str(e)}')  # Display error message if an exception occurs
             return redirect('view_cart')
 
-        
-class RemoveFromCartView(View):
-    def post(self, request, item_id):
-        try:
-            size = None
-            if 'product_size' in request.POST:
-                size = request.POST['product_size']
 
+class RemoveFromCartView(View):
+    """
+    Remove a specified product from the shopping cart.
+    """
+
+    def post(self, request, item_id):
+        """
+        Handle POST request to remove a product from the cart.
+
+        Args:
+            request: The HTTP request object.
+            item_id (int): The ID of the product to remove.
+
+        Returns:
+            HttpResponse: Redirect to the cart view.
+        """
+        try:
+            size = request.POST.get('product_size', None)
             cart = request.session.get('cart', {})
             product = get_object_or_404(Product, pk=item_id)
 
