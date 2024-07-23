@@ -11,11 +11,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   {% endblock %}
 
+  <!-- Dynamic title and meta tags -->
+  <title>{% block title %}{% endblock %}-MagnaPlate</title>
+  <meta name="keywords" content="{% block meta_keywords %}
+  MagnaPlate, magnetic posters, home decor, wall art, magnetic wall posters, 
+  easy wall decor, interchangeable posters, stylish home decorations, 
+  magnetic wall art{% endblock %}">
+  <meta name="description" content="{% block meta_description %}
+  Discover MagnaPlate - your ultimate destination for stylish and versatile 
+  magnetic posters. Easily hang and swap your metallic posters with our 
+  innovative magnetic system. Elevate your home decor effortlessly with 
+  MagnaPlate{% endblock %}">
+  
+
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
   <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+
+
 
   {% block extra_meta %}
   {% endblock %}
@@ -82,7 +97,6 @@
 
   {% block extra_js %}
   {% endblock %}
-  <title>MagnaPlate</title>
 </head>
 
 <body class="d-flex flex-column">

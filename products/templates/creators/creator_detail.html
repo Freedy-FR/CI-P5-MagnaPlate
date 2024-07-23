@@ -1,6 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}{{ creator.name }}{% endblock %}
+{% block meta_keywords %}
+  {{ creator.name }},
+  {% for collection in collections %}{{ collection }},{% endfor %}
+  {% for category in categories %}{{ category }}, {% endfor %}
+  MagnaPlate creators, artist profiles, magnetic poster creators, designer stories,
+  home decor artists, unique wall art, creative designs.
+{% endblock %}
+
+{% block meta_description %}
+  Explore the talented {{ creator.name }} behind MagnaPlate's unique magnetic posters.
+  Discover {{ creator.name }}, {{ creator.description }}.
+{% endblock %}
+
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'products/css/product.css' %}">
 {% endblock %}

@@ -1,27 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Contact Us{% endblock %}
+{% block meta_keywords %}contact MagnaPlate, customer inquiries, feedback, support, get in touch, contact information{% endblock %}
+{% block meta_description %}
+  Get in touch with the MagnaPlate team for any inquiries, feedback, or support. We're here to help you with any questions about our products and services.
+{% endblock %}
+
 {% block extra_css %}
-<style>
-    .contact-container {
-        margin-top: 50px;
-    }
-    .map-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-    }
-    .map-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-    }
-</style>
+    <link rel="stylesheet" href="{% static 'footer/css/footer.css' %}">
 {% endblock %}
 
 {% block content %}

@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Shopping Cart{% endblock %}
+{% block meta_keywords %}
+  shopping cart, MagnaPlate cart, review order, manage cart, checkout,
+  update quantities, apply discounts
+{% endblock %}
+{% block meta_description %}
+  Review and manage your selected MagnaPlate magnetic posters before proceeding to checkout.
+  Update quantities, apply discounts, and ensure a smooth shopping experience.
+{% endblock %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
 {% endblock %}

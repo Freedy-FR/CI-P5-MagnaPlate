@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Checkout Success{% endblock %}
+{% block meta_keywords %}checkout success, order confirmation, MagnaPlate purchase complete{% endblock %}
+{% block meta_description %}
+  Thank you for your purchase! Your order has been successfully placed and is being processed. 
+  Check your email for the order confirmation and details.
+{% endblock %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}

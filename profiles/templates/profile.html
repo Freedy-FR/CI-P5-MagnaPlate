@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}My Profile{% endblock %}
+{% block meta_keywords %}
+  profile, MagnaPlate account, manage profile, order history, personal information,
+  update details, customized shopping
+{% endblock %}
+{% block meta_description %}
+  Manage your MagnaPlate profile and personal information. View your order history,
+  update your details, and customize your shopping experience with us.
+{% endblock %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}

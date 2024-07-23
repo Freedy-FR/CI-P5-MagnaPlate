@@ -1,6 +1,16 @@
 {% extends "base.html" %}
-
 {% load static %}
+
+{% block title %}{{ username|capfirst }} Favorites{% endblock %}
+{% block meta_keywords %}
+  favorites, favorite magnetic posters, saved designs, MagnaPlate favorites,
+  wish list, home decor ideas, favorite wall art
+{% endblock %}
+{% block meta_description %}
+  View and manage your favorite magnetic posters on MagnaPlate. Keep track of the designs
+  you love and easily find them when you're ready to enhance your home decor.
+{% endblock %}
+
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'favorites/css/favorites.css' %}">

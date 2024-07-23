@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}{{ product.name }}{% endblock %}
+{% block meta_keywords %}
+  {{ product.name }}, MagnaPlate, magnetic poster, wall art,
+  home decor, metallic poster, interchangeable wall art,
+  stylish poster, easy mount poster, {{ product.category }},
+  {{ product.collection.friendly_name }},
+  {{ product.category.friendly_name }}
+{% endblock %}
+
+{% block meta_description %}
+  Check out our {{ product.name }} magnetic poster. Easily mount
+  and swap this stunning metallic poster with our innovative magnetic
+  system. This Plate is {{ product.description }}
+{% endblock %}
+
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'products/css/product.css' %}">
 {% endblock %}

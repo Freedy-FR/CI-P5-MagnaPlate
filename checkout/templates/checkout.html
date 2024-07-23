@@ -2,14 +2,22 @@
 {% load static %}
 {% load cart_tools %}
 
+{% block title %}Checkout{% endblock %}
+{% block meta_keywords %}
+   stripe, checkout, secure checkout, MagnaPlate purchase, complete order, buy magnetic posters,
+  order review, shipping details, home decor purchase
+{% endblock %}
+{% block meta_description %}
+  Complete your purchase of MagnaPlate magnetic posters with our secure and easy checkout process using stripe.
+  Review your order, enter your shipping details, and get ready to elevate your home decor.
+{% endblock %}
+
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 {% endblock %}
-
-
 
 {% block content %}
     <div class="container">
