@@ -17,7 +17,7 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-4" id="creatorPreview" style="display: none;">
             <div class="col g-3">
                 <div class="card p-0">
-                    <a class="link-underline-opacity-0" href="#">
+                    <a class="link-underline-opacity-0 link" href="#">
                         <img id="imagePreview" src="#" alt="Image Preview" style="display: none;" class="card-img img-fluid img-fill">
                         <div class="card-body">
                             <h5 class="card-title" id="previewName"></h5>
@@ -29,9 +29,9 @@
         </div>
 
         <div class="text-right">
-            <a class="btn btn-outline-black rounded-0" href="{% url 'creator_management' %}">Cancel</a>
+            <a class="btn btn-secondary rounded-pill my-1 me-1" href="{% url 'creator_management' %}">Cancel</a>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-black rounded-0" data-toggle="modal" data-target="#confirmCreatorModal">
+            <button type="button" class="btn btn-primary rounded-pill my-1" data-toggle="modal" data-target="#confirmCreatorModal">
                 Add Creator
             </button>
         </div>
