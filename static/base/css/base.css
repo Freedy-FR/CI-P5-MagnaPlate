@@ -47,17 +47,18 @@ main {
 
 .card .card-img-overlay {
     /* Initially hide the overlay */
-    display: none;
+    opacity: 0;
     /* Add a transition for smooth appearance */
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease;
 }
   
 .card:hover .card-img-overlay {
     /* Show the overlay when the card is hovered */
-    display: block;
+    opacity: 1;
     background-color: rgba(255, 255, 255, 0.8); 
     color: #000000; 
-}  
+}
+
 
 .img-fill {
     /* Fill up the image div */
