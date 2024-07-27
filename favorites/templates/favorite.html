@@ -11,7 +11,6 @@
   you love and easily find them when you're ready to enhance your home decor.
 {% endblock %}
 
-
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'favorites/css/favorites.css' %}">
 {% endblock %}
@@ -19,85 +18,99 @@
 {% block content %}
 <div class="container py-4">
     <h2 class="text-center">{{ username|capfirst }} Favorites</h2>
-    <div class="row">
-        <div class="col text-center">
-            <hr>
-            <h3 class="text-center">Products</h3>
-            <hr>
+    
+    <!-- Section for Favorite Products -->
+    <section class="favorite-products">
+        <div class="row">
+            <div class="col text-center">
+                <hr>
+                <h3 class="text-center">Products</h3>
+                <hr>
+            </div>
         </div>
-    </div>
-    {% if favorite_products %}
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-        {% for item in favorite_products %}
-        <div class="col">
-            <div class="card h-100">
-                <div class="position-relative">
-                    <a href="{% url 'product_detail' item.product.id %}" class="text-decoration-none">
-                        {% if item.product.image %}
-                        <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}">
+        {% if favorite_products %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            {% for item in favorite_products %}
+            <div class="col">
+                <div class="card h-100">
+                    <div class="position-relative">
+                        <a href="{% url 'product_detail' item.product.id %}" class="text-decoration-none">
+                            {% if item.product.image %}
+                            <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}">
+                            {% else %}
+                            <img src="{{ MEDIA_URL }}product_images/placeholder-image.png" class="card-img-top" alt="{{ item.product.name }}">
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.product.name }}</h5>
+                        <p class="card-text text-truncate">{{ item.product.description }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Added on: {{ item.created_at }}</small>
+                        <button type="button" class="btn btn-danger rounded-pill btn-sm position-absolute bottom-0 end-0 m-2"
+                                data-bs-toggle="modal" data-bs-target="#confirmModal"
+                                data-product-id="{{ item.product.id }}" data-product-name="{{ item.product.name }}">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-center">
+            You have no favorite products, please check out our <a href="{% url 'products' %}">products</a>.
+        </p>
+        {% endif %}
+    </section>
+
+    <!-- Section for Favorite Creators -->
+    <section class="favorite-creators">
+        <div class="row">
+            <div class="col text-center">
+                <hr>
+                <h3 class="text-center">Creators</h3>
+                <hr>
+            </div>
+        </div>
+        {% if favorite_creators %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            {% for item in favorite_creators %}
+            <div class="col">
+                <div class="card h-100 position-relative">
+                    <a href="{% url 'creator_detail' item.creator.id %}" class="text-decoration-none">
+                        {% if item.creator.image %}
+                        <img src="{{ item.creator.image.url }}" class="card-img-top" alt="{{ item.creator.name }}">
                         {% else %}
-                        <img src="{{ MEDIA_URL }}product_images/placeholder-image.png" class="card-img-top" alt="{{ item.product.name }}">
+                        <img src="{{ MEDIA_URL }}creator_images/creators-placeholder.webp" class="card-img-top" alt="{{ item.creator.name }}">
                         {% endif %}
                     </a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ item.product.name }}</h5>
-                    <p class="card-text text-truncate">{{ item.product.description }}</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Added on: {{ item.created_at }}</small>
-                    <button type="button" class="btn btn-danger rounded-pill btn-sm position-absolute bottom-0 end-0 m-2" data-bs-toggle="modal" data-bs-target="#confirmModal" data-product-id="{{ item.product.id }}" data-product-name="{{ item.product.name }}">
-                        Remove
-                    </button>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    <p class="text-center">You have no favorite products, please check out our <a href="{% url 'products' %}">products</a>.</p>
-    {% endif %}
-
-    <div class="row">
-        <div class="col text-center">
-            <hr>
-            <h3 class="text-center">Creators</h3>
-            <hr>
-        </div>
-    </div>
-    {% if favorite_creators %}
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-        {% for item in favorite_creators %}
-        <div class="col">
-            <div class="card h-100 position-relative">
-                <a href="{% url 'creator_detail' item.creator.id %}" class="text-decoration-none">
-                    {% if item.creator.image %}
-                    <img src="{{ item.creator.image.url }}" class="card-img-top" alt="{{ item.creator.name }}">
-                    {% else %}
-                    <img src="{{ MEDIA_URL }}creator_images/creators-placeholder.webp" class="card-img-top" alt="{{ item.creator.name }}">
-                    {% endif %}
-                </a>
-
-                <div class="card-body">
-                    <h5 class="card-title">{{ item.creator.name }}</h5>
-                    <p class="card-text text-truncate">{{ item.creator.description }}</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Added on: {{ item.created_at }}</small>
-                    <button type="button" class="btn btn-danger rounded-pill btn-sm position-absolute bottom-0 end-0 m-2" data-bs-toggle="modal" data-bs-target="#confirmModalCreator" data-creator-id="{{ item.creator.id }}" data-creator-name="{{ item.creator.name }}">
-                        Remove
-                    </button>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.creator.name }}</h5>
+                        <p class="card-text text-truncate">{{ item.creator.description }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Added on: {{ item.created_at }}</small>
+                        <button type="button" class="btn btn-danger rounded-pill btn-sm position-absolute bottom-0 end-0 m-2"
+                                data-bs-toggle="modal" data-bs-target="#confirmModalCreator"
+                                data-creator-id="{{ item.creator.id }}" data-creator-name="{{ item.creator.name }}">
+                            Remove
+                        </button>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    <p class="text-center">You have no favorite creators, please check out our <a href="{% url 'all_creators' %}">creators</a>.</p>
-    {% endif %}
+        {% else %}
+        <p class="text-center">
+            You have no favorite creators, please check out our <a href="{% url 'all_creators' %}">creators</a>.
+        </p>
+        {% endif %}
+    </section>
 </div>
 
-<!-- Modal for Products -->
+<!-- Modal for Favorite Products -->
 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -119,7 +132,7 @@
     </div>
 </div>
 
-<!-- Modal for Creators -->
+<!-- Modal for Favorite Creators -->
 <div class="modal fade" id="confirmModalCreator" tabindex="-1" aria-labelledby="confirmModalLabelCreator" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -144,9 +157,6 @@
 {% endblock %}
 
 {% block postloadjs %}
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlY8R/U4x2r+UhdPO9H61 + 5qFN5WYdV11UVtq3lDJjzQFfjnnCUOG8ifwB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9KpQ5fT + XJ6t6AKT +3bb84C4hmiVYXyl1PdpnY+PQMAFj4V0PQ5Bh44" crossorigin="anonymous"></script>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var confirmModal = document.getElementById('confirmModal');
