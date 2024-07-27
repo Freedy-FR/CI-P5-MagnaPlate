@@ -1,12 +1,14 @@
 """
 Template tags and filters for the cart application.
 
-This module defines custom template filters for use in the cart application templates.
+This module defines custom template
+filters for use in the cart application templates.
 """
 
 from django import template
 
 register = template.Library()
+
 
 @register.filter(name='calc_subtotal')
 def calc_subtotal(price, quantity):

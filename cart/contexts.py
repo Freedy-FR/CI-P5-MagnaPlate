@@ -1,3 +1,14 @@
+"""
+Retrieve the contents of the shopping cart from the session and
+calculate totals.
+
+This module defines a function to fetch the cart items, calculate
+the total cost,
+product count, delivery cost, amount needed for free delivery,
+free delivery limit,
+and grand total for the cart application.
+"""
+
 from decimal import Decimal
 
 from django.conf import settings
@@ -8,14 +19,17 @@ from products.models import Product
 
 def cart_contents(request):
     """
-    Retrieve the contents of the shopping cart from the session and calculate totals.
+    Retrieve the contents of the shopping cart from the session and calculate
+    totals.
 
     Args:
         request: The HTTP request object.
 
     Returns:
-        dict: A dictionary containing cart items, total cost, product count, delivery cost,
-              amount needed for free delivery, free delivery limit, and grand total.
+        dict: A dictionary containing cart items, total cost, product count,
+              delivery cost, amount needed for free delivery, free delivery
+              limit,
+              and grand total.
     """
     cart_items = []
     total = 0

@@ -16,7 +16,7 @@ Update quantities, apply discounts, and ensure a smooth shopping experience.
 {% endblock %}
 
 {% block content %}
-<main class="container mb-2">
+<section class="container mb-2">
     <header class="row">
         <div class="col">
             <hr>
@@ -24,7 +24,7 @@ Update quantities, apply discounts, and ensure a smooth shopping experience.
             <hr>
         </div>
     </header>
-    <section class="row">
+    <div class="row">
         <div class="col">
             {% if cart_items %}
             <div class="cart-items rounded">
@@ -153,8 +153,8 @@ Update quantities, apply discounts, and ensure a smooth shopping experience.
             </a>
             {% endif %}
         </div>
-    </section>
-</main>
+    </div>
+</section>
 {% endblock %}
 
 {% block postloadjs %}
