@@ -1,4 +1,4 @@
-
+/* Center and style the carousel caption */
 .carousel-caption {
     display: flex;
     justify-content: center;
@@ -13,17 +13,18 @@
     text-align: center;
 }
 
+/* Style the image container to center the image and define its size */
 .img-container {
     display: flex;
     justify-content: center; /* Horizontally center the image */
     align-items: center; /* Vertically center the image */
     overflow: hidden; /* Hide overflowing content */
-    width: auto; 
+    width: auto;
     height: 450px;
-    object-fit:contain; /* Scale the image to cover the container */
-
+    object-fit: contain; /* Scale the image to fit within the container */
 }
 
+/* Style the image carousel with rounded corners and centered content */
 .image-carousel {
     display: flex;
     justify-content: center; /* Horizontally center the image */
@@ -31,17 +32,18 @@
     overflow: hidden; /* Hide overflowing content */
     width: auto;
     height: 400px;
-    object-fit:contain; /* Scale the image to cover the container */
+    object-fit: contain; /* Scale the image to fit within the container */
     border-radius: 20px; /* Adjust the value to your desired roundness */
-
 }
 
+/* Create a background with a gradient animation */
 .background-carousel {
     background: linear-gradient(-45deg, #B81916, #A10F0D, #1C4AB2, #133398, #2846A1);
     background-size: 400% 400%;
     animation: gradient 20s ease-in-out infinite;
 }
 
+/* Define keyframes for the gradient animation */
 @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -54,17 +56,20 @@
     }
 }
 
+/* Style the custom background with semi-transparency and rounded corners */
 .custom-background {
     background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
     padding: 10px;
     border-radius: 50px;
 }
-  
+
+/* Set the font size for paragraphs inside the custom background */
 .custom-background p {
     font-size: 15px; 
 }
 
+/* Ensure carousel items are positioned relative */
 .carousel-item {
     position: relative;
 }

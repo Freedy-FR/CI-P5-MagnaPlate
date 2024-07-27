@@ -1,3 +1,4 @@
+/* Media query for the cart app */
 @media (max-width: 767px) {
     .cart-header {
         display: none;
