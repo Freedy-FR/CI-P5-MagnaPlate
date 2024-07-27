@@ -7,14 +7,19 @@
   Manage the images displayed on the MagnaPlate homepage carousel. Ensure your site looks great by organizing and updating carousel images.
 {% endblock %}
 
-
 {% block extra_css %}
+<!-- Link to additional CSS for product styling -->
 <link rel="stylesheet" href="{% static 'products/css/product.css' %}">
 {% endblock %}
 
 {% block content %}
+<!-- Main container for the Carousel Management page -->
 <div class="container py-4">
-    <h2 class="text-center">Carousel Management</h2>
+    <hr>
+    <h2 class="logo-font mb-4 text-center">Carousel Management</h2>
+    <hr>
+
+    <!-- Table displaying the carousel items -->
     <table class="table mt-4">
         <thead>
             <tr>
@@ -28,13 +33,15 @@
         <tbody>
             {% for item in carousels %}
             <tr>
-                <td><img src="{{ item.image.url }}" width="100" class="img-fluid"></td>
+                <td><img src="{{ item.image.url }}" alt="image {{ item.order }}" width="100" class="img-fluid"></td>
                 <td>{{ item.link }}</td>
                 <td>{{ item.caption }}</td>
                 <td>{{ item.order }}</td>
                 <td>
                     <div class="d-flex justify-content-between">
+                        <!-- Edit button -->
                         <a href="{% url 'carousel_update' item.id %}" class="btn btn-primary rounded-pill my-2">Edit</a>
+                        <!-- Delete button triggering modal -->
                         <button type="button" class="btn btn-danger rounded-pill my-2 me-1" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-item-id="{{ item.id }}" data-item-caption="{{ item.caption }}">Delete</button>
                     </div>
                 </td>
@@ -42,6 +49,8 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <!-- Navigation buttons -->
     <div class="row mt-4">
         <div class="col-6 text-center">
             <a href="{% url 'site_management' %}" class="btn btn-secondary rounded-pill my-1 me-1">Back to Management</a>
@@ -77,6 +86,7 @@
 {% endblock %}
 
 {% block postloadjs %}
+<!-- JavaScript to handle delete confirmation modal -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var confirmDeleteModal = document.getElementById('confirmDeleteModal');

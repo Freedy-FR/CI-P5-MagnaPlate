@@ -19,6 +19,7 @@
 
 {% block content %}
 
+<!-- Carousel section -->
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     {% for item in carousel_items %}
@@ -31,7 +32,7 @@
     <div class="carousel-item {% if forloop.first %}active{% endif %}">
       <div class="w-100">
         <a class="img-container" href="{{ item.link }}">
-          <img src="{{ item.image.url }}" class="image-carousel d-block rounded" alt="{{ item.caption }}">
+          <img src="{{ item.image.url }}" class="image-carousel d-block rounded" alt="carousel image {{ item.order }}">
         </a>
       </div>
       {% if item.caption %}
@@ -95,6 +96,7 @@
       {% endfor %}
     </div>
 
+    <!-- Pagination for deals -->
     <div class="container pt-4" id="anchor">
       {% if is_deal_paginated %}
       <nav aria-label="Page navigation" class="">
@@ -134,7 +136,7 @@
       {% for product in all_products %}
       <div class="col">
         <div class="card p-0 position-relative">
-          <a href="{% url 'product_detail' product_id=product.id %}" class="link" >
+          <a href="{% url 'product_detail' product_id=product.id %}" class="link">
             {% if product.image %}
             <img src="{% thumbnail product.image 'product_thumb' %}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
             {% else %}

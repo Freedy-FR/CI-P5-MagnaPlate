@@ -1,7 +1,14 @@
-from django.db import models
+"""
+Models configuration for the Carousel model.
+"""
+
 import os
+from django.db import models
+
 
 class Carousel(models.Model):
+    """Model representing a carousel item."""
+
     image = models.ImageField(upload_to='carousel_images/')
     link = models.URLField(max_length=200, blank=True)
     caption = models.CharField(max_length=100, blank=True)
@@ -14,13 +21,14 @@ class Carousel(models.Model):
         return f"Carousel item {self.id} - {self.caption}"
 
     def save(self, *args, **kwargs):
-        # Check if an instance with this id already exists
+        """
+        Save the Carousel instance, deleting the old image if it is being
+        changed.
+        """
         if self.pk:
             try:
                 old_instance = Carousel.objects.get(pk=self.pk)
-                # Check if the image is being changed
                 if old_instance.image != self.image:
-                    # If so, delete the old image
                     if os.path.isfile(old_instance.image.path):
                         os.remove(old_instance.image.path)
             except Carousel.DoesNotExist:
@@ -28,7 +36,9 @@ class Carousel(models.Model):
         super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
-        # Delete the image file when the instance is deleted
+        """
+        Delete the Carousel instance and its image file.
+        """
         if self.image:
             if os.path.isfile(self.image.path):
                 os.remove(self.image.path)

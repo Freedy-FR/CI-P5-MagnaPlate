@@ -8,8 +8,13 @@
 {% endblock %}
 
 {% block content %}
+<!-- Main container for the Edit Carousel Item page -->
 <div class="container py-4">
-    <h2 class="text-center">Edit Carousel Item</h2>
+    <hr>
+    <h2 class="logo-font mb-4 text-center">Edit Carousel Item</h2>
+    <hr>
+
+    <!-- Form for editing the carousel item -->
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}
@@ -17,6 +22,8 @@
             <button type="submit" class="btn rounded-pill my-2 border-black btn-primary">Save Changes</button>
         </div>
     </form>
+
+    <!-- Navigation button to go back to the carousel management page -->
     <div class="row mt-4">
         <div class="col text-center">
             <a href="{% url 'carousel_list' %}" class="btn rounded-pill my-2 border-black btn-danger">Back to Carousel Management</a>

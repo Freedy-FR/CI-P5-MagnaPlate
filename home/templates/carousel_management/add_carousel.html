@@ -8,8 +8,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="container py-4">
-    <h2 class="text-center">Add Carousel Item</h2>
+<!-- Main container for the Add Carousel Item page -->
+<section class="container py-4">
+    <!-- Page title -->
+    <hr>
+    <h2 class="logo-font mb-4 text-center">Add Carousel Item</h2>
+    <hr>
+
+    <!-- Form to add a new carousel item -->
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}
@@ -17,10 +23,12 @@
             <button type="submit" class="btn btn-primary rounded-pill my-1">Add</button>
         </div>
     </form>
+
+    <!-- Back to Carousel Management button -->
     <div class="row mt-4">
         <div class="col text-center">
             <a href="{% url 'carousel_list' %}" class="btn btn-secondary rounded-pill my-1 me-1">Back to Carousel Management</a>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}

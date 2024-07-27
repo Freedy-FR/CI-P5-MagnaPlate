@@ -95,6 +95,10 @@ main {
     font-family: 'Roboto', sans-serif !important;
 }
 
+.cart-icon {
+    color: var(--light-blue);
+}
+
 /* Custom styles for price positioning */
 .price-container {
     position: absolute;

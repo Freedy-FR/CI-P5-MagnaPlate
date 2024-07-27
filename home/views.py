@@ -1,3 +1,7 @@
+"""
+Views for handling the index page and carousel management.
+"""
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.core.paginator import Paginator
@@ -9,14 +13,33 @@ from .forms import CarouselForm
 
 
 class AdminOrSuperuserRequiredMixin(UserPassesTestMixin):
+    """Mixin to allow only admin or superuser access."""
+
     def test_func(self):
+        """
+        Test if the user is staff or superuser.
+
+        Returns:
+            bool: True if the user is staff or superuser.
+        """
         return self.request.user.is_staff or self.request.user.is_superuser
 
 
 class IndexView(View):
-    """ A view to return the index page with products, deal products, and carousel items. """
+    """A view to return the index page with products, deal products,
+    and carousel items.
+    """
 
     def get_pagination_range(self, page_obj):
+        """
+        Get the range of pages for pagination display.
+
+        Args:
+            page_obj (Page): The page object.
+
+        Returns:
+            list: The range of pages to display.
+        """
         if not page_obj:
             return []
 
@@ -24,9 +47,9 @@ class IndexView(View):
         current_page = page_obj.number
 
         # Set the range of pages to display
-        start = max(current_page - 1, 1)  # Show 1 page before the current page
-        end = min(current_page + 1, num_pages)  # Show 1 page after the current page
-        
+        start = max(current_page - 1, 1)
+        end = min(current_page + 1, num_pages)
+
         page_range = range(start, end + 1)
 
         # Add ellipses if necessary
@@ -38,13 +61,21 @@ class IndexView(View):
         return page_range
 
     def get(self, request):
-        # Prepare the context
+        """
+        Handle GET requests to display the index page.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+
+        Returns:
+            HttpResponse: The rendered index page.
+        """
         context = {}
 
         # Pagination for deal products
-        deals_list = list(Product.objects.filter(is_on_deal=True))  # Convert to list
-        random.shuffle(deals_list)  # Shuffle the list
-        deals_paginator = Paginator(deals_list, 6)  # Paginate by 6 items for deals
+        deals_list = list(Product.objects.filter(is_on_deal=True))
+        random.shuffle(deals_list)
+        deals_paginator = Paginator(deals_list, 6)
         deals_page = request.GET.get('deals_page')
         deals = deals_paginator.get_page(deals_page)
         context['deal_products'] = deals
@@ -53,9 +84,9 @@ class IndexView(View):
         context['deal_page_range'] = self.get_pagination_range(deals)
 
         # Pagination for all products
-        products_list = list(Product.objects.all())  # Convert to list
-        random.shuffle(products_list)  # Shuffle the list
-        paginator = Paginator(products_list, 12)  # Paginate by 12 items for all products
+        products_list = list(Product.objects.all())
+        random.shuffle(products_list)
+        paginator = Paginator(products_list, 12)
         page = request.GET.get('page')
         products = paginator.get_page(page)
         context['all_products'] = products
@@ -67,45 +98,144 @@ class IndexView(View):
         carousel_items = Carousel.objects.all()
         context['carousel_items'] = carousel_items
 
-        # Render the template with context
         return render(request, 'home/index.html', context)
 
 
 # Carousel Management Views
 
-class CarouselListView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
-    def get(self, request):
-        carousels = Carousel.objects.all()
-        return render(request, 'carousel_management/carousel_management.html', {'carousels': carousels})
+class CarouselListView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View
+):
+    """View to list all carousel items."""
 
-class CarouselCreateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
     def get(self, request):
+        """
+        Handle GET requests to display all carousel items.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+
+        Returns:
+            HttpResponse: The rendered carousel management page.
+        """
+        carousels = Carousel.objects.all()
+        return render(
+            request,
+            'carousel_management/carousel_management.html',
+            {'carousels': carousels}
+        )
+
+
+class CarouselCreateView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View
+):
+    """View to create a new carousel item."""
+
+    def get(self, request):
+        """
+        Handle GET requests to display the carousel creation form.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+
+        Returns:
+            HttpResponse: The rendered add carousel page.
+        """
         form = CarouselForm()
-        return render(request, 'carousel_management/add_carousel.html', {'form': form})
+        return render(
+            request,
+            'carousel_management/add_carousel.html',
+            {'form': form}
+        )
 
     def post(self, request):
+        """
+        Handle POST requests to create a new carousel item.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+
+        Returns:
+            HttpResponse: Redirects to the carousel list page if form is valid,
+            otherwise renders the add carousel page with errors.
+        """
         form = CarouselForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('carousel_list')
-        return render(request, 'carousel_management/add_carousel.html', {'form': form})
+        return render(
+            request,
+            'carousel_management/add_carousel.html',
+            {'form': form}
+        )
 
-class CarouselUpdateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
+
+class CarouselUpdateView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View
+):
+    """View to update an existing carousel item."""
+
     def get(self, request, pk):
+        """
+        Handle GET requests to display the carousel update form.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            pk (int): Primary key of the carousel item.
+
+        Returns:
+            HttpResponse: The rendered edit carousel page.
+        """
         carousel = get_object_or_404(Carousel, pk=pk)
         form = CarouselForm(instance=carousel)
-        return render(request, 'carousel_management/edit_carousel.html', {'form': form})
+        return render(
+            request,
+            'carousel_management/edit_carousel.html',
+            {'form': form}
+        )
 
     def post(self, request, pk):
+        """
+        Handle POST requests to update an existing carousel item.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            pk (int): Primary key of the carousel item.
+
+        Returns:
+            HttpResponse: Redirects to the carousel list page if form is valid,
+            otherwise renders the edit carousel page with errors.
+        """
         carousel = get_object_or_404(Carousel, pk=pk)
-        form = CarouselForm(request.POST, request.FILES, instance=carousel)
+        form = CarouselForm(
+            request.POST, request.FILES, instance=carousel
+        )
         if form.is_valid():
             form.save()
             return redirect('carousel_list')
-        return render(request, 'carousel_management/edit_carousel.html', {'form': form})
+        return render(
+            request,
+            'carousel_management/edit_carousel.html',
+            {'form': form}
+        )
 
-class CarouselDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
+
+class CarouselDeleteView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View
+):
+    """View to delete an existing carousel item."""
+
     def post(self, request, pk):
+        """
+        Handle POST requests to delete a carousel item.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            pk (int): Primary key of the carousel item.
+
+        Returns:
+            HttpResponse: Redirects to the carousel list page.
+        """
         carousel = get_object_or_404(Carousel, pk=pk)
         carousel.delete()
         return redirect('carousel_list')
