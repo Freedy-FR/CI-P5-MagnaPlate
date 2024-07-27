@@ -7,7 +7,6 @@
   home decor designers, wall art creators, magnetic poster artists,
   artistic profiles
 {% endblock %}
-
 {% block meta_description %}
   Meet all the amazing creators featured on MagnaPlate.
   Browse through a diverse range of artists and find your 
@@ -21,7 +20,9 @@
 {% block content %}
 <section class="py-4 container-fluid">
   <div class="container">
-    <h1 class="text-center py-2">All Creators</h1>
+    <hr>
+    <h2 class="logo-font mb-4 text-center">All Creators</h2>
+    <hr>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
       {% for creator in creators %}
       <div class="col g-3">
@@ -34,7 +35,7 @@
             {% endif %}
             <div class="card-body">
               <h5 class="card-title">{{ creator.name }}</h5>
-              <p class="card-text text-truncate">{{ creator.description}}</p>
+              <p class="card-text text-truncate">{{ creator.description }}</p>
             </div>
           </a>
         </div>

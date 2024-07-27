@@ -8,64 +8,65 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <hr>
-                <h2 class="logo-font mb-4">Collection Management</h2>
-                <h5 class="text-muted">Add a Collection</h5>
-                <hr>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <form id="addCollectionForm" method="POST" action="{% url 'add_collection' %}" class="form mb-2">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <div class="text-right">
-                        <a href="{% url 'site_management' %}">
-                            <button type="button" class="btn rounded-pill my-2 border-black btn-secondary">
-                                Cancel
-                            </button>
-                        </a>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn rounded-pill my-2 border-black btn-primary" data-toggle="modal" data-target="#confirmAddCollectionModal">
-                            Add Collection
-                        </button>
-                    </div>
-                </form>
-            </div>
+<!-- Main container for the Add Collection page -->
+<section class="container">
+    <div class="row">
+        <div class="col-12">
+            <hr>
+            <h2 class="logo-font mb-4 text-center">Collection Management</h2>
+            <hr>
+            <h5 class="text-muted">Add a Collection</h5>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="confirmAddCollectionModal" tabindex="-1" role="dialog" aria-labelledby="confirmAddCollectionModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="w-100 toast-capper"></div>
-                <div class="modal-header bg-white text-dark d-flex justify-content-between">
-                    <h5 class="modal-title" id="confirmAddCollectionModalLabel">Confirm Add Collection</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+    <div class="row">
+        <div class="col-12">
+            <!-- Form for adding a new collection -->
+            <form id="addCollectionForm" method="POST" action="{% url 'add_collection' %}" class="form mb-2">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="text-right">
+                    <a href="{% url 'site_management' %}" class="btn rounded-pill my-2 border-black btn-secondary">
+                        Cancel
+                    </a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn rounded-pill my-2 border-black btn-primary" data-toggle="modal" data-target="#confirmAddCollectionModal">
+                        Add Collection
+                    </button>
                 </div>
-                <div class="modal-body">
-                    Are you sure you want to add this collection?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary rounded-pill my-1" id="confirmAddCollectionButton">Add Collection</button>
-                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Modal for Confirm Add Collection -->
+<div class="modal fade" id="confirmAddCollectionModal" tabindex="-1" role="dialog" aria-labelledby="confirmAddCollectionModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="w-100 toast-capper"></div>
+            <div class="modal-header bg-white text-dark d-flex justify-content-between">
+                <h5 class="modal-title" id="confirmAddCollectionModalLabel">Confirm Add Collection</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to add this collection?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary rounded-pill my-1" id="confirmAddCollectionButton">Add Collection</button>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block postloadjs %}
-    <script>
-        $(document).ready(function() {
-            $('#confirmAddCollectionButton').click(function() {
-                $('#addCollectionForm').submit();
-            });
+<!-- JavaScript to handle form submission via modal confirmation -->
+<script>
+    $(document).ready(function() {
+        $('#confirmAddCollectionButton').click(function() {
+            $('#addCollectionForm').submit();
         });
-    </script>
+    });
+</script>
 {% endblock %}

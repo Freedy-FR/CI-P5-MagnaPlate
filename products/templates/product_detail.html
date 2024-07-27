@@ -21,131 +21,114 @@
 {% endblock %}
 
 {% block content %}
-
 <section class="py-4 container-fluid">
   <div class="container">
     <div class="row gx-5">
+      <!-- Product Image and Favorite Icon -->
       <aside class="col-lg-6 my-auto px-2">
         <div class="border rounded-4 d-flex justify-content-center position-relative">
           {% if product.image %}
-          <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
-            href="{{ product.image.url }}">
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image rounded-4 fit">
+          <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="{{ product.image.url }}">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image rounded-4 fit shadow rounded">
           </a>
           {% else %}
-          <img src="{{ MEDIA_URL }}product_images/placeholder-image.png" alt="image-placeholder"
-            class="product-image rounded-4 fit">
+          <img src="{{ MEDIA_URL }}product_images/placeholder-image.png" alt="image-placeholder" class="product-image rounded-4 fit shadow rounded">
           {% endif %}
           {% if product.is_on_deal %}
           <span class="badge bg-danger text-black position-absolute top-0 start-0 m-2">On Deal</span>
           {% endif %}
-          <form method="post" action="{% url 'favorites:toggle_favorite_product' product.id %}">
+          <form id="favorite-form-{{ product.id }}" method="post" action="{% url 'favorites:toggle_favorite_product' product.id %}">
             {% csrf_token %}
-            <button type="submit" class="favorite-icon">
-                <div class="icon-background">
-                    {% if is_favorite %}
-                    <i class="fa-solid fa-heart full_heart"></i>
-                    {% else %}
-                    <i class="fa-regular fa-heart regular_heart"></i>
-                    {% endif %}
-                </div>
-            </button>
           </form>
+          <a href="#" class="favorite-icon" onclick="event.preventDefault(); document.getElementById('favorite-form-{{ product.id }}').submit();">
+            <span class="d-none">Favorite Link</span>
+            <div class="icon-background">
+              {% if is_favorite %}
+              <i class="fa-solid fa-heart full_heart"></i>
+              {% else %}
+              <i class="fa-regular fa-heart regular_heart"></i>
+              {% endif %}
+            </div>
+          </a>
         </div>
       </aside>
-      <main class="col-lg-6 pt-md-2">
+      <!-- Product Details and Add to Cart -->
+      <div class="col-lg-6 pt-md-2">
         <div class="ps-lg-3 pt-md-1">
-          <h4 class="title text-dark">
-            {{ product.name }}
-          </h4>
-          <h6 class="text-dark">
-            <p>By <span class="badge text-bg-secondary">{{ product.creator }}</span></p>
-          </h6>
-          <div class="d-flex flex-row my-3">
-            <div class="text-warning mb-1 me-2">
+          <h4 class="title text-dark">{{ product.name }}</h4>
+          <h6 class="text-dark">By <span class="badge text-bg-secondary text-black">{{ product.creator }}</span></h6>
+          <div class="d-flex flex-row my-2">
+            <div class="me-2 btn-primary rounded-pill px-2">
               {% for star in range %}
-              {% if forloop.counter <= product.rating %} <i class="fa-solid fa-star"></i>
-                {% else %}
-                <i class="fa-regular fa-star"></i> <!-- Empty star -->
-                {% endif %}
-                {% endfor %}
-                <span class="ms-1">{{ product.rating }}</span>
+              {% if forloop.counter <= product.rating %}
+              <i class="fa-solid fa-star"></i>
+              {% else %}
+              <i class="fa-regular fa-star"></i> <!-- Empty star -->
+              {% endif %}
+              {% endfor %}
+              <span class="ms-1">{{ product.rating }}</span>
             </div>
           </div>
-
           <div class="mb-3">
             <span class="h5">€{{ product.price }}</span>
           </div>
-
           <p>{{ product.description }}</p>
-
           <div class="row">
-            <dt class="col-3 fw-bold">Collections:</dt>
-            <dd class="col-9">
-              {{ product.collection.friendly_name }}
-            </dd>
+            <div class="col-12">
+              <div class="fw-bold my-0">Collections: <span class="fw-lighter">{{ product.collection.friendly_name }}</span></div>
+            </div>
           </div>
           <div class="row">
-            <dt class="col-3 fst-italic">Category:</dt>
-            <dd class="col-9 fw-light">
-              {{ product.category.friendly_name }}
-            </dd>
+            <div class="col-12">
+              <div class="fst-italic my-0">Category: <span class="fst-normal">{{ product.category.friendly_name }}</span></div>
+            </div>
           </div>
-
-          <hr/>
-
+          <hr class="my-1 py-1">
           <form class="form" action="{% url 'add_to_cart' product.id %}" method="post">
             {% csrf_token %}
-            <div class="row mb-4">
-
+            <div class="row mb-2">
               {% with product.has_sizes as s %}
               {% if s %}
               <div class="col-md-6 col-12 select-size">
-                <label class="mb-2">Size</label>
+                <label class="mb-2" for="id_product_size">Size</label>
                 <select class="form-control me-0 rounded-4" name="product_size" id="id_product_size">
                   {% for size_value, size_name in product.SIZE_CHOICES %}
-                  <option value="{{ size_value }}" {% if product.size == size_value %}selected{% endif %}>{{ size_name }}
-                  </option>
+                  <option value="{{ size_value }}" {% if product.size == size_value %}selected{% endif %}>{{ size_name }}</option>
                   {% endfor %}
                 </select>
               </div>
               {% else %}
               <div class="col-md-6 col-12 d-none"></div>
               {% endif %}
-
-              <div class="col-md-6 col-12 select-quantity">
-                <label class="mb-2 d-block">Quantity</label>
+              <div class="col-md-6 col-12 select-quantity mb-0 pb-0">
+                <p class="mb-2 d-block">Quantity</p>
                 <div class="input-group mb-3">
-                  <button type="button" class="decrement-qty btn btn-light border mx-0 rounded-start-4"
-                    id="decrement-qty_{{ product.id }}">
+                  <button type="button" class="decrement-qty btn btn-light border mx-0 rounded-start-4" id="decrement-qty_{{ product.id }}">
                     <i class="fas fa-minus"></i>
+                    <span class="d-none">Minus</span>
                   </button>
-                  <input class="form-control qty_input text-center mx-0" type="number" name="quantity" value="1" min="1"
-                    max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
-                  <button type="button" class="increment-qty btn btn-light border mx-0 rounded-end-4"
-                    id="increment-qty_{{ product.id }}">
+                  <label for="id_qty_{{ product.id }}" class="visually-hidden">Quantity</label>
+                  <input class="form-control qty_input text-center mx-0" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                  <button type="button" class="increment-qty btn btn-light border mx-0 rounded-end-4" id="increment-qty_{{ product.id }}">
                     <i class="fas fa-plus"></i>
+                    <span class="d-none">Plus</span>
                   </button>
                 </div>
               </div>
             </div>
-            <a href="{% url 'products' %}" class="btn btn-secondary rounded-pill my-1 me-1"><i
-                class="fa-solid fa-chevron-left"></i> Back to Products</a>
-            <button type="submit" class="btn btn-primary rounded-pill my-1">
-              <i class="fa-solid fa-cart-shopping"></i> Add to cart
-            </button>
+            <a href="{% url 'products' %}" class="btn btn-secondary rounded-pill my-1 me-1"><i class="fa-solid fa-chevron-left"></i> Back to Products</a>
+            <button type="submit" class="btn btn-primary rounded-pill my-1"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
             <input type="hidden" name="redirect_url" value="{{ request.path }}">
             {% endwith %}
           </form>
-
         </div>
-      </main>
+      </div>
     </div>
   </div>
 </section>
-<!-- content -->
 
-<section class="bg-light border-top py-4">
+<!-- Specification and Shipping Info -->
+<div class="bg-light border-top py-4">
   <div class="container">
     <div class="row gx-4">
       <div class="col-12 mb-4">
@@ -153,41 +136,26 @@
           <!-- Pills navs -->
           <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
             <li class="nav-item d-flex" role="presentation">
-              <a class="nav-link d-flex align-items-center justify-content-center w-100 active" data-mdb-pill-init
-                id="ex1-tab-1" href="#ex1-pills-1" role="tab" aria-controls="ex1-pills-1"
-                aria-selected="true"><i class="fas fa-info-circle icon-detail me-1"></i>Specification</a>
+              <a class="nav-link d-flex align-items-center justify-content-center w-100 active" data-mdb-pill-init id="ex1-tab-1" href="#ex1-pills-1" role="tab" aria-controls="ex1-pills-1" aria-selected="true"><i class="fas fa-info-circle icon-detail me-1"></i>Specification</a>
             </li>
             <li class="nav-item d-flex" role="presentation">
-              <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init
-                id="ex1-tab-2" href="#ex1-pills-2" role="tab" aria-controls="ex1-pills-2" aria-selected="false"><i
-                  class="fas fa-shipping-fast icon-detail me-1"></i>Shipping info</a>
+              <a class="nav-link d-flex align-items-center justify-content-center w-100" data-mdb-pill-init id="ex1-tab-2" href="#ex1-pills-2" role="tab" aria-controls="ex1-pills-2" aria-selected="false"><i class="fas fa-shipping-fast icon-detail me-1"></i>Shipping info</a>
             </li>
           </ul>
-          <!-- Pills navs -->
 
           <!-- Pills 1 content -->
           <div class="tab-content" id="ex1-content">
             <div class="tab-pane fade show active p-1 table-responsive" id="ex1-pills-1" role="tabpanel">
               <p>Detailed specifications for high-quality metal posters available in various sizes.</p>
-
               <ul class="list-unstyled mb-0">
-                <li>
-                  <i class="fas fa-check icon-detail me-2"></i>Material: High-quality metal
-                </li>
-                <li>
-                  <i class="fas fa-check icon-detail me-2"></i>Weight: Lightweight for easy hanging
-                </li>
-                <li>
-                  <i class="fas fa-check icon-detail me-2"></i>Finish: Matte, with anti-glare properties
-                </li>
-                <li>
-                  <i class="fas fa-check icon-detail me-2"></i>Mounting: Includes a magnetic mounting system for easy
-                  installation
-                </li>
+                <li><i class="fas fa-check icon-detail me-2"></i>Material: High-quality metal</li>
+                <li><i class="fas fa-check icon-detail me-2"></i>Weight: Lightweight for easy hanging</li>
+                <li><i class="fas fa-check icon-detail me-2"></i>Finish: Matte, with anti-glare properties</li>
+                <li><i class="fas fa-check icon-detail me-2"></i>Mounting: Includes a magnetic mounting system for easy installation</li>
               </ul>
 
               <div class="table-responsive">
-                <table class="table border mt-3 mb-2 mx-0 px-0 ">
+                <table class="table border mt-3 mb-2 mx-0 px-0">
                   <tr>
                     <th class="py-2">Size</th>
                     <th class="py-2">Width (cm)</th>
@@ -218,35 +186,14 @@
 
             <!-- Pills 2 content -->
             <div class="tab-pane fade mb-2 p-1" id="ex1-pills-2" role="tabpanel">
-              <!-- Shipping Info Tab -->
-              <p>
-                Our high-quality metal posters are carefully packaged and shipped to ensure they arrive in perfect
-                condition. Here's what you need to know:
-              </p>
+              <p>Our high-quality metal posters are carefully packaged and shipped to ensure they arrive in perfect condition. Here's what you need to know:</p>
               <ul class="list-unstyled">
-                <li>
-                  <i class="fas fa-truck-moving icon-detail me-2"></i> <strong>Packaging:</strong> Protective layers
-                  and sturdy, eco-friendly packaging.
-                </li>
-                <li>
-                  <i class="fas fa-clock icon-detail me-2"></i> <strong>Handling Time:</strong> Orders processed within
-                  1-2 business days.
-                </li>
-                <li>
-                  <i class="fas fa-shipping-fast icon-detail me-2"></i> <strong>Delivery:</strong> Standard delivery
-                  (Europe Only) within 5-7 business days.
-                </li>
-                <li>
-                  <i class="fas fa-globe-americas icon-detail me-2"></i> <strong>International Shipping:</strong>
-                  Available with varying rates and times.
-                </li>
+                <li><i class="fas fa-truck-moving icon-detail me-2"></i><strong>Packaging:</strong> Protective layers and sturdy, eco-friendly packaging.</li>
+                <li><i class="fas fa-clock icon-detail me-2"></i><strong>Handling Time:</strong> Orders processed within 1-2 business days.</li>
+                <li><i class="fas fa-shipping-fast icon-detail me-2"></i><strong>Delivery:</strong> Standard delivery (Europe Only) within 5-7 business days.</li>
+                <li><i class="fas fa-globe-americas icon-detail me-2"></i><strong>International Shipping:</strong> Available with varying rates and times.</li>
               </ul>
-              <p>
-                If you require specific details about our shipping policies, our customer care team is ready to assist.
-                For personalized support, please connect with us on our <a href="{% url 'customer_support' %}"
-                  class="text-decoration-none">customer service page</a>.
-              </p>
-
+              <p>If you require specific details about our shipping policies, our customer care team is ready to assist. For personalized support, please connect with us on our <a href="{% url 'customer_support' %}" class="text-decoration-none">customer service page</a>.</p>
             </div>
           </div>
         </div>
@@ -255,18 +202,15 @@
 
     {% include "includes/all_products.html" %}
   </div>
-</section>
+</div>
 
 {% endblock %}
 
 {% block postloadjs %}
-
 <script type="module" src="{% static 'products/js/product.js' %}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js"
-  integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js" integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- MDB -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
 
 {% endblock %}

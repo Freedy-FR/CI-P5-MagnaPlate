@@ -21,8 +21,8 @@ perfect design to enhance your space today.
 {% endblock %}
 
 {% block content %}
-<main id="allproducts" class="container p-2" data-scroll-target="true">
-    <section class="row gx-2">
+<section id="allproducts" class="container p-2" data-scroll-target="true">
+    <div class="row gx-2">
         <div class="rounded-2 px-3 py-2 bg-white">
             <h2 class="text-center">Our Products!</h2>
 
@@ -45,6 +45,7 @@ perfect design to enhance your space today.
                 </form>
             </div>
 
+            <!-- Current filter and sorting display -->
             <h6 class="text-center">
                 {% if current_filter.creator %}
                     {{ current_filter.creator.name }} by
@@ -72,10 +73,11 @@ perfect design to enhance your space today.
                 {% endif %}
             </h6>
 
+            <!-- Products listing -->
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                 {% for product in products %}
                 <article class="col g-3">
-                    <div class="card p-0 position-relative">
+                    <div class="card p-0 position-relative shadow rounded">
                         <a class="link-underline-opacity-0 link" href="{% url 'product_detail' product_id=product.id %}">
                         {% if product.image %}
                             <img src="{% thumbnail product.image 'product_thumb' %}" alt="{{ product.name }}" class="card-img img-fluid img-fill">
@@ -83,9 +85,9 @@ perfect design to enhance your space today.
                             <img src="{{ MEDIA_URL }}product_images/placeholder-image.webp" alt="image-placeholder" class="card-img img-fluid img-fill">
                         {% endif %}
                         {% if product.is_on_deal %}
-                        <span class="badge bg-danger text-black position-absolute top-0 start-0 m-2">On Deal</span>
+                            <span class="badge bg-danger text-black position-absolute top-0 start-0 m-2">On Deal</span>
                         {% endif %}
-                        <div class="d-none d-lg-block">
+                        <div class="d-none d-lg-block shadow rounded">
                             <div class="card-img-overlay justify-content-between align-items-center">
                                 <h5 class="card-title">{{ product.name }}</h5>
                                 <p class="card-text text-black">{{ product.description|truncatewords:25 }}</p>
@@ -96,7 +98,7 @@ perfect design to enhance your space today.
                                 {% endif %}
                             </div>
                         </div>
-                        <div class="d-block d-lg-none">
+                        <div class="d-block d-lg-none shadow rounded">
                             <div class="card-body d-flex justify-content-between align-items-center px-2 py-1">
                                 <p class="card-text m-0">{{ product.name }}</p>
                                 {% if product.price %}
@@ -110,6 +112,7 @@ perfect design to enhance your space today.
                 {% endfor %}
             </div>
 
+            <!-- Pagination -->
             <div class="container pt-4" id="anchor">
                 {% if is_paginated %}
                     <nav aria-label="Page navigation">
@@ -134,6 +137,6 @@ perfect design to enhance your space today.
                 {% endif %}
             </div>
         </div>
-    </section>
-</main>
+    </div>
+</section>
 {% endblock %}

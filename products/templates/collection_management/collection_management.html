@@ -12,14 +12,16 @@
 {% endblock %}
 
 {% block content %}
-<div id="allcollections" class="container p-2" data-scroll-target="true">
+<!-- Main container for the Collection Management page -->
+<section id="allcollections" class="container p-2" data-scroll-target="true">
     <div class="row gx-2">
         <div class="rounded-2 px-3 py-2 bg-white">
             
-            <h2 class="text-center">
-                Collection Management
-            </h2>
+            <hr>
+            <h2 class="logo-font mb-4 text-center">Collection Management</h2>
+            <hr>
 
+            <!-- Displaying collections in a grid layout -->
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                 {% for collection in collections %}
                 <div class="col g-3">
@@ -41,6 +43,7 @@
                 {% endfor %}
             </div>
 
+            <!-- Pagination for collections -->
             <div class="container pt-4" id="anchor">
                 {% if is_paginated %}
                     <nav aria-label="Page navigation" class="">
@@ -67,23 +70,19 @@
 
         </div>
         <div class="col-6 g-3 text-center">
-            <a href="{% url 'site_management' %}">
-                <button type="button" class="btn btn-secondary rounded-pill my-1 me-1">
-                    Back to Management
-                </button>
+            <a href="{% url 'site_management' %}" class="btn btn-secondary rounded-pill my-1 me-1">
+                Back to Management
             </a>
         </div>
         <div class="col-6 g-3 text-center">
-            <a href="{% url 'add_collection' %}">
-                <button type="button" class="btn rounded-pill my-2 border-black btn-success">
-                    Add Collection
-                </button>
+            <a href="{% url 'add_collection' %}" class="btn rounded-pill my-2 border-black btn-success">
+                Add Collection
             </a>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Modal -->
+<!-- Modal for confirming delete action -->
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -96,7 +95,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-dismiss="modal">Cancel</button>
-                <form id="deleteForm" action="" method="post" style="display:inline;">
+                <form id="deleteForm" action="#" method="post" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger rounded-pill my-1 me-1">Delete</button>
                 </form>
@@ -108,12 +107,11 @@
 {% endblock %}
 
 {% block postloadjs %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js"
-  integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- JavaScript for handling the delete confirmation modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js" integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- MDB -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#confirmDeleteModal').on('show.bs.modal', function (event) {

@@ -13,14 +13,18 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1>Edit Creator</h1>
+<!-- Main container for the Edit Creator page -->
+<section class="container mt-5">
+    <hr>
+    <h2 class="logo-font mb-4 text-center">Edit Creator</h2>
+    <hr>
+    <!-- Form for editing a creator -->
     <form id="creatorForm" method="POST" action="{% url 'edit_creator' form.instance.pk %}" class="form mb-2" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}
 
         <!-- Preview Card -->
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-4" id="creatorPreview" style="display: none;">
+        <section class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-4" id="creatorPreview" style="display: none;">
             <div class="col g-3">
                 <div class="card p-0">
                     <a class="link-underline-opacity-0 link" href="#">
@@ -32,7 +36,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </section>
 
         <div class="text-right">
             <a class="btn btn-secondary rounded-pill my-1 me-1" href="{% url 'creator_management' %}">Cancel</a>
@@ -43,8 +47,8 @@
         </div>
     </form>
 
-    <!-- Modal -->
-    <div class="modal fade" id="confirmCreatorModal" tabindex="-1" role="dialog" aria-labelledby="confirmCreatorModalLabel" aria-hidden="true">
+    <!-- Modal for Confirm Update Creator -->
+    <section class="modal fade" id="confirmCreatorModal" tabindex="-1" role="dialog" aria-labelledby="confirmCreatorModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-white text-dark d-flex justify-content-between">
@@ -60,8 +64,8 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+</section>
 {% endblock %}
 
 {% block postloadjs %}

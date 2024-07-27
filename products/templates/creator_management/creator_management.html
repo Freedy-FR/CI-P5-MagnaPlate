@@ -12,18 +12,20 @@
 {% endblock %}
 
 {% block content %}
-<div id="allcreators" class="container p-2" data-scroll-target="true">
+<!-- Main container for the Creator Management page -->
+<section id="allcreators" class="container p-2" data-scroll-target="true">
     <div class="row gx-2">
         <div class="rounded-2 px-3 py-2 bg-white">
-            
-            <h2 class="text-center">
-                Creator Management
-            </h2>
+            <hr>
+            <h2 class="logo-font mb-4 text-center">Creator Management</h2>
+            <hr>
 
+            <!-- Grid of creator cards -->
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                 {% for creator in creators %}
                 <div class="col g-3">
                     <div class="card h-100">
+                        <!-- Creator Image -->
                         {% if creator.image %}
                             <img src="{{ creator.image.url }}" alt="{{ creator.name }}" class="card-img-top img-fluid">
                         {% else %}
@@ -31,13 +33,13 @@
                         {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">Name: {{ creator.name }}</h5>
-                            <p class="card-text">
-                                {{ creator.description|truncatewords:10 }}
-                            </p>
+                            <p class="card-text">{{ creator.description|truncatewords:10 }}</p>
                             <div class="d-flex justify-content-between">
+                                <!-- Edit button -->
                                 <form action="{% url 'edit_creator' creator.pk %}" method="get" style="display:inline;">
                                     <button type="submit" class="btn rounded-pill my-2 border-black btn-primary">Edit</button>
                                 </form>
+                                <!-- Delete button triggering modal -->
                                 <button type="button" class="btn rounded-pill my-2 border-black btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" data-creator-id="{{ creator.pk }}">
                                     Delete
                                 </button>
@@ -48,6 +50,7 @@
                 {% endfor %}
             </div>
 
+            <!-- Pagination for creators -->
             <div class="container pt-4" id="anchor">
                 {% if is_paginated %}
                     <nav aria-label="Page navigation" class="">
@@ -71,26 +74,23 @@
                     </nav>
                 {% endif %}
             </div>
-
         </div>
+
+        <!-- Navigation buttons -->
         <div class="col-6 g-3 text-center">
-            <a href="{% url 'site_management' %}">
-                <button type="button" class="btn btn-secondary rounded-pill my-1 me-1">
-                    Back to Management
-                </button>
+            <a href="{% url 'site_management' %}" class="btn btn-secondary rounded-pill my-1 me-1">
+                Back to Management
             </a>
         </div>
         <div class="col-6 g-3 text-center">
-            <a href="{% url 'add_creator' %}">
-                <button type="button" class="btn rounded-pill my-2 border-black btn-success">
-                    Add Creator
-                </button>
+            <a href="{% url 'add_creator' %}" class="btn rounded-pill my-2 border-black btn-success">
+                Add Creator
             </a>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Modal -->
+<!-- Modal for Delete Confirmation -->
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -103,7 +103,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-dismiss="modal">Cancel</button>
-                <form id="deleteForm" action="" method="post" style="display:inline;">
+                <form id="deleteForm" action="#" method="post" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger rounded-pill my-1 me-1">Delete</button>
                 </form>
@@ -111,7 +111,6 @@
         </div>
     </div>
 </div>
-
 {% endblock %}
 
 {% block postloadjs %}
@@ -120,7 +119,8 @@
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- MDB -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+<!-- JavaScript to handle delete confirmation modal -->
 <script>
     $(document).ready(function() {
         $('#confirmDeleteModal').on('show.bs.modal', function (event) {

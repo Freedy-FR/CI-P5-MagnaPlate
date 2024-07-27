@@ -14,6 +14,8 @@
     --light-gray-color: #EEEEEE;
 
     --white-color: #FBFBFB;
+
+    --green-success: #006400;
 }
 
 
@@ -251,6 +253,11 @@ main {
     border-color: var(--gray-color) !important;
 }
 
+/* Success Button */
+
+.btn-success {
+    background-color: var(--green-success) !important;
+}
 
 
 /* Custom CSS for Icons */

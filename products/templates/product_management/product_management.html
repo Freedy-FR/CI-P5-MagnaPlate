@@ -12,13 +12,13 @@
 {% endblock %}
 
 {% block content %}
-<div id="allproducts" class="container p-2" data-scroll-target="true">
+<section id="allproducts" class="container p-2" data-scroll-target="true">
     <div class="row gx-2">
         <div class="rounded-2 px-3 py-2 bg-white">
             
-            <h2 class="text-center">
-                Product Management
-            </h2>
+            <hr>
+            <h2 class="logo-font mb-4 text-center">Product Management</h2>
+            <hr>
 
             <!-- Sorting select tag -->
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -38,6 +38,7 @@
                 </form> 
             </div>
 
+            <!-- Current Filter and Sorting Display -->
             <h6 class="text-center inline-block">
                 {% if current_filter.creator %}
                     {{ current_filter.creator.name }} by
@@ -65,6 +66,7 @@
                 {% endif %}
             </h6>
             
+            <!-- Product List -->
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                 {% for product in products %}
                 <div class="col g-3">
@@ -77,7 +79,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }} 
                                 {% if product.is_on_deal %}
-                                <span class="badge text-bg-danger">On Deal!</span>
+                                <span class="badge text-bg-danger text-black">On Deal!</span>
                                 {% endif %}
                             </h5>
                             <p class="card-text">
@@ -102,6 +104,7 @@
                 {% endfor %}
             </div>
             
+            <!-- Pagination Controls -->
             <div class="container pt-4" id="anchor">
                 {% if is_paginated %}
                     <nav aria-label="Page navigation" class="">
@@ -128,23 +131,19 @@
 
         </div>
         <div class="col-6 g-3 text-center">
-            <a href="{% url 'site_management' %}">
-                <button type="button" class="btn btn-secondary rounded-pill my-1 me-1">
-                    Back to Management
-                </button>
+            <a href="{% url 'site_management' %}" class="btn btn-secondary rounded-pill my-1 me-1">
+                Back to Management
             </a>
         </div>
         <div class="col-6 g-3 text-center">
-            <a href="{% url 'add_product' %}">
-                <button type="button" class="btn rounded-pill my-2 border-black btn-success">
-                    Add Product
-                </button>
+            <a href="{% url 'add_product' %}" class="btn rounded-pill my-2 border-black btn-success">
+                Add Product
             </a>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Modal -->
+<!-- Modal for Delete Confirmation -->
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -157,7 +156,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-dismiss="modal">Cancel</button>
-                <form id="deleteForm" action="" method="post" style="display:inline;">
+                <form id="deleteForm" action="#" method="post" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger rounded-pill my-1 me-1">Delete</button>
                 </form>
@@ -174,7 +173,7 @@
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- MDB -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#confirmDeleteModal').on('show.bs.modal', function (event) {

@@ -13,20 +13,25 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1>Add New Creator</h1>
+<!-- Main container for the Add Creator page -->
+<section class="container mt-5">
+    <hr>
+    <h2 class="logo-font mb-4 text-center">Add New Creator</h2>
+    <hr>
+
+    <!-- Form for adding a new creator -->
     <form id="creatorForm" method="POST" action="{% url 'add_creator' %}" class="form mb-2" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}
-        
-        <!-- Preview Card -->
+
+        <!-- Preview Card for creator details -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-4" id="creatorPreview" style="display: none;">
             <div class="col g-3">
                 <div class="card p-0">
                     <a class="link-underline-opacity-0 link" href="#">
                         <img id="imagePreview" src="#" alt="Image Preview" style="display: none;" class="card-img img-fluid img-fill">
                         <div class="card-body">
-                            <h5 class="card-title" id="previewName"></h5>
+                            <h5 class="card-title" id="previewName"><span class="d-none">Preview title</span></h5>
                             <p class="card-text text-truncate" id="previewDescription"></p>
                         </div>
                     </a>
@@ -43,7 +48,7 @@
         </div>
     </form>
 
-    <!-- Modal -->
+    <!-- Modal for confirming the add creator action -->
     <div class="modal fade" id="confirmCreatorModal" tabindex="-1" role="dialog" aria-labelledby="confirmCreatorModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -61,10 +66,11 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
 
 {% block postloadjs %}
+<!-- JavaScript to handle the preview of creator details -->
 <script>
     document.getElementById('id_image').onchange = function (event) {
         var reader = new FileReader();

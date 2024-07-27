@@ -8,18 +8,20 @@
 {% endblock %}
 
 {% block extra_css %}
+<!-- Link to additional CSS for product styling -->
 <link rel="stylesheet" href="{% static 'products/css/product.css' %}">
 {% endblock %}
 
 {% block content %}
-<div id="allcategories" class="container p-2" data-scroll-target="true">
+<!-- Main section for the Category Management page -->
+<section id="allcategories" class="container p-2" data-scroll-target="true">
     <div class="row gx-2">
         <div class="rounded-2 px-3 py-2 bg-white">
-            
-            <h2 class="text-center">
-                Category Management
-            </h2>
+            <hr>
+            <h2 class="logo-font mb-4 text-center">Category Management</h2>
+            <hr>
 
+            <!-- Category cards -->
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                 {% for category in categories %}
                 <div class="col g-3">
@@ -28,9 +30,11 @@
                             <h5 class="card-title">Name: {{ category.name }}</h5>
                             <p class="card-text">Friendly Name: {{ category.friendly_name }}</p>
                             <div class="d-flex justify-content-between">
+                                <!-- Edit button -->
                                 <form action="{% url 'edit_category' category.id %}" method="get" style="display:inline;">
                                     <button type="submit" class="btn rounded-pill my-2 border-black btn-primary">Edit</button>
                                 </form>
+                                <!-- Delete button triggering modal -->
                                 <button type="button" class="btn rounded-pill my-2 border-black btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" data-category-id="{{ category.id }}">
                                     Delete
                                 </button>
@@ -41,49 +45,47 @@
                 {% endfor %}
             </div>
 
+            <!-- Pagination for categories -->
             <div class="container pt-4" id="anchor">
                 {% if is_paginated %}
-                    <nav aria-label="Page navigation" class="">
-                        <ul class="pagination justify-content-center">
-                            {% if page_obj.has_previous %}
-                                <li class="page-item">
-                                    <a class="page-link pagination-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-                                </li>
-                            {% endif %}
-                            {% for num in page_obj.paginator.page_range %}
-                                <li class="page-item {% if page_obj.number == num %}active{% endif %}">
-                                    <a class="page-link pagination-link" href="?page={{ num }}">{{ num }}</a>
-                                </li>
-                            {% endfor %}
-                            {% if page_obj.has_next %}
-                                <li class="page-item">
-                                    <a class="page-link pagination-link" href="?page={{ page_obj.next_page_number }}">Next</a>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </nav>
+                <nav aria-label="Page navigation" class="">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link pagination-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                        </li>
+                        {% endif %}
+                        {% for num in page_obj.paginator.page_range %}
+                        <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                            <a class="page-link pagination-link" href="?page={{ num }}">{{ num }}</a>
+                        </li>
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link pagination-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
                 {% endif %}
             </div>
-
         </div>
+
+        <!-- Navigation buttons -->
         <div class="col-6 g-3 text-center">
-            <a href="{% url 'site_management' %}">
-                <button type="button" class="btn btn-secondary rounded-pill my-1 me-1">
-                    Back to Management
-                </button>
+            <a href="{% url 'site_management' %}" class="btn btn-secondary rounded-pill my-1 me-1">
+                Back to Management
             </a>
         </div>
         <div class="col-6 g-3 text-center">
-            <a href="{% url 'add_category' %}">
-                <button type="button" class="btn rounded-pill my-2 border-black btn-success">
-                    Add Category
-                </button>
+            <a href="{% url 'add_category' %}" class="btn rounded-pill my-2 border-black btn-success">
+                Add Category
             </a>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Modal -->
+<!-- Modal for Confirm Delete -->
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -96,7 +98,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-dismiss="modal">Cancel</button>
-                <form id="deleteForm" action="" method="post" style="display:inline;">
+                <form id="deleteForm" action="#" method="post" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger rounded-pill my-1 me-1">Delete</button>
                 </form>
@@ -108,12 +110,14 @@
 {% endblock %}
 
 {% block postloadjs %}
+<!-- MDB and fslightbox scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js"
   integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- MDB -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+<!-- JavaScript to handle delete confirmation modal -->
 <script>
     $(document).ready(function() {
         $('#confirmDeleteModal').on('show.bs.modal', function (event) {
