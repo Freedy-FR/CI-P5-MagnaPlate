@@ -1,19 +1,30 @@
+"""
+Forms for the orders application.
+
+This module defines the form for creating and updating orders.
+"""
+
 from django import forms
 from .models import Order
 
 
 class OrderForm(forms.ModelForm):
+    """
+    Form for creating and updating an order.
+    """
     class Meta:
         model = Order
-        fields = ('full_name', 'email', 'delivery_phone_number',
-                  'street_address1', 'street_address2',
-                  'town_or_city', 'postcode', 'country',
-                  'county',)
+        fields = (
+            'full_name', 'email', 'delivery_phone_number',
+            'street_address1', 'street_address2',
+            'town_or_city', 'postcode', 'country',
+            'county',
+        )
 
     def __init__(self, *args, **kwargs):
         """
-        Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
+        Initialize the form with placeholders and classes,
+        remove auto-generated labels, and set autofocus on the first field.
         """
         super().__init__(*args, **kwargs)
         placeholders = {
@@ -29,18 +40,17 @@ class OrderForm(forms.ModelForm):
 
         for field in self.fields:
             if field != 'country':
-                if self.fields[field].required:
-                    placeholder = f'{placeholders[field]} *'
-                else:
-                    placeholder = placeholders[field]
+                placeholder = (
+                    f"{placeholders[field]}"
+                    f"{' *' if self.fields[field].required else ''}"
+                )
                 self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
-            self.fields[field].widget.attrs['class'] += ' rounded-pill'
-            self.fields[field].widget.attrs['class'] += ' my-2'
-
+            self.fields[field].widget.attrs['class'] = (
+                'stripe-style-input rounded-pill my-2'
+            )
             self.fields[field].label = False
 
         if 'class' in self.fields['country'].widget.attrs:
             self.fields['country'].widget.attrs['class'] += ' select-wrapper'
         else:
-            self.fields['country'].widget.attrs['class'] = 'select-wrapper'
+            self.fields['country'].widget.attrs['class'] = ' select-wrapper'

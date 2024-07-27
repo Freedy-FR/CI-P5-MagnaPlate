@@ -1,3 +1,10 @@
+"""
+Webhook view for handling Stripe webhooks.
+
+This module listens for webhooks from Stripe and routes the events to the
+appropriate handler functions in the StripeWH_Handler class.
+"""
+
 from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
@@ -6,6 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 from checkout.webhook_handler import StripeWH_Handler
 
 import stripe
+
 
 @require_POST
 @csrf_exempt
@@ -22,7 +30,7 @@ def webhook(request):
 
     try:
         event = stripe.Webhook.construct_event(
-        payload, sig_header, wh_secret
+            payload, sig_header, wh_secret
         )
     except ValueError as e:
         # Invalid payload
@@ -38,8 +46,12 @@ def webhook(request):
 
     # Map webhook events to relevant handler functions
     event_map = {
-        'payment_intent.succeeded': handler.handle_payment_intent_succeeded,
-        'payment_intent.payment_failed': handler.handle_payment_intent_payment_failed,
+        'payment_intent.succeeded': (
+            handler.handle_payment_intent_succeeded
+        ),
+        'payment_intent.payment_failed': (
+            handler.handle_payment_intent_payment_failed
+        ),
     }
 
     # Get the webhook type from Stripe

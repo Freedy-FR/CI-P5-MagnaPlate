@@ -21,33 +21,34 @@
 
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
-      {% for item in carousel_items %}
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
-      {% endfor %}
+    {% for item in carousel_items %}
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"
+        {% if forloop.first %}aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+    {% endfor %}
   </div>
   <div class="carousel-inner background-carousel">
     {% for item in carousel_items %}
     <div class="carousel-item {% if forloop.first %}active{% endif %}">
-        <div class="w-100">
-            <a class="img-container" href="{{ item.link }}">
-                <img src="{{ item.image.url }}" class="image-carousel d-block rounded" alt="{{ item.caption }}">
-            </a>
-        </div>
-        {% if item.caption %}
-          <div class="carousel-caption d-none d-md-block">
-              <h5 class="text-center custom-background">{{ item.caption }}</h5>
-          </div>
-        {% endif %}
+      <div class="w-100">
+        <a class="img-container" href="{{ item.link }}">
+          <img src="{{ item.image.url }}" class="image-carousel d-block rounded" alt="{{ item.caption }}">
+        </a>
+      </div>
+      {% if item.caption %}
+      <div class="carousel-caption d-none d-md-block">
+        <h5 class="text-center custom-background">{{ item.caption }}</h5>
+      </div>
+      {% endif %}
     </div>
     {% endfor %}
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
   </button>
 </div>
 
@@ -168,7 +169,7 @@
     </div>
 
     <!-- Pagination for all products -->
-    <div class="container pt-4" id="anchor">
+    <div class="container pt-4" id="anchor2">
       {% if is_all_paginated %}
       <nav aria-label="Page navigation" class="">
         <ul class="pagination justify-content-center">

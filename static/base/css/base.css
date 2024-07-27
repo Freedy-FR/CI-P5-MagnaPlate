@@ -73,20 +73,22 @@ main {
     position: fixed;
     top: 72px;
     right: 15px;
-    z-index: 99999999999;
+    z-index: 99999;
     border-radius: 10px !important;
 
 }
 
 .custom-toast {
     overflow: hidden;
+    max-width: 300px !important;
+    width: 100%;
 }
 
 .toast-capper {
     height: 2px;
 }
 
-
+/* Links */
 .link {
     color: black !important;
     text-decoration: none !important;
