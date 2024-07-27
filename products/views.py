@@ -1,23 +1,39 @@
+"""
+Views for managing products, collections, creators, and categories.
+"""
+
 from django.views.generic.list import ListView
 from django.views.generic import DetailView, TemplateView
 from django.core.paginator import Paginator
-from django.views.generic.edit import CreateView, UpdateView, DeleteView, View
+from django.views.generic.edit import (
+    CreateView, UpdateView, DeleteView, View
+)
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin, UserPassesTestMixin
+)
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404
+)
 from django.utils import timezone
-from .models import Product, Collection, Creator, Category, Creator
+from .models import Product, Collection, Creator, Category
 from favorites.models import FavoriteProduct, FavoriteCreator
-from .forms import *
+from .forms import ProductForm, CreatorForm, CategoryForm, CollectionForm
 import datetime
 
+
 class AdminOrSuperuserRequiredMixin(UserPassesTestMixin):
+    """Mixin to allow access only to admin or superuser."""
+
     def test_func(self):
         return self.request.user.is_superuser or self.request.user.is_staff
 
+
 class FilteredProductListView(ListView):
+    """View for listing products with filtering and sorting options."""
+
     model = Product
 
     def get_queryset(self):
@@ -31,15 +47,17 @@ class FilteredProductListView(ListView):
         new_arrivals = self.request.GET.get('new_arrivals')
 
         if query:
-            queries = (Q(name__icontains=query) | 
-                       Q(description__icontains=query) | 
-                       Q(collection__friendly_name__icontains=query) | 
-                       Q(creator__name__icontains=query))
+            queries = (
+                Q(name__icontains=query) |
+                Q(description__icontains=query) |
+                Q(collection__friendly_name__icontains=query) |
+                Q(creator__name__icontains=query)
+            )
             queryset = queryset.filter(queries)
 
         if collection:
             queryset = queryset.filter(collection__id=collection)
-        
+
         if category:
             queryset = queryset.filter(category__id=category)
 
@@ -67,12 +85,14 @@ class FilteredProductListView(ListView):
             elif sort == 'category':
                 queryset = queryset.order_by('category__friendly_name')
         else:
-            # Default ordering
             queryset = queryset.order_by('name')
 
         return queryset
 
+
 class ProductListView(FilteredProductListView):
+    """View for listing products with pagination and context data."""
+
     template_name = 'products.html'
     context_object_name = 'products'
     paginate_by = 12
@@ -86,10 +106,10 @@ class ProductListView(FilteredProductListView):
         creator_id = self.request.GET.get('creator')
         is_on_deal = self.request.GET.get('is_on_deal')
         new_arrivals = self.request.GET.get('new_arrivals')
-        
+
         context['search_term'] = query or ''
         context['current_sorting'] = sort
-        
+
         current_filter = {
             'collection': None,
             'category': None,
@@ -97,16 +117,18 @@ class ProductListView(FilteredProductListView):
             'is_on_deal': is_on_deal,
             'new_arrivals': new_arrivals,
         }
-        
+
         if collection_id:
-            current_filter['collection'] = Collection.objects.get(id=collection_id)
+            current_filter['collection'] = Collection.objects.get(
+                id=collection_id
+            )
         if category_id:
             current_filter['category'] = Category.objects.get(id=category_id)
         if creator_id:
             current_filter['creator'] = Creator.objects.get(id=creator_id)
-        
+
         context['current_filter'] = current_filter
-        
+
         return context
 
     def get(self, request, *args, **kwargs):
@@ -117,6 +139,8 @@ class ProductListView(FilteredProductListView):
 
 
 class ProductDetailView(DetailView):
+    """View for displaying product details."""
+
     model = Product
     template_name = 'product_detail.html'
     context_object_name = 'product'
@@ -145,7 +169,9 @@ class ProductDetailView(DetailView):
 
         user = self.request.user
         if user.is_authenticated:
-            context['is_favorite'] = FavoriteProduct.objects.filter(user=user, product=self.object, is_favorite=True).exists()
+            context['is_favorite'] = FavoriteProduct.objects.filter(
+                user=user, product=self.object, is_favorite=True
+            ).exists()
         else:
             context['is_favorite'] = False
 
@@ -161,7 +187,7 @@ class ProductDetailView(DetailView):
         # Set the range of pages to display
         start = max(current_page - 1, 1)
         end = min(current_page + 1, num_pages)
-        
+
         page_range = range(start, end + 1)
 
         # Add ellipses if necessary
@@ -176,10 +202,12 @@ class ProductDetailView(DetailView):
 # Creators Views
 
 class AllCreatorsView(ListView):
+    """View for listing all creators."""
+
     model = Creator
     template_name = 'creators/all_creators.html'
     context_object_name = 'creators'
-    paginate_by = 6  
+    paginate_by = 6
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -196,7 +224,7 @@ class AllCreatorsView(ListView):
         # Set the range of pages to display
         start = max(current_page - 1, 1)
         end = min(current_page + 1, num_pages)
-        
+
         page_range = range(start, end + 1)
 
         # Add ellipses if necessary
@@ -207,7 +235,10 @@ class AllCreatorsView(ListView):
 
         return page_range
 
+
 class CreatorDetailView(DetailView):
+    """View for displaying creator details."""
+
     model = Creator
     template_name = 'creators/creator_detail.html'
     context_object_name = 'creator'
@@ -216,8 +247,12 @@ class CreatorDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         creator = self.get_object()
 
-        collections = creator.products.values_list('collection__friendly_name', flat=True).distinct()
-        categories = creator.products.values_list('category__friendly_name', flat=True).distinct()
+        collections = creator.products.values_list(
+            'collection__friendly_name', flat=True
+        ).distinct()
+        categories = creator.products.values_list(
+            'category__friendly_name', flat=True
+        ).distinct()
 
         context['collections'] = collections
         context['categories'] = categories
@@ -233,10 +268,12 @@ class CreatorDetailView(DetailView):
 
         user = self.request.user
         if user.is_authenticated:
-            context['is_favorite'] = FavoriteCreator.objects.filter(user=user, creator=self.object, is_favorite=True).exists()
+            context['is_favorite'] = FavoriteCreator.objects.filter(
+                user=user, creator=self.object, is_favorite=True
+            ).exists()
         else:
             context['is_favorite'] = False
-        
+
         return context
 
     def get_pagination_range(self, page_obj):
@@ -249,7 +286,7 @@ class CreatorDetailView(DetailView):
         # Set the range of pages to display
         start = max(current_page - 1, 1)
         end = min(current_page + 1, num_pages)
-        
+
         page_range = range(start, end + 1)
 
         # Add ellipses if necessary
@@ -260,9 +297,14 @@ class CreatorDetailView(DetailView):
 
         return page_range
 
+
 # Product Management Views
 
-class ProductManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView):
+class ProductManagementView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView
+):
+    """View for managing products."""
+
     template_name = 'product_management/product_management.html'
     model = Product
     context_object_name = 'products'
@@ -279,15 +321,17 @@ class ProductManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, L
         new_arrivals = self.request.GET.get('new_arrivals')
 
         if query:
-            queries = (Q(name__icontains=query) | 
-                       Q(description__icontains=query) | 
-                       Q(collection__friendly_name__icontains=query) | 
-                       Q(creator__name__icontains=query))
+            queries = (
+                Q(name__icontains=query) |
+                Q(description__icontains=query) |
+                Q(collection__friendly_name__icontains=query) |
+                Q(creator__name__icontains=query)
+            )
             queryset = queryset.filter(queries)
 
         if collection:
             queryset = queryset.filter(collection__id=collection)
-        
+
         if category:
             queryset = queryset.filter(category__id=category)
 
@@ -315,7 +359,6 @@ class ProductManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, L
             elif sort == 'category':
                 queryset = queryset.order_by('category__friendly_name')
         else:
-            # Default ordering
             queryset = queryset.order_by('name')
 
         return queryset
@@ -329,10 +372,10 @@ class ProductManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, L
         creator_id = self.request.GET.get('creator')
         is_on_deal = self.request.GET.get('is_on_deal')
         new_arrivals = self.request.GET.get('new_arrivals')
-        
+
         context['search_term'] = query or ''
         context['current_sorting'] = sort
-        
+
         current_filter = {
             'collection': None,
             'category': None,
@@ -340,16 +383,18 @@ class ProductManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, L
             'is_on_deal': is_on_deal,
             'new_arrivals': new_arrivals,
         }
-        
+
         if collection_id:
-            current_filter['collection'] = Collection.objects.get(id=collection_id)
+            current_filter['collection'] = Collection.objects.get(
+                id=collection_id
+            )
         if category_id:
             current_filter['category'] = Category.objects.get(id=category_id)
         if creator_id:
             current_filter['creator'] = Creator.objects.get(id=creator_id)
-        
+
         context['current_filter'] = current_filter
-        
+
         return context
 
     def get(self, request, *args, **kwargs):
@@ -359,7 +404,9 @@ class ProductManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, L
         return super().get(request, *args, **kwargs)
 
 
-class AddProductView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
+class AddProductView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View
+):
     """ Add a product to the store """
 
     def get(self, request, *args, **kwargs):
@@ -377,7 +424,10 @@ class AddProductView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to add product. Please ensure the form is valid.'
+            )
 
         template = 'add_product.html'
         context = {
@@ -386,17 +436,24 @@ class AddProductView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
         return render(request, template, context)
 
 
-class EditProductView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, UpdateView):
+class EditProductView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, UpdateView
+):
+    """Edit a product in the store."""
+
     model = Product
     form_class = ProductForm
     template_name = 'product_management/edit_product.html'
-    
+
     def form_valid(self, form):
         messages.success(self.request, 'Successfully updated product!')
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, 'Failed to update product. Please ensure the form is valid.')
+        messages.error(
+            self.request,
+            'Failed to update product. Please ensure the form is valid.'
+        )
         return super().form_invalid(form)
 
     def get_success_url(self):
@@ -409,7 +466,11 @@ class EditProductView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, UpdateV
         return context
 
 
-class ProductDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View):
+class ProductDeleteView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View
+):
+    """Delete a product from the store."""
+
     def post(self, request, *args, **kwargs):
         product_id = kwargs.get('product_id')
         product = get_object_or_404(Product, id=product_id)
@@ -420,13 +481,22 @@ class ProductDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, View)
 
 # Creators Management Views
 
-class CreatorManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView):
+class CreatorManagementView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView
+):
+    """View for managing creators."""
+
     model = Creator
     template_name = 'creator_management/creator_management.html'
     context_object_name = 'creators'
     paginate_by = 12
 
-class CreatorCreateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, CreateView):
+
+class CreatorCreateView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, CreateView
+):
+    """View to create a new creator."""
+
     model = Creator
     form_class = CreatorForm
     template_name = 'creator_management/add_creator.html'
@@ -434,14 +504,25 @@ class CreatorCreateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, Creat
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, f'Successfully added creator: {self.object.name}!')
+        messages.success(
+            self.request,
+            f'Successfully added creator: {self.object.name}!'
+        )
         return response
 
     def form_invalid(self, form):
-        messages.error(self.request, 'Failed to add creator. Please ensure the form is valid.')
+        messages.error(
+            self.request,
+            'Failed to add creator. Please ensure the form is valid.'
+        )
         return super().form_invalid(form)
 
-class CreatorUpdateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, UpdateView):
+
+class CreatorUpdateView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, UpdateView
+):
+    """View to update an existing creator."""
+
     model = Creator
     form_class = CreatorForm
     template_name = 'creator_management/edit_creator.html'
@@ -449,27 +530,45 @@ class CreatorUpdateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, Updat
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, f'Successfully updated creator: {self.object.name}!')
+        messages.success(
+            self.request,
+            f'Successfully updated creator: {self.object.name}!'
+        )
         return response
 
     def form_invalid(self, form):
-        messages.error(self.request, 'Failed to update creator. Please ensure the form is valid.')
+        messages.error(
+            self.request,
+            'Failed to update creator. Please ensure the form is valid.'
+        )
         return super().form_invalid(form)
 
-class CreatorDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, DeleteView):
+
+class CreatorDeleteView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, DeleteView
+):
+    """View to delete an existing creator."""
+
     model = Creator
     template_name = 'creator_management/delete_creator.html'
     success_url = reverse_lazy('creator_management')
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
-        messages.success(self.request, f'Creator {self.object.name} deleted successfully!')
+        messages.success(
+            self.request,
+            f'Creator {self.object.name} deleted successfully!'
+        )
         return super().delete(request, *args, **kwargs)
 
 
 # Category Management Views
 
-class CategoryManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView):
+class CategoryManagementView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView
+):
+    """View for managing categories."""
+
     model = Category
     template_name = 'category_management/category_management.html'
     context_object_name = 'categories'
@@ -481,7 +580,11 @@ class CategoryManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, 
         return context
 
 
-class CategoryCreateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, CreateView):
+class CategoryCreateView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, CreateView
+):
+    """View to create a new category."""
+
     model = Category
     form_class = CategoryForm
     template_name = 'category_management/add_category.html'
@@ -492,10 +595,18 @@ class CategoryCreateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, Crea
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, 'Failed to add category. Please ensure the form is valid.')
+        messages.error(
+            self.request,
+            'Failed to add category. Please ensure the form is valid.'
+        )
         return super().form_invalid(form)
 
-class CategoryUpdateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, UpdateView):
+
+class CategoryUpdateView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, UpdateView
+):
+    """View to update an existing category."""
+
     model = Category
     form_class = CategoryForm
     template_name = 'category_management/edit_category.html'
@@ -506,10 +617,18 @@ class CategoryUpdateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, Upda
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, 'Failed to update category. Please ensure the form is valid.')
+        messages.error(
+            self.request,
+            'Failed to update category. Please ensure the form is valid.'
+        )
         return super().form_invalid(form)
 
-class CategoryDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, DeleteView):
+
+class CategoryDeleteView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, DeleteView
+):
+    """View to delete an existing category."""
+
     model = Category
     template_name = 'category_management/delete_category.html'
     success_url = reverse_lazy('category_management')
@@ -521,7 +640,11 @@ class CategoryDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, Dele
 
 # Collection Management Views
 
-class CollectionManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView):
+class CollectionManagementView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, ListView
+):
+    """View for managing collections."""
+
     model = Collection
     template_name = 'collection_management/collection_management.html'
     context_object_name = 'collections'
@@ -532,7 +655,12 @@ class CollectionManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin
         context['form'] = CollectionForm()
         return context
 
-class CollectionCreateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, CreateView):
+
+class CollectionCreateView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, CreateView
+):
+    """View to create a new collection."""
+
     model = Collection
     form_class = CollectionForm
     template_name = 'collection_management/add_collection.html'
@@ -543,10 +671,18 @@ class CollectionCreateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, Cr
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, 'Failed to add collection. Please ensure the form is valid.')
+        messages.error(
+            self.request,
+            'Failed to add collection. Please ensure the form is valid.'
+        )
         return super().form_invalid(form)
 
-class CollectionUpdateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, UpdateView):
+
+class CollectionUpdateView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, UpdateView
+):
+    """View to update an existing collection."""
+
     model = Collection
     form_class = CollectionForm
     template_name = 'collection_management/edit_collection.html'
@@ -557,10 +693,18 @@ class CollectionUpdateView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, Up
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, 'Failed to update collection. Please ensure the form is valid.')
+        messages.error(
+            self.request,
+            'Failed to update collection. Please ensure the form is valid.'
+        )
         return super().form_invalid(form)
 
-class CollectionDeleteView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, DeleteView):
+
+class CollectionDeleteView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, DeleteView
+):
+    """View to delete an existing collection."""
+
     model = Collection
     template_name = 'collection_management/delete_collection.html'
     success_url = reverse_lazy('collection_management')

@@ -1,8 +1,13 @@
+"""
+Forms configuration for the product models.
+"""
+
 from django import forms
 from .models import Product, Category, Collection, Creator
 
 
 class ProductForm(forms.ModelForm):
+    """Form for creating and updating Product instances."""
 
     class Meta:
         model = Product
@@ -12,10 +17,14 @@ class ProductForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         
         categories = Category.objects.all()
-        category_friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
+        category_friendly_names = [
+            (c.id, c.get_friendly_name()) for c in categories
+        ]
 
         collections = Collection.objects.all()
-        collection_friendly_names = [(c.id, c.get_friendly_name()) for c in collections]
+        collection_friendly_names = [
+            (c.id, c.get_friendly_name()) for c in collections
+        ]
 
         self.fields['category'].choices = category_friendly_names
         self.fields['collection'].choices = collection_friendly_names
@@ -28,7 +37,9 @@ class ProductForm(forms.ModelForm):
             else:
                 field.widget.attrs['class'] = 'rounded-pill my-2 border-black'
 
+
 class CategoryForm(forms.ModelForm):
+    """Form for creating and updating Category instances."""
 
     class Meta:
         model = Category
@@ -38,7 +49,9 @@ class CategoryForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         
         collections = Collection.objects.all()
-        collection_friendly_names = [(c.id, c.get_friendly_name()) for c in collections]
+        collection_friendly_names = [
+            (c.id, c.get_friendly_name()) for c in collections
+        ]
 
         self.fields['collection'].choices = collection_friendly_names
 
@@ -47,6 +60,7 @@ class CategoryForm(forms.ModelForm):
 
 
 class CollectionForm(forms.ModelForm):
+    """Form for creating and updating Collection instances."""
     
     class Meta:
         model = Collection
@@ -58,7 +72,9 @@ class CollectionForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'rounded my-2 border-black'
 
+
 class CreatorForm(forms.ModelForm):
+    """Form for creating and updating Creator instances."""
 
     class Meta:
         model = Creator
