@@ -1,63 +1,88 @@
-<div class="row justify-content-center w-100">
+<!-- Include: Footer Content -->
+
+<!-- Newsletter Subscription Form -->
+<section class="row justify-content-center w-100">
   <div class="col-10 pb-4">
-    <form class="text-center" action="{% url 'subscribe_newsletter' %}" method="post">
-      {% csrf_token %}
-      <h5>Subscribe to our newsletter</h5>
-      <p>Monthly digest of what's new and exciting from us.</p>
-      <div class="row g-2 justify-content-center">
-        <div class="col-12 col-md-4">
-          <label for="newsletter-name" class="visually-hidden">Name</label>
-          <input id="newsletter-name" type="text" class="form-control" name="name" placeholder="Name" autocomplete="name" required>
-        </div>
-        <div class="col-12 col-md-4">
-          <label for="newsletter-email" class="visually-hidden">Email address</label>
-          <input id="newsletter-email" type="email" class="form-control" name="email" placeholder="Email address" autocomplete="email" required>
-        </div>
-        <div class="col-12 col-md-2">
-          <button class="btn btn-primary w-100" type="submit">Subscribe</button>
-        </div>
-      </div>
-    </form>
+      <form class="text-center" action="{% url 'subscribe_newsletter' %}" method="post">
+          {% csrf_token %}
+          <h5>Subscribe to our newsletter</h5>
+          <p>Monthly digest of what's new and exciting from us.</p>
+          <div class="row g-2 justify-content-center">
+              <div class="col-12 col-md-4">
+                  <label for="newsletter-name" class="visually-hidden">Name</label>
+                  <input id="newsletter-name" type="text" class="form-control" name="name" placeholder="Name" autocomplete="name" required>
+              </div>
+              <div class="col-12 col-md-4">
+                  <label for="newsletter-email" class="visually-hidden">Email address</label>
+                  <input id="newsletter-email" type="email" class="form-control" name="email" placeholder="Email address" autocomplete="email" required>
+              </div>
+              <div class="col-12 col-md-2">
+                  <button class="btn btn-primary w-100" type="submit">Subscribe</button>
+              </div>
+          </div>
+      </form>
   </div>
-</div>
+</section>
 
-<div class="row justify-content-center w-100 text-center">
+<!-- Quick Links Section -->
+<section class="row justify-content-center w-100 text-center">
   <div class="col-8 col-md-3 pb-2">
-    <h5 class="fs-5">Quick Links</h5>
-    <ul class="nav flex-column">
-      <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-footer fs-6 fs-md-5">Home</a></li>
-      <li class="nav-item mb-2"><a href="{% url 'about_us' %}" class="nav-link p-0 text-footer fs-6 fs-md-5">About Us</a></li>
-      <li class="nav-item mb-2"><a href="{% url 'products' %}" class="nav-link p-0 text-footer fs-6 fs-md-5">Products</a></li>
-      <li class="nav-item mb-2"><a href="{% url 'products' %}?is_on_deal=true" class="nav-link p-0 text-footer fs-6 fs-md-5">Deals</a></li>
-    </ul>
+      <h5 class="fs-5">Quick Links</h5>
+      <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-footer fs-6 fs-md-5">Home</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'about_us' %}" class="nav-link p-0 text-footer fs-6 fs-md-5">About Us</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'products' %}" class="nav-link p-0 text-footer fs-6 fs-md-5">Products</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'products' %}?is_on_deal=true" class="nav-link p-0 text-footer fs-6 fs-md-5">Deals</a></li>
+      </ul>
   </div>
 
   <div class="col-8 col-md-3 offset-md-0 pb-2">
-    <h5 class="fs-5">Support</h5>
-    <ul class="nav flex-column">
-      <li class="nav-item mb-2"><a href="{% url 'faq' %}" class="nav-link p-0 text-footer fs-6 fs-md-5">F.A.Q</a></li>
-      <li class="nav-item mb-2"><a href="{% url 'customer_support' %}" class="nav-link p-0 text-footer fs-6 fs-md-5">Customer Support</a></li>
-      <li class="nav-item mb-2"><a href="{% url 'contact_us' %}" class="nav-link p-0 text-footer fs-6 fs-md-5">Contact Us</a></li>
-    </ul>
+      <h5 class="fs-5">Support</h5>
+      <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="{% url 'faq' %}" class="nav-link p-0 text-footer fs-6 fs-md-5">F.A.Q</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'customer_support' %}" class="nav-link p-0 text-footer fs-6 fs-md-5">Customer Support</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'contact_us' %}" class="nav-link p-0 text-footer fs-6 fs-md-5">Contact Us</a></li>
+      </ul>
   </div>
 
   <div class="col-8 col-md-3 offset-md-0 pb-2">
-    <h5 class="fs-5">Social Media</h5>
-    <ul class="nav flex-column">
-      <li class="nav-item mb-2"><a href="https://www.facebook.com/profile.php?id=61562070003993" target="_blank" class="nav-link p-0 text-footer fs-6 fs-md-5"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
-      <li class="nav-item mb-2"><a href="https://www.instagram.com/magna_plate/" target="_blank" class="nav-link p-0 text-footer fs-6 fs-md-5"><i class="fa-brands fa-square-instagram"></i> Instagram</a></li>
-      <li class="nav-item mb-2"><a href="https://twitter.com/company" target="_blank" class="nav-link p-0 text-footer fs-6 fs-md-5"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
-    </ul>
+      <h5 class="fs-5">Social Media</h5>
+      <ul class="nav flex-column">
+          <li class="nav-item mb-2">
+              <a href="https://www.facebook.com/profile.php?id=61562070003993" target="_blank" class="nav-link p-0 text-footer fs-6 fs-md-5">
+                  <i class="fa-brands fa-facebook"></i> Facebook
+              </a>
+          </li>
+          <li class="nav-item mb-2">
+              <a href="https://www.instagram.com/magna_plate/" target="_blank" class="nav-link p-0 text-footer fs-6 fs-md-5">
+                  <i class="fa-brands fa-square-instagram"></i> Instagram
+              </a>
+          </li>
+          <li class="nav-item mb-2">
+              <a href="https://twitter.com/company" target="_blank" class="nav-link p-0 text-footer fs-6 fs-md-5">
+                  <i class="fa-brands fa-twitter"></i> Twitter
+              </a>
+          </li>
+      </ul>
   </div>
-</div>
+</section>
 
+<!-- Footer Bottom Section -->
 <div class="d-flex justify-content-between align-items-center pt-1 m-1 border-top w-100">
   <p class="mb-0 fs-6 fs-md-5">This site was made for educational purposes.</p>
   <div class="d-flex align-items-center">
-    <p class="mb-0 fs-6 fs-md-5 me-2">Freedy-2024</p>
-    <ul class="list-unstyled d-flex mb-0">
-      <li class="ms-md-2 m-1"><a class="link-dark px-2 fs-6 fs-md-5" href="https://github.com/Freedy-FR" target="_blank"><i class="fa-brands fa-github text-center"></i></a></li>
-      <li class="ms-md-2 me-2 m-1"><a class="link-dark px-2 fs-6 fs-md-5" href="https://www.linkedin.com/in/freedy-feliciano-ramos-56619711b/" target="_blank"><i class="fa-brands fa-linkedin text-center"></i></a></li>
-    </ul>
+      <p class="mb-0 fs-6 fs-md-5 me-2">Freedy-2024</p>
+      <ul class="list-unstyled d-flex mb-0">
+          <li class="ms-md-2 m-1">
+              <a class="link-dark px-2 fs-6 fs-md-5" href="https://github.com/Freedy-FR" target="_blank">
+                  <i class="fa-brands fa-github text-center"><span class="visually-hidden">GitHub Profile</span></i>
+              </a>
+          </li>
+          <li class="ms-md-2 me-2 m-1">
+              <a class="link-dark px-2 fs-6 fs-md-5" href="https://www.linkedin.com/in/freedy-feliciano-ramos-56619711b/" target="_blank">
+                  <i class="fa-brands fa-linkedin text-center"></i><span class="visually-hidden">LinkedIn Profile</span>
+              </a>
+          </li>
+      </ul>
   </div>
 </div>

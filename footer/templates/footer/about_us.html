@@ -11,41 +11,50 @@
 {% endblock %}
 
 {% block content %}
-<div class="about-us-container container">
-    <h1 class="text-center pt-4">About Us</h1>
+<!-- Main container for the About Us page content -->
+<section class="about-us-container container">
+    <div class="row">
+        <div class="col-12">
+            <hr>
+            <h2 class="logo-font mb-4 text-center">About Us</h2>
+            <hr>
+        </div>
+    </div>
 
-    <div class="row my-4 pt-4 align-items-center border-top">
+    <!-- Section for Mission -->
+    <div class="row my-4 pt-4 align-items-center">
         <div class="col-md-6 order-md-2">
             <img src="{{ MEDIA_URL }}about_us/about_us-mission.webp" alt="About Us" class="img-fluid rounded-2">
         </div>
         <div class="col-md-6 order-md-1 pt-2">
             <section class="mission">
-                <h2>Our Mission</h2>
+                <h3>Our Mission</h3>
                 <p>At MagnaPlate, our mission is to revolutionize the way you decorate your walls with our innovative metallic posters. We aim to provide a practical and stylish solution that causes minimal damage to your walls.</p>
             </section>
         </div>
     </div>
 
+    <!-- Section for History -->
     <div class="row my-4 pt-4 align-items-center border-top">
         <div class="col-md-6 order-md-1">
             <img src="{{ MEDIA_URL }}about_us/about_us-history.webp" alt="Our History" class="img-fluid rounded-2">
         </div>
         <div class="col-md-6 order-md-2 pt-2">
             <section class="history">
-                <h2>Our History</h2>
+                <h3>Our History</h3>
                 <p>Founded in 2024, MagnaPlate has quickly ascended in the market, becoming a leader in wall decoration solutions. Our dedication to quality and innovation has set us apart from the competition.</p>
             </section>
         </div>
     </div>
 
-
+    <!-- Section for Core Values -->
     <div class="row my-4 pt-4 align-items-center border-top">
         <div class="col-md-6 order-md-2">
             <img src="{{ MEDIA_URL }}about_us/about_us-core.webp" alt="Our Values" class="img-fluid rounded-2">
         </div>
         <div class="col-md-6 order-md-1 pt-2">
             <section class="values">
-                <h2>Our Core Values</h2>
+                <h3>Our Core Values</h3>
                 <ul>
                     <li><strong>Innovation:</strong> Constantly striving to improve and innovate our products.</li>
                     <li><strong>Quality:</strong> Ensuring the highest standards in everything we do.</li>
@@ -55,8 +64,7 @@
             </section>
         </div>
     </div>
-
-</div>
+</section>
 {% endblock %}
 
 {% block postloadjs %}

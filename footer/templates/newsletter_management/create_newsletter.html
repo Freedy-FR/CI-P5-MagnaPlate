@@ -10,29 +10,32 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<!-- Main container for the Create Newsletter page -->
+<section class="container">
     <div class="row">
         <div class="col-12">
             <hr>
-            <h2 class="logo-font mb-4">Create Newsletter</h2>
-            <h5 class="text-muted">Compose your new newsletter</h5>
+            <h2 class="logo-font mb-4 text-center">Create Newsletter</h2>
             <hr>
+            <h5 class="text-muted">Compose your new newsletter</h5>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12">
+            <!-- Newsletter form -->
             <form id="newsletterForm" method="POST" action="{% url 'create_newsletter' %}" class="form mb-2">
                 {% csrf_token %}
                 {{ form.subject|as_crispy_field }}
                 {{ form.body|as_crispy_field }}
                 {{ form.send_now|as_crispy_field }}
 
+                <!-- Recipients selection -->
                 <div class="form-group row">
-                    <label for="id_recipients" class="col-form-label col-sm-2">Recipients:</label>
+                    <p class="col-form-label col-sm-2">Recipients:</p>
                     <div class="col-sm-4">
-                        <label>Available recipients</label>
-                        <select id="available_recipients" multiple class="form-control" style="height: 200px;">
+                        <label for="available_recipients">Available recipients</label>
+                        <select id="available_recipients" multiple class="form-control">
                             {% for recipient in available_recipients %}
                                 <option value="{{ recipient.pk }}">{{ recipient.email }}</option>
                             {% endfor %}
@@ -45,8 +48,8 @@
                         <button type="button" class="btn btn-secondary" id="remove_all_recipients">&lt;&lt;</button>
                     </div>
                     <div class="col-sm-4">
-                        <label>Chosen recipients</label>
-                        <select id="chosen_recipients" name="recipients" multiple class="form-control" style="height: 200px;">
+                        <label for="chosen_recipients">Chosen recipients</label>
+                        <select id="chosen_recipients" name="recipients" multiple class="form-control">
                             {% for recipient in chosen_recipients %}
                                 <option value="{{ recipient.pk }}" selected>{{ recipient.email }}</option>
                             {% endfor %}
@@ -54,11 +57,10 @@
                     </div>
                 </div>
 
+                <!-- Form actions -->
                 <div class="text-right">
-                    <a href="{% url 'site_management' %}">
-                        <button type="button" class="btn rounded-pill my-2 border-black btn-secondary">
-                            Cancel
-                        </button>
+                    <a href="{% url 'site_management' %}" class="btn rounded-pill my-2 border-black btn-secondary">
+                        Cancel
                     </a>
                     <button type="submit" class="btn rounded-pill my-2 border-black btn-primary">
                         Save
@@ -67,8 +69,7 @@
             </form>
         </div>
     </div>
-</div>
-
+</section>
 {% endblock %}
 
 {% block postloadjs %}

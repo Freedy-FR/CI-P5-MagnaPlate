@@ -12,15 +12,35 @@
 {% endblock %}
 
 {% block content %}
-<div class="contact-container container">
-    <h1 class="text-center pt-4">Contact Us</h1>
-    <p class="text-center pt-2">If you have any questions, please feel free to reach out to us at <a href="mailto:magnaplate.web@gmail.com">magnaplate.web@gmail.com</a>. You can also <a href="{% url 'customer_support' %}">contact our customer support</a> for further assistance.</p>
-
-    <h2 class="text-center pt-4">Our Location</h2>
-    <div class="map-container mb-4">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1001.0746505700918!2d-6.2322639472221795!3d53.36168833739543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670e59bde69ad5%3A0xac1a9a8addf3464f!2sFairview%20Park!5e0!3m2!1sen!2sie!4v1721611360085!5m2!1sen!2sie" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<!-- Main container for the Contact Us page content -->
+<section class="contact-container container">
+    <div class="row">
+        <div class="col-12">
+            <hr>
+            <h2 class="logo-font mb-4 text-center">Contact Us</h2>
+            <hr>
+        </div>
     </div>
-</div>
+    <p class="text-center pt-2">
+        If you have any questions, please feel free to reach out to us at 
+        <a href="mailto:magnaplate.web@gmail.com">magnaplate.web@gmail.com</a>. You can also 
+        <a href="{% url 'customer_support' %}">contact our customer support</a> for further assistance.
+    </p>
+
+    <!-- Section for Location -->
+    <h3 class="text-center pt-4">Our Location</h3>
+    <div class="map-container mb-4">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1001.0746505700918!2d-6.2322639472221795!3d53.36168833739543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670e59bde69ad5%3A0xac1a9a8addf3464f!2sFairview%20Park!5e0!3m2!1sen!2sie!4v1721611360085!5m2!1sen!2sie" 
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
 {% endblock %}
 
 {% block postloadjs %}

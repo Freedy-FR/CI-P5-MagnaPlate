@@ -1,9 +1,19 @@
+"""
+Models for the newsletter and customer support applications.
+
+This module defines models for newsletter subscription information,
+sending newsletter emails, and handling customer support inquiries.
+"""
+
 import uuid
 from django.db import models
 from django.utils import timezone
 
 
 class NewsletterSubscribedInfo(models.Model):
+    """
+    Model representing a newsletter subscriber's information.
+    """
     name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
     created_at = models.DateTimeField(default=timezone.now)
@@ -13,18 +23,24 @@ class NewsletterSubscribedInfo(models.Model):
 
 
 class NewsletterSendEmail(models.Model):
+    """
+    Model representing an email to be sent as a newsletter.
+    """
     subject = models.CharField(max_length=255)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     send_now = models.BooleanField(default=False)
     recipients = models.ManyToManyField(NewsletterSubscribedInfo)
-    letter_sent = models.BooleanField(default=False) 
-    
+    letter_sent = models.BooleanField(default=False)
+
     def __str__(self):
         return self.subject
 
 
 class CustomerSupportInquiry(models.Model):
+    """
+    Model representing a customer support inquiry.
+    """
     ENQUIRY_TYPES = [
         ('order', 'Order Enquiry'),
         ('product', 'Product Enquiry'),
@@ -50,7 +66,7 @@ class CustomerSupportInquiry(models.Model):
 
     def _generate_ticket_number(self):
         """
-        Generate a random, unique ticket number using UUID
+        Generate a random, unique ticket number using UUID.
         """
         return uuid.uuid4().hex.upper()
 

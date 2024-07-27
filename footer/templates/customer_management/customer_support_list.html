@@ -9,14 +9,19 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="mt-4 text-center">Customer Support Inquiries</h1>
+<!-- Main container for the page content -->
+<section class="container">
+    <!-- Page title -->
+    <h2 class="mt-4 text-center">Customer Support Inquiries</h2>
     
+    <!-- Check if there are grouped inquiries -->
     {% if grouped_inquiries %}
+        <!-- Loop through each inquiry group -->
         {% for group in grouped_inquiries %}
         <div class="inquiry-group mb-4 pt-2 border-top">
             <h3>{{ group.enquiry_type|title }}</h3>
             <div class="table-responsive">
+                <!-- Table for displaying inquiries -->
                 <table class="table table-bordered table-hover mt-4">
                     <thead class="thead-light">
                         <tr>
@@ -30,6 +35,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- Loop through each inquiry in the group -->
                         {% for inquiry in group.inquiries %}
                         <tr id="inquiry-{{ inquiry.id }}">
                             <td><a href="{% url 'customer_support_detail' inquiry.id %}">{{ inquiry.name }}</a></td>
@@ -44,6 +50,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <!-- Display a message if no inquiries are found -->
                         {% empty %}
                         <tr>
                             <td colspan="7" class="text-center">No inquiries found for {{ group.enquiry_type|title }}.</td>
@@ -55,19 +62,19 @@
         </div>
         {% endfor %}
     {% else %}
+        <!-- Display a message if no grouped inquiries are found -->
         <div class="inquiry-group mb-4">
             <p class="text-center">No customer support inquiries found.</p>
         </div>
     {% endif %}
 
+    <!-- Back to Management button -->
     <div class="col-6 g-3 text-center mt-3">
-        <a href="{% url 'site_management' %}">
-            <button type="button" class="btn btn-secondary rounded-pill my-1 me-1">
-                Back to Management
-            </button>
+        <a href="{% url 'site_management' %}" class="btn btn-secondary rounded-pill my-1 me-1">
+            Back to Management
         </a>
     </div>
-</div>
+</section>
 
 <!-- Delete Confirmation Modal -->
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
@@ -82,7 +89,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-dismiss="modal">Cancel</button>
-                <form id="deleteForm" action="" method="post" style="display:inline;">
+                <form id="deleteForm" action="#" method="post" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger rounded-pill my-1 me-1">Delete</button>
                 </form>
