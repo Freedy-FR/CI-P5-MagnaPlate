@@ -20,7 +20,7 @@
 {% block content %}
 
 <!-- Carousel section -->
-<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+<div id="myCarousel" class="carousel shadow slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     {% for item in carousel_items %}
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"
@@ -56,7 +56,9 @@
 <!-- Deals section -->
 {% if deal_products %}
 <div id="deal" class="deals container pt-4" data-scroll-target="true">
-  <h2 class="text-center">Check out our deals!</h2>
+  <hr>
+  <h2 class="logo-font mb-4 text-center">Check out our deals!</h2>
+  <hr>
   <div class="py-2">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       {% for product in deal_products %}
@@ -130,7 +132,9 @@
 
 <!-- All Products section -->
 <div id="product" class="container" data-scroll-target="true">
-  <h2 class="text-center">Check our Products!</h2>
+  <hr>
+  <h2 class="logo-font mb-4 text-center">Check out our Products!</h2>
+  <hr>
   <div class="py-2">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       {% for product in all_products %}
