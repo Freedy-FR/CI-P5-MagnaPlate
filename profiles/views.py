@@ -1,18 +1,33 @@
+"""
+Views for managing user profiles and site management.
+"""
+
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
-from django.views.generic import UpdateView, DetailView, TemplateView, ListView
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import (
+    UpdateView, DetailView, TemplateView, ListView
+)
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin, UserPassesTestMixin
+)
 from django.urls import reverse_lazy
 from .models import UserProfile
-from checkout.models import Product
+from checkout.models import Product, Order
 from .forms import UserProfileForm
-from checkout.models import Order
+
 
 class AdminOrSuperuserRequiredMixin(UserPassesTestMixin):
+    """
+    Mixin to allow access only to admin or superuser.
+    """
     def test_func(self):
         return self.request.user.is_staff or self.request.user.is_superuser
 
+
 class ProfileView(LoginRequiredMixin, UpdateView):
+    """
+    View for displaying and updating user profile.
+    """
     model = UserProfile
     form_class = UserProfileForm
     template_name = 'profile.html'
@@ -26,7 +41,10 @@ class ProfileView(LoginRequiredMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         profile = self.get_object()
         context['form'] = self.form_class(instance=profile)
-        context['orders'] = profile.orders.order_by('-date') if hasattr(profile, 'orders') else []
+        context['orders'] = (
+            profile.orders.order_by('-date') if hasattr(profile, 'orders')
+            else []
+        )
         context['on_profile_page'] = True
         return context
 
@@ -35,7 +53,9 @@ class ProfileView(LoginRequiredMixin, UpdateView):
         form = self.form_class(request.POST, instance=self.object)
         if form.is_valid():
             form.save()
-            messages.success(self.request, 'Profile updated successfully')
+            messages.success(
+                self.request, 'Profile updated successfully'
+            )
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
@@ -46,11 +66,16 @@ class ProfileView(LoginRequiredMixin, UpdateView):
 
     def form_invalid(self, form):
         context = self.get_context_data(form=form)
-        messages.error(self.request, 'Please correct the error below.')
+        messages.error(
+            self.request, 'Please correct the error below.'
+        )
         return self.render_to_response(context)
 
 
 class OrderHistoryView(LoginRequiredMixin, DetailView):
+    """
+    View for displaying past order history.
+    """
     model = Order
     template_name = 'checkout_success.html'
     context_object_name = 'order'
@@ -61,13 +86,21 @@ class OrderHistoryView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        messages.info(self.request, (
-            f'This is a past confirmation for order number {self.object.order_number}. '
-            'A confirmation email was sent on the order date.'
-        ))
+        messages.info(
+            self.request, (
+                f'This is a past confirmation for order number '
+                f'{self.object.order_number}. '
+                'A confirmation email was sent on the order date.'
+            )
+        )
         context['from_profile'] = True
         return context
 
 
-class SiteManagementView(LoginRequiredMixin, AdminOrSuperuserRequiredMixin, TemplateView):
+class SiteManagementView(
+    LoginRequiredMixin, AdminOrSuperuserRequiredMixin, TemplateView
+):
+    """
+    View for managing the site.
+    """
     template_name = 'site_management/site_management.html'

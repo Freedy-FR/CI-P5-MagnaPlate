@@ -1,17 +1,30 @@
-# profiles/forms.py
+"""
+Forms for the UserProfile model.
+"""
+
 from django import forms
 from .models import UserProfile
 
+
 class UserProfileForm(forms.ModelForm):
+    """
+    Form for managing user profile information.
+    """
+
     class Meta:
         model = UserProfile
-        fields = ('default_contact_full_name', 'default_contact_email', 'default_contact_phone_number',
-                  'default_delivery_phone_number', 'default_country',
-                  'default_postcode', 'default_town_or_city', 'default_street_address1', 'default_street_address2', 'default_county'
-                  )
-
+        fields = (
+            'default_contact_full_name', 'default_contact_email',
+            'default_contact_phone_number', 'default_delivery_phone_number',
+            'default_country', 'default_postcode', 'default_town_or_city',
+            'default_street_address1', 'default_street_address2',
+            'default_county'
+        )
 
     def __init__(self, *args, **kwargs):
+        """
+        Initialize the form with custom placeholders and classes.
+        """
         super().__init__(*args, **kwargs)
         placeholders = {
             'default_contact_full_name': 'Full Name',
@@ -25,7 +38,8 @@ class UserProfileForm(forms.ModelForm):
             'default_county': 'County, State or Locality',
         }
 
-        self.fields['default_contact_full_name'].widget.attrs['autofocus'] = True
+        self.fields['default_contact_full_name'].widget.attrs[
+            'autofocus'] = True
         for field in self.fields:
             if field != 'default_country':
                 if self.fields[field].required:
@@ -37,6 +51,8 @@ class UserProfileForm(forms.ModelForm):
             self.fields[field].label = False
 
         if 'class' in self.fields['default_country'].widget.attrs:
-            self.fields['default_country'].widget.attrs['class'] += ' select-wrapper'
+            self.fields['default_country'].widget.attrs[
+                'class'] += ' select-wrapper'
         else:
-            self.fields['default_country'].widget.attrs['class'] = 'select-wrapper'
+            self.fields['default_country'].widget.attrs[
+                'class'] = 'select-wrapper'

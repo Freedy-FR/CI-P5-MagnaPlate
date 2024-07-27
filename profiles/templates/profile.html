@@ -18,6 +18,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
+        <!-- Profile Section -->
         <section class="bg-light border-top py-4">
             <div class="container">
                 <div class="row gx-4">
@@ -25,7 +26,7 @@
                         <form class="mt-3" action="{% url 'profile' %}" method="POST">
                             {% csrf_token %}
                             <div class="border rounded-2 px-md-3 py-md-2 bg-white p-1 m-1">
-                                <!-- Pills navs -->
+                                <!-- Pills Navigation -->
                                 <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
                                     <li class="nav-item d-flex" role="presentation">
                                         <a class="nav-link d-flex align-items-center justify-content-center w-100 active" data-mdb-pill-init
@@ -43,11 +44,11 @@
                                             Information</a>
                                     </li>
                                 </ul>
-                                <!-- Pills navs -->
+                                <!-- Pills Navigation -->
 
-                                <!-- Pills content -->
+                                <!-- Pills Content -->
                                 <div class="tab-content" id="ex1-content">
-                                    <!-- Pills 1 content -->
+                                    <!-- Basic Information Tab -->
                                     <div class="tab-pane fade show active p-1" id="ex1-pills-1" role="tabpanel">
                                         <div class="container">
                                             <div class="row">
@@ -67,7 +68,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Pills 2 content -->
+                                    <!-- Basic Information Tab -->
+
+                                    <!-- Shipping Information Tab -->
                                     <div class="tab-pane fade mb-2 p-1" id="ex1-pills-2" role="tabpanel">
                                         <div class="container">
                                             <div class="row">
@@ -91,7 +94,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Pills 3 content -->
+                                    <!-- Shipping Information Tab -->
+
+                                    <!-- Orders Information Tab -->
                                     <div class="tab-pane fade mb-2 p-1" id="ex1-pills-3" role="tabpanel">
                                         <div class="container">
                                             <div class="row">
@@ -110,11 +115,10 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                {% for order in orders %}                                                                
+                                                                {% for order in orders %}
                                                                     <tr class="border-top border-bottom">
                                                                         <td>
-                                                                            <a href="{% url 'order_history' order.order_number %}"
-                                                                            title="{{ order.order_number }}">
+                                                                            <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
                                                                                 {{ order.order_number|truncatechars:6 }}
                                                                             </a>
                                                                         </td>
@@ -140,23 +144,23 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Orders Information Tab -->
                                 </div>
-                                <!-- Pills content -->
+                                <!-- Pills Content -->
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
+        <!-- Profile Section -->
     </div>
 </div>
 {% endblock %}
 
 {% block postloadjs %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js"
-  integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js" integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- MDB -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
 {% endblock %}
