@@ -1,3 +1,10 @@
+"""
+Models for the favorites application.
+
+This module defines the models for storing users' favorite products and creators.
+Each favorite is associated with a user and can be marked as a favorite item.
+"""
+
 from django.db import models
 from django.contrib.auth.models import User
 from products.models import Product, Creator
