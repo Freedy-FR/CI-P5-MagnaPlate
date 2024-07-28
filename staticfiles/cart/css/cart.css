@@ -1,0 +1,22 @@
+/* Media query for the cart app */
+@media (max-width: 767px) {
+    .cart-header {
+        display: none;
+    }
+    .cart-item {
+        display: flex;
+        flex-direction: column;
+    }
+    .cart-item > div {
+        margin-bottom: 10px;
+    }
+    .item-label {
+        display: block;
+        font-weight: bold;
+    }
+}
+@media (min-width: 768px) {
+    .item-label {
+        display: none;
+    }
+}

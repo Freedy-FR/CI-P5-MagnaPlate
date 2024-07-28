@@ -1,0 +1,92 @@
+/* Style for icons on hover */
+.icon-hover:hover {
+    border-color: #3b71ca !important;
+    background-color: white !important;
+    color: #3b71ca !important;
+}
+
+.icon-hover:hover i {
+    color: #3b71ca !important;
+}
+
+/* Style for product and creator images to fit within the container */
+.product-image, .creator-image {
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
+}
+
+/* Style for select dropdown sizes */
+.select-size {
+    min-width: 100px;
+    max-width: 200px;
+}
+
+.select-quantity {
+    min-width: 100px;
+    max-width: 200px;
+}
+
+/* Remove spinner buttons in Webkit browsers like Chrome and Safari */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Remove spinner buttons in Mozilla Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: none;
+}
+
+/* Style for favorite icons */
+.favorite-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 3px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-icon-creator {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Background style for favorite icons */
+.favorite-icon-creator .icon-background,
+.favorite-icon .icon-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+/* Color for full heart icon */
+.full_heart {
+    color: red;
+}
+
+/* Color for regular heart icon */
+.regular_heart {
+    color: blue;
+}
