@@ -5,7 +5,6 @@ Disallow: /cart/
 Disallow: /checkout/
 Disallow: /profiles/
 Disallow: /settings/
-Disallow: /static/
 Disallow: /media/
 
 Sitemap: https://magnaplate-3f8ee7baac73.herokuapp.com/sitemap.xml
