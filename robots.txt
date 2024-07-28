@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /accounts/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /profiles/
+Disallow: /settings/
+Disallow: /media/
+
+Sitemap: https://magnaplate-3f8ee7baac73.herokuapp.com/sitemap.xml
