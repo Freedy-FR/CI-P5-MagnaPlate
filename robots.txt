@@ -1,15 +1,10 @@
 User-agent: *
 Disallow: /admin/
 Disallow: /accounts/
-Disallow: /accounts/login/
-Disallow: /accounts/logout/
-Disallow: /accounts/signup/
 Disallow: /cart/
 Disallow: /checkout/
 Disallow: /profiles/
 Disallow: /settings/
-Disallow: /api/
-Disallow: /search/
 Disallow: /static/
 Disallow: /media/
 
