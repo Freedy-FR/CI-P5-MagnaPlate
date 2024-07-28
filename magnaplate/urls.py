@@ -31,6 +31,7 @@ urlpatterns = [
     path('favorites/', include('favorites.urls')),
     path('footer/', include('footer.urls')),
     re_path(r'^sitemap\.xml$', serve, {'document_root': settings.STATIC_ROOT, 'path': 'sitemap.xml'}),
+    re_path(r'^robots\.txt$', serve, {'document_root': settings.STATIC_ROOT, 'path': 'robots.txt'}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
