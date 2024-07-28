@@ -1,20 +1,6 @@
 // Show all toasts when the page loads
 $('.toast').toast('show');
 
-// Ensure only one dropdown is open at a time
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.nav-item.dropdown').forEach(function (dropdown) {
-        dropdown.addEventListener('show.bs.dropdown', function () {
-            document.querySelectorAll('.nav-item.dropdown .dropdown-menu.show').forEach(function (openDropdown) {
-                // Close other open dropdowns
-                if (openDropdown !== dropdown.querySelector('.dropdown-menu')) {
-                    bootstrap.Dropdown.getInstance(openDropdown.previousElementSibling).hide();
-                }
-            });
-        });
-    });
-});
-
 // Add click event listeners to all pagination links
 document.querySelectorAll('.pagination-link').forEach(function (link) {
     link.addEventListener('click', function () {
