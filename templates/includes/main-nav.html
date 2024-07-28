@@ -1,5 +1,7 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-4 mx-lg-auto">
+
+        <!-- All Plates Dropdown -->
         <li class="nav-item dropdown">
             <a class="dropdown nav-link text-black" data-bs-toggle="dropdown" href="#" id="menu-1" aria-haspopup="true"
                 aria-expanded="false">
@@ -7,50 +9,57 @@
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="menu-1">
                 <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
+                <!-- Loop through sorting options for All Plates -->
                 {% for option in sort_options %}
                 <a href="{% url 'products' %}?sort={{ option.value }}" class="dropdown-item">{{ option.label }}</a>
                 {% endfor %}
             </div>
         </li>
 
+        <!-- Collections Dropdown -->
         <li class="nav-item dropdown">
             <a class="dropdown nav-link text-black" data-bs-toggle="dropdown" href="#" id="menu-2" aria-haspopup="true"
                 aria-expanded="false">
                 Collections
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="menu-2">
+                <!-- Loop through collections -->
                 {% for collection in collections %}
-                <a href="{% url 'products' %}?collection={{ collection.id }}"
-                    class="dropdown-item">{{collection.friendly_name }}</a>
+                <a href="{% url 'products' %}?collection={{ collection.id }}" class="dropdown-item">{{ collection.friendly_name }}</a>
                 {% endfor %}
             </div>
         </li>
 
+        <!-- Categories Dropdown -->
         <li class="nav-item dropdown">
             <a class="dropdown nav-link text-black" data-bs-toggle="dropdown" href="#" id="menu-3" aria-haspopup="true"
                 aria-expanded="false">
                 Categories
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="menu-3">
+                <!-- Loop through categories -->
                 {% for category in categories %}
-                <a href="{% url 'products' %}?category={{ category.id }}" class="dropdown-item">{{category.friendly_name}}</a>
+                <a href="{% url 'products' %}?category={{ category.id }}" class="dropdown-item">{{ category.friendly_name }}</a>
                 {% endfor %}
             </div>
         </li>
 
+        <!-- Creators Dropdown -->
         <li class="nav-item dropdown">
             <a class="dropdown nav-link text-black" data-bs-toggle="dropdown" href="#" id="menu-4" aria-haspopup="true"
                 aria-expanded="false">
                 Creators
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="menu-4">
+                <!-- Loop through a random selection of creators -->
                 {% for creator in random_creators %}
-                    <a href="{% url 'creator_detail' creator.pk %}" class="dropdown-item">{{ creator.name }}</a>
+                <a href="{% url 'creator_detail' creator.pk %}" class="dropdown-item">{{ creator.name }}</a>
                 {% endfor %}
                 <a href="{% url 'all_creators' %}" class="dropdown-item">More Creators</a>
             </div>
         </li>
 
+        <!-- Special Offers Dropdown -->
         <li class="nav-item dropdown">
             <a class="dropdown nav-link text-black" data-bs-toggle="dropdown" href="#" id="menu-5" aria-haspopup="true"
                 aria-expanded="false">
@@ -61,5 +70,6 @@
                 <a href="{% url 'products' %}?new_arrivals=true" class="dropdown-item">New Arrivals</a>
             </div>
         </li>
+
     </ul>
 </div>

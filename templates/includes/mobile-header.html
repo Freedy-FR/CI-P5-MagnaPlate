@@ -1,11 +1,13 @@
-<li class="list-inline-item col-2 justify-content-center pt-2 ">
+<!-- Mobile Navigation Button -->
+<li class="list-inline-item col-2 justify-content-center pt-2">
     <button class="navbar-toggler border-0 w-100 p-3 rounded-0 my-0 d-lg-none" type="button" data-bs-toggle="collapse"
         data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"><i class="fa-solid fa-bars border-0"></i></span>
     </button>
 </li>
 
-<li class="list-inline-item col-2 justify-content-center pt-2 ">
+<!-- Mobile Search Button -->
+<li class="list-inline-item col-2 justify-content-center pt-2">
     <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-search" data-bs-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
         <div class="text-center">
@@ -13,6 +15,7 @@
             <p class="my-0">Search</p>
         </div>
     </a>
+    <!-- Mobile Search Form -->
     <div class="dropdown-menu border-0 w-100 p-3 rounded-1 my-0" aria-labelledby="mobile-search">
         <form class="form" method="get" action="{% url 'products' %}">
             <div class="input-group w-100">
@@ -23,6 +26,8 @@
         </form>
     </div>
 </li>
+
+<!-- Mobile User Account Options -->
 <li class="list-inline-item dropdown col-2 justify-content-center pt-2">
     <a class="text-black nav-link d-block d-lg-none" href="#" id="account-options" data-bs-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
@@ -35,6 +40,7 @@
             {% endif %}
         </div>
     </a>
+    <!-- Mobile Account Dropdown Menu -->
     <div class="dropdown-menu border-0" aria-labelledby="account-options">
         {% if request.user.is_authenticated %}
         {% if request.user.is_superuser %}
@@ -49,6 +55,8 @@
         {% endif %}
     </div>
 </li>
+
+<!-- Mobile Cart Link -->
 <li class="list-inline-item col-2 justify-content-center pt-2 px-0 mx-0 me-1">
     <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} d-block d-lg-none" href="{% url 'view_cart' %}">
         <div class="text-center cart-icon">
