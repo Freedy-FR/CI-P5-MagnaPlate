@@ -12,7 +12,6 @@
 {% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -60,9 +59,18 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 col-lg-6">
-                                                    {{ form.default_contact_full_name|as_crispy_field }}
-                                                    {{ form.default_contact_email|as_crispy_field }}
-                                                    {{ form.default_contact_phone_number|as_crispy_field }}
+                                                    <div class="form-group">
+                                                        <label for="{{ form.default_contact_full_name.id_for_label }}" class="visually-hidden">Full Name</label>
+                                                        {{ form.default_contact_full_name|as_crispy_field }}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="{{ form.default_contact_email.id_for_label }}" class="visually-hidden">Email Address</label>
+                                                        {{ form.default_contact_email|as_crispy_field }}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="{{ form.default_contact_phone_number.id_for_label }}" class="visually-hidden">Contact Phone Number</label>
+                                                        {{ form.default_contact_phone_number|as_crispy_field }}
+                                                    </div>
                                                     <button class="btn btn-outline-black rounded-pill">Update Information</button>
                                                 </div>
                                             </div>
@@ -82,13 +90,34 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 col-lg-6">
-                                                    {{ form.default_delivery_phone_number|as_crispy_field }}
-                                                    {{ form.default_postcode|as_crispy_field }}
-                                                    {{ form.default_town_or_city|as_crispy_field }}
-                                                    {{ form.default_street_address1|as_crispy_field }}
-                                                    {{ form.default_street_address2|as_crispy_field }}
-                                                    {{ form.default_county|as_crispy_field }}
-                                                    {{ form.default_country|as_crispy_field }}
+                                                    <div class="form-group">
+                                                        <label for="{{ form.default_delivery_phone_number.id_for_label }}" class="visually-hidden">Delivery Phone Number</label>
+                                                        {{ form.default_delivery_phone_number|as_crispy_field }}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="{{ form.default_postcode.id_for_label }}" class="visually-hidden">Postal Code</label>
+                                                        {{ form.default_postcode|as_crispy_field }}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="{{ form.default_town_or_city.id_for_label }}" class="visually-hidden">Town or City</label>
+                                                        {{ form.default_town_or_city|as_crispy_field }}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="{{ form.default_street_address1.id_for_label }}" class="visually-hidden">Street Address 1</label>
+                                                        {{ form.default_street_address1|as_crispy_field }}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="{{ form.default_street_address2.id_for_label }}" class="visually-hidden">Street Address 2</label>
+                                                        {{ form.default_street_address2|as_crispy_field }}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="{{ form.default_county.id_for_label }}" class="visually-hidden">County, State or Locality</label>
+                                                        {{ form.default_county|as_crispy_field }}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="{{ form.default_country.id_for_label }}" class="visually-hidden">Country</label>
+                                                        {{ form.default_country|as_crispy_field }}
+                                                    </div>
                                                     <button class="btn btn-outline-black rounded-pill">Update Information</button>
                                                 </div>
                                             </div>
