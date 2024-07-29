@@ -295,9 +295,213 @@ Wireframes were created for desktop/laptop, tablet and mobile.
 </details>
 
 
-## Database Diagram
 
-![Database Diagrama](.)<br>
+
+## Magna Plate Database
+
+The project encompasses a variety of models for managing orders, favorites, newsletters, carousels, products, and user profiles. Below is an overview of these models, categorized by their functionality. In total, there are 13 models, with 10 being custom models.
+
+
+
+### **Summary**
+
+In total, there are **13 models**:
+- **10 Custom Models**:
+  - `FavoriteProduct`
+  - `FavoriteCreator`
+  - `NewsletterSubscribedInfo`
+  - `NewsletterSendEmail`
+  - `CustomerSupportInquiry`
+  - `Carousel`
+  - `Collection`
+  - `Category`
+  - `Creator`
+  - `UserProfile`
+- **3 Non-Custom Models**:
+  - `Order`
+  - `OrderLineItem`
+  - `Product`
+
+### Database Diagram
+
+<details><summary>Magna Plate Database</summary>
+<img src="assets/readme/database/magna_database.webp">
+</details>
+
+#### Checkout
+
+**Order Model**
+
+The `Order` model records all relevant details about a user's order.
+
+- `order_number` - Unique identifier for the order.
+- `user_profile` - ForeignKey to the `UserProfile` model.
+- `full_name` - User's full name.
+- `email` - User's email.
+- `delivery_phone_number` - User's phone number for delivery.
+- `country` - User's country (using `CountryField`).
+- `postcode` - Postal code of the delivery address.
+- `town_or_city` - Town or city of the delivery address.
+- `street_address1` - First line of the street address.
+- `street_address2` - Second line of the street address.
+- `county` - County of the delivery address.
+- `date` - Date and time when the order was placed.
+- `delivery_cost` - Cost of delivery.
+- `order_total` - Total cost of items in the order.
+- `grand_total` - Total cost including delivery.
+- `original_cart` - JSON representation of the original shopping cart.
+- `stripe_pid` - Stripe payment intent ID.
+
+**OrderLineItem Model**
+
+The `OrderLineItem` model details the specific items within an order.
+
+- `order` - ForeignKey to the `Order` model.
+- `product` - ForeignKey to the `Product` model.
+- `product_size` - Size of the product.
+- `quantity` - Quantity of the product.
+- `lineitem_total` - Total price for the line item.
+
+---
+
+#### Favorites
+
+**FavoriteProduct Model** ---- > Custom model
+
+Tracks a user's favorite products.
+
+- `user` - ForeignKey to the `User` model.
+- `product` - ForeignKey to the `Product` model.
+- `is_favorite` - Whether the product is marked as a favorite.
+- `created_at` - Timestamp of when the favorite was created.
+
+**FavoriteCreator Model** ---- > Custom model
+
+Tracks a user's favorite creators.
+
+- `user` - ForeignKey to the `User` model.
+- `creator` - ForeignKey to the `Creator` model.
+- `is_favorite` - Whether the creator is marked as a favorite.
+- `created_at` - Timestamp of when the favorite was created.
+
+---
+
+#### Footer
+
+**NewsletterSubscribedInfo Model** ---- > Custom model
+
+Stores information about newsletter subscribers.
+
+- `name` - Subscriber's name.
+- `email` - Subscriber's email address.
+- `created_at` - Timestamp of subscription.
+
+**NewsletterSendEmail Model** ---- > Custom model
+
+Details for sending out newsletter emails.
+
+- `subject` - Subject of the email.
+- `body` - Body content of the email.
+- `created_at` - Timestamp when the email was created.
+- `send_now` - Flag to indicate if the email should be sent immediately.
+- `recipients` - ManyToManyField to `NewsletterSubscribedInfo`.
+- `letter_sent` - Indicates whether the email has been sent.
+
+**CustomerSupportInquiry Model** ---- > Custom model
+
+Handles customer support inquiries.
+
+- `name` - Name of the person making the inquiry.
+- `email` - Email address of the person making the inquiry.
+- `subject` - Subject of the inquiry.
+- `message` - Detailed message of the inquiry.
+- `enquiry_type` - Type of inquiry (e.g., Order, Product, Shipping).
+- `order_number` - Order number related to the inquiry (optional).
+- `ticket_number` - Unique ticket number for the inquiry.
+- `created_at` - Timestamp of when the inquiry was created.
+
+---
+
+#### Home
+
+**Carousel Model** ---- > Custom model
+
+Represents items in the homepage carousel.
+
+- `image` - Image associated with the carousel item.
+- `link` - URL link for the carousel item.
+- `caption` - Caption for the carousel item.
+- `order` - Order of the carousel item.
+
+---
+
+#### Products
+
+**Collection Model** ---- > Custom model
+
+Represents a collection of products.
+
+- `name` - Name of the collection.
+- `friendly_name` - Friendly name of the collection.
+
+**Category Model** ---- > Custom model
+
+Represents a category of products.
+
+- `name` - Name of the category.
+- `friendly_name` - Friendly name of the category.
+- `collection` - ForeignKey to the `Collection` model.
+
+**Creator Model** ---- > Custom model
+
+Details about creators of products.
+
+- `name` - Name of the creator.
+- `image` - Image of the creator.
+- `description` - Description of the creator.
+
+**Product Model**
+
+Represents an individual product in the store.
+
+- `category` - ForeignKey to the `Category` model.
+- `collection` - ForeignKey to the `Collection` model.
+- `creator` - ForeignKey to the `Creator` model.
+- `sku` - Unique stock keeping unit.
+- `name` - Name of the product.
+- `description` - Product description.
+- `has_sizes` - Indicates if the product has size options.
+- `size` - Size of the product (if applicable).
+- `rating` - Product rating.
+- `image_url` - URL of the product image.
+- `image` - Image of the product.
+- `thumbnail` - Thumbnail image of the product.
+- `price` - Price of the product.
+- `is_on_deal` - Indicates if the product is on deal.
+- `created_at` - Timestamp when the product was created.
+
+---
+
+#### Profile
+
+**UserProfile Model** ---- > Custom model
+
+Stores additional information about a user.
+
+- `user` - OneToOneField to the `User` model.
+- `default_contact_full_name` - User's default contact full name.
+- `default_contact_email` - User's default contact email.
+- `default_contact_phone_number` - User's default contact phone number.
+- `default_delivery_phone_number` - User's default delivery phone number.
+- `default_country` - User's default country (using `CountryField`).
+- `default_postcode` - User's default postal code.
+- `default_town_or_city` - User's default town or city.
+- `default_street_address1` - User's default street address (line 1).
+- `default_street_address2` - User's default street address (line 2).
+- `default_county` - User's default county.
+
+---
+
 
 ## Features
 
