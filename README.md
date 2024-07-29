@@ -21,7 +21,7 @@ README Table Content
     - [Colours](#colours)
     - [Typography](#typography)
     - [Imagery](#imagery)
-    - [Video](#video)
+    - [Carousel](#carousel)
     - [Wireframes](#wireframes)
   - [Database Diagram](#database-diagram)
   - [Features](#features)
@@ -192,13 +192,40 @@ Feel free to explore the Kanban Board for a visual representation of the user st
 
 ## Design
 
-#### Colours
+### Colour Scheme for MagnaPlate Website
 
-![Colours Palete]()<br>
+The Colour scheme for the MagnaPlate website was meticulously selected to enrich the visual appeal of the plates (posters) and provide an engaging user experience. The Colours were chosen from [Coolors](https://coolors.co/), ensuring a harmonious blend that enhances the aesthetic quality of the site.
 
-- .
+#### Colour Palette:
 
-#### Typography
+- **FBFBFB (White)**: This bright, clean shade is used for the background, offering a crisp and neutral canvas that makes other Colours and content stand out.
+
+- **EEEEEE (Light Gray)**: A soft, light gray tone that adds subtle depth and contrast to the design elements without overpowering them.
+
+- **4F4F4F (Medium Gray)**: Used for text and secondary elements, this medium gray ensures readability and complements the overall Colour scheme.
+
+- **000000 (Black)**: The primary Colour for text, providing strong contrast and excellent legibility against the white and light gray backgrounds.
+
+- **2846A1 (Dark Blue)**: This deep blue shade is employed in headers and key navigation elements, evoking a sense of trust and stability.
+
+- **1C4AB2 (Blue)**: A vibrant blue used for links and call-to-action buttons, drawing attention without being too aggressive.
+
+- **133398 (Navy Blue)**: Incorporated in the logo and other prominent elements, this navy blue adds a touch of professionalism and sophistication.
+
+- **B81916 (Red)**: This bold red is used sparingly to highlight important information and create a sense of urgency or importance.
+
+- **A10F0D (Dark Red)**: A darker red shade that complements the bold red, adding depth and visual interest to the design.
+
+The use of these Colours has been consistently maintained throughout the website and checked for contrast to allow easy accessibility. The combination of these carefully selected Colours ensures that the MagnaPlate website is not only visually appealing but also user-friendly and accessible to all visitors.
+
+
+<details><summary>Colour palette</summary>
+<img src="assets/readme/design/design-colours.webp">
+</details>
+<br>
+
+
+### Typography
 
 [Google Fonts](https://fonts.google.com/) were used as below:
 
@@ -206,13 +233,30 @@ Feel free to explore the Kanban Board for a visual representation of the user st
 * Signika Negative is used for the Headings.
 * Roboto is used for the body of the text.
 
-#### Imagery
+### Imagery
 
-- .
+The MagnaPlate website relies on thumbnails to render nice images, enhancing both efficiency and aesthetics. Thumbnails are rendered on the products page to help with quick loading times, while the product detail pages display the full image. Users also have the option to view images in full screen using [fslightbox](https://fslightbox.com), allowing them to see every detail clearly.
 
-#### Video
+The images and placeholders were sourced from [Pexels](https://www.pexels.com/) and some images were generated using AI with ChatGPT, while the Favicon icon was obtained from [Favicon](https://favicon.io/). Some of the images have also been sourced from a Discord group, noted in the credits.
 
-- .
+### Carousel
+
+The carousel on the MagnaPlate website serves as a dynamic and engaging feature to showcase key highlights and promotions. The design of the carousel includes the following elements:
+
+- **Responsive Design**: The carousel is fully responsive, ensuring it looks great on all devices, from desktops to mobile phones.
+
+- **High-Quality Thumbnails**: Each slide in the carousel displays a high-quality thumbnail image, providing a preview of the featured content.
+
+- **Gradient Background**: The gradient background transitions smoothly between shades of blue and red, creating a visually appealing backdrop that enhances the displayed images.
+
+- **Navigation Arrows**: Discreet navigation arrows are placed on either side of the carousel, allowing users to easily browse through the slides.
+
+- **Featured Content**: The carousel prominently features key promotional images, such as new arrivals, special offers, and featured collections, to draw attention and engage users.
+
+- **Efficiency and Aesthetics**: Thumbnails are used in the carousel to maintain quick loading times and enhance the aesthetic appeal of the website.
+
+The use of the carousel helps to keep the website dynamic and interactive, providing users with a visually rich experience that highlights important content and promotions effectively.
+
 
 ### Wireframes
 
