@@ -579,19 +579,21 @@ Stores additional information about a user.
 
 ### Checkout
 
-- The checkout page where users can review their order, enter payment details, and complete their purchase.<br>
+- The Checkout page allows users to review their order, enter delivery and payment details, and complete their purchase. Users can see a summary of items in their cart, fill in their shipping information, and input payment details securely. This streamlined process ensures a smooth and efficient checkout experience, helping users finalize their orders with ease.<br>
 
 <details><summary>Checkout</summary>
-<img src="./images/checkout.png">
+<img src="assets/readme/features/10-feature-checkout.gif">
 </details>
+
 
 ### Checkout - Success
 
-- Confirmation page shown after a successful purchase, including order summary and confirmation details.<br>
+- The Checkout Success page provides users with a confirmation of their successful purchase. It includes an order summary, delivery details, and payment confirmation. This page ensures users have all the necessary information about their completed order, including what they purchased, where it will be delivered, and the total amount charged.<br>
 
 <details><summary>Checkout - Success</summary>
-<img src="./images/checkout_success.png">
+<img src="assets/readme/features/11-feature-checkout-success.gif">
 </details>
+
 
 ### Product Management
 

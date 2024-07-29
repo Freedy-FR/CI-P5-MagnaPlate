@@ -1,6 +1,3 @@
-// Show all toasts when the page loads
-$('.toast').toast('show');
-
 // Add click event listeners to all pagination links
 document.querySelectorAll('.pagination-link').forEach(function (link) {
     link.addEventListener('click', function () {
@@ -16,6 +13,12 @@ document.querySelectorAll('.pagination-link').forEach(function (link) {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+
+    const toastElList = document.querySelectorAll('.toast');
+    toastElList.forEach(function (toastEl) {
+        const toast = new bootstrap.Toast(toastEl);
+        toast.show();
+    });
     // Retrieve the stored scroll position and target if they exist
     const scrollPosition = localStorage.getItem('scrollPosition');
     const scrollTarget = localStorage.getItem('scrollTarget');
