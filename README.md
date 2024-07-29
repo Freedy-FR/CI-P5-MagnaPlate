@@ -34,8 +34,8 @@ README Table Content
     - [Products Details](#products-details)
     - [Products Details - Features](#products-details---features)
     - [Products Details - Products on Sale](#products-details---products-on-sale)
-    - [Products Shopping Bag](#products-shopping-bag)
-    - [Products Shopping Bag - Products Coming Soon](#products-shopping-bag---products-coming-soon)
+    - [Products Shopping cart](#products-shopping-cart)
+    - [Products Shopping cart - Products Coming Soon](#products-shopping-cart---products-coming-soon)
     - [Products Checkout](#products-checkout)
     - [Products Checkout - Success](#products-checkout---success)
     - [Products Management](#products-management)
@@ -71,9 +71,9 @@ README Table Content
     - [Delete Product 1](#delete-product-1)
     - [Delete Product 2](#delete-product-2)
     - [Delete Product 3](#delete-product-3)
-    - [Add Product to Bag](#add-product-to-bag)
-    - [Update Bag](#update-bag)
-    - [Remove Product from Bag](#remove-product-from-bag)
+    - [Add Product to cart](#add-product-to-cart)
+    - [Update cart](#update-cart)
+    - [Remove Product from cart](#remove-product-from-cart)
     - [Purchase Success](#purchase-success)
     - [Purchase Success - Confirmation Email](#purchase-success---confirmation-email)
   - [Admin Panel / Superuser](#admin-panel--superuser)
@@ -505,319 +505,394 @@ Stores additional information about a user.
 
 ## Features
 
-### Landing Page
-
-![Landing page](.)
-
-- The Landing page works as the website cover. Users will see a background video playing in a loop, a slogan text about
-  the available collection, and two social media buttons. There is also a button to go to the website's Home Page.<br>
-
 ### Home Page - Images Carousel
 
-![Home Page - Images Carousel](.)
+- The home page includes a carousel showcasing images at the top, which can be used for promotions, highlights, or important announcements.<br>
 
-- The home page is equipped with a 3 images carousel on the
-  top.<br>
+<details><summary>Home Page - Images Carousel</summary>
+<img src="assets/readme/features/01-feature-carousel.gif">
+</details>
 
-### Home Page - Selected Products
+### Home Page - Deals
 
-![Home Page - Selected Products](.)
+- - The Deals section features products with discounted prices or special promotions, displayed at random to ensure a fresh and varied selection each time users visit.<br>
 
-- In this feature, users will see a variety of products selected by the website admin. It can be used to highlight special
-  or popular products.<br>
+<details><summary>Home Page - Deals</summary>
+<img src="assets/readme/features/02-feature-home-deals.webp">
+</details>
+
+### Home Page - Products
+
+- The Products section on the home page highlights a selection of featured items, new arrivals, or top sellers, offering users a quick view of popular and interesting products.<br>
+
+<details><summary>Home Page - Products</summary>
+<img src="assets/readme/features/03-feature-home-products.webp">
+</details>
 
 ### Home Page - Image Banner
 
-![Home Page - Image Banner](.)
+- Features a prominent image banner that can be used for announcements or promotions.<br>
 
-- .<br>
-
-### Home Page - Customers Reviews Carousel
-
-![Home Page - Customers Reviews Carousel](.)
-
-- .<br>
+<details><summary>Home Page - Image Banner</summary>
+<img src="assets/readme/features/04-feature-home-banner.webp">
+</details>
 
 ### Products Page
 
-![Products Page](.)
+- Displays a comprehensive list of all available products with filtering and sorting options.<br>
 
-- .<br>
+<details><summary>Products Page</summary>
+<img src="assets/readme/features/05-feature-products.webp">
+</details>
 
-### Products Details
+### Products Page - Sorting
 
-![Product Details ](.)
+- Allows users to organize products by various criteria such as price, popularity. This feature helps users find what they're looking for more efficiently.<br>
 
-- .
+<details><summary>Products Page - Sorting</summary>
+<img src="assets/readme/features/06-feature-products-sorting.gif">
+</details>
 
-### Products Details - Features
+### Products Page - Hover Overlay (Laptops/Desktops)
 
-![Product Details - Features](.)
+- Displays additional product details or actions when users hover over a product image. This overlay enhances user interaction by providing quick access to essential information.<br>
 
-- .<br>
+<details><summary>Products Page - Hover Overlay</summary>
+<img src="assets/readme/features/07-feature-products-hover.gif">
+</details>
 
-### Products Details - Products on Sale
+### Product Details
 
-![Product Details - Products on Sale](.)
+- The Product Details page offers a comprehensive view of each product. Users can see high-resolution full screen images, detailed descriptions, user ratings, and prices. It also provides options to select size and quantity before adding items to the cart. Additionally, the page includes tabs for detailed specifications and shipping information to ensure users have all necessary details. This dynamic presentation enhances the shopping experience by providing a thorough overview of each product.<br>
 
-- .<br>
+<details><summary>Product Details</summary>
+<img src="assets/readme/features/08-feature-product_detail.gif">
+</details>
 
-### Products Shopping Bag
+### Shopping Cart
 
-![Products Shopping Bag](.)
+- The Shopping Cart page allows users to review the items they intend to purchase. It displays product images, names, sizes, SKUs, prices, and quantities. Users can update quantities or remove items directly from the cart. The page also shows the subtotal, delivery cost, and grand total, with options to continue shopping or proceed to secure checkout. This dynamic interface ensures a smooth and efficient shopping experience.<br>
 
-- .<br>
+<details><summary>Shopping Cart</summary>
+<img src="assets/readme/features/09-feature-shopping-cart.gif">
+</details>
 
-### Products Shopping Bag - Products Coming Soon
+### Checkout
 
-![Products Shopping Bag - Products Coming Soon](.)
+- The checkout page where users can review their order, enter payment details, and complete their purchase.<br>
 
-- .<br>
+<details><summary>Checkout</summary>
+<img src="./images/checkout.png">
+</details>
 
-### Products Checkout
+### Checkout - Success
 
-![Products Checkout](.)
+- Confirmation page shown after a successful purchase, including order summary and confirmation details.<br>
 
-- .<br>
+<details><summary>Checkout - Success</summary>
+<img src="./images/checkout_success.png">
+</details>
 
-### Products Checkout - Success
+### Product Management
 
-![Products Checkout - Success](.)
+- Admin interface for managing products, including adding, editing, or deleting product listings.<br>
 
-- .<br>
-
-### Products Management
-
-![Products Management](.)
-
-- .<br>
+<details><summary>Product Management</summary>
+<img src="./images/product_management.png">
+</details>
 
 ### Profile Page
 
-![Profile Page](.)
+- User profile page where users can view and update their personal information and settings.<br>
 
-- .<br>
+<details><summary>Profile Page</summary>
+<img src="./images/profile_page.png">
+</details>
 
 #### Service Reviews Page
 
-![Services Reviews Page](.)
+- Displays a list of service reviews submitted by users, with options to view details or add new reviews.<br>
 
-- .<br>
+<details><summary>Service Reviews Page</summary>
+<img src="./images/service_reviews_page.png">
+</details>
 
 #### Add/Edit Service Review Page
 
-![Add/Edit Service Review Page](.)
+- Form for adding or editing service reviews, including fields for rating and feedback.<br>
 
-- .<br>
+<details><summary>Add/Edit Service Review Page</summary>
+<img src="./images/add_edit_service_review_page.png">
+</details>
 
 ### Signup Page
 
-![Signup Page](.)
+- Page where new users can create an account by providing their details.<br>
 
-- .<br>
+<details><summary>Signup Page</summary>
+<img src="./images/signup_page.png">
+</details>
 
 ### Signup Page - Verify Email
 
-![Signup Page - Verify Email](.)
+- Page for email verification to complete the signup process.<br>
 
-- .<br>
+<details><summary>Signup Page - Verify Email</summary>
+<img src="./images/signup_page_verify_email.png">
+</details>
 
 ### Signup Page - Confirm Email
 
-![Signup Page - Confirm Email](.)
+- Confirmation page shown after verifying the email address.<br>
 
-- .<br>
+<details><summary>Signup Page - Confirm Email</summary>
+<img src="./images/signup_page_confirm_email.png">
+</details>
 
 ### Login Page
 
-![Login Page](.)
+- Page for existing users to log in to their account.<br>
 
-- .<br>
+<details><summary>Login Page</summary>
+<img src="./images/login_page.png">
+</details>
 
 ### Logout Page
 
-![Logout Page](.)
+- Page shown after a user logs out of their account.<br>
 
-- .<br>
+<details><summary>Logout Page</summary>
+<img src="./images/logout_page.png">
+</details>
 
 ### Reset Password Page
 
-![Reset Password Page](.)
+- Page for users to reset their password if they have forgotten it.<br>
 
-- .<br>
+<details><summary>Reset Password Page</summary>
+<img src="./images/reset_password_page.png">
+</details>
 
 ### Change Password Page
 
-![Change Password Page](.)
+- Page for users to change their current password.<br>
 
-- .<br>
+<details><summary>Change Password Page</summary>
+<img src="./images/change_password_page.png">
+</details>
 
 ### Navbar
 
-![Navbar](.)
+- Navigation bar that provides links to the main sections of the website.<br>
 
-- .
-- .
-- .
-- .
-- .
-- .
-- .
-- .<br>
+<details><summary>Navbar</summary>
+<img src="./images/navbar.png">
+</details>
 
 ### Footer
 
-![Footer](.)
+- Footer section containing additional links, contact information, and other relevant details.<br>
 
-- .<br>
+<details><summary>Footer</summary>
+<img src="./images/footer.png">
+</details>
 
 ### Page 404 - Page Not Found
 
-![Page 404 - Page Not Found](.)
+- Error page shown when a user attempts to access a page that does not exist.<br>
 
-- .<br>
+<details><summary>Page 404 - Page Not Found</summary>
+<img src="./images/page_404.png">
+</details>
 
 ## Messages and Interaction with Users
 
-- .
-
 ### Sign up 1
 
-![Sign up 1](.)
+- Screenshots or descriptions related to the sign-up process.<br>
 
-- .<br>
+<details><summary>Sign up 1</summary>
+<img src="./images/sign_up_1.png">
+</details>
 
 ### Sign up 2
 
-![Sign up 2](.)
+- Additional steps or features in the sign-up process.<br>
 
-- .<br>
+<details><summary>Sign up 2</summary>
+<img src="./images/sign_up_2.png">
+</details>
 
 ### Login
 
-![Login](.)
+- Screenshots or descriptions related to user login.<br>
 
-- .<br>
+<details><summary>Login</summary>
+<img src="./images/login.png">
+</details>
 
 ### Logout
 
-![Logout](.)
+- Screenshots or descriptions related to user logout.<br>
 
-- .<br>
+<details><summary>Logout</summary>
+<img src="./images/logout.png">
+</details>
 
 ### Profile Update
 
-![Profile Update](.)
+- Screenshots or descriptions of the profile update process.<br>
 
-- .<br>
+<details><summary>Profile Update</summary>
+<img src="./images/profile_update.png">
+</details>
 
 ### Service Review - Add Review
 
-![Service Review - Add Review](.)
+- Screenshots or descriptions related to adding a service review.<br>
 
-- .<br>
+<details><summary>Service Review - Add Review</summary>
+<img src="./images/service_review_add_review.png">
+</details>
 
 ### Service Review - Update Review 1
 
-![Service Review - Update Review 1](.)
+- Screenshots or descriptions related to updating a service review.<br>
 
-- <br>
+<details><summary>Service Review - Update Review 1</summary>
+<img src="./images/service_review_update_review_1.png">
+</details>
 
 ### Service Review - Update Review 2
 
-![Service Review - Update Review 2](.)
+- Additional screenshots or descriptions for updating a service review.<br>
 
-- .<br>
+<details><summary>Service Review - Update Review 2</summary>
+<img src="./images/service_review_update_review_2.png">
+</details>
 
 ### Service Review - Delete Review 1
 
-![Service Review - Delete Review 1](.)
+- Screenshots or descriptions related to deleting a service review.<br>
 
-- .<br>
+<details><summary>Service Review - Delete Review 1</summary>
+<img src="./images/service_review_delete_review_1.png">
+</details>
 
 ### Service Review - Delete Review 2
 
-![Service Review - Delete Review 2](.)
+- Additional screenshots or descriptions for deleting a service review.<br>
 
-- .<br>
+<details><summary>Service Review - Delete Review 2</summary>
+<img src="./images/service_review_delete_review_2.png">
+</details>
 
 ### Service Review - Delete Review 3
 
-![Service Review - Delete Review 3](.)
+- More screenshots or descriptions for deleting a service review.<br>
 
-- .<br>
+<details><summary>Service Review - Delete Review 3</summary>
+<img src="./images/service_review_delete_review_3.png">
+</details>
 
 ### Add Product
 
-![Add Product](.)
+- Screenshots or descriptions related to adding a new product.<br>
 
-- .<br>
+<details><summary>Add Product</summary>
+<img src="./images/add_product.png">
+</details>
 
 ### Edit Product 1
 
-![Edit Product 1](.)
+- Screenshots or descriptions related to editing a product.<br>
 
-- .<br>
+<details><summary>Edit Product 1</summary>
+<img src="./images/edit_product_1.png">
+</details>
 
 ### Edit Product 2
 
-![Edit Product 2](.)
+- Additional screenshots or descriptions for editing a product.<br>
 
-- .<br>
+<details><summary>Edit Product 2</summary>
+<img src="./images/edit_product_2.png">
+</details>
 
 ### Edit Product 3
 
-![Edit Product 3](.)
+- More screenshots or descriptions for editing a product.<br>
 
-- .<br>
+<details><summary>Edit Product 3</summary>
+<img src="./images/edit_product_3.png">
+</details>
 
 ### Delete Product 1
 
-![Delete Product 1](.)
+- Screenshots or descriptions related to deleting a product.<br>
 
-- .<br>
+<details><summary>Delete Product 1</summary>
+<img src="./images/delete_product_1.png">
+</details>
 
 ### Delete Product 2
 
-![Delete Product 2](.)
+- Additional screenshots or descriptions for deleting a product.<br>
 
-- .<br>
+<details><summary>Delete Product 2</summary>
+<img src="./images/delete_product_2.png">
+</details>
 
 ### Delete Product 3
 
-![Delete Product 3](.)
+- More screenshots or descriptions for deleting a product.<br>
 
-- .<br>
+<details><summary>Delete Product 3</summary>
+<img src="./images/delete_product_3.png">
+</details>
 
-### Add Product to Bag
+### Add Product to cart
 
-![Add Product to Bag](.)
+- Screenshots or descriptions related to adding a product to the shopping cart.<br>
 
-- .<br>
+<details><summary>Add Product to cart</summary>
+<img src="./images/add_product_to_cart.png">
+</details>
 
-### Update Bag
+### Update cart
 
-![Update Bag](.)
+- Screenshots or descriptions related to updating the shopping cart.<br>
 
-- .<br>
+<details><summary>Update cart</summary>
+<img src="./images/update_cart.png">
+</details>
 
-### Remove Product from Bag
+### Remove Product from cart
 
-![Remove Product from Bag](.)
+- Screenshots or descriptions related to removing a product from the shopping cart.<br>
 
-- .<br>
+<details><summary>Remove Product from cart</summary>
+<img src="./assets/readme/features/01-feature-remove-product-from-cart.gif">
+</details>
 
 ### Purchase Success
 
-![Purchase Success](.)
+- Confirmation of a successful purchase.<br>
 
-- .<br>
+<details><summary>Purchase Success</summary>
+<img src="./images/purchase_success.png">
+</details>
 
 ### Purchase Success - Confirmation Email
 
-![ Purchase Success - Confirmation Email](.)
+- Confirmation email sent after a successful purchase.<br>
 
-- .<br>
+<details><summary>Purchase Success - Confirmation Email</summary>
+<img src="./images/purchase_success_confirmation_email.png">
+</details>
+
+
+
 
 ## Admin Panel / Superuser
 
