@@ -537,6 +537,24 @@ Stores additional information about a user.
 <img src="assets/readme/features/04-feature-home-banner.webp">
 </details>
 
+### Home Page - Main Navigation Bar
+
+- The Main Navigation Bar provides easy access to all key sections of the website. It includes links to All Plates, Collections, Categories, Creators, and Special Offers.
+ Additionally, it features a search bar for quick product searches, a user account icon for profile access, and a shopping cart icon displaying the current cart total. This intuitive navigation bar ensures users can effortlessly explore and navigate the website.<br>
+
+<details><summary>Home Page - Main Navigation Bar</summary>
+<img src="assets/readme/features/04-1-feature-main-navigation-bar.gif">
+</details>
+
+### Search Bar
+
+- The Search Bar allows users to quickly find products, collections, categories, and creators on the MagnaPlate website. Located prominently at the top of the page, it provides an easy way for users to navigate and discover specific items they are looking for by entering keywords or phrases.
+
+<details><summary>Search Bar</summary>
+<img src="assets/readme/features/04-2-feature-main-navigation-search.gif">
+</details>
+
+
 ### Products Page
 
 - Displays a comprehensive list of all available products with filtering and sorting options.<br>
@@ -566,7 +584,23 @@ Stores additional information about a user.
 - The Product Details page offers a comprehensive view of each product. Users can see high-resolution full screen images, detailed descriptions, user ratings, and prices. It also provides options to select size and quantity before adding items to the cart. Additionally, the page includes tabs for detailed specifications and shipping information to ensure users have all necessary details. This dynamic presentation enhances the shopping experience by providing a thorough overview of each product.<br>
 
 <details><summary>Product Details</summary>
-<img src="assets/readme/features/08-feature-product_detail.gif">
+<img src="assets/readme/features/08-feature-product-detail.gif">
+</details>
+
+### All Creators Page
+
+- The All Creators page showcases all the artists and creators featured on the platform. Users can browse through the list of creators, view their profiles, and explore their collections. This page provides an excellent way to discover new artists and follow their work, enhancing the community and diversity of the platform.<br>
+
+<details><summary>All Creators Page</summary>
+<img src="assets/readme/features/08-1-feature-all-creators.gif">
+</details>
+
+### Creators Details
+
+- The Creators Details page provides an in-depth look at individual creators. Users can learn more about each creator, view their biography, and explore the collections and products they have created. This page helps users connect with the creators and gain insight into their artistic journey and inspirations.<br>
+
+<details><summary>Creators Details</summary>
+<img src="assets/readme/features/08-2-feature-creators-details.gif">
 </details>
 
 ### Shopping Cart
@@ -588,124 +622,174 @@ Stores additional information about a user.
 
 ### Checkout - Success
 
-- The Checkout Success page provides users with a confirmation of their successful purchase. It includes an order summary, delivery details, and payment confirmation. This page ensures users have all the necessary information about their completed order, including what they purchased, where it will be delivered, and the total amount charged.<br>
+- The Checkout Success page confirms that the user's purchase has been completed successfully. It displays an order summary, including product details, sizes, quantities, and subtotals. Additionally, it provides delivery information and the total amount charged. This page reassures users that their order has been processed and includes all relevant details for their reference.<br>
 
 <details><summary>Checkout - Success</summary>
 <img src="assets/readme/features/11-feature-checkout-success.gif">
 </details>
 
 
-### Product Management
+### Site Management (Site Admin)
 
-- Admin interface for managing products, including adding, editing, or deleting product listings.<br>
+- The Site Management section allows administrators to manage various aspects of the website, including products, collections, categories, and special offers. It provides a user-friendly interface for adding, editing, or removing items, ensuring the site remains up-to-date and engaging. This section is essential for maintaining the content and overall functionality of the site.<br>
 
-<details><summary>Product Management</summary>
-<img src="./images/product_management.png">
+<details><summary>Site Management</summary>
+<img src="assets/readme/features/13-feature-site-management.gif">
 </details>
+
 
 ### Profile Page
 
-- User profile page where users can view and update their personal information and settings.<br>
+- The Profile Page allows users to view and update their personal information and check order history. Users can edit their contact details, manage their delivery addresses, and review their past orders. This section ensures that users can easily keep their profile information current and track their purchases.<br>
 
 <details><summary>Profile Page</summary>
-<img src="./images/profile_page.png">
+<img src="assets/readme/features/14-feature-profile-page.gif">
 </details>
 
-#### Service Reviews Page
 
-- Displays a list of service reviews submitted by users, with options to view details or add new reviews.<br>
+#### My Favorites
 
-<details><summary>Service Reviews Page</summary>
-<img src="./images/service_reviews_page.png">
+- The My Favorites section allows users to save and manage their favorite products and creators for easy access later. Users can quickly view and navigate to their preferred items and creators, making it convenient to revisit what they are interested in. This feature enhances the shopping experience by enabling users to curate a personalized collection of their favorite products and creators.<br>
+
+
+<details><summary>My Favorites</summary>
+<img src="assets/readme/features/15-feature-favorites-page.gif">
 </details>
 
-#### Add/Edit Service Review Page
-
-- Form for adding or editing service reviews, including fields for rating and feedback.<br>
-
-<details><summary>Add/Edit Service Review Page</summary>
-<img src="./images/add_edit_service_review_page.png">
+<details><summary>My Favorites - Add Products</summary>
+<img src="assets/readme/features/15-1-feature-favorites-products.gif">
 </details>
 
-### Signup Page
-
-- Page where new users can create an account by providing their details.<br>
-
-<details><summary>Signup Page</summary>
-<img src="./images/signup_page.png">
+<details><summary>My Favorites - Add Creators</summary>
+<img src="assets/readme/features/15-2-feature-favorites-creators.gif">
 </details>
 
-### Signup Page - Verify Email
+### Register Page
 
-- Page for email verification to complete the signup process.<br>
+- The Register Page allows new users to create an account by providing their personal details such as name, email, and password. This page ensures a smooth sign-up process, enabling users to quickly join the platform and start enjoying its features.<br>
 
-<details><summary>Signup Page - Verify Email</summary>
-<img src="./images/signup_page_verify_email.png">
+<details><summary>Register Page</summary>
+<img src="assets/readme/features/16-feature-register-page.webp">
 </details>
 
-### Signup Page - Confirm Email
+### Register Page - Verify Email
 
-- Confirmation page shown after verifying the email address.<br>
+- The Verify Email page is part of the registration process, where users are required to verify their email address to complete the signup. This step ensures that the email provided is valid and helps in securing the user's account.<br>
 
-<details><summary>Signup Page - Confirm Email</summary>
-<img src="./images/signup_page_confirm_email.png">
+<details><summary>Register Page - Email</summary>
+<img src="assets/readme/features/16-1-feature-register-verify.webp">
 </details>
+
+<details><summary>Register Page - Verify Email</summary>
+<img src="assets/readme/features/16-2-feature-register-verify.gif">
+</details>
+
+
+### Register Page - Confirm Email
+
+- The Confirm Email page is shown after a user verifies their email address. This page confirms that the email address has been successfully verified, completing the registration process and allowing the user to access all the features of the platform.<br>
+
+<details><summary>Register Page - Confirm Email</summary>
+<img src="assets/readme/features/16-3-feature-register-confirm.gif">
+</details>
+
 
 ### Login Page
 
-- Page for existing users to log in to their account.<br>
+- The Login Page allows existing users to log in to their account by entering their email and password. This page ensures secure access to user accounts, enabling them to manage their profiles, view order history, and make purchases.<br>
 
 <details><summary>Login Page</summary>
-<img src="./images/login_page.png">
+<img src="assets/readme/features/17-feature-login-page.gif">
 </details>
 
 ### Logout Page
 
-- Page shown after a user logs out of their account.<br>
+- The Logout Page is shown after a user logs out of their account. This page confirms that the user has successfully logged out, providing options to return to the home page or log back in.<br>
 
 <details><summary>Logout Page</summary>
-<img src="./images/logout_page.png">
-</details>
-
-### Reset Password Page
-
-- Page for users to reset their password if they have forgotten it.<br>
-
-<details><summary>Reset Password Page</summary>
-<img src="./images/reset_password_page.png">
-</details>
-
-### Change Password Page
-
-- Page for users to change their current password.<br>
-
-<details><summary>Change Password Page</summary>
-<img src="./images/change_password_page.png">
-</details>
-
-### Navbar
-
-- Navigation bar that provides links to the main sections of the website.<br>
-
-<details><summary>Navbar</summary>
-<img src="./images/navbar.png">
+<img src="assets/readme/features/18-feature-logout-page.gif">
 </details>
 
 ### Footer
 
-- Footer section containing additional links, contact information, and other relevant details.<br>
+- The footer section contains additional links to various parts of the website, contact information, and other relevant details. It provides quick access to important sections such as Home, About Us, Products, Deals, and support pages like FAQ and Customer Support. The footer also includes social media links for easy navigation to the website's social media profiles. Additionally, there is a subscription form for the newsletter, allowing users to stay updated with the latest news and offers.<br>
 
 <details><summary>Footer</summary>
-<img src="./images/footer.png">
+<img src="assets/readme/features/19-feature-footer.webp">
 </details>
 
-### Page 404 - Page Not Found
 
-- Error page shown when a user attempts to access a page that does not exist.<br>
+### About Us
 
-<details><summary>Page 404 - Page Not Found</summary>
-<img src="./images/page_404.png">
+- The About Us page provides an overview of MagnaPlate's mission, history, and core values. Learn about our dedication to revolutionizing wall decoration with innovative metallic posters, our journey since our founding in 2024, and the principles that guide our work.<br>
+
+<details><summary>About Us</summary>
+<img src="assets/readme/features/20-feature-footer-aboutus.gif">
 </details>
+
+### FAQ Page
+
+- The FAQ page provides answers to the most frequently asked questions about MagnaPlate's products, services, and policies. This section is designed to help users find quick solutions to common issues and learn more about our offerings.<br>
+
+<details><summary>FAQ Page</summary>
+<img src="assets/readme/features/21-feature-footer-faq.gif">
+</details>
+
+### Customer Support Page
+
+- The Customer Support Page provides a form for users to fill out if they have any questions or need assistance. Users can enter their name, email, subject, and message. After submission, they will receive a confirmation with a ticket number for tracking their request.
+
+<details><summary>Customer Support Page</summary>
+<img src="assets/readme/features/22-1-feature-footer-customer.gif">
+</details>
+
+<details><summary>Customer Support Confirmation</summary>
+<img src="assets/readme/features/22-2-feature-footer-customer-confirmation.gif">
+</details>
+
+### Contact Us Page
+
+- The Contact Us Page allows users to get in touch with our support team for any inquiries or issues. Users can fill out their details and submit their message through the provided form.
+
+<details><summary>Contact Us Page</summary>
+<img src="assets/readme/features/23-feature-footer-contactus.gif">
+</details>
+
+### Social Media
+
+- Our social media section allows you to stay connected and engaged with MagnaPlate. Follow us on various platforms for the latest updates, exclusive promotions, and exciting news about our innovative products.
+
+<details><summary>Social Media</summary>
+<img src="assets/readme/features/24-feature-footer-social.gif">
+</details>
+
+### Newsletter Section
+
+- The newsletter section in the footer of MagnaPlate's website allows users to stay connected with the latest updates, special promotions, and exclusive offers. By subscribing, you can receive timely notifications about new arrivals and exciting deals directly in your inbox. Enter your email address in the footer section to join our community and never miss out on any important updates from MagnaPlate.
+
+<details><summary>Newsletter Section</summary>
+<img src="assets/readme/features/25-feature-footer-newsletter.gif">
+</details>
+
+### 404 Error Page
+
+- The 404 Error Page is displayed when a user tries to access a page that does not exist on the MagnaPlate website. This page informs the user that the requested page could not be found and provides navigation options to help them return to the main site or find what they are looking for.
+
+<details><summary>404 Error Page</summary>
+<img src="assets/readme/features/26-feature-404.webp">
+</details>
+
+
+## Site Management - Features
+
+### Product Management - Add Product
+
+- .
+
+<details><summary></summary>
+<img src="">
+</details>
+
 
 ## Messages and Interaction with Users
 

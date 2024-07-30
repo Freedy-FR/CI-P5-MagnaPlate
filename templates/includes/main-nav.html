@@ -52,10 +52,10 @@
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="menu-4">
                 <!-- Loop through a random selection of creators -->
+                <a href="{% url 'all_creators' %}" class="dropdown-item">All Creators</a>
                 {% for creator in random_creators %}
                 <a href="{% url 'creator_detail' creator.pk %}" class="dropdown-item">{{ creator.name }}</a>
                 {% endfor %}
-                <a href="{% url 'all_creators' %}" class="dropdown-item">More Creators</a>
             </div>
         </li>
 
