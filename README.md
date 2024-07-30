@@ -611,6 +611,12 @@ Stores additional information about a user.
   </details>
   <br>
 
+  <details><summary>Product Details - Add to Cart</summary>
+  <img src="assets/readme/feature-admin/08-3-feature-product_detail-addtocart.gif">
+  </details>
+  <br>
+
+
 
 ### All Creators Page
 
@@ -1088,278 +1094,108 @@ Stores additional information about a user.
   <br>
 
 
-
 ## Messages and Interaction with Users
 
-### Sign up 1
+### Toast Messages
 
-- Screenshots or descriptions related to the sign-up process.<br>
+- Toast messages provide immediate feedback to users and admins about their actions and any errors on the website. These messages appear as small, unobtrusive notifications that inform users of successful operations, warnings, or errors, enhancing the overall user experience by ensuring that users are kept informed of the status of their interactions with the site. Django handles messages by default using 'django.contrib.messages' and you can create them within the suitable `views.py`, displaying them in the associated HTML file. For detailed explanations and visual guides on these features, please refer to the [Features](#features) and [Site Management](#site-management---features) sections.
 
-<details><summary>Sign up 1</summary>
-<img src="./images/sign_up_1.png">
-</details>
 
-### Sign up 2
 
-- Additional steps or features in the sign-up process.<br>
 
-<details><summary>Sign up 2</summary>
-<img src="./images/sign_up_2.png">
-</details>
+# Marketing
 
-### Login
+## Marketing Plan
+A marketing plan was created to strategize how the business will run and grow. This can be broken down into the following Business Model and Marketing Strategy document, which is separated into sections titled:
 
-- Screenshots or descriptions related to user login.<br>
+* Target Audience: Art and Decor Enthusiasts
+* Business Model
+* Marketing Strategy
 
-<details><summary>Login</summary>
-<img src="./images/login.png">
-</details>
+[Business Model and Marketing Strategy](assets/readme/marketing/business-model.pdf)
+<br>
 
-### Logout
+## Social Media
 
-- Screenshots or descriptions related to user logout.<br>
+### Facebook
 
-<details><summary>Logout</summary>
-<img src="./images/logout.png">
-</details>
+A live Facebook page for “MagnaPlate” was created to showcase our e-commerce store on social media. It incorporates bright and enticing images while maintaining the color scheme of the brand. The aim is to create a visually appealing and cohesive presence that attracts and engages our target audience of art and decor enthusiasts.
 
-### Profile Update
+  <details><summary>MagnaPlate - Facebook</summary>
+  <img src="assets/readme/marketing/social-facebook.webp">
+  </details>
+  <br>
 
-- Screenshots or descriptions of the profile update process.<br>
+[Visit our Facebook Page](https://www.facebook.com/people/Magna-Plate/61562070003993/)
 
-<details><summary>Profile Update</summary>
-<img src="./images/profile_update.png">
-</details>
 
-### Service Review - Add Review
+### Instagram
 
-- Screenshots or descriptions related to adding a service review.<br>
+A live Instagram page for “MagnaPlate” was created to visually engage with our audience and showcase our magnetic posters in various settings. The page features high-quality images that reflect the aesthetic of the brand and appeal to art and decor enthusiasts.
 
-<details><summary>Service Review - Add Review</summary>
-<img src="./images/service_review_add_review.png">
-</details>
+  <details><summary>MagnaPlate - Instagram</summary>
+  <img src="assets/readme/marketing/social-instagram.webp">
+  </details>
+  <br>
 
-### Service Review - Update Review 1
+[Visit our Instagram Page](https://www.instagram.com/magna_plate/)
 
-- Screenshots or descriptions related to updating a service review.<br>
 
-<details><summary>Service Review - Update Review 1</summary>
-<img src="./images/service_review_update_review_1.png">
-</details>
 
-### Service Review - Update Review 2
+### Twitter (X)
 
-- Additional screenshots or descriptions for updating a service review.<br>
+A live Twitter (X) page for “MagnaPlate” was created to connect with our audience and share updates, promotions, and engaging content related to our magnetic posters. The page is designed to provide quick, real-time interaction with our followers and keep them informed about the latest news and offers.
 
-<details><summary>Service Review - Update Review 2</summary>
-<img src="./images/service_review_update_review_2.png">
-</details>
+  <details><summary>MagnaPlate - Twitter (X)</summary>
+  <img src="assets/readme/marketing/social-twitter.webp">
+  </details>
+  <br>
 
-### Service Review - Delete Review 1
+[Visit our Twitter (X) Page](https://x.com/MagnaPlate2024)
 
-- Screenshots or descriptions related to deleting a service review.<br>
 
-<details><summary>Service Review - Delete Review 1</summary>
-<img src="./images/service_review_delete_review_1.png">
-</details>
+## Search Engine Optimisation
 
-### Service Review - Delete Review 2
+Search Engine Optimisation or SEO techniques were adopted to try to create more organic traffic and growth via popular Search Engines such as Google. Search Engine Keyword Research was conducted to determine suitable keywords to include in the website’s meta tags. This included searching related words or sentences related to the website and finding popular yet more targeted words that would encourage people to click on the ecommerce store. Dynamic meta tags were used to ensure that each page has specific and relevant meta tags, enhancing the SEO for different sections of the website.
 
-- Additional screenshots or descriptions for deleting a service review.<br>
-
-<details><summary>Service Review - Delete Review 2</summary>
-<img src="./images/service_review_delete_review_2.png">
-</details>
-
-### Service Review - Delete Review 3
-
-- More screenshots or descriptions for deleting a service review.<br>
-
-<details><summary>Service Review - Delete Review 3</summary>
-<img src="./images/service_review_delete_review_3.png">
-</details>
-
-### Add Product
-
-- Screenshots or descriptions related to adding a new product.<br>
-
-<details><summary>Add Product</summary>
-<img src="./images/add_product.png">
-</details>
-
-### Edit Product 1
-
-- Screenshots or descriptions related to editing a product.<br>
-
-<details><summary>Edit Product 1</summary>
-<img src="./images/edit_product_1.png">
-</details>
-
-### Edit Product 2
-
-- Additional screenshots or descriptions for editing a product.<br>
-
-<details><summary>Edit Product 2</summary>
-<img src="./images/edit_product_2.png">
-</details>
-
-### Edit Product 3
-
-- More screenshots or descriptions for editing a product.<br>
-
-<details><summary>Edit Product 3</summary>
-<img src="./images/edit_product_3.png">
-</details>
-
-### Delete Product 1
-
-- Screenshots or descriptions related to deleting a product.<br>
-
-<details><summary>Delete Product 1</summary>
-<img src="./images/delete_product_1.png">
-</details>
-
-### Delete Product 2
-
-- Additional screenshots or descriptions for deleting a product.<br>
-
-<details><summary>Delete Product 2</summary>
-<img src="./images/delete_product_2.png">
-</details>
-
-### Delete Product 3
-
-- More screenshots or descriptions for deleting a product.<br>
-
-<details><summary>Delete Product 3</summary>
-<img src="./images/delete_product_3.png">
-</details>
-
-### Add Product to cart
-
-- Screenshots or descriptions related to adding a product to the shopping cart.<br>
-
-<details><summary>Add Product to cart</summary>
-<img src="./images/add_product_to_cart.png">
-</details>
-
-### Update cart
-
-- Screenshots or descriptions related to updating the shopping cart.<br>
-
-<details><summary>Update cart</summary>
-<img src="./images/update_cart.png">
-</details>
-
-### Remove Product from cart
-
-- Screenshots or descriptions related to removing a product from the shopping cart.<br>
-
-<details><summary>Remove Product from cart</summary>
-<img src="./assets/readme/features/01-feature-remove-product-from-cart.gif">
-</details>
-
-### Purchase Success
-
-- Confirmation of a successful purchase.<br>
-
-<details><summary>Purchase Success</summary>
-<img src="./images/purchase_success.png">
-</details>
-
-### Purchase Success - Confirmation Email
-
-- Confirmation email sent after a successful purchase.<br>
-
-<details><summary>Purchase Success - Confirmation Email</summary>
-<img src="./images/purchase_success_confirmation_email.png">
-</details>
-
-
-
-
-## Admin Panel / Superuser
-
-![Admin Panel / Superuser](.)
-
-- On the Admin Panel and as an admin/superuser I have full access to CRUD functionality. This means I can view, create, edit and
-  delete the following apps:
-
-1.
-2. Checkout
-3. Products
-4. Profiles
-5. Reviews
-
-- As admin/superuser I can also approve reviews, change the status and give other permissions.<br>
-
-## Marketing and Social Media
-
-- .<br>
-
-### Statista - Facebook Users
-
-![Statista - Facebook Users](.)
-
-- Distribution of Facebook users worldwide as of 2022 according to [Statista](https:)<br>
-
-### MagnaPlate - Facebook Page
-
-![ - Facebook Page 1](.)
-![ - Facebook Page 2](.)
-
-- [ Facebook Page]()<br>
-
-### Meta Pixel - Tracking Audience
-
-- In order to improve the website services, I have set a Meta Pixel service to track the audience.
-
-![Meta Pixel - Tracking Audience](.)<br>
-
-### Mailchimp Subscription Service
-
-- Users are encouraged to signup for newsletters, discounts and information about the products sold at MagnaPlate.
-  The signup form is available on the website footer and is present on any page. The email subscription service is run through
-  Mailchimp, allowing the website admin to send marketing emails through the platform, increasing engagement within the site. Below
-  is a screenshot of the MagnaPlate - Mailchimp dashboard.
-
-![ Mailchimp Subscription Service](.)<br>
-
-## Privacy Policy
-
-- In order to add a page with the MagnaPlate Privacy Policy I used the service [Privacy Policy Generator](https://) to ensure
-  that the website is compliant with the European Privacy Policy Rules.<br>
-
-![Privacy Policy](.)
-
-- [MagnaPlate - Privacy Policy Page]()<br>
-
-## Search Engine Optimization
-
-- .<br>
-
-![SEO - Keywords List](.)<br>
+  <details><summary>SEO - Google</summary>
+  <img src="assets/readme/marketing/SEO-keywords.webp">
+  </details>
+  <br>
 
 ### sitemap.xml
 
-- A sitemap file with a list of important URLs was added to ensure that search engines are able to easily navigate through the site
-  and understand its structure. This was made using XML-sitemaps.com by following the steps:
+- A sitemap file containing a list of important URLs was created to help search engines efficiently navigate the site and understand its structure. This was accomplished using XML-sitemaps.com by following these steps:
 
-1. Paste the URL of the deployed site into XML-sitemaps
-2. Download the XML sitemap file
-3. Add the file into the projects root folder, named as sitemap.xml<br>
+1. Enter the URL of the deployed site into XML-sitemaps.
+2. Download the generated XML sitemap file.
+3. Place the file in the project's root directory, named as `sitemap.xml`.
+
+
+    <details><summary>SEO - sitemap</summary>
+    <img src="assets/readme/marketing/robot-sitemap.webp">
+    </details>
+    <br>
 
 ### robots.txt
 
-- A robots.txt file was created to tell search engines where not to go on the website and increase the quality of the site, ultimately improving the SEO rating.
+- A `robots.txt` file was created to instruct search engines on which areas of the website should not be accessed. This helps improve the site's quality and ultimately boosts its SEO rating
 
-![MagnaPlate - Robots.txt](.)<br>
+  <details><summary>SEO - robots</summary>
+  <img src="assets/readme/marketing/robot-sitemap.webp">
+  </details>
+  <br>
 
 ### Sitemap Google Registration
 
-- To ensure that the Google engine will check the website sitemap file I have registered the MagnaPlate URL on the Google Search Console.
+- To ensure that Google indexes the website sitemap file, the MagnaPlate URL has been registered on the Google Search Console.
 
-![MagnaPlate - Robots.txt](.)<br>
+
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
 
 ## AWS Setup Process
 
