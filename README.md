@@ -808,11 +808,28 @@ Stores additional information about a user.
 
 ### Creator Management - Add Creator
 
-- The Creator Management section allows admins to manage the creators listed on the MagnaPlate website. This includes adding new creators, editing existing ones, or deleting creators who are no longer associated with the platform. This section ensures that the creator directory is always up to date and accurately reflects the current roster of creators.
+- The Creator Management section allows admins to manage the creators listed on the MagnaPlate website. The "Add Creator" feature enables admins to introduce new creators to the platform. This ensures the website continually showcases fresh talent and maintains an updated roster of contributors.
 
 <details><summary>Creator Management - Add Creator</summary>
 <img src="assets/readme/feature-admin/04-admin-feature-add-creator.gif">
 </details>
+
+### Creator Management - Edit Creator
+
+- The Creator Management section allows admins to manage the creators listed on the MagnaPlate website. The "Edit Creator" feature provides admins with the capability to modify the details of existing creators. This helps in keeping the creator information current and relevant, ensuring accurate representation on the platform.
+
+<details><summary>Creator Management - Edit Creator</summary>
+<img src="assets/readme/feature-admin/05-admin-feature-edit-creator.gif">
+</details>
+
+### Creator Management - Delete Creator
+
+- The Creator Management section allows admins to manage the creators listed on the MagnaPlate website. The "Delete Creator" feature allows admins to remove creators who are no longer associated with the platform. This function helps in maintaining a clean and updated creator directory, reflecting only active contributors.
+
+<details><summary>Creator Management - Delete Creator</summary>
+<img src="assets/readme/feature-admin/06-admin-feature-delete-creator.gif">
+</details>
+
 
 
 
