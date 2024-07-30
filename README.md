@@ -782,6 +782,7 @@ Stores additional information about a user.
 
 ## Site Management - Features
 
+
 ### Product Management - Add Product
 
 - The Product Management section allows admins to manage the product listings on the MagnaPlate website. This includes adding new products, editing existing ones, or deleting products that are no longer available. This section ensures that the product catalog is always up to date and accurately reflects the inventory.
@@ -789,6 +790,7 @@ Stores additional information about a user.
 <details><summary>Product Management - Add Product</summary>
 <img src="assets/readme/feature-admin/01-admin-feature-add-product.gif">
 </details>
+
 
 ### Product Management - Edit Product
 
@@ -798,6 +800,7 @@ Stores additional information about a user.
 <img src="assets/readme/feature-admin/02-admin-feature-edit-product.gif">
 </details>
 
+
 ### Product Management - Delete Product
 
 - The Product Management section also provides the functionality for admins to delete products. This feature allows for the removal of products that are no longer available or needed, helping to maintain an accurate and up-to-date product catalog.
@@ -805,6 +808,7 @@ Stores additional information about a user.
 <details><summary>Product Management - Delete Product</summary>
 <img src="assets/readme/feature-admin/03-admin-feature-delete-product.gif">
 </details>
+
 
 ### Creator Management - Add Creator
 
@@ -814,6 +818,7 @@ Stores additional information about a user.
 <img src="assets/readme/feature-admin/04-admin-feature-add-creator.gif">
 </details>
 
+
 ### Creator Management - Edit Creator
 
 - The Creator Management section allows admins to manage the creators listed on the MagnaPlate website. The "Edit Creator" feature provides admins with the capability to modify the details of existing creators. This helps in keeping the creator information current and relevant, ensuring accurate representation on the platform.
@@ -822,12 +827,58 @@ Stores additional information about a user.
 <img src="assets/readme/feature-admin/05-admin-feature-edit-creator.gif">
 </details>
 
+
 ### Creator Management - Delete Creator
 
 - The Creator Management section allows admins to manage the creators listed on the MagnaPlate website. The "Delete Creator" feature allows admins to remove creators who are no longer associated with the platform. This function helps in maintaining a clean and updated creator directory, reflecting only active contributors.
 
 <details><summary>Creator Management - Delete Creator</summary>
 <img src="assets/readme/feature-admin/06-admin-feature-delete-creator.gif">
+</details>
+
+
+### Collection Management - Add Collection
+
+- The Collection Management page allows admins to add new collections to the MagnaPlate catalog. This feature includes fields for collection details, associated products, and more, ensuring that new collections can be seamlessly integrated into the existing lineup. Admins can also edit or delete collections from this page to keep the catalog up-to-date.
+
+<details><summary>Collection Management</summary>
+<img src="assets/readme/feature-admin/07-admin-feature-add-collection.gif">
+</details>
+
+
+### Collection Management - Edit Collection
+
+- The Collection Management page allows admins to edit existing collections in the MagnaPlate catalog. This feature includes fields for modifying collection details, associated products, and more, ensuring that collections can be updated to reflect current offerings. Admins can also add or delete collections from this page.
+
+<details><summary>Collection Management</summary>
+<img src="assets/readme/feature-admin/08-admin-feature-edit-collection.gif">
+</details>
+
+
+### Collection Management - Delete Collection
+
+- The Collection Management page allows admins to delete collections from the MagnaPlate catalog. This feature ensures that outdated or irrelevant collections can be removed, keeping the catalog up-to-date and relevant.
+
+<details><summary>Collection Management</summary>
+<img src="assets/readme/feature-admin/09-admin-feature-delete-collection.gif">
+</details>
+
+
+### Category Management - Add Category
+
+- The Category Management page allows admins to add new categories to the MagnaPlate catalog. This feature includes fields for category details, ensuring that new categories can be seamlessly integrated into the existing structure. 
+
+<details><summary>Category Management</summary>
+<img src="assets/readme/features/10-admin-feature-add-category.gif">
+</details>
+
+
+### Category Management - Edit Category
+
+- The Category Management page allows admins to edit existing categories in the MagnaPlate catalog. This feature includes fields for modifying category details, ensuring that categories can be updated to reflect current offerings. Admins can also add or delete categories from this page to keep the catalog organized and up-to-date.
+
+<details><summary>Category Management</summary>
+<img src="assets/readme/feature-admin/11-admin-feature-edit-category.gif">
 </details>
 
 

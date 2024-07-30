@@ -237,5 +237,7 @@ class CarouselDeleteView(
             HttpResponse: Redirects to the carousel list page.
         """
         carousel = get_object_or_404(Carousel, pk=pk)
+        if carousel.image:
+            carousel.image.delete(save=False)
         carousel.delete()
         return redirect('carousel_list')
