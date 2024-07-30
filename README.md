@@ -784,11 +784,37 @@ Stores additional information about a user.
 
 ### Product Management - Add Product
 
-- .
+- The Product Management section allows admins to manage the product listings on the MagnaPlate website. This includes adding new products, editing existing ones, or deleting products that are no longer available. This section ensures that the product catalog is always up to date and accurately reflects the inventory.
 
-<details><summary></summary>
-<img src="">
+<details><summary>Product Management - Add Product</summary>
+<img src="assets/readme/feature-admin/01-admin-feature-add-product.gif">
 </details>
+
+### Product Management - Edit Product
+
+- The Product Management section also enables admins to edit existing products. This feature allows for modifications to product details, such as updating descriptions, changing prices, adjusting inventory levels, and more. This functionality ensures that all product information is current and accurate.
+
+<details><summary>Product Management - Edit Product</summary>
+<img src="assets/readme/feature-admin/02-admin-feature-edit-product.gif">
+</details>
+
+### Product Management - Delete Product
+
+- The Product Management section also provides the functionality for admins to delete products. This feature allows for the removal of products that are no longer available or needed, helping to maintain an accurate and up-to-date product catalog.
+
+<details><summary>Product Management - Delete Product</summary>
+<img src="assets/readme/feature-admin/03-admin-feature-delete-product.gif">
+</details>
+
+### Creator Management - Add Creator
+
+- The Creator Management section allows admins to manage the creators listed on the MagnaPlate website. This includes adding new creators, editing existing ones, or deleting creators who are no longer associated with the platform. This section ensures that the creator directory is always up to date and accurately reflects the current roster of creators.
+
+<details><summary>Creator Management - Add Creator</summary>
+<img src="assets/readme/feature-admin/04-admin-feature-add-creator.gif">
+</details>
+
+
 
 
 ## Messages and Interaction with Users

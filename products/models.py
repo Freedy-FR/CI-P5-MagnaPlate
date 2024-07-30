@@ -61,16 +61,6 @@ class Creator(models.Model):
     def __str__(self):
         return self.name
 
-    def save(self, *args, **kwargs):
-        """
-        Custom save method to rename the image file before saving.
-        """
-        if self.image:
-            ext = self.image.name.split('.')[-1]
-            new_image_name = f"creators-{self.name}.{ext}"
-            self.image.name = new_image_name
-        super().save(*args, **kwargs)
-
 
 class Product(models.Model):
     """Model representing a product."""
