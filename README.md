@@ -218,11 +218,10 @@ The Colour scheme for the MagnaPlate website was meticulously selected to enrich
 
 The use of these Colours has been consistently maintained throughout the website and checked for contrast to allow easy accessibility. The combination of these carefully selected Colours ensures that the MagnaPlate website is not only visually appealing but also user-friendly and accessible to all visitors.
 
-
-<details><summary>Colour palette</summary>
-<img src="assets/readme/design/design-colours.webp">
-</details>
-<br>
+  <details><summary>Colour palette</summary>
+  <img src="assets/readme/design/design-colours.webp">
+  </details>
+  <br>
 
 
 ### Typography
@@ -262,37 +261,45 @@ The use of the carousel helps to keep the website dynamic and interactive, provi
 
 Wireframes were created for desktop/laptop, tablet and mobile.
 
-<details><summary>Home</summary>
-<img src="assets/readme/wireframes/Home.webp">
-</details>
+  <details><summary>Home</summary>
+  <img src="assets/readme/wireframes/Home.webp">
+  </details>
+  <br>
 
-<details><summary>Products</summary>
-<img src="assets/readme/wireframes/Products.webp">
-</details>
+  <details><summary>Products</summary>
+  <img src="assets/readme/wireframes/Products.webp">
+  </details>
+  <br>
 
-<details><summary> Products Detail</summary>
-<img src="assets/readme/wireframes/Products Detail.webp">
-</details>
+  <details><summary> Products Detail</summary>
+  <img src="assets/readme/wireframes/Products Detail.webp">
+  </details>
+  <br>
 
-<details><summary>Cart</summary>
-<img src="assets/readme/wireframes/Cart.webp">
-</details>
+  <details><summary>Cart</summary>
+  <img src="assets/readme/wireframes/Cart.webp">
+  </details>
+  <br>
 
-<details><summary>My Profile - Basic Information</summary>
-<img src="assets/readme/wireframes/My Profile - Basic Info.webp">
-</details>
+  <details><summary>My Profile - Basic Information</summary>
+  <img src="assets/readme/wireframes/My Profile - Basic Info.webp">
+  </details>
+  <br>
 
-<details><summary>My Profile - Shipping Address</summary>
-<img src="assets/readme/wireframes/My Profile - Shipping.webp">
-</details>
+  <details><summary>My Profile - Shipping Address</summary>
+  <img src="assets/readme/wireframes/My Profile - Shipping.webp">
+  </details>
+  <br>
 
-<details><summary>My Profile - Orders</summary>
-<img src="assets/readme/wireframes/My profile - Order.webp">
-</details>
+  <details><summary>My Profile - Orders</summary>
+  <img src="assets/readme/wireframes/My profile - Order.webp">
+  </details>
+  <br>
 
-<details><summary>Admin - Product Management</summary>
-<img src="assets/readme/wireframes/Admin - Product Management.webp">
-</details>
+  <details><summary>Admin - Product Management</summary>
+  <img src="assets/readme/wireframes/Admin - Product Management.webp">
+  </details>
+  <br>
 
 
 
@@ -324,9 +331,10 @@ In total, there are **13 models**:
 
 ### Database Diagram
 
-<details><summary>Magna Plate Database</summary>
-<img src="assets/readme/database/magna_database.webp">
-</details>
+  <details><summary>Magna Plate Database</summary>
+  <img src="assets/readme/database/magna_database.webp">
+  </details>
+  <br>
 
 #### Checkout
 
@@ -509,142 +517,170 @@ Stores additional information about a user.
 
 - The home page includes a carousel showcasing images at the top, which can be used for promotions, highlights, or important announcements.<br>
 
-<details><summary>Home Page - Images Carousel</summary>
-<img src="assets/readme/features/01-feature-carousel.gif">
-</details>
+  <details><summary>Home Page - Images Carousel</summary>
+  <img src="assets/readme/features/01-feature-carousel.gif">
+  </details>
+  <br>
 
 ### Home Page - Deals
 
-- - The Deals section features products with discounted prices or special promotions, displayed at random to ensure a fresh and varied selection each time users visit.<br>
+- The Deals section features products with discounted prices or special promotions, displayed at random to ensure a fresh and varied selection each time users visit.<br>
 
-<details><summary>Home Page - Deals</summary>
-<img src="assets/readme/features/02-feature-home-deals.webp">
-</details>
+  <details><summary>Home Page - Deals</summary>
+  <img src="assets/readme/features/02-feature-home-deals.webp">
+  </details>
+  <br>
+
 
 ### Home Page - Products
 
 - The Products section on the home page highlights a selection of featured items, new arrivals, or top sellers, offering users a quick view of popular and interesting products.<br>
 
-<details><summary>Home Page - Products</summary>
-<img src="assets/readme/features/03-feature-home-products.webp">
-</details>
+  <details><summary>Home Page - Products</summary>
+  <img src="assets/readme/features/03-feature-home-products.webp">
+  </details>
+  <br>
+  
 
 ### Home Page - Image Banner
 
 - Features a prominent image banner that can be used for announcements or promotions.<br>
 
-<details><summary>Home Page - Image Banner</summary>
-<img src="assets/readme/features/04-feature-home-banner.webp">
-</details>
+  <details><summary>Home Page - Image Banner</summary>
+  <img src="assets/readme/features/04-feature-home-banner.webp">
+  </details>
+  <br>
+
 
 ### Home Page - Main Navigation Bar
 
 - The Main Navigation Bar provides easy access to all key sections of the website. It includes links to All Plates, Collections, Categories, Creators, and Special Offers.
  Additionally, it features a search bar for quick product searches, a user account icon for profile access, and a shopping cart icon displaying the current cart total. This intuitive navigation bar ensures users can effortlessly explore and navigate the website.<br>
 
-<details><summary>Home Page - Main Navigation Bar</summary>
-<img src="assets/readme/features/04-1-feature-main-navigation-bar.gif">
-</details>
+  <details><summary>Home Page - Main Navigation Bar</summary>
+  <img src="assets/readme/features/04-1-feature-main-navigation-bar.gif">
+  </details>
+  <br>
 
 ### Search Bar
 
 - The Search Bar allows users to quickly find products, collections, categories, and creators on the MagnaPlate website. Located prominently at the top of the page, it provides an easy way for users to navigate and discover specific items they are looking for by entering keywords or phrases.
 
-<details><summary>Search Bar</summary>
-<img src="assets/readme/features/04-2-feature-main-navigation-search.gif">
-</details>
+  <details><summary>Search Bar</summary>
+  <img src="assets/readme/features/04-2-feature-main-navigation-search.gif">
+  </details>
+  <br>
 
 
 ### Products Page
 
 - Displays a comprehensive list of all available products with filtering and sorting options.<br>
 
-<details><summary>Products Page</summary>
-<img src="assets/readme/features/05-feature-products.webp">
-</details>
+  <details><summary>Products Page</summary>
+  <img src="assets/readme/features/05-feature-products.webp">
+  </details>
+  <br>
+
 
 ### Products Page - Sorting
 
 - Allows users to organize products by various criteria such as price, popularity. This feature helps users find what they're looking for more efficiently.<br>
 
-<details><summary>Products Page - Sorting</summary>
-<img src="assets/readme/features/06-feature-products-sorting.gif">
-</details>
+  <details><summary>Products Page - Sorting</summary>
+  <img src="assets/readme/features/06-feature-products-sorting.gif">
+  </details>
+  <br>
+
 
 ### Products Page - Hover Overlay (Laptops/Desktops)
 
 - Displays additional product details or actions when users hover over a product image. This overlay enhances user interaction by providing quick access to essential information.<br>
 
-<details><summary>Products Page - Hover Overlay</summary>
-<img src="assets/readme/features/07-feature-products-hover.gif">
-</details>
+  <details><summary>Products Page - Hover Overlay</summary>
+  <img src="assets/readme/features/07-feature-products-hover.gif">
+  </details>
+  <br>
+
 
 ### Product Details
 
 - The Product Details page offers a comprehensive view of each product. Users can see high-resolution full screen images, detailed descriptions, user ratings, and prices. It also provides options to select size and quantity before adding items to the cart. Additionally, the page includes tabs for detailed specifications and shipping information to ensure users have all necessary details. This dynamic presentation enhances the shopping experience by providing a thorough overview of each product.<br>
 
-<details><summary>Product Details</summary>
-<img src="assets/readme/features/08-feature-product-detail.gif">
-</details>
+  <details><summary>Product Details</summary>
+  <img src="assets/readme/features/08-feature-product-detail.gif">
+  </details>
+  <br>
+
 
 ### All Creators Page
 
 - The All Creators page showcases all the artists and creators featured on the platform. Users can browse through the list of creators, view their profiles, and explore their collections. This page provides an excellent way to discover new artists and follow their work, enhancing the community and diversity of the platform.<br>
 
-<details><summary>All Creators Page</summary>
-<img src="assets/readme/features/08-1-feature-all-creators.gif">
-</details>
+  <details><summary>All Creators Page</summary>
+  <img src="assets/readme/features/08-1-feature-all-creators.gif">
+  </details>
+  <br>
+
 
 ### Creators Details
 
 - The Creators Details page provides an in-depth look at individual creators. Users can learn more about each creator, view their biography, and explore the collections and products they have created. This page helps users connect with the creators and gain insight into their artistic journey and inspirations.<br>
 
-<details><summary>Creators Details</summary>
-<img src="assets/readme/features/08-2-feature-creators-details.gif">
-</details>
+  <details><summary>Creators Details</summary>
+  <img src="assets/readme/features/08-2-feature-creators-details.gif">
+  </details>
+  <br>
+
 
 ### Shopping Cart
 
 - The Shopping Cart page allows users to review the items they intend to purchase. It displays product images, names, sizes, SKUs, prices, and quantities. Users can update quantities or remove items directly from the cart. The page also shows the subtotal, delivery cost, and grand total, with options to continue shopping or proceed to secure checkout. This dynamic interface ensures a smooth and efficient shopping experience.<br>
 
-<details><summary>Shopping Cart</summary>
-<img src="assets/readme/features/09-feature-shopping-cart.gif">
-</details>
+  <details><summary>Shopping Cart</summary>
+  <img src="assets/readme/features/09-feature-shopping-cart.gif">
+  </details>
+  <br>
+
 
 ### Checkout
 
 - The Checkout page allows users to review their order, enter delivery and payment details, and complete their purchase. Users can see a summary of items in their cart, fill in their shipping information, and input payment details securely. This streamlined process ensures a smooth and efficient checkout experience, helping users finalize their orders with ease.<br>
 
-<details><summary>Checkout</summary>
-<img src="assets/readme/features/10-feature-checkout.gif">
-</details>
+  <details><summary>Checkout</summary>
+  <img src="assets/readme/features/10-feature-checkout.gif">
+  </details>
+  <br>
+
 
 
 ### Checkout - Success
 
 - The Checkout Success page confirms that the user's purchase has been completed successfully. It displays an order summary, including product details, sizes, quantities, and subtotals. Additionally, it provides delivery information and the total amount charged. This page reassures users that their order has been processed and includes all relevant details for their reference.<br>
 
-<details><summary>Checkout - Success</summary>
-<img src="assets/readme/features/11-feature-checkout-success.gif">
-</details>
+  <details><summary>Checkout - Success</summary>
+  <img src="assets/readme/features/11-feature-checkout-success.gif">
+  </details>
+  <br
 
 
 ### Site Management (Site Admin)
 
 - The Site Management section allows administrators to manage various aspects of the website, including products, collections, categories, and special offers. It provides a user-friendly interface for adding, editing, or removing items, ensuring the site remains up-to-date and engaging. This section is essential for maintaining the content and overall functionality of the site.<br>
 
-<details><summary>Site Management</summary>
-<img src="assets/readme/features/13-feature-site-management.gif">
-</details>
+  <details><summary>Site Management</summary>
+  <img src="assets/readme/features/13-feature-site-management.gif">
+  </details>
+  <br>
 
 
 ### Profile Page
 
 - The Profile Page allows users to view and update their personal information and check order history. Users can edit their contact details, manage their delivery addresses, and review their past orders. This section ensures that users can easily keep their profile information current and track their purchases.<br>
 
-<details><summary>Profile Page</summary>
-<img src="assets/readme/features/14-feature-profile-page.gif">
-</details>
+  <details><summary>Profile Page</summary>
+  <img src="assets/readme/features/14-feature-profile-page.gif">
+  </details>
+  <br>
 
 
 #### My Favorites
@@ -652,132 +688,151 @@ Stores additional information about a user.
 - The My Favorites section allows users to save and manage their favorite products and creators for easy access later. Users can quickly view and navigate to their preferred items and creators, making it convenient to revisit what they are interested in. This feature enhances the shopping experience by enabling users to curate a personalized collection of their favorite products and creators.<br>
 
 
-<details><summary>My Favorites</summary>
-<img src="assets/readme/features/15-feature-favorites-page.gif">
-</details>
+  <details><summary>My Favorites</summary>
+  <img src="assets/readme/features/15-feature-favorites-page.gif">
+  </details>
+  <br>
 
-<details><summary>My Favorites - Add Products</summary>
-<img src="assets/readme/features/15-1-feature-favorites-products.gif">
-</details>
+  <details><summary>My Favorites - Add Products</summary>
+  <img src="assets/readme/features/15-1-feature-favorites-products.gif">
+  </details>
+  <br>
 
-<details><summary>My Favorites - Add Creators</summary>
-<img src="assets/readme/features/15-2-feature-favorites-creators.gif">
-</details>
+  <details><summary>My Favorites - Add Creators</summary>
+  <img src="assets/readme/features/15-2-feature-favorites-creators.gif">
+  </details>
+  <br>
 
 ### Register Page
 
 - The Register Page allows new users to create an account by providing their personal details such as name, email, and password. This page ensures a smooth sign-up process, enabling users to quickly join the platform and start enjoying its features.<br>
 
-<details><summary>Register Page</summary>
-<img src="assets/readme/features/16-feature-register-page.webp">
-</details>
+  <details><summary>Register Page</summary>
+  <img src="assets/readme/features/16-feature-register-page.webp">
+  </details>
+  <br>
 
 ### Register Page - Verify Email
 
 - The Verify Email page is part of the registration process, where users are required to verify their email address to complete the signup. This step ensures that the email provided is valid and helps in securing the user's account.<br>
 
-<details><summary>Register Page - Email</summary>
-<img src="assets/readme/features/16-1-feature-register-verify.webp">
-</details>
+  <details><summary>Register Page - Email</summary>
+  <img src="assets/readme/features/16-1-feature-register-verify.webp">
+  </details>
+  <br>
 
-<details><summary>Register Page - Verify Email</summary>
-<img src="assets/readme/features/16-2-feature-register-verify.gif">
-</details>
+  <details><summary>Register Page - Verify Email</summary>
+  <img src="assets/readme/features/16-2-feature-register-verify.gif">
+  </details>
+  <br>
 
 
 ### Register Page - Confirm Email
 
 - The Confirm Email page is shown after a user verifies their email address. This page confirms that the email address has been successfully verified, completing the registration process and allowing the user to access all the features of the platform.<br>
 
-<details><summary>Register Page - Confirm Email</summary>
-<img src="assets/readme/features/16-3-feature-register-confirm.gif">
-</details>
+  <details><summary>Register Page - Confirm Email</summary>
+  <img src="assets/readme/features/16-3-feature-register-confirm.gif">
+  </details>
+  <br>
 
 
 ### Login Page
 
 - The Login Page allows existing users to log in to their account by entering their email and password. This page ensures secure access to user accounts, enabling them to manage their profiles, view order history, and make purchases.<br>
 
-<details><summary>Login Page</summary>
-<img src="assets/readme/features/17-feature-login-page.gif">
-</details>
+  <details><summary>Login Page</summary>
+  <img src="assets/readme/features/17-feature-login-page.gif">
+  </details>
+  <br>
 
 ### Logout Page
 
 - The Logout Page is shown after a user logs out of their account. This page confirms that the user has successfully logged out, providing options to return to the home page or log back in.<br>
 
-<details><summary>Logout Page</summary>
-<img src="assets/readme/features/18-feature-logout-page.gif">
-</details>
+  <details><summary>Logout Page</summary>
+  <img src="assets/readme/features/18-feature-logout-page.gif">
+  </details>
+  <br>
 
 ### Footer
 
 - The footer section contains additional links to various parts of the website, contact information, and other relevant details. It provides quick access to important sections such as Home, About Us, Products, Deals, and support pages like FAQ and Customer Support. The footer also includes social media links for easy navigation to the website's social media profiles. Additionally, there is a subscription form for the newsletter, allowing users to stay updated with the latest news and offers.<br>
 
-<details><summary>Footer</summary>
-<img src="assets/readme/features/19-feature-footer.webp">
-</details>
+  <details><summary>Footer</summary>
+  <img src="assets/readme/features/19-feature-footer.webp">
+  </details>
+  <br>
 
 
 ### About Us
 
 - The About Us page provides an overview of MagnaPlate's mission, history, and core values. Learn about our dedication to revolutionizing wall decoration with innovative metallic posters, our journey since our founding in 2024, and the principles that guide our work.<br>
 
-<details><summary>About Us</summary>
-<img src="assets/readme/features/20-feature-footer-aboutus.gif">
-</details>
+  <details><summary>About Us</summary>
+  <img src="assets/readme/features/20-feature-footer-aboutus.gif">
+  </details>
+  <br>
 
 ### FAQ Page
 
 - The FAQ page provides answers to the most frequently asked questions about MagnaPlate's products, services, and policies. This section is designed to help users find quick solutions to common issues and learn more about our offerings.<br>
 
-<details><summary>FAQ Page</summary>
-<img src="assets/readme/features/21-feature-footer-faq.gif">
-</details>
+  <details><summary>FAQ Page</summary>
+  <img src="assets/readme/features/21-feature-footer-faq.gif">
+  </details>
+  <br>
+
 
 ### Customer Support Page
 
 - The Customer Support Page provides a form for users to fill out if they have any questions or need assistance. Users can enter their name, email, subject, and message. After submission, they will receive a confirmation with a ticket number for tracking their request.
 
-<details><summary>Customer Support Page</summary>
-<img src="assets/readme/features/22-1-feature-footer-customer.gif">
-</details>
+  <details><summary>Customer Support Page</summary>
+  <img src="assets/readme/features/22-1-feature-footer-customer.gif">
+  </details>
+  <br>
 
-<details><summary>Customer Support Confirmation</summary>
-<img src="assets/readme/features/22-2-feature-footer-customer-confirmation.gif">
-</details>
+  <details><summary>Customer Support Confirmation</summary>
+  <img src="assets/readme/features/22-2-feature-footer-customer-confirmation.gif">
+  </details>
+  <br>
 
 ### Contact Us Page
 
 - The Contact Us Page allows users to get in touch with our support team for any inquiries or issues. Users can fill out their details and submit their message through the provided form.
 
-<details><summary>Contact Us Page</summary>
-<img src="assets/readme/features/23-feature-footer-contactus.gif">
-</details>
+  <details><summary>Contact Us Page</summary>
+  <img src="assets/readme/features/23-feature-footer-contactus.gif">
+  </details>
+  <br>
 
 ### Social Media
 
 - Our social media section allows you to stay connected and engaged with MagnaPlate. Follow us on various platforms for the latest updates, exclusive promotions, and exciting news about our innovative products.
 
-<details><summary>Social Media</summary>
-<img src="assets/readme/features/24-feature-footer-social.gif">
-</details>
+  <details><summary>Social Media</summary>
+  <img src="assets/readme/features/24-feature-footer-social.gif">
+  </details>
+  <br>
 
 ### Newsletter Section
 
 - The newsletter section in the footer of MagnaPlate's website allows users to stay connected with the latest updates, special promotions, and exclusive offers. By subscribing, you can receive timely notifications about new arrivals and exciting deals directly in your inbox. Enter your email address in the footer section to join our community and never miss out on any important updates from MagnaPlate.
 
-<details><summary>Newsletter Section</summary>
-<img src="assets/readme/features/25-feature-footer-newsletter.gif">
-</details>
+  <details><summary>Newsletter Section</summary>
+  <img src="assets/readme/features/25-feature-footer-newsletter.gif">
+  </details>
+  <br>
 
 ### 404 Error Page
 
 - The 404 Error Page is displayed when a user tries to access a page that does not exist on the MagnaPlate website. This page informs the user that the requested page could not be found and provides navigation options to help them return to the main site or find what they are looking for.
 
-<details><summary>404 Error Page</summary>
-<img src="assets/readme/features/26-feature-404.webp">
-</details>
+  <details><summary>404 Error Page</summary>
+  <img src="assets/readme/features/26-feature-404.webp">
+  </details>
+  <br>
 
 
 ## Site Management - Features
@@ -787,72 +842,80 @@ Stores additional information about a user.
 
 - The Product Management section allows admins to manage the product listings on the MagnaPlate website. This includes adding new products, editing existing ones, or deleting products that are no longer available. This section ensures that the product catalog is always up to date and accurately reflects the inventory.
 
-<details><summary>Product Management - Add Product</summary>
-<img src="assets/readme/feature-admin/01-admin-feature-add-product.gif">
-</details>
+  <details><summary>Product Management - Add Product</summary>
+  <img src="assets/readme/feature-admin/01-admin-feature-add-product.gif">
+  </details>
+  <br>
 
 
 ### Product Management - Edit Product
 
 - The Product Management section also enables admins to edit existing products. This feature allows for modifications to product details, such as updating descriptions, changing prices, adjusting inventory levels, and more. This functionality ensures that all product information is current and accurate.
 
-<details><summary>Product Management - Edit Product</summary>
-<img src="assets/readme/feature-admin/02-admin-feature-edit-product.gif">
-</details>
+  <details><summary>Product Management - Edit Product</summary>
+  <img src="assets/readme/feature-admin/02-admin-feature-edit-product.gif">
+  </details>
+  <br>
 
 
 ### Product Management - Delete Product
 
 - The Product Management section also provides the functionality for admins to delete products. This feature allows for the removal of products that are no longer available or needed, helping to maintain an accurate and up-to-date product catalog.
 
-<details><summary>Product Management - Delete Product</summary>
-<img src="assets/readme/feature-admin/03-admin-feature-delete-product.gif">
-</details>
+  <details><summary>Product Management - Delete Product</summary>
+  <img src="assets/readme/feature-admin/03-admin-feature-delete-product.gif">
+  </details>
+  <br>
 
 
 ### Creator Management - Add Creator
 
 - The Creator Management section allows admins to manage the creators listed on the MagnaPlate website. The "Add Creator" feature enables admins to introduce new creators to the platform. This ensures the website continually showcases fresh talent and maintains an updated roster of contributors.
 
-<details><summary>Creator Management - Add Creator</summary>
-<img src="assets/readme/feature-admin/04-admin-feature-add-creator.gif">
-</details>
+  <details><summary>Creator Management - Add Creator</summary>
+  <img src="assets/readme/feature-admin/04-admin-feature-add-creator.gif">
+  </details>
+  <br>
 
 
 ### Creator Management - Edit Creator
 
 - The Creator Management section allows admins to manage the creators listed on the MagnaPlate website. The "Edit Creator" feature provides admins with the capability to modify the details of existing creators. This helps in keeping the creator information current and relevant, ensuring accurate representation on the platform.
 
-<details><summary>Creator Management - Edit Creator</summary>
-<img src="assets/readme/feature-admin/05-admin-feature-edit-creator.gif">
-</details>
+  <details><summary>Creator Management - Edit Creator</summary>
+  <img src="assets/readme/feature-admin/05-admin-feature-edit-creator.gif">
+  </details>
+  <br>
 
 
 ### Creator Management - Delete Creator
 
 - The Creator Management section allows admins to manage the creators listed on the MagnaPlate website. The "Delete Creator" feature allows admins to remove creators who are no longer associated with the platform. This function helps in maintaining a clean and updated creator directory, reflecting only active contributors.
 
-<details><summary>Creator Management - Delete Creator</summary>
-<img src="assets/readme/feature-admin/06-admin-feature-delete-creator.gif">
-</details>
+  <details><summary>Creator Management - Delete Creator</summary>
+  <img src="assets/readme/feature-admin/06-admin-feature-delete-creator.gif">
+  </details>
+  <br>
 
 
 ### Collection Management - Add Collection
 
 - The Collection Management page allows admins to add new collections to the MagnaPlate catalog. This feature includes fields for collection details, associated products, and more, ensuring that new collections can be seamlessly integrated into the existing lineup. Admins can also edit or delete collections from this page to keep the catalog up-to-date.
 
-<details><summary>Collection Management</summary>
-<img src="assets/readme/feature-admin/07-admin-feature-add-collection.gif">
-</details>
+  <details><summary>Collection Management</summary>
+  <img src="assets/readme/feature-admin/07-admin-feature-add-collection.gif">
+  </details>
+  <br>
 
 
 ### Collection Management - Edit Collection
 
 - The Collection Management page allows admins to edit existing collections in the MagnaPlate catalog. This feature includes fields for modifying collection details, associated products, and more, ensuring that collections can be updated to reflect current offerings. Admins can also add or delete collections from this page.
 
-<details><summary>Collection Management</summary>
-<img src="assets/readme/feature-admin/08-admin-feature-edit-collection.gif">
-</details>
+  <details><summary>Collection Management</summary>
+  <img src="assets/readme/feature-admin/08-admin-feature-edit-collection.gif">
+  </details>
+  <br>
 
 
 ### Collection Management - Delete Collection
@@ -868,20 +931,161 @@ Stores additional information about a user.
 
 - The Category Management page allows admins to add new categories to the MagnaPlate catalog. This feature includes fields for category details, ensuring that new categories can be seamlessly integrated into the existing structure. 
 
-<details><summary>Category Management</summary>
-<img src="assets/readme/features/10-admin-feature-add-category.gif">
-</details>
+  <details><summary>Category Management</summary>
+  <img src="assets/readme/features/10-admin-feature-add-category.gif">
+  </details>
+  <br>
 
 
 ### Category Management - Edit Category
 
 - The Category Management page allows admins to edit existing categories in the MagnaPlate catalog. This feature includes fields for modifying category details, ensuring that categories can be updated to reflect current offerings. Admins can also add or delete categories from this page to keep the catalog organized and up-to-date.
 
-<details><summary>Category Management</summary>
-<img src="assets/readme/feature-admin/11-admin-feature-edit-category.gif">
-</details>
+  <details><summary>Category Management</summary>
+  <img src="assets/readme/feature-admin/11-admin-feature-edit-category.gif">
+  </details>
+  <br>
+
+### Category Management - Delete Category
+
+- The Category Management page allows admins to delete categories from the MagnaPlate catalog. This feature ensures that outdated or irrelevant categories can be removed, keeping the catalog organized and up-to-date.
+
+  <details><summary>Category Management</summary>
+  <img src="assets/readme/feature-admin/12-admin-feature-delete-category.gif">
+  </details>
+  <br>
+
+### Carousel Management - Add Carousel
+
+- The Carousel Management page allows admins to add new carousels to the MagnaPlate catalog. This feature includes fields for carousel details, ensuring that new carousels can be seamlessly integrated into the existing structure.
+
+  <details><summary>Carousel Management</summary>
+  <img src="assets/readme/feature-admin/13-admin-feature-add-carousel.gif">
+  </details>
+  <br>
 
 
+### Carousel Management - Edit Carousel
+
+- The Carousel Management page allows admins to edit existing carousels in the MagnaPlate catalog. This feature includes fields for modifying carousel details, ensuring that carousels can be updated to reflect current offerings. Admins can also add or delete carousels from this page to keep the catalog visually appealing and up-to-date.
+
+  <details><summary>Carousel Management</summary>
+  <img src="assets/readme/feature-admin/14-admin-feature-edit-carousel.gif">
+  </details>
+  <br>
+
+
+### Carousel Management - Delete Carousel
+
+- The Carousel Management page allows admins to delete carousels from the MagnaPlate catalog. This feature ensures that outdated or irrelevant carousels can be removed, keeping the catalog visually appealing and up-to-date.
+
+  <details><summary>Carousel Management</summary>
+  <img src="assets/readme/feature-admin/15-admin-feature-delete-carousel.gif">
+  </details>
+  <br>
+
+### Newsletter Management - Create/Send Newsletter
+
+- The Newsletter Management page allows admins to create and send newsletters to subscribers. This feature includes fields for newsletter details, ensuring that new newsletters can be seamlessly created and sent to the mailing list. 
+
+  <details><summary>Newsletter Create/Send</summary>
+  <img src="assets/readme/feature-admin/16-admin-feature-create-newsletter.gif">
+  </details>
+  <br>
+
+- After sending the newsletter, a confirmation message is shown, and a green tick can be seen indicating successful delivery.
+
+  <details><summary>Newsletter Sent Confirmation</summary>
+  <img src="assets/readme/feature-admin/16-1-admin-feature-create-newsletter-sent.webp">
+  </details>
+  <br>
+
+- The email received by the subscribers.
+
+  <details><summary>Email Received</summary>
+  <img src="assets/readme/feature-admin/16-2-admin-feature-create-newsletter-email.webp">
+  </details>
+  <br>
+
+
+### Newsletter Management - Create/Save Newsletter
+
+- The Newsletter Management page allows admins to create and save newsletters to send to subscribers at a later time. This feature includes fields for newsletter details, ensuring that new newsletters can be seamlessly created and stored.
+
+  <details><summary>Newsletter Management</summary>
+  <img src="assets/readme/feature-admin/17-admin-feature-create-newsletter-save.gif">
+  </details>
+  <br>
+
+- After saving the newsletter, a confirmation message is shown, and the red X status indicates it has been saved and not sent.
+
+  <details><summary>Newsletter Saved Confirmation</summary>
+  <img src="assets/readme/feature-admin/17-1-admin-feature-create-newsletter-saved.webp">
+  </details>
+  <br>
+
+
+### Newsletter Management - Edit Newsletter
+
+- The Newsletter Management page allows admins to edit existing newsletters in the MagnaPlate catalog. This feature includes fields for modifying newsletter details, ensuring that newsletters can be updated to reflect current content and design.
+
+  <details><summary>Newsletter Management</summary>
+  <img src="assets/readme/feature-admin/18-admin-feature-edit-newsletter.gif">
+  </details>
+  <br>
+
+### Newsletter Management - Select and Send Newsletter
+
+- The Newsletter Management page allows admins to select and send newsletters to subscribers. This feature includes options to choose specific newsletters and send them to the mailing list, ensuring effective communication with subscribers.
+
+  <details><summary>Newsletter Management</summary>
+  <img src="assets/readme/feature-admin/19-admin-feature-send-newsletter-select.gif">
+  </details>
+
+
+### Newsletter Management - Select and Delete Newsletter
+
+- The Newsletter Management page allows admins to select and delete newsletters from the MagnaPlate catalog. This feature includes options to choose specific newsletters and remove them from the mailing list, ensuring that outdated or irrelevant content is not sent to subscribers.
+
+  <details><summary>Newsletter Management</summary>
+  <img src="assets/readme/feature-admin/20-admin-feature-delete-newsletter-select.gif">
+  </details>
+  <br>
+
+
+### Newsletter Management - Subscription List Search
+
+- The Newsletter Management page allows admins to search through the subscription list. This feature includes a search bar to quickly find and manage subscriber details, ensuring efficient handling of the mailing list.
+
+  <details><summary>Newsletter Subscription Search</summary>
+  <img src="assets/readme/feature-admin/21-admin-feature-search-newsletter-subscription.gif">
+  </details>
+  <br>
+
+### Newsletter Management - Delete Subscription
+
+- The Newsletter Management page allows admins to delete subscribers from the subscription list. This feature includes options to select and remove subscribers, ensuring the mailing list is kept up-to-date and relevant.
+
+  <details><summary>Newsletter Subscription Deletion</summary>
+  <img src="assets/readme/feature-admin/22-admin-feature-delete-newsletter-subscription.gif">
+  </details>
+  <br>
+
+### Customer Support Management - Inquiries
+
+- The Customer Support Management page allows admins to handle various types of inquiries from customers. The inquiries are categorized into sections such as Order Enquiry, Product Enquiry, Returns, Complaints, Work With Us, Others, Shipping Inquiry, Payment Inquiry, Technical Support, Feedback, and Partnership Inquiry. This categorization helps in efficiently managing and responding to customer inquiries.
+
+  <details><summary>Customer Support Inquiry Types</summary>
+  <img src="assets/readme/feature-admin/23-1-admin-feature-enquiry-newsletter.webp">
+  </details>
+  <br>
+
+- Admins can check the details of each inquiry and delete them if necessary, ensuring that the support system remains organized and up-to-date.
+
+  <details><summary>Check and Delete Inquiries</summary>
+  <img src="assets/readme/feature-admin/23-admin-feature-check-delete-newsletter-customer.gif">
+  </details>
+  <br>
 
 
 
