@@ -1198,192 +1198,6 @@ Search Engine Optimisation or SEO techniques were adopted to try to create more 
 
 <br>
 
-## AWS Setup Process
-
-### AWS S3 Bucket
-
-The deployed site uses AWS S3 Buckets to store the webpages static and media files. More information on how you can set up an AWS S3 Bucket can be found below:
-
-1. Create an AWS account [here](https://portal.aws.amazon.com/).
-2. Login to your account and within the search bar type in "S3".
-3. Within the S3 page click on the button that says "Create Bucket".
-4. Name the bucket and select the region which is closest to you.
-5. Underneath "Object Ownership" select "ACLs enabled".
-6. Uncheck "Block Public Access" and acknowledge that the bucket will be made public, then click "Create Bucket".
-7. Inside the created bucket click on the "Properties" tab. Below "Static Website Hosting" click "Edit" and change the Static website hosting option to "Enabled". Copy the default values for the index and error documents and click "Save Changes".
-8. Click on the "Permissions" tab, below "Cross-origin Resource Sharing (CORS)", click "Edit" and then paste in the following code:
-
-```
-  [
-      {
-          "AllowedHeaders": [
-          "Authorization"
-          ],
-          "AllowedMethods": [
-          "GET"
-          ],
-          "AllowedOrigins": [
-          "*"
-          ],
-          "ExposeHeaders": []
-      }
-  ]
-```
-
-9. Within the "Bucket Policy" section. Click "Edit" and then "Policy Generator". Click the "Select Type of Policy" dropdown and select "S3 Bucket Policy" and within "Principle" allow all principals by typing "\*".
-10. Within the "Actions" dropdown menu select "Get Object" and in the previous tab copy the "Bucket ARN number". Paste this within the policy generator within the field labelled "Amazon Resource Name (ARN)".
-11. Click "Add statement > Generate Policy" and copy the policy that's been generated and paste this into the "Bucket Policy Editor".
-12. Before saving, add /\* at the end of your "Resource Key", this will allow access to all resources within the bucket.
-13. Once saved, scroll down to the "Access Control List (ACL)" and click "Edit".
-14. Next to "Everyone (public access)", check the "list" checkbox and save your changes.
-
-### IAM Set Up
-
-1. Search for IAM within the AWS navigation bar and select it.
-2. Click "User Groups" that can be seen in the side bar and then click "Create group" and name the group 'manage-your-project-name'.
-3. Click "Policies" and then "Create policy".
-4. Navigate to the JSON tab and click "Import Managed Policy", within here search "S3" and select "AmazonS3FullAccess" followed by "Import".
-5. Navigate back to the recently created S3 bucket and copy your "ARN Number". Go back to "This Policy" and update the "Resource Key" to include your ARN Number, and another line with your ARN followed by a "/\*".
-
-- Below is an example of what this should look like:
-
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "s3:*",
-                "s3-object-lambda:*"
-            ],
-            "Resource": [
-                "YOUR-ARN-NO-HERE",
-                "YOUR-ARN-NO-HERE/*"
-            ]
-        }
-    ]
-}
-
-```
-
-1. Ensure the policy has been given a name and a short description, then click "Create Policy".
-2. Click "User groups", and then the group you created earlier. Under permissions click "Add Permission" and from the dropdown click "Attach Policies".
-3. Select "Users" from the sidebar and click "Add User".
-4. Provide a username and check "Programmatic Access", then click 'Next: Permissions'.
-5. Ensure your policy is selected and navigate through until you click "Add User".
-6. Download the "CSV file", which contains the user's access key and secret access key.
-
-### Connecting AWS to the Project
-
-1. Within your terminal install the following packages by typing
-
-```
-  pip3 install boto3
-  pip3 install django-storages
-```
-
-2. Freeze the requirements by typing:
-
-```
-pip3 freeze > requirements.txt
-```
-
-3. Add "storages" to your installed apps within your settings.py file.
-4. At the bottom of the settings.py file add the following code:
-
-```
-if 'USE_AWS' in os.environ:
-    AWS_STORAGE_BUCKET_NAME = 'insert-bucket-name-here'
-    AWS_S3_REGION_NAME = 'insert-your-region-here'
-    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-```
-
-5. Add the following keys within Heroku: "AWS_ACCESS_KEY_ID" and "AWS_SECRET_ACCESS_KEY". These can be found in your CSV file.
-6. Add the key "USE_AWS", and set the value to True within Heroku.
-7. Remove the "DISABLE_COLLECTSTAIC" variable from Heroku.
-8. Within your settings.py file inside the code just written add:
-
-```
-  AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
-```
-
-8. Inside the settings.py file inside the bucket config if statement add the following lines of code:
-
-```
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-STATICFILES_LOCATION = 'static'
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-MEDIAFILES_LOCATION = 'media'
-
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-
-AWS_S3_OBJECT_PARAMETERS = {
-    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
-    'CacheControl': 'max-age=94608000',
-}
-```
-
-9. In the root directory of your project create a file called "custom_storages.py". Import the following at the top of this file and add the classes below:
-
-```
-  from django.conf import settings
-  from storages.backends.s3boto3 import S3Boto3Storage
-
-  class StaticStorage(S3Boto3Storage):
-    location = settings.STATICFILES_LOCATION
-
-  class MediaStorage(S3Boto3Storage):
-    location = settings.MEDIAFILES_LOCATION
-```
-
-10. Navigate back to you AWS S3 Bucket and click on "Create Folder" name this folder "media", within the media file click "Upload > Add Files" and select the images for your site.
-11. Under "Permissions" select the option "Grant public-read access" and click "Upload".
-
-## Stripe Payments
-
-- The Stripe payments system is set up as the online payment processing and credit card processing platform for the purchases.
-  You will need a stripe account which you can sign up for [here](https://stripe.com/en-ie)
-
-### Payments
-
-- To set up stripe payments you can follow their guid [here](https://stripe.com/docs/payments/accept-a-payment#web-collect-card-details)
-
-### Webhooks
-
-1. To set up a webhook, sign into your stripe account and click 'Developers' located in the top right of the navbar.
-2. Then in the side-nav under the Developers title, click on "Webhooks", then "Add endpoint".
-3. On the next page you will need to input the link to your heroku app followed by /checkout/wh/. It should look something like this:
-
-   ```
-   https://your-app-name.herokuapp.com/checkout/wh/
-   ```
-
-4. Then click "+ Select events" and check the "Select all events" checkbox at the top before clicking "Add events" at the bottom. Once this is done finish the form by clicking "Add endpoint".
-5. Your webhook is now created and you should see that it has generated a secret key. You will need this to add to your heroku config vars.
-6. Head over to your app in heroku and navigate to the config vars section under settings. You will need the secret key you just generated for your webhook, in addition to your Publishable key and secret key that you can find in the API keys section back in stripe.
-7. Add these values under these keys:
-
-   ```
-   STRIPE_PUBLIC_KEY = 'insert your stripe publishable key'
-   STRIPE_SECRET_KEY = 'insert your secret key'
-   STRIPE_WH_SECRET = 'insert your webhooks secret key'
-
-   ```
-
-8. Finally, back in your settings.py file in django, insert the following near the bottom of the file:
-   ```
-   STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
-   STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
-   STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
-   ```
-
-- Below is a screenshot of the MagnaPlate - Stripe dashboard.
-
-![ Stripe Payments](.)<br>
-
 ## Technologies Used
 
 ### Languages Used
@@ -1391,58 +1205,45 @@ AWS_S3_OBJECT_PARAMETERS = {
 - [HTML 5](https://en.wikipedia.org/wiki/HTML/)
 - [CSS 3](https://en.wikipedia.org/wiki/CSS)
 - [JavaScript](https://www.javascript.com/)
-- [Django](https://www.python.org/)
-- [Python](https://www.djangoproject.com/)<br>
+- [Django](https://www.djangoproject.com/)
+- [Python](https://www.python.org/)
 
 ### Django Packages
 
-- [Gunicorn](https://gunicorn.org/) as the server for Heroku
-- [Dj_database_url](https://pypi.org/project/dj-database-url/) to parse the database URL from the environment variables in Heroku
+- [Gunicorn](https://gunicorn.org/) as the server for deployment
+- [Dj-database-url](https://pypi.org/project/dj-database-url/) to parse the database URL from the environment variables
 - [Psycopg2](https://pypi.org/project/psycopg2/) as an adaptor for Python and PostgreSQL databases
-- [Summernote](https://summernote.org/) as a text editor
-- [Allauth](https://django-allauth.readthedocs.io/en/latest/installation.html) for authentication, registration and account management
-- [Stripe](https://pypi.org/project/stripe/) for processing all online and credit card purchases on the website
+- [Allauth](https://django-allauth.readthedocs.io/en/latest/installation.html) for authentication, registration, and account management
+- [Stripe](https://pypi.org/project/stripe/) for processing online and credit card purchases
 - [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) to style the forms
-- [Pillow](https://pypi.org/project/Pillow/) to process and save all the images downloaded through the database<br>
+- [Pillow](https://pypi.org/project/Pillow/) to process and save images
+- [Django Countries](https://pypi.org/project/django-countries/) to handle country fields in forms
+- [Django Storages](https://django-storages.readthedocs.io/en/latest/) to handle storage on AWS S3
+- [Django Widget Tweaks](https://pypi.org/project/django-widget-tweaks/) for customizing form field rendering in templates
+- [Easy Thumbnails](https://pypi.org/project/easy-thumbnails/) for generating thumbnails from images
+- [Django Extensions](https://django-extensions.readthedocs.io/en/latest/) for additional management commands and utilities
 
 ### Frameworks - Libraries - Programs Used
 
-- [Bootstrap](https://getbootstrap.com/)
-- Was used to style the website, add responsiveness and interactivity
-- [Jquery](https://jquery.com/)
-- All the scripts were written using jquery library
-- [Git](https://git-scm.com/)
-- Git was used for version control by utilizing the Gitpod terminal to commit to Git and push to GitHub
-- [GitHub](https://github.com/)
-- GitHub is used to store the project's code after being pushed from Git
-- [Heroku](https://id.heroku.com)
-- Heroku was used to deploy the live project
-- [PostgreSQL](https://www.postgresql.org/)
-- Database used through Heroku.
-- [VSCode](https://code.visualstudio.com/)
-- VSCode was used to create and edit the website
-- [Lucidchart](https://lucid.app/)
-- Lucidchart was used to create the database diagram
-- [Pycodestyle](http://pep8online.com/)
-- Pycodestyle was used to validate all the Python code
-- [W3C - HTML](https://validator.w3.org/)
-- W3C- HTML was used to validate all the HTML code
-- [W3C - CSS](https://jigsaw.w3.org/css-validator/)
-- W3C - CSS was used to validate the CSS code
-- [Fontawesome](https://fontawesome.com/)
-- Was used to add icons to the website
-- [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/)
-- To check App responsiveness and debugging
-- [Google Fonts](https://fonts.google.com/)
-- To add the 2 fonts that were used throughout the project
-- [Balsamiq](https://balsamiq.com/)
-- To build the wireframes for the project
-- [PIXLR](https://pixlr.com)
-- To convert the images to webp format
-- [CANVA](https://www.canva.com/)
-- To build the logos for the project
-- [AWS](https://aws.amazon.com/)
-- was used to host the static files and media<br>
+- [Bootstrap](https://getbootstrap.com/) for styling, responsiveness, and interactivity
+- [Jquery](https://jquery.com/) for writing scripts
+- [Git](https://git-scm.com/) for version control
+- [GitHub](https://github.com/) for code repository
+- [Heroku](https://id.heroku.com) for deploying the live project
+- [PostgreSQL](https://www.postgresql.org/) as the database
+- [Gitpod](https://www.gitpod.io/) for code editing
+- [Code Institute Python Linter](https://pep8ci.herokuapp.com/) for validating Python code
+- [W3C - HTML](https://validator.w3.org/) for validating HTML code
+- [W3C - CSS](https://jigsaw.w3.org/css-validator/) for validating CSS code
+- [Fontawesome](https://fontawesome.com/) for adding icons
+- [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/) for checking app responsiveness and debugging
+- [Google Fonts](https://fonts.google.com/) for adding fonts
+- [Balsamiq](https://balsamiq.com/) for building wireframes
+- [PIXLR](https://pixlr.com) for converting images to webp format
+- [FreeConvert](https://www.freeconvert.com/webp-converter) for converting images to webp format
+- [AWS](https://aws.amazon.com/) for hosting static files and media
+- [Fullscreen Lightbox](https://fslightbox.com/) for full screen lightbox functionality on the website
+
 
 ### Testing
 
