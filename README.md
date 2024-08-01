@@ -1104,9 +1104,9 @@ Stores additional information about a user.
 
 
 
-# Marketing
+## Marketing
 
-## Marketing Plan
+### Marketing Plan
 A marketing plan was created to strategize how the business will run and grow. This can be broken down into the following Business Model and Marketing Strategy document, which is separated into sections titled:
 
 * Target Audience: Art and Decor Enthusiasts
@@ -1116,9 +1116,9 @@ A marketing plan was created to strategize how the business will run and grow. T
 [Business Model and Marketing Strategy](assets/readme/marketing/business-model.pdf)
 <br>
 
-## Social Media
+### Social Media
 
-### Facebook
+#### Facebook
 
 A live Facebook page for “MagnaPlate” was created to showcase our e-commerce store on social media. It incorporates bright and enticing images while maintaining the color scheme of the brand. The aim is to create a visually appealing and cohesive presence that attracts and engages our target audience of art and decor enthusiasts.
 
@@ -1130,7 +1130,7 @@ A live Facebook page for “MagnaPlate” was created to showcase our e-commerce
 [Visit our Facebook Page](https://www.facebook.com/people/Magna-Plate/61562070003993/)
 
 
-### Instagram
+#### Instagram
 
 A live Instagram page for “MagnaPlate” was created to visually engage with our audience and showcase our magnetic posters in various settings. The page features high-quality images that reflect the aesthetic of the brand and appeal to art and decor enthusiasts.
 
@@ -1143,7 +1143,7 @@ A live Instagram page for “MagnaPlate” was created to visually engage with o
 
 
 
-### Twitter (X)
+#### Twitter (X)
 
 A live Twitter (X) page for “MagnaPlate” was created to connect with our audience and share updates, promotions, and engaging content related to our magnetic posters. The page is designed to provide quick, real-time interaction with our followers and keep them informed about the latest news and offers.
 
@@ -1155,7 +1155,7 @@ A live Twitter (X) page for “MagnaPlate” was created to connect with our aud
 [Visit our Twitter (X) Page](https://x.com/MagnaPlate2024)
 
 
-## Search Engine Optimisation
+### Search Engine Optimisation
 
 Search Engine Optimisation or SEO techniques were adopted to try to create more organic traffic and growth via popular Search Engines such as Google. Search Engine Keyword Research was conducted to determine suitable keywords to include in the website’s meta tags. This included searching related words or sentences related to the website and finding popular yet more targeted words that would encourage people to click on the ecommerce store. Dynamic meta tags were used to ensure that each page has specific and relevant meta tags, enhancing the SEO for different sections of the website.
 
@@ -1164,7 +1164,7 @@ Search Engine Optimisation or SEO techniques were adopted to try to create more 
   </details>
   <br>
 
-### sitemap.xml
+#### sitemap.xml
 
 - A sitemap file containing a list of important URLs was created to help search engines efficiently navigate the site and understand its structure. This was accomplished using XML-sitemaps.com by following these steps:
 
@@ -1178,7 +1178,7 @@ Search Engine Optimisation or SEO techniques were adopted to try to create more 
     </details>
     <br>
 
-### robots.txt
+#### robots.txt
 
 - A `robots.txt` file was created to instruct search engines on which areas of the website should not be accessed. This helps improve the site's quality and ultimately boosts its SEO rating
 
@@ -1187,7 +1187,7 @@ Search Engine Optimisation or SEO techniques were adopted to try to create more 
   </details>
   <br>
 
-### Sitemap Google Registration
+#### Sitemap Google Registration
 
 - To ensure that Google indexes the website sitemap file, the MagnaPlate URL has been registered on the Google Search Console.
 
@@ -1225,6 +1225,7 @@ Search Engine Optimisation or SEO techniques were adopted to try to create more 
 
 ### Frameworks - Libraries - Programs Used
 
+- [Am I responsive?](https://ui.dev/amiresponsive) - A tool to test how a website appears across different devices and screen sizes.
 - [Bootstrap](https://getbootstrap.com/) for styling, responsiveness, and interactivity
 - [Jquery](https://jquery.com/) for writing scripts
 - [Git](https://git-scm.com/) for version control
@@ -1235,14 +1236,21 @@ Search Engine Optimisation or SEO techniques were adopted to try to create more 
 - [Code Institute Python Linter](https://pep8ci.herokuapp.com/) for validating Python code
 - [W3C - HTML](https://validator.w3.org/) for validating HTML code
 - [W3C - CSS](https://jigsaw.w3.org/css-validator/) for validating CSS code
+- [Wave](https://wave.webaim.org/) - Tool to check web accessibility for individuals with disabilities.
 - [Fontawesome](https://fontawesome.com/) for adding icons
 - [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/) for checking app responsiveness and debugging
 - [Google Fonts](https://fonts.google.com/) for adding fonts
 - [Balsamiq](https://balsamiq.com/) for building wireframes
+- [Favicon.io](https://favicon.io/) - Generator for creating website favicon icons.
 - [PIXLR](https://pixlr.com) for converting images to webp format
 - [FreeConvert](https://www.freeconvert.com/webp-converter) for converting images to webp format
 - [AWS](https://aws.amazon.com/) for hosting static files and media
 - [Fullscreen Lightbox](https://fslightbox.com/) for full screen lightbox functionality on the website
+
+### Databases
+
+* [SQLite](https://sqlite.org/index.html "SQLite") - The default database on Django.
+* [ElephantSQL](https://www.elephantsql.com/ "ElephantSQL") – The final database used for the deployed project.
 
 
 # Testing (Placeholder)
@@ -1492,24 +1500,31 @@ Below is a screenshot of the MagnaPlate - Stripe dashboard.
 4. Open a new terminal
 5. Change the current working directory to the location that you want the cloned directory
 6. Type "git clone" and paste the URL copied in step 3
-7. Press "Enter" and the project is cloned<br>
+7. Press "Enter" and the project is cloned.
+<br>
 
 ## Credits
 
 ### Content
 
-- All the products content were taken from [Placeholder](https:)
-- The images were taken from [Placeholder](https:)
-- The 2 videos used as a background on the Landing Page were taken from [Pexels](https://www.pexels.com/)
-- The MagnaPlate logos and favicon are my own designed and build<br>
+- Some of the product content and images were sourced from [Pexels](https://www.pexels.com/).
+- Additional product content and images were provided by my good friends in the [DCS Brasil](https://discord.gg/ZKabFhHdfn) Discord group.
+- The images in the sections: Carousel, About Us were generated by ChatGPT using [DALL-E](https://chatgpt.com/)
+- [ChatGPT](https://openai.com/chatgpt) - AI-powered language model - for general purpose queries.
+- The MagnaPlate logos and favicon are my own design and build.
+
 
 ### Information Sources / Resources
 
 - [W3Schools - Python](https://www.w3schools.com/python/)
-- [Stack Overflow](https://stackoverflow.com/)
-- [Scrimba - Pyhton](https://scrimba.com/learn/python)
 - [Code Institute - Slack Community](https://slack.com/)
 
-## Special Thanks
+### Acknowledgements 
 
-- Special thanks to my mentor .
+- To Code Institute for the support and attention.
+
+### Special Thanks
+
+- My Mentor [Harry Dhillon](https://github.com/Harry-Leepz) for the guidance, patience, and motivation.
+- My heartfelt thanks to my amazing wife, Marcielly.
+- This project is dedicated to my dad, Aparecido Ramos, whose inspiration and love have always guided me.
