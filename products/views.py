@@ -67,10 +67,6 @@ class FilteredProductListView(ListView):
         if is_on_deal:
             queryset = queryset.filter(is_on_deal=True)
 
-        if new_arrivals:
-            thirty_days_ago = timezone.now() - datetime.timedelta(days=30)
-            queryset = queryset.filter(created_at__gte=thirty_days_ago)
-
         if sort:
             if sort == 'name_asc':
                 queryset = queryset.order_by('name')
@@ -86,6 +82,9 @@ class FilteredProductListView(ListView):
                 queryset = queryset.order_by('category__friendly_name')
         else:
             queryset = queryset.order_by('name')
+
+        if new_arrivals:
+            queryset = queryset.order_by('-created_at')[:12]
 
         return queryset
 

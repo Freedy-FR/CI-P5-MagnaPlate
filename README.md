@@ -928,9 +928,10 @@ Stores additional information about a user.
 
 - The Collection Management page allows admins to delete collections from the MagnaPlate catalog. This feature ensures that outdated or irrelevant collections can be removed, keeping the catalog up-to-date and relevant.
 
-<details><summary>Collection Management</summary>
-<img src="assets/readme/feature-admin/09-admin-feature-delete-collection.gif">
-</details>
+  <details><summary>Collection Management</summary>
+  <img src="assets/readme/feature-admin/09-admin-feature-delete-collection.gif">
+  </details>
+  <br>
 
 
 ### Category Management - Add Category
@@ -938,7 +939,7 @@ Stores additional information about a user.
 - The Category Management page allows admins to add new categories to the MagnaPlate catalog. This feature includes fields for category details, ensuring that new categories can be seamlessly integrated into the existing structure. 
 
   <details><summary>Category Management</summary>
-  <img src="assets/readme/features/10-admin-feature-add-category.gif">
+  <img src="assets/readme/feature-admin/10-admin-feature-add-category.gif">
   </details>
   <br>
 
