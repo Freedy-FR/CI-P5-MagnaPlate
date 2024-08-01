@@ -1245,11 +1245,15 @@ Search Engine Optimisation or SEO techniques were adopted to try to create more 
 - [Fullscreen Lightbox](https://fslightbox.com/) for full screen lightbox functionality on the website
 
 
-### Testing
+# Testing (Placeholder)
 
 Testing results are [here](TESTING.md)
 
-## Creating the Django app
+## Deployment
+
+During the process of coding up the website, the code was deployed on Heroku to allow for continuous manual testing and code validation. The following steps were conducted to deploy the website on Heroku:
+
+### Creating the Django app
 
 1. Go to the Code Institute Gitpod Full Template [Template](https://github.com/Code-Institute-Org/gitpod-full-template)
 2. Click on Use This Template
@@ -1262,55 +1266,218 @@ Testing results are [here](TESTING.md)
 9. Create app: in the terminal window type python3 manage.py startapp your_app_name
 10. Add app to the list of installed apps in settings.py file: you_app_name
 11. Migrate changes: in the terminal window type python3 manage.py migrate
-12. Run the server to test if the app is installed, in the terminal "The install worked successfully! Congratulations!"<br>
+12. Run the server to test if the app is installed, in the terminal "The install worked successfully! Congratulations!"
 
-## Deployment of This Project
+### Create a Heroku Application
+1. Create a Heroku account if you don’t have one and login.
+2. Create a new application, by selecting the “new” button on the top right of the dashboard and click “Create new app”.
+3. Choose a unique name for the application and select the region you live in, followed by "Create App".
 
-- This site was deployed by completing the following steps:
+### ElephantSQL Setup
 
-1. Log in to [Heroku](https://id.heroku.com) or create an account
-2. On the main page click the button labelled New in the top right corner and from the drop-down menu select Create New
-   App
-3. You must enter a unique app name
-4. Next select your region
-5. Click on the Create App button
-6. Click in resources and select Heroku Postgres database
-7. Click Reveal Config Vars and add:
+1. Go to [elephantsql.com](https://www.elephantsql.com/), login with GitHub, and create a new instance.
+2. Copy the URL once the project instance has been created. This value can also be saved as an environment variable used to equal the `DATABASES` variable in `settings.py`.
+3. Install the `dj-database-url` package by using the following command to format the URL into one that Django can use:
+    ```bash
+    pip3 install dj-database-url==2.1.0
+    ```
+4. Update your `requirements.txt` file to include the installed package:
+    ```text
+    dj-database-url==2.1.0
+    ```
+5. Update your `settings.py` to use the database URL from ElephantSQL:
+    ```python
+    import dj_database_url
 
-- A new record with SECRET_KEY
-- A new record with the AWS_ACCESS_KEY_ID
-- A new record with the AWS_SECRET_ACCESS_KEY
-- A new record with the EMAIL_HOST_PASS
-- A new record with the EMAIL_HOST_USER
-- A new record with the STRIPE_PUBLIC_KEY
-- A new record with the STRIPE_SECRET_KEY
-- A new record with the STRIPE_WH_SECRET
-- A new record with the DISABLE_COLLECTSTATIC = 1
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+    ```
 
-8.  The next page is the project’s Deploy Tab. Click on the Settings Tab and scroll down to Config Vars
-9.  Next, scroll down to the Buildpack section click Add Buildpack select python and click Save Changes
-10. Scroll to the top of the page and choose the Deploy tab
-11. Select Github as the deployment method
-12. Confirm you want to connect to GitHub
-13. Search for the repository name and click the connect button
-14. Scroll to the bottom of the deploy page and select the preferred deployment type
-15. Click Enable Automatic Deploys for automatic deployment when you push updates to Github<br>
+### AWS Setup Process
 
-## Final Deployment
+#### AWS S3 Bucket
 
-1. Create a runtime.txt "python-3.9.13"
-2. Create a Procfile "web: gunicorn your_project_name.wsgi"
-3. When development is complete change the debug setting to: DEBUG = False in settings.py
-4. In this project the summernote editor was used so for this to work in Heroku add: X_FRAME_OPTIONS = 'SAMEORIGIN' to
-   settings.py.
-5. In Heroku settings config vars delete the record for DISABLE_COLLECTSTATIC
-6. In Heroku settings config vars set the record for USE_AWS to True<br>
+The deployed site uses AWS S3 Buckets to store the webpages static and media files. More information on how you can set up an AWS S3 Bucket can be found below:
+
+1. Create an AWS account [here](https://portal.aws.amazon.com/).
+2. Login to your account and within the search bar type in "S3".
+3. Within the S3 page click on the button that says "Create Bucket".
+4. Name the bucket and select the region which is closest to you.
+5. Underneath "Object Ownership" select "ACLs enabled".
+6. Uncheck "Block Public Access" and acknowledge that the bucket will be made public, then click "Create Bucket".
+7. Inside the created bucket click on the "Properties" tab. Below "Static Website Hosting" click "Edit" and change the Static website hosting option to "Enabled". Copy the default values for the index and error documents and click "Save Changes".
+8. Click on the "Permissions" tab, below "Cross-origin Resource Sharing (CORS)", click "Edit" and then paste in the following code:
+    ```json
+    [
+        {
+            "AllowedHeaders": [
+            "Authorization"
+            ],
+            "AllowedMethods": [
+            "GET"
+            ],
+            "AllowedOrigins": [
+            "*"
+            ],
+            "ExposeHeaders": []
+        }
+    ]
+    ```
+9. Within the "Bucket Policy" section. Click "Edit" and then "Policy Generator". Click the "Select Type of Policy" dropdown and select "S3 Bucket Policy" and within "Principle" allow all principals by typing "\*".
+10. Within the "Actions" dropdown menu select "Get Object" and in the previous tab copy the "Bucket ARN number". Paste this within the policy generator within the field labelled "Amazon Resource Name (ARN)".
+11. Click "Add statement > Generate Policy" and copy the policy that's been generated and paste this into the "Bucket Policy Editor".
+12. Before saving, add /\* at the end of your "Resource Key", this will allow access to all resources within the bucket.
+13. Once saved, scroll down to the "Access Control List (ACL)" and click "Edit".
+14. Next to "Everyone (public access)", check the "list" checkbox and save your changes.
+
+#### IAM Set Up
+
+1. Search for IAM within the AWS navigation bar and select it.
+2. Click "User Groups" that can be seen in the side bar and then click "Create group" and name the group 'manage-your-project-name'.
+3. Click "Policies" and then "Create policy".
+4. Navigate to the JSON tab and click "Import Managed Policy", within here search "S3" and select "AmazonS3FullAccess" followed by "Import".
+5. Navigate back to the recently created S3 bucket and copy your "ARN Number". Go back to "This Policy" and update the "Resource Key" to include your ARN Number, and another line with your ARN followed by a "/\*".
+
+- Below is an example of what this should look like:
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "s3:*",
+                    "s3-object-lambda:*"
+                ],
+                "Resource": [
+                    "YOUR-ARN-NO-HERE",
+                    "YOUR-ARN-NO-HERE/*"
+                ]
+            }
+        ]
+    }
+    ```
+1. Ensure the policy has been given a name and a short description, then click "Create Policy".
+2. Click "User groups", and then the group you created earlier. Under permissions click "Add Permission" and from the dropdown click "Attach Policies".
+3. Select "Users" from the sidebar and click "Add User".
+4. Provide a username and check "Programmatic Access", then click 'Next: Permissions'.
+5. Ensure your policy is selected and navigate through until you click "Add User".
+6. Download the "CSV file", which contains the user's access key and secret access key.
+
+### Connecting AWS to the Project
+
+1. Within your terminal install the following packages by typing
+    ```bash
+    pip3 install boto3
+    pip3 install django-storages
+    ```
+2. Freeze the requirements by typing:
+    ```bash
+    pip3 freeze > requirements.txt
+    ```
+3. Add "storages" to your installed apps within your settings.py file.
+4. At the bottom of the settings.py file add the following code:
+    ```python
+    if 'USE_AWS' in os.environ:
+        AWS_STORAGE_BUCKET_NAME = 'insert-bucket-name-here'
+        AWS_S3_REGION_NAME = 'insert-your-region-here'
+        AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+        AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+        STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+        STATICFILES_LOCATION = 'static'
+        DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+        MEDIAFILES_LOCATION = 'media'
+        
+        STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+        MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+        
+        AWS_S3_OBJECT_PARAMETERS = {
+            'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+            'CacheControl': 'max-age=94608000',
+        }
+    ```
+5. Add the following keys within Heroku: "AWS_ACCESS_KEY_ID" and "AWS_SECRET_ACCESS_KEY". These can be found in your CSV file.
+6. Add the key "USE_AWS", and set the value to True within Heroku.
+7. Remove the "DISABLE_COLLECTSTATIC" variable from Heroku.
+8. In the root directory of your project create a file called "custom_storages.py". Import the following at the top of this file and add the classes below:
+    ```python
+    from django.conf import settings
+    from storages.backends.s3boto3 import S3Boto3Storage
+
+    class StaticStorage(S3Boto3Storage):
+        location = settings.STATICFILES_LOCATION
+
+    class MediaStorage(S3Boto3Storage):
+        location = settings.MEDIAFILES_LOCATION
+    ```
+9. Navigate back to your AWS S3 Bucket and click on "Create Folder" name this folder "media", within the media file click "Upload > Add Files" and select the images for your site.
+10. Under "Permissions" select the option "Grant public-read access" and click "Upload".
+
+### Stripe Payments
+
+The Stripe payments system is set up as the online payment processing and credit card processing platform for the purchases. You will need a stripe account which you can sign up for [here](https://stripe.com/en-ie).
+
+#### Payments
+
+To set up stripe payments you can follow their guide [here](https://stripe.com/docs/payments/accept-a-payment#web-collect-card-details).
+
+#### Webhooks
+
+1. To set up a webhook, sign into your stripe account and click 'Developers' located in the top right of the navbar.
+2. Then in the side-nav under the Developers title, click on "Webhooks", then "Add endpoint".
+3. On the next page you will need to input the link to your heroku app followed by /checkout/wh/. It should look something like this:
+    ```
+    https://your-app-name.herokuapp.com/checkout/wh/
+    ```
+4. Then click "+ Select events" and check the "Select all events" checkbox at the top before clicking "Add events" at the bottom. Once this is done finish the form by clicking "Add endpoint".
+5. Your webhook is now created and you should see that it has generated a secret key. You will need this to add to your heroku config vars.
+6. Head over to your app in Heroku and navigate to the config vars section under settings. You will need the secret key you just generated for your webhook, in addition to your Publishable key and secret key that you can find in the API keys section back in stripe.
+7. Add these values under these keys:
+    ```
+    STRIPE_PUBLIC_KEY = 'insert your stripe publishable key'
+    STRIPE_SECRET_KEY = 'insert your secret key'
+    STRIPE_WH_SECRET = 'insert your webhooks secret key'
+    ```
+8. Finally, back in your settings.py file in Django, insert the following near the bottom of the file:
+    ```python
+    STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+    STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+    STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+    ```
+Below is a screenshot of the MagnaPlate - Stripe dashboard.
+
+<details><summary>Stripe Payments</summary>
+<img src="assets/readme/stripe/stripe-events.webp">
+</details>
+<br>
+
+## Final Repo Preparations
+1. Make sure to make any migrations in the project, by typing `python3 manage.py makemigrations` followed by `python3 manage.py migrate` into the terminal.
+2. Ensure a `Procfile`, which contains `web: gunicorn [project_name].wsgi:application` is added to the project.
+
+## Heroku Deploy
+3. Go back to Heroku and when the Project’s page opens up, go to the "settings" tab and scroll down to the “Config Vars” section. 
+4. Add all relevant following key-value pairs in the “Config Vars” section. Examples include: 
+    * Key = PORT : Value = 8000
+    * Key = SECRET_KEY : Value = Django Secret Key value obtained from `settings.py`
+    * Key = DATABASE_URL : Value = ElephantSQL URL from point 5.
+    As well as all the relevant stripe and AWS values.
+5. **Important:** In your `settings.py` file, change the `DEBUG` setting from `True` to `False`:
+    ```python
+    DEBUG = False
+    ```
+6. Go to the “Deploy” tab next and scroll down to the GitHub deployment method.
+7. Search for the suitable repository and then connect to it by selecting the “Connect” button.
+8. Scroll down to the bottom of the “Deploy” Page and select the type of deployment you want to conduct. If you opt to “Automatically Deploy”, it will deploy every time you push new code to your repository. Otherwise, you will have to manually deploy, by selecting the button at the bottom of the page.
+9. The application is now deployed!
 
 ## Forking This Project
 
 - Fork this project by following the steps:
 
-1. Open [GitHub](https://github.com/PedroCristo/portfolio_project_5)
+1. Open [GitHub](https://github.com/Freedy-FR/CI-P5-MagnaPlate)
 2. Find the "Fork" button at the top right of the page
 3. Once you click the button the fork will be in your repository<br>
 
@@ -1318,7 +1485,7 @@ Testing results are [here](TESTING.md)
 
 - Clone this project by following the steps:
 
-1. Open [GitHub](https://github.com/PedroCristo/portfolio_project_5)
+1. Open [GitHub](https://github.com/Freedy-FR/CI-P5-MagnaPlate)
 2. You will be provided with three options to choose from, HTTPS, SSH or GitHub CLI, click the clipboard icon in order
    to copy the URL
 3. Once you click the button the fork will be in your repository
