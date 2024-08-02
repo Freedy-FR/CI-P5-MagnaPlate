@@ -163,14 +163,6 @@
 
 ## Bugs and Fixes
 
-### Identified Bugs
-
-1. **Bug:** Navigation bar links do not work correctly on mobile devices.
-   - **Fix:** Adjust the CSS and JavaScript for the mobile navigation bar to ensure the links function properly.
-
-2. **Bug:** Product images do not load on the product details page.
-   - **Fix:** Ensure the correct path is set for product images and check if the images are uploaded correctly to the server.
-
 ### Fixed Bugs
 
 1. **Bug:** There was a JavaScript error preventing the carousel from functioning correctly.
@@ -284,21 +276,171 @@
       </details>
       <br>
 
+### Identified Bugs
 
-## Validation
+   - No other bugs identified.
 
-### W3C
 
-W3C validation was performed to ensure that the HTML and CSS code follows the web standards.
+## W3C HTML Validation
 
-### Python Linter
+As part of ensuring the highest standards of web development practices, each HTML template within the project was validated using the W3C HTML Validator. This process helps to identify and resolve any potential markup issues, ensuring that the code adheres to current web standards and best practices. Below are the validation reports for each template:
 
-A Python linter was used to ensure that the Python code follows the PEP 8 standards.
+<details><summary>Home HTML Validation</summary>
+<img src="assets/readme/testing/bugs/01.jpg">
+</details>
+<br>
 
-### wave.webaim
+<details><summary>Products HTML Validation</summary>
+<img src="assets/readme/testing/bugs/02.jpg">
+</details>
+<br>
 
-wave.webaim was used to ensure that the website is accessible to users with disabilities.
+<details><summary>Product Detail HTML Validation</summary>
+<img src="assets/readme/testing/bugs/03.jpg">
+</details>
+<br>
 
-### jigsaw.w3
+<details><summary>Product Management HTML Validation</summary>
+<img src="assets/readme/testing/bugs/04.jpg">
+</details>
+<br>
 
-jigsaw.w3 was used to validate the CSS code to ensure it follows the web standards.
+<details><summary>All Products HTML Validation</summary>
+<img src="assets/readme/testing/bugs/05.jpg">
+</details>
+<br>
+
+<details><summary>Add Product HTML Validation</summary>
+<img src="assets/readme/testing/bugs/06.jpg">
+</details>
+<br>
+
+<details><summary>Edit Product HTML Validation</summary>
+<img src="assets/readme/testing/bugs/07.jpg">
+</details>
+<br>
+
+<details><summary>Add Category HTML Validation</summary>
+<img src="assets/readme/testing/bugs/08.jpg">
+</details>
+<br>
+
+<details><summary>Edit Category HTML Validation</summary>
+<img src="assets/readme/testing/bugs/09.jpg">
+</details>
+<br>
+
+<details><summary>Collection Management HTML Validation</summary>
+<img src="assets/readme/testing/bugs/10.jpg">
+</details>
+<br>
+
+<details><summary>Add Collection HTML Validation</summary>
+<img src="assets/readme/testing/bugs/11.jpg">
+</details>
+<br>
+
+<details><summary>Add Creator HTML Validation</summary>
+<img src="assets/readme/testing/bugs/12.jpg">
+</details>
+<br>
+
+<details><summary>Edit Creator HTML Validation</summary>
+<img src="assets/readme/testing/bugs/13.jpg">
+</details>
+<br>
+
+<details><summary>All Creators HTML Validation</summary>
+<img src="assets/readme/testing/bugs/14.jpg">
+</details>
+<br>
+
+<details><summary>Creator Detail HTML Validation</summary>
+<img src="assets/readme/testing/bugs/15.jpg">
+</details>
+<br>
+
+<details><summary>Index HTML Validation</summary>
+<img src="assets/readme/testing/bugs/16.jpg">
+</details>
+<br>
+
+<details><summary>Profile HTML Validation</summary>
+<img src="assets/readme/testing/bugs/17.jpg">
+</details>
+<br>
+
+<details><summary>Site Management HTML Validation</summary>
+<img src="assets/readme/testing/bugs/18.jpg">
+</details>
+<br>
+
+<details><summary>Customer Support HTML Validation</summary>
+<img src="assets/readme/testing/bugs/19.jpg">
+</details>
+<br>
+
+<details><summary>Customer Support List HTML Validation</summary>
+<img src="assets/readme/testing/bugs/20.jpg">
+</details>
+<br>
+
+<details><summary>Customer Support Detail HTML Validation</summary>
+<img src="assets/readme/testing/bugs/21.jpg">
+</details>
+<br>
+
+<details><summary>Newsletter Management HTML Validation</summary>
+<img src="assets/readme/testing/bugs/22.jpg">
+</details>
+<br>
+
+<details><summary>Create Newsletter HTML Validation</summary>
+<img src="assets/readme/testing/bugs/23.jpg">
+</details>
+<br>
+
+<details><summary>Edit Newsletter HTML Validation</summary>
+<img src="assets/readme/testing/bugs/24.jpg">
+</details>
+<br>
+
+<details><summary>Send Newsletters HTML Validation</summary>
+<img src="assets/readme/testing/bugs/25.jpg">
+</details>
+<br>
+
+<details><summary>Subscription List HTML Validation</summary>
+<img src="assets/readme/testing/bugs/26.jpg">
+</details>
+<br>
+
+<details><summary>Checkout HTML Validation</summary>
+<img src="assets/readme/testing/bugs/27.jpg">
+</details>
+<br>
+
+<details><summary>Checkout Success HTML Validation</summary>
+<img src="assets/readme/testing/bugs/28.jpg">
+</details>
+<br>
+
+<details><summary>Footer HTML Validation</summary>
+<img src="assets/readme/testing/bugs/29.jpg">
+</details>
+<br>
+
+<details><summary>FAQ HTML Validation</summary>
+<img src="assets/readme/testing/bugs/30.jpg">
+</details>
+<br>
+
+<details><summary>Contact Us HTML Validation</summary>
+<img src="assets/readme/testing/bugs/31.jpg">
+</details>
+<br>
+
+<details><summary>About Us HTML Validation</summary>
+<img src="assets/readme/testing/bugs/32.jpg">
+</details>
+<br>
