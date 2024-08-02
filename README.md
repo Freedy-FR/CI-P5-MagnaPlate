@@ -1,4 +1,6 @@
-# MagnaPlate - Introduction
+# MagnaPlate 
+
+## Introduction
 
 Welcome to the code repository for the "Magnaplate" E-commerce Store; a platform that not only showcases the magnetic poster products but also enables customers to purchase them online.
 
@@ -9,104 +11,118 @@ This project is highly relevant as the trend of online shopping continues to gro
 
 <p align="center"><img src="assets/readme/amiresponsive/amiresponsive.webp" alt="MagnaPlate webpage on multiple devices"></p>
 
-README Table Content
+## Table of Contents
 
-- [MagnaPlate - Introduction](#)
+- [MagnaPlate](#magnaplate)
+  - [Introduction](#introduction)
+  - [Table Content](#table-of-contents)
   - [User Experience - UX](#user-experience---ux)
     - [User Stories](#user-stories)
     - [Agile Methodology](#agile-methodology)
     - [The Scope](#the-scope)
       - [Main Site Goals](#main-site-goals)
   - [Design](#design)
-    - [Colours](#colours)
+    - [Colours](#colour-scheme-for-magnaplate-website)
     - [Typography](#typography)
     - [Imagery](#imagery)
     - [Carousel](#carousel)
     - [Wireframes](#wireframes)
-  - [Database Diagram](#database-diagram)
+  - [Magna Plate Database](#magna-plate-database)
+    - [Summary](#summary)
+    - [Database Diagram](#database-diagram)
   - [Features](#features)
-    - [Landing Page](#landing-page)
     - [Home Page - Images Carousel](#home-page---images-carousel)
-    - [Home Page - Selected Products](#home-page---selected-products)
+    - [Home Page - Deals](#home-page---deals)
+    - [Home Page - Products](#home-page---products)
     - [Home Page - Image Banner](#home-page---image-banner)
-    - [Home Page - Customers Reviews Carousel](#home-page---customers-reviews-carousel)
+    - [Home Page - Main Navigation Bar](#home-page---main-navigation-bar)
+    - [Search Bar](#search-bar)
     - [Products Page](#products-page)
-    - [Products Details](#products-details)
-    - [Products Details - Features](#products-details---features)
-    - [Products Details - Products on Sale](#products-details---products-on-sale)
-    - [Products Shopping cart](#products-shopping-cart)
-    - [Products Shopping cart - Products Coming Soon](#products-shopping-cart---products-coming-soon)
-    - [Products Checkout](#products-checkout)
-    - [Products Checkout - Success](#products-checkout---success)
-    - [Products Management](#products-management)
+    - [Products Page - Sorting](#products-page---sorting)
+    - [Products Page - Hover Overlay](#products-page---hover-overlay-laptopsdesktops)
+    - [Product Details](#product-details)
+    - [All Creators Page](#all-creators-page)
+    - [Creators Details](#creators-details)
+    - [Shopping Cart](#shopping-cart)
+    - [Checkout](#checkout)
+    - [Checkout - Success](#checkout---success)
+    - [Site Management (Site Admin)](#site-management-site-admin)
     - [Profile Page](#profile-page)
-      - [Service Reviews Page](#service-reviews-page)
-      - [Add/Edit Service Review Page](#addedit-service-review-page)
-    - [Signup Page](#signup-page)
-    - [Signup Page - Verify Email](#signup-page---verify-email)
-    - [Signup Page - Confirm Email](#signup-page---confirm-email)
+    - [My Favorites](#my-favorites)
+    - [Register Page](#register-page)
+    - [Register Page - Verify Email](#register-page---verify-email)
+    - [Register Page - Confirm Email](#register-page---confirm-email)
     - [Login Page](#login-page)
     - [Logout Page](#logout-page)
-    - [Reset Password Page](#reset-password-page)
-    - [Change Password Page](#change-password-page)
-    - [Navbar](#navbar)
     - [Footer](#footer)
-    - [Page 404 - Page Not Found](#page-404---page-not-found)
+    - [About Us](#about-us)
+    - [FAQ Page](#faq-page)
+    - [Customer Support Page](#customer-support-page)
+    - [Contact Us Page](#contact-us-page)
+    - [Social Media](#social-media)
+    - [Newsletter Section](#newsletter-section)
+    - [404 Error Page](#404-error-page)
+  - [Site Management - Features](#site-management---features)
+    - [Product Management - Add Product](#product-management---add-product)
+    - [Product Management - Edit Product](#product-management---edit-product)
+    - [Product Management - Delete Product](#product-management---delete-product)
+    - [Creator Management - Add Creator](#creator-management---add-creator)
+    - [Creator Management - Edit Creator](#creator-management---edit-creator)
+    - [Creator Management - Delete Creator](#creator-management---delete-creator)
+    - [Collection Management - Add Collection](#collection-management---add-collection)
+    - [Collection Management - Edit Collection](#collection-management---edit-collection)
+    - [Collection Management - Delete Collection](#collection-management---delete-collection)
+    - [Category Management - Add Category](#category-management---add-category)
+    - [Category Management - Edit Category](#category-management---edit-category)
+    - [Category Management - Delete Category](#category-management---delete-category)
+    - [Carousel Management - Add Carousel](#carousel-management---add-carousel)
+    - [Carousel Management - Edit Carousel](#carousel-management---edit-carousel)
+    - [Carousel Management - Delete Carousel](#carousel-management---delete-carousel)
+    - [Newsletter Management - Create/Send Newsletter](#newsletter-management---createsend-newsletter)
+    - [Newsletter Management - Create/Save Newsletter](#newsletter-management---createsave-newsletter)
+    - [Newsletter Management - Edit Newsletter](#newsletter-management---edit-newsletter)
+    - [Newsletter Management - Select and Send Newsletter](#newsletter-management---select-and-send-newsletter)
+    - [Newsletter Management - Select and Delete Newsletter](#newsletter-management---select-and-delete-newsletter)
+    - [Newsletter Management - Subscription List Search](#newsletter-management---subscription-list-search)
+    - [Newsletter Management - Delete Subscription](#newsletter-management---delete-subscription)
+    - [Customer Support Management - Inquiries](#customer-support-management---inquiries)
   - [Messages and Interaction with Users](#messages-and-interaction-with-users)
-    - [Sign up 1](#sign-up-1)
-    - [Sign up 2](#sign-up-2)
-    - [Login](#login)
-    - [Logout](#logout)
-    - [Profile Update](#profile-update)
-    - [Service Review - Add Review](#service-review---add-review)
-    - [Service Review - Update Review 1](#service-review---update-review-1)
-    - [Service Review - Update Review 2](#service-review---update-review-2)
-    - [Service Review - Delete Review 1](#service-review---delete-review-1)
-    - [Service Review - Delete Review 2](#service-review---delete-review-2)
-    - [Service Review - Delete Review 3](#service-review---delete-review-3)
-    - [Add Product](#add-product)
-    - [Edit Product 1](#edit-product-1)
-    - [Edit Product 2](#edit-product-2)
-    - [Edit Product 3](#edit-product-3)
-    - [Delete Product 1](#delete-product-1)
-    - [Delete Product 2](#delete-product-2)
-    - [Delete Product 3](#delete-product-3)
-    - [Add Product to cart](#add-product-to-cart)
-    - [Update cart](#update-cart)
-    - [Remove Product from cart](#remove-product-from-cart)
-    - [Purchase Success](#purchase-success)
-    - [Purchase Success - Confirmation Email](#purchase-success---confirmation-email)
-  - [Admin Panel / Superuser](#admin-panel--superuser)
-  - [Marketing and Social Media](#marketing-and-social-media)
-    - [Statista - Facebook Users](#statista---facebook-users)
-    - [MagnaPlate - Facebook Page](#facebook-page)
-    - [Meta Pixel - Tracking Audience](#meta-pixel---tracking-audience)
-    - [Mailchimp Subscription Service](#mailchimp-subscription-service)
-  - [Privacy Policy](#privacy-policy)
-  - [Search Engine Optimization](#search-engine-optimization)
-    - [sitemap.xml](#sitemapxml)
-    - [robots.txt](#robotstxt)
-    - [Sitemap Google Registration](#sitemap-google-registration)
-  - [AWS Setup Process](#aws-setup-process)
-    - [AWS S3 Bucket](#aws-s3-bucket)
-    - [IAM Set Up](#iam-set-up)
-    - [Connecting AWS to the Project](#connecting-aws-to-the-project)
-  - [Stripe Payments](#stripe-payments)
-    - [Payments](#payments)
-    - [Webhooks](#webhooks)
+    - [Toast Messages](#toast-messages)
+  - [Marketing](#marketing)
+    - [Marketing Plan](#marketing-plan)
+    - [Social Media](#social-media-1)
+      - [Facebook](#facebook)
+      - [Instagram](#instagram)
+      - [Twitter (X)](#twitter-x)
+    - [Search Engine Optimisation](#search-engine-optimisation)
+      - [sitemap.xml](#sitemapxml)
+      - [robots.txt](#robotstxt)
+      - [Sitemap Google Registration](#sitemap-google-registration)
   - [Technologies Used](#technologies-used)
     - [Languages Used](#languages-used)
     - [Django Packages](#django-packages)
     - [Frameworks - Libraries - Programs Used](#frameworks---libraries---programs-used)
-    - [Testing](#testing)
-  - [Creating the Django app](#creating-the-django-app)
-  - [Deployment of This Project](#deployment-of-this-project)
-  - [Final Deployment](#final-deployment)
+    - [Databases](#databases)
+  - [Testing](#testing)
+  - [Deployment](#deployment)
+    - [Creating the Django app](#creating-the-django-app)
+    - [Create a Heroku Application](#create-a-heroku-application)
+    - [ElephantSQL Setup](#elephantsql-setup)
+    - [AWS Setup Process](#aws-setup-process)
+      - [AWS S3 Bucket](#aws-s3-bucket)
+      - [IAM Set Up](#iam-set-up)
+      - [Connecting AWS to the Project](#connecting-aws-to-the-project)
+    - [Stripe Payments](#stripe-payments)
+      - [Payments](#payments)
+      - [Webhooks](#webhooks)
+    - [Final Repo Preparations](#final-repo-preparations)
+    - [Heroku Deploy](#heroku-deploy)
   - [Forking This Project](#forking-this-project)
   - [Cloning This Project](#cloning-this-project)
   - [Credits](#credits)
     - [Content](#content)
     - [Information Sources / Resources](#information-sources--resources)
+  - [Acknowledgements](#acknowledgements)
   - [Special Thanks](#special-thanks)
 
 ## User Experience - UX
@@ -189,6 +205,12 @@ Feel free to explore the Kanban Board for a visual representation of the user st
 - To provide tools that allow users to search for products, including a search system and sorting options for easy access to specific products and deals.
 - To provide users with an easy and safe way to buy their products, ensuring secure payment processing through Stripe, a well-organized shopping cart system, and clear checkout procedures.
 
+
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
 
 ## Design
 
@@ -301,14 +323,15 @@ Wireframes were created for desktop/laptop, tablet and mobile.
   </details>
   <br>
 
+<br>
 
+[🔝 **Back to Top**](#table-of-contents)
 
+<br>
 
 ## Magna Plate Database
 
 The project encompasses a variety of models for managing orders, favorites, newsletters, carousels, products, and user profiles. Below is an overview of these models, categorized by their functionality. In total, there are 13 models, with 10 being custom models.
-
-
 
 ### **Summary**
 
@@ -374,7 +397,7 @@ The `OrderLineItem` model details the specific items within an order.
 
 #### Favorites
 
-**FavoriteProduct Model** ---- > Custom model
+**FavoriteProduct Model** (Custom model)
 
 Tracks a user's favorite products.
 
@@ -383,7 +406,7 @@ Tracks a user's favorite products.
 - `is_favorite` - Whether the product is marked as a favorite.
 - `created_at` - Timestamp of when the favorite was created.
 
-**FavoriteCreator Model** ---- > Custom model
+**FavoriteCreator Model** (Custom model)
 
 Tracks a user's favorite creators.
 
@@ -396,7 +419,7 @@ Tracks a user's favorite creators.
 
 #### Footer
 
-**NewsletterSubscribedInfo Model** ---- > Custom model
+**NewsletterSubscribedInfo Model** (Custom model)
 
 Stores information about newsletter subscribers.
 
@@ -404,7 +427,7 @@ Stores information about newsletter subscribers.
 - `email` - Subscriber's email address.
 - `created_at` - Timestamp of subscription.
 
-**NewsletterSendEmail Model** ---- > Custom model
+**NewsletterSendEmail Model** (Custom model)
 
 Details for sending out newsletter emails.
 
@@ -415,7 +438,7 @@ Details for sending out newsletter emails.
 - `recipients` - ManyToManyField to `NewsletterSubscribedInfo`.
 - `letter_sent` - Indicates whether the email has been sent.
 
-**CustomerSupportInquiry Model** ---- > Custom model
+**CustomerSupportInquiry Model** (Custom model)
 
 Handles customer support inquiries.
 
@@ -432,7 +455,7 @@ Handles customer support inquiries.
 
 #### Home
 
-**Carousel Model** ---- > Custom model
+**Carousel Model** (Custom model)
 
 Represents items in the homepage carousel.
 
@@ -445,14 +468,14 @@ Represents items in the homepage carousel.
 
 #### Products
 
-**Collection Model** ---- > Custom model
+**Collection Model** (Custom model)
 
 Represents a collection of products.
 
 - `name` - Name of the collection.
 - `friendly_name` - Friendly name of the collection.
 
-**Category Model** ---- > Custom model
+**Category Model** (Custom model)
 
 Represents a category of products.
 
@@ -460,7 +483,7 @@ Represents a category of products.
 - `friendly_name` - Friendly name of the category.
 - `collection` - ForeignKey to the `Collection` model.
 
-**Creator Model** ---- > Custom model
+**Creator Model** (Custom model)
 
 Details about creators of products.
 
@@ -492,7 +515,7 @@ Represents an individual product in the store.
 
 #### Profile
 
-**UserProfile Model** ---- > Custom model
+**UserProfile Model** (Custom model)
 
 Stores additional information about a user.
 
@@ -508,8 +531,11 @@ Stores additional information about a user.
 - `default_street_address2` - User's default street address (line 2).
 - `default_county` - User's default county.
 
----
+<br>
 
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
 
 ## Features
 
@@ -840,6 +866,11 @@ Stores additional information about a user.
   </details>
   <br>
 
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
 
 ## Site Management - Features
 
@@ -1094,6 +1125,11 @@ Stores additional information about a user.
   </details>
   <br>
 
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
 
 ## Messages and Interaction with Users
 
@@ -1101,8 +1137,11 @@ Stores additional information about a user.
 
 - Toast messages provide immediate feedback to users and admins about their actions and any errors on the website. These messages appear as small, unobtrusive notifications that inform users of successful operations, warnings, or errors, enhancing the overall user experience by ensuring that users are kept informed of the status of their interactions with the site. Django handles messages by default using 'django.contrib.messages' and you can create them within the suitable `views.py`, displaying them in the associated HTML file. For detailed explanations and visual guides on these features, please refer to the [Features](#features) and [Site Management](#site-management---features) sections.
 
+<br>
 
+[🔝 **Back to Top**](#table-of-contents)
 
+<br>
 
 ## Marketing
 
@@ -1191,10 +1230,9 @@ Search Engine Optimisation or SEO techniques were adopted to try to create more 
 
 - To ensure that Google indexes the website sitemap file, the MagnaPlate URL has been registered on the Google Search Console.
 
-
 <br>
 
-[Back to Top](#table-of-contents)
+[🔝 **Back to Top**](#table-of-contents)
 
 <br>
 
@@ -1252,10 +1290,21 @@ Search Engine Optimisation or SEO techniques were adopted to try to create more 
 * [SQLite](https://sqlite.org/index.html "SQLite") - The default database on Django.
 * [ElephantSQL](https://www.elephantsql.com/ "ElephantSQL") – The final database used for the deployed project.
 
+<br>
 
-# Testing (Placeholder)
+[Back to Top](#table-of-contents)
 
-Testing results are [here](TESTING.md)
+## Testing
+
+The testing process for MagnaPlate includes both manual test validation and bug fixing. Detailed information about the testing procedures, including test cases, results, and any bugs identified and resolved, can be found in the testing documentation.
+
+Testing results are [here](TESTING.md).
+
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
 
 ## Deployment
 
@@ -1461,11 +1510,11 @@ Below is a screenshot of the MagnaPlate - Stripe dashboard.
 </details>
 <br>
 
-## Final Repo Preparations
+### Final Repo Preparations
 1. Make sure to make any migrations in the project, by typing `python3 manage.py makemigrations` followed by `python3 manage.py migrate` into the terminal.
 2. Ensure a `Procfile`, which contains `web: gunicorn [project_name].wsgi:application` is added to the project.
 
-## Heroku Deploy
+### Heroku Deploy
 3. Go back to Heroku and when the Project’s page opens up, go to the "settings" tab and scroll down to the “Config Vars” section. 
 4. Add all relevant following key-value pairs in the “Config Vars” section. Examples include: 
     * Key = PORT : Value = 8000
@@ -1480,6 +1529,12 @@ Below is a screenshot of the MagnaPlate - Stripe dashboard.
 7. Search for the suitable repository and then connect to it by selecting the “Connect” button.
 8. Scroll down to the bottom of the “Deploy” Page and select the type of deployment you want to conduct. If you opt to “Automatically Deploy”, it will deploy every time you push new code to your repository. Otherwise, you will have to manually deploy, by selecting the button at the bottom of the page.
 9. The application is now deployed!
+
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
 
 ## Forking This Project
 
@@ -1501,6 +1556,11 @@ Below is a screenshot of the MagnaPlate - Stripe dashboard.
 5. Change the current working directory to the location that you want the cloned directory
 6. Type "git clone" and paste the URL copied in step 3
 7. Press "Enter" and the project is cloned.
+
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
 <br>
 
 ## Credits
@@ -1528,3 +1588,9 @@ Below is a screenshot of the MagnaPlate - Stripe dashboard.
 - My Mentor [Harry Dhillon](https://github.com/Harry-Leepz) for the guidance, patience, and motivation.
 - My heartfelt thanks to my amazing wife, Marcielly.
 - This project is dedicated to my dad, Aparecido Ramos, whose inspiration and love have always guided me.
+
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
