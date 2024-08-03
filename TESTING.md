@@ -765,7 +765,262 @@ The jigsaw.w3 CSS Validator was used to ensure our CSS adheres to web standards.
    <br>
 
 
-### Python Linter
+### Python Linter Validation
 
-A Python linter was used to ensure that the Python code follows the PEP 8 standards.
+To ensure our Python code adheres to PEP 8 standards, a Python linter was used for validation. Below are the validation results for each relevant file in our project:
 
+#### Cart App
+
+- `cart_tools.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/01-cart/01-cart_tools.webp">
+   </details>
+   <br>
+
+- `contexts.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/01-cart/02-contexts.webp">
+   </details>
+   <br>
+
+- `urls.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/01-cart/03-urls.webp">
+   </details>
+   <br>
+
+- `views.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/01-cart/04-views.webp">
+   </details>
+   <br>
+
+#### Checkout App
+
+- `admin.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/02-checkout/01-admin.webp">
+   </details>
+   <br>
+
+- `forms.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/02-checkout/02-forms.webp">
+   </details>
+   <br>
+
+- `models.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/02-checkout/03-models.webp">
+   </details>
+   <br>
+
+- `signals.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/02-checkout/04-signals.webp">
+   </details>
+   <br>
+
+- `urls.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/02-checkout/05-urls.webp">
+   </details>
+   <br>
+
+- `views.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/02-checkout/06-views.webp">
+   </details>
+   <br>
+
+- `webhook_handler.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/02-checkout/07-webhook-handler.webp">
+   </details>
+   <br>
+
+- `webhooks.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/02-checkout/08-webhook.webp">
+   </details>
+   <br>
+
+#### Favorites App
+
+- `admin.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/03-favorites/01-admin.webp">
+   </details>
+   <br>
+
+- `models.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/03-favorites/02-models.webp">
+   </details>
+   <br>
+
+- `urls.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/03-favorites/03-urls.webp">
+   </details>
+   <br>
+
+- `views.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/03-favorites/04-views.webp">
+   </details>
+   <br>
+
+#### Footer App
+
+- `admin.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/04-footer/01-admin.webp">
+   </details>
+   <br>
+
+- `forms.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/04-footer/02-forms.webp">
+   </details>
+   <br>
+
+- `models.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/04-footer/03-models.webp">
+   </details>
+   <br>
+
+- `urls.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/04-footer/04-urls.webp">
+   </details>
+   <br>
+
+- `views.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/04-footer/05-views.webp">
+   </details>
+   <br>
+
+#### Home App
+
+- `admin.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/05-home/01-admin.webp">
+   </details>
+   <br>
+
+- `forms.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/05-home/02-forms.webp">
+   </details>
+   <br>
+
+- `models.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/05-home/03-models.webp">
+   </details>
+   <br>
+
+- `urls.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/05-home/04-urls.webp">
+   </details>
+   <br>
+
+- `views.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/05-home/05-views.webp">
+   </details>
+   <br>
+
+#### Magnaplate App
+
+- `settings.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/06-magna/02-settings.webp">
+   </details>
+   <br>
+
+- `urls.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/06-magna/01-urls.webp">
+   </details>
+   <br>
+
+#### Products App
+
+- `generate_thumbnails.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/07-products/01-generate-thumbnails.webp">
+   </details>
+   <br>
+
+- `admin.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/07-products/02-admin.webp">
+   </details>
+   <br>
+
+- `context_processors.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/07-products/03-context-processors.webp">
+   </details>
+   <br>
+
+- `forms.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/07-products/04-forms.webp">
+   </details>
+   <br>
+
+- `models.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/07-products/05-models.webp">
+   </details>
+   <br>
+
+- `urls.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/07-products/06-urls.webp">
+   </details>
+   <br>
+
+- `views.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/07-products/07-views.webp">
+   </details>
+   <br>
+
+#### Profiles App
+
+- `admin.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/08-profiles/01-admin.webp">
+   </details>
+   <br>
+
+- `forms.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/08-profiles/02-forms.webp">
+   </details>
+   <br>
+
+- `models.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/08-profiles/03-models.webp">
+   </details>
+   <br>
+
+- `urls.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/08-profiles/04-urls.webp">
+   </details>
+   <br>
+
+- `views.py`
+   <details><summary>Validation Result</summary>
+   <img src="assets/readme/testing/validation/python/08-profiles/05-views.webp">
+   </details>
+   <br>

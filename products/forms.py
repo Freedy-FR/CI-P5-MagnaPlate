@@ -15,7 +15,7 @@ class ProductForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        
+
         categories = Category.objects.all()
         category_friendly_names = [
             (c.id, c.get_friendly_name()) for c in categories
@@ -47,7 +47,7 @@ class CategoryForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        
+
         collections = Collection.objects.all()
         collection_friendly_names = [
             (c.id, c.get_friendly_name()) for c in collections
@@ -61,7 +61,7 @@ class CategoryForm(forms.ModelForm):
 
 class CollectionForm(forms.ModelForm):
     """Form for creating and updating Collection instances."""
-    
+
     class Meta:
         model = Collection
         fields = ['name', 'friendly_name']

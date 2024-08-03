@@ -1,5 +1,5 @@
 """
-Views for the checkout process, including checkout page, checkout success 
+Views for the checkout process, including checkout page, checkout success
 page, and cache checkout data.
 """
 
@@ -109,7 +109,7 @@ class CheckoutView(View):
         return render(request, template, context)
 
     def post(self, request, *args, **kwargs):
-        stripe_public_key = settings.STRIPE_PUBLIC_KEY 
+        stripe_public_key = settings.STRIPE_PUBLIC_KEY
         stripe_secret_key = settings.STRIPE_SECRET_KEY
         cart = request.session.get('cart', {})
 

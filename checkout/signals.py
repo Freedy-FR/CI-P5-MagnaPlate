@@ -1,5 +1,5 @@
 """
-Signals for updating the order total when order line items are created, 
+Signals for updating the order total when order line items are created,
 updated, or deleted.
 """
 

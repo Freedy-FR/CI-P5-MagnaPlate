@@ -1,7 +1,8 @@
 """
 Models for the favorites application.
 
-This module defines the models for storing users' favorite products and creators.
+This module defines the models for storing users' favorite products and
+creators.
 Each favorite is associated with a user and can be marked as a favorite item.
 """
 

@@ -273,7 +273,7 @@ class CreatorDetailView(DetailView):
             ).exists()
         else:
             context['is_favorite'] = False
-        
+
         global_context = global_collections_and_creators(self.request)
         context.update(global_context)
 

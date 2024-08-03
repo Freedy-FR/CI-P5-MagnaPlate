@@ -2,7 +2,8 @@
 URL configuration for the favorites application.
 
 This module defines the URL patterns for the favorites application,
-including views for listing, toggling favorite products, and toggling favorite creators.
+including views for listing, toggling favorite products, and toggling favorite
+creators.
 """
 
 from django.urls import path
