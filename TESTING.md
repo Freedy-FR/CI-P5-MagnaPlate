@@ -13,6 +13,7 @@ This document outlines the testing and validation processes for the project. It 
   - [wave.webaim Accessibility Validation](#wavewebaim-accessibility-validation)
   - [jigsaw.w3 CSS Validation](#jigsaww3-css-validation)
   - [Python Linter Validation](#python-linter-validation)
+  - [Summary of Validation Results](#summary-of-validation-results)
 
 ## Testing
 
@@ -1072,6 +1073,29 @@ To ensure our Python code adheres to PEP 8 standards, a Python linter was used f
    <img src="assets/readme/testing/validation/python/08-profiles/05-views.webp">
    </details>
    <br>
+
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
+
+### Summary of Validation Results
+
+- This summary provides a quick overview of the validation results for the HTML, CSS, and Python code in the project. Each section details the key findings and any necessary corrections that were made to ensure compliance with web standards and best practices.
+
+#### W3C HTML Validation Summary
+- All HTML templates were validated using the W3C HTML Validator. Minor issues related to outdated or incorrect HTML tags were identified and corrected. The validation process ensured that all HTML code adheres to current web standards.
+
+#### wave.webaim Accessibility Validation Summary
+- The accessibility of all HTML templates was validated using the wave.webaim tool. Issues such as missing alt attributes, low contrast text, and improper heading structure were identified and resolved, ensuring the website is accessible to users with disabilities.
+
+#### jigsaw.w3 CSS Validation Summary
+- The CSS was validated using the jigsaw.w3 CSS Validator. While no major errors were found, some warnings were generated due to vendor-specific properties used by Bootstrap. These warnings were noted, but no changes were required as they do not affect the overall functionality.
+
+#### Python Linter Validation Summary
+- All Python files were validated using a Python linter to ensure adherence to PEP 8 standards. Minor issues such as line length and formatting were corrected. The validation confirmed that the Python code is clean, readable, and follows best practices.
+
 
 <br>
 
