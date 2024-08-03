@@ -1,20 +1,24 @@
 # Testing and Validation
 
+This document outlines the testing and validation processes for the project. It includes detailed test cases, user stories for manual testing, and validation using various tools to ensure the code adheres to best practices and standards.
+
 ## Table of Contents
 
 - [Testing](#testing)
   - [Test Cases](#test-cases)
-  - [Manual Testing with User Stories](#manual-testing)
+  - [Manual Testing with User Stories](#manual-testing-with-user-stories)
   - [Bugs and Fixes](#bugs-and-fixes)
 - [Validation](#validation)
-  - [W3C](#w3c)
-  - [Python Linter](#python-linter)
-  - [wave.webaim](#wavewebaim)
-  - [jigsaw.w3](#jigsaww3)
+  - [W3C HTML Validation](#w3c-html-validation)
+  - [wave.webaim Accessibility Validation](#wavewebaim-accessibility-validation)
+  - [jigsaw.w3 CSS Validation](#jigsaww3-css-validation)
+  - [Python Linter Validation](#python-linter-validation)
 
 ## Testing
 
 ### Test Cases
+
+The following test cases were created to ensure the functionality and reliability of the application.
 
 #### TC001: Navigation, Theme Switch, Toast Messages, Consistent Style
 
@@ -112,7 +116,16 @@
 **Expected Result:**
 - Product, collection, creator, category is removed correctly.
 
+
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
+
 ### Manual Testing with User Stories
+
+This section outlines the manual testing conducted using user stories. Each user story represents a scenario that a user might encounter, and the corresponding tests ensure the application behaves as expected.
 
 #### As a Site User
 
@@ -163,7 +176,15 @@
 | [35](https://github.com/Freedy-FR/CI-P5-MagnaPlate/issues/35) | As a Developer, I want a comprehensive documentation system so that it is easy to understand, maintain, and collaborate on the codebase. | Comprehensive Documentation | TC001 | Review documentation for comprehensiveness. | Documentation is comprehensive and easy to understand. | Documentation was comprehensive and easy to understand. | Pass | - | N/A |
 
 
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
+
 ### Bugs and Fixes
+
+This section details the bugs identified during testing and the steps taken to resolve them.
 
 #### Fixed Bugs
 
@@ -282,7 +303,16 @@
 
    - No other bugs identified.
 
+
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
+
 ## Validation
+
+Validation is a crucial step to ensure the code adheres to web standards and best practices. Various tools were used to validate HTML, CSS, and Python code.
 
 ### W3C HTML Validation
 
@@ -501,6 +531,12 @@ As part of ensuring the highest standards of web development practices, each HTM
    <img src="assets/readme/testing/validation/html/management/22-validation-html-customer-detail.webp">
    </details>
    <br>
+
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
 
 ### wave.webaim Accessibility Validation
 
@@ -721,6 +757,13 @@ As part of ensuring the highest standards of accessibility, each HTML template w
    <br>
 
 
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
+
+
 ### jigsaw.w3 CSS Validation
 
 The jigsaw.w3 CSS Validator was used to ensure our CSS adheres to web standards. Due to Bootstrap classes, which can cause validation errors, we used direct input for checking.
@@ -764,6 +807,11 @@ The jigsaw.w3 CSS Validator was used to ensure our CSS adheres to web standards.
    </details>
    <br>
 
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
 
 ### Python Linter Validation
 
@@ -1024,3 +1072,9 @@ To ensure our Python code adheres to PEP 8 standards, a Python linter was used f
    <img src="assets/readme/testing/validation/python/08-profiles/05-views.webp">
    </details>
    <br>
+
+<br>
+
+[🔝 **Back to Top**](#table-of-contents)
+
+<br>
