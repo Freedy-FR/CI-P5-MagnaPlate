@@ -73,10 +73,10 @@
                     <a href="{% url 'site_management' %}" class="btn rounded-pill my-2 border-black btn-secondary">
                         Cancel
                     </a>
-                    <button type="button" name="send_selected" class="btn rounded-pill my-2 border-black btn-primary" data-bs-toggle="modal" data-bs-target="#confirmSendModal">
+                    <button type="button" name="send_selected" class="btn btn-primary rounded-pill my-1" data-bs-toggle="modal" data-bs-target="#confirmSendModal">
                         Send Selected Newsletters
                     </button>
-                    <button type="button" name="delete_selected" class="btn rounded-pill my-2 border-black btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+                    <button type="button" name="delete_selected" class="btn btn-danger rounded-pill my-1 me-1" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
                         Delete Selected Newsletters
                     </button>
                 </div>
@@ -97,8 +97,8 @@
                 Are you sure you want to send the selected newsletters?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="confirmSend">Send</button>
+                <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary rounded-pill my-1" id="confirmSend">Send</button>
             </div>
         </div>
     </div>
@@ -116,8 +116,8 @@
                 Are you sure you want to delete the selected newsletters?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+                <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger rounded-pill my-1 me-1" id="confirmDelete">Delete</button>
             </div>
         </div>
     </div>

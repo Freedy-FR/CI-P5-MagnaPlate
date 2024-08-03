@@ -25,26 +25,26 @@
     <div class="row gx-5">
       <aside class="col-lg-6 my-auto px-2">
         <div class="border rounded-4 d-flex justify-content-center position-relative">
-          {% if creator.image %}
-          <img src="{{ creator.image.url }}" alt="{{ creator.name }}" class="creator-image rounded-4 fit">
-          {% else %}
-          <img src="{{ MEDIA_URL }}creator_images/creators-placeholder.webp" alt="image-placeholder" class="creator-image rounded-4 fit">
-          {% endif %}
-          <form method="post" action="{% url 'favorites:toggle_favorite_creator' creator.id %}">
-            {% csrf_token %}
-            <button type="submit" class="favorite-icon-creator">
-                <div class="icon-background">
-                    {% if is_favorite %}
-                    <i class="fa-solid fa-heart full_heart"></i>
-                    {% else %}
-                    <i class="fa-regular fa-heart regular_heart"></i>
-                    {% endif %}
-                </div>
-            </button>
-          </form>
+            {% if creator.image %}
+            <img src="{{ creator.image.url }}" alt="{{ creator.name }}" class="creator-image rounded-4 fit">
+            {% else %}
+            <img src="{{ MEDIA_URL }}creator_images/creators-placeholder.webp" alt="image-placeholder" class="creator-image rounded-4 fit">
+            {% endif %}
+            <form method="post" action="{% url 'favorites:toggle_favorite_creator' creator.id %}">
+                {% csrf_token %}
+                <button type="submit" class="favorite-icon-creator">
+                    <span class="icon-background">
+                        {% if is_favorite %}
+                        <i class="fa-solid fa-heart full_heart"></i>
+                        {% else %}
+                        <i class="fa-regular fa-heart regular_heart"></i>
+                        {% endif %}
+                    </span>
+                </button>
+            </form>
         </div>
-      </aside>
-      <main class="col-lg-6 pt-md-2 d-flex flex-column">
+      </aside>    
+      <div class="col-lg-6 pt-md-2 d-flex flex-column">
         <div class="ps-lg-3 pt-md-1 flex-grow-1">
             <hr>
             <h2 class="text-dark logo-font mb-2 text-center">{{ creator.name }}</h2>
@@ -68,7 +68,7 @@
         <div class="ps-lg-3 pt-md-1 mt-auto">
           <a href="{% url 'all_creators' %}" class="btn btn-secondary rounded-pill my-1 me-1">Back to All Creators</a>
         </div>
-      </main>
+      </div>
     </div>
   </div>
 </section>
@@ -149,5 +149,5 @@
 <script type="module" src="{% static 'products/js/product.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.js" integrity="sha512-jrYR1cG7wwq2l+uNH+XXF18hjN+j8MBjM2PK2+fV/nAIHKxqpg479rOWFOxTpCnyPMZeGAi+eDAxHyrzTzkyRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- MDB -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
 {% endblock %}

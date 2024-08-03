@@ -15,7 +15,7 @@ Check your email for the order confirmation and details.
 {% endblock %}
 
 {% block content %}
-<main class="container">
+<div class="container">
     <header class="row">
         <div class="col">
             <hr>
@@ -25,8 +25,8 @@ Check your email for the order confirmation and details.
         </div>
     </header>
 
-    <!-- Order Information Section -->
-    <section class="row">
+    <!-- Order Information div -->
+    <div class="row">
         <div class="col-12 col-lg-7">
             <div class="order-confirmation-wrapper p-2 border rounded">
                 <div class="row">
@@ -191,10 +191,10 @@ Check your email for the order confirmation and details.
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Action Buttons Section -->
-    <section class="row my-4">
+    <!-- Action Buttons div -->
+    <div class="row my-4">
         <div class="col-12 col-lg-7 text-right">
             {% if from_profile %}
                 <a href="{% url 'profile' %}" class="btn btn-secondary rounded-pill my-1 me-1">
@@ -212,6 +212,6 @@ Check your email for the order confirmation and details.
                 </a>
             {% endif %}
         </div>
-    </section>
-</main>
+    </div>
+</div>
 {% endblock %}

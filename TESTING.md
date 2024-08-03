@@ -285,162 +285,217 @@
 
 As part of ensuring the highest standards of web development practices, each HTML template within the project was validated using the W3C HTML Validator. This process helps to identify and resolve any potential markup issues, ensuring that the code adheres to current web standards and best practices. Below are the validation reports for each template:
 
-<details><summary>Home HTML Validation</summary>
-<img src="assets/readme/testing/bugs/01.jpg">
-</details>
-<br>
+### Core
 
-<details><summary>Products HTML Validation</summary>
-<img src="assets/readme/testing/bugs/02.jpg">
-</details>
-<br>
+- ``base.html``, ``main-nav.html``, ``mobile-header.html``, ``index.html``, ``footer.html``
+   <details><summary>Index HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/core/01-validation-html-index.webp">
+   </details>
+   <br>
 
-<details><summary>Product Detail HTML Validation</summary>
-<img src="assets/readme/testing/bugs/03.jpg">
-</details>
-<br>
+- ``products.html``
+   <details><summary>Products HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/core/02-validation-html-products.webp">
+   </details>
+   <br>
 
-<details><summary>Product Management HTML Validation</summary>
-<img src="assets/readme/testing/bugs/04.jpg">
-</details>
-<br>
+- ``product_detail.html``, ``all_products.html``
+   <details><summary>Product Detail HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/core/03-validation-html-products-detail.webp">
+   </details>
+   <br>
 
-<details><summary>All Products HTML Validation</summary>
-<img src="assets/readme/testing/bugs/05.jpg">
-</details>
-<br>
+- ``all_creators.html``
+   <details><summary>All Creators HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/core/04-validation-html-all-creators.webp">
+   </details>
+   <br>
 
-<details><summary>Add Product HTML Validation</summary>
-<img src="assets/readme/testing/bugs/06.jpg">
-</details>
-<br>
+- ``creator_detail.html``
+   <details><summary>Creator Detail HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/core/05-validation-html-creators-details.webp">
+   </details>
+   <br>
 
-<details><summary>Edit Product HTML Validation</summary>
-<img src="assets/readme/testing/bugs/07.jpg">
-</details>
-<br>
+- ``profile.html``
+   <details><summary>Profile HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/core/06-validation-html-profile.webp">
+   </details>
+   <br>
 
-<details><summary>Add Category HTML Validation</summary>
-<img src="assets/readme/testing/bugs/08.jpg">
-</details>
-<br>
+- ``cart.html``
+   <details><summary>Cart HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/core/07-validation-html-cart.webp">
+   </details>
+   <br>
 
-<details><summary>Edit Category HTML Validation</summary>
-<img src="assets/readme/testing/bugs/09.jpg">
-</details>
-<br>
+- ``checkout.html``
+   <details><summary>Checkout HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/core/08-validation-html-checkout.webp">
+   </details>
+   <br>
 
-<details><summary>Collection Management HTML Validation</summary>
-<img src="assets/readme/testing/bugs/10.jpg">
-</details>
-<br>
+- ``checkout_success.html``
+   <details><summary>Checkout Success HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/core/09-validation-html-checkout-success.webp">
+   </details>
+   <br>
 
-<details><summary>Add Collection HTML Validation</summary>
-<img src="assets/readme/testing/bugs/11.jpg">
-</details>
-<br>
+- ``faq.html``
+   <details><summary>FAQ HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/core/10-validation-html-faq.webp">
+   </details>
+   <br>
 
-<details><summary>Add Creator HTML Validation</summary>
-<img src="assets/readme/testing/bugs/12.jpg">
-</details>
-<br>
+- ``contact_us.html``
+   <details><summary>Contact Us HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/core/11-validation-html-contact-us.webp">
+   </details>
+   <br>
 
-<details><summary>Edit Creator HTML Validation</summary>
-<img src="assets/readme/testing/bugs/13.jpg">
-</details>
-<br>
+- ``about_us.html``
+   <details><summary>About Us HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/core/12-validation-html-about-us.webp">
+   </details>
+   <br>
 
-<details><summary>All Creators HTML Validation</summary>
-<img src="assets/readme/testing/bugs/14.jpg">
-</details>
-<br>
+- ``customer_support.html``
+   <details><summary>Customer Support HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/core/13-validation-html-customer-support.webp">
+   </details>
+   <br>
 
-<details><summary>Creator Detail HTML Validation</summary>
-<img src="assets/readme/testing/bugs/15.jpg">
-</details>
-<br>
+### Site Management
 
-<details><summary>Index HTML Validation</summary>
-<img src="assets/readme/testing/bugs/16.jpg">
-</details>
-<br>
+- ``site_management.html``
+   <details><summary>Site Management HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/01-validation-html-site-management.webp">
+   </details>
+   <br>
 
-<details><summary>Profile HTML Validation</summary>
-<img src="assets/readme/testing/bugs/17.jpg">
-</details>
-<br>
+- ``product_management.html``
+   <details><summary>Product Management HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/02-validation-html-product-management.webp">
+   </details>
+   <br>
 
-<details><summary>Site Management HTML Validation</summary>
-<img src="assets/readme/testing/bugs/18.jpg">
-</details>
-<br>
+- ``add_product.html``
+   <details><summary>Add Product HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/03-validation-html-product-add.webp">
+   </details>
+   <br>
 
-<details><summary>Customer Support HTML Validation</summary>
-<img src="assets/readme/testing/bugs/19.jpg">
-</details>
-<br>
+- ``edit_product.html``
+   <details><summary>Edit Product HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/04-validation-html-product-edit.webp">
+   </details>
+   <br>
 
-<details><summary>Customer Support List HTML Validation</summary>
-<img src="assets/readme/testing/bugs/20.jpg">
-</details>
-<br>
+- ``creator_management.html``
+   <details><summary>Creator Management HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/05-validation-html-creator-management.webp">
+   </details>
+   <br>
 
-<details><summary>Customer Support Detail HTML Validation</summary>
-<img src="assets/readme/testing/bugs/21.jpg">
-</details>
-<br>
+- ``add_creator.html``
+   <details><summary>Add Creator HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/06-validation-html-creator-add.webp">
+   </details>
+   <br>
 
-<details><summary>Newsletter Management HTML Validation</summary>
-<img src="assets/readme/testing/bugs/22.jpg">
-</details>
-<br>
+- ``edit_creator.html``
+   <details><summary>Edit Creator HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/07-validation-html-creator-edit.webp">
+   </details>
+   <br>
 
-<details><summary>Create Newsletter HTML Validation</summary>
-<img src="assets/readme/testing/bugs/23.jpg">
-</details>
-<br>
+- ``collection_management.html``
+   <details><summary>Collection Management HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/08-validation-html-collection-management.webp">
+   </details>
+   <br>
 
-<details><summary>Edit Newsletter HTML Validation</summary>
-<img src="assets/readme/testing/bugs/24.jpg">
-</details>
-<br>
+- ``add_collection.html``
+   <details><summary>Add Collection HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/09-validation-html-collection-add.webp">
+   </details>
+   <br>
 
-<details><summary>Send Newsletters HTML Validation</summary>
-<img src="assets/readme/testing/bugs/25.jpg">
-</details>
-<br>
+- ``edit_collection.html``
+   <details><summary>Edit Collection HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/10-validation-html-collection-edit.webp">
+   </details>
+   <br>
 
-<details><summary>Subscription List HTML Validation</summary>
-<img src="assets/readme/testing/bugs/26.jpg">
-</details>
-<br>
+- ``category_management.html``
+   <details><summary>Category Management HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/11-validation-html-category-management.webp">
+   </details>
+   <br>
 
-<details><summary>Checkout HTML Validation</summary>
-<img src="assets/readme/testing/bugs/27.jpg">
-</details>
-<br>
+- ``add_category.html``
+   <details><summary>Add Category HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/12-validation-html-category-add.webp">
+   </details>
+   <br>
 
-<details><summary>Checkout Success HTML Validation</summary>
-<img src="assets/readme/testing/bugs/28.jpg">
-</details>
-<br>
+- ``edit_category.html``
+   <details><summary>Edit Category HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/13-validation-html-category-edit.webp">
+   </details>
+   <br>
 
-<details><summary>Footer HTML Validation</summary>
-<img src="assets/readme/testing/bugs/29.jpg">
-</details>
-<br>
+- ``carousel_management.html``
+   <details><summary>Carousel Management HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/14-validation-html-carousel-management.webp">
+   </details>
+   <br>
 
-<details><summary>FAQ HTML Validation</summary>
-<img src="assets/readme/testing/bugs/30.jpg">
-</details>
-<br>
+- ``add_carousel.html``
+   <details><summary>Add Carousel HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/15-validation-html-carousel-add.webp">
+   </details>
+   <br>
 
-<details><summary>Contact Us HTML Validation</summary>
-<img src="assets/readme/testing/bugs/31.jpg">
-</details>
-<br>
+- ``edit_carousel.html``
+   <details><summary>Edit Carousel HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/16-validation-html-carousel-edit.webp">
+   </details>
+   <br>
 
-<details><summary>About Us HTML Validation</summary>
-<img src="assets/readme/testing/bugs/32.jpg">
-</details>
-<br>
+- ``create_newsletter.html``
+   <details><summary>Create Newsletter HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/17-validation-html-newsletter-create.webp">
+   </details>
+   <br>
+
+- ``edit_newsletter.html``
+   <details><summary>Edit Newsletter HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/18-validation-html-newsletter-edit.webp">
+   </details>
+   <br>
+
+- ``send_newsletters.html``
+   <details><summary>Send Newsletters HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/19-validation-html-newsletter-send.webp">
+   </details>
+   <br>
+
+- ``subscription_list.html``
+   <details><summary>Subscription List HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/20-validation-html-newsletter-list.webp">
+   </details>
+   <br>
+
+- ``customer_support_list.html``
+   <details><summary>Customer Support List HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/21-validation-html-customer-list.webp">
+   </details>
+   <br>
+
+- ``customer_support_detail.html``
+   <details><summary>Customer Support Detail HTML Validation</summary>
+   <img src="assets/readme/testing/validation/html/management/22-validation-html-customer-detail.webp">
+   </details>
+   <br>
+

@@ -63,10 +63,8 @@
         </div>
         <!-- Back to Management button -->
         <div class="col-6 g-3 text-center">
-            <a href="{% url 'site_management' %}">
-                <button type="button" class="btn btn-secondary rounded-pill my-1 me-1">
-                    Back to Management
-                </button>
+            <a href="{% url 'site_management' %}" class="btn btn-secondary rounded-pill my-1 me-1">
+                Back to Management
             </a>
         </div>
     </div>
@@ -85,7 +83,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary rounded-pill my-1 me-1" data-dismiss="modal">Cancel</button>
-                <form id="deleteForm" action="" method="post" style="display:inline;">
+                <form id="deleteForm" action="#" method="post" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger rounded-pill my-1 me-1">Delete</button>
                 </form>
