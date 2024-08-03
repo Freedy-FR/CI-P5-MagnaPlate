@@ -1,4 +1,4 @@
-# Testing
+# Testing and Validation
 
 ## Table of Contents
 
@@ -12,9 +12,11 @@
   - [wave.webaim](#wavewebaim)
   - [jigsaw.w3](#jigsaww3)
 
-## Test Cases
+## Testing
 
-### TC001: Navigation, Theme Switch, Toast Messages, Consistent Style
+### Test Cases
+
+#### TC001: Navigation, Theme Switch, Toast Messages, Consistent Style
 
 **Test Steps:**
 1. Visit the homepage and check links.
@@ -28,7 +30,7 @@
 - Notifications are displayed correctly.
 - Style is consistent across all pages and components.
 
-### TC002: User Registration, Newsletter Section
+#### TC002: User Registration, Newsletter Section
 
 **Test Steps:**
 1. Register a new user.
@@ -38,7 +40,7 @@
 - User receives a verification email and can log in after verification.
 - User receives confirmation of newsletter signup.
 
-### TC003: User Login, Logout, Profile Page
+#### TC003: User Login, Logout, Profile Page
 
 **Test Steps:**
 1. Log in with a registered account.
@@ -52,7 +54,7 @@
 - User can view and manage personal information.
 - User can review and manage previous orders.
 
-### TC004: Search Bar, Products Page, All Creators Page
+#### TC004: Search Bar, Products Page, All Creators Page
 
 **Test Steps:**
 1. Use the search bar to find a product.
@@ -64,7 +66,7 @@
 - Products are displayed in a paginated list.
 - Creator details and related products are displayed.
 
-### TC005: Product Details, My Favorites, Shopping Cart, Reviews
+#### TC005: Product Details, My Favorites, Shopping Cart, Reviews
 
 **Test Steps:**
 1. View detailed product information and add to cart.
@@ -78,7 +80,7 @@
 - Review and rating are submitted successfully.
 - Product appears in the cart with correct details, updated quantities, and items removed as expected.
 
-### TC006: Checkout, Stripe Payments
+#### TC006: Checkout, Stripe Payments
 
 **Test Steps:**
 1. Complete the checkout process.
@@ -86,7 +88,7 @@
 **Expected Result:**
 - Checkout completes, and order confirmation email is sent.
 
-### TC007: Add Product, Collection, Creator, Category, Carousel Management
+#### TC007: Add Product, Collection, Creator, Category, Carousel Management
 
 **Test Steps:**
 1. Add a new product, collection, creator, category, carousel item.
@@ -94,7 +96,7 @@
 **Expected Result:**
 - Product, collection, creator, category, carousel item is listed correctly.
 
-### TC008: Edit Product, Collection, Creator, Category
+#### TC008: Edit Product, Collection, Creator, Category
 
 **Test Steps:**
 1. Edit an existing product, collection, creator, category.
@@ -102,7 +104,7 @@
 **Expected Result:**
 - Changes are reflected correctly.
 
-### TC009: Delete Product, Collection, Creator, Category
+#### TC009: Delete Product, Collection, Creator, Category
 
 **Test Steps:**
 1. Delete a product, collection, creator, category.
@@ -110,9 +112,9 @@
 **Expected Result:**
 - Product, collection, creator, category is removed correctly.
 
-## Manual Testing with User Stories
+### Manual Testing with User Stories
 
-### As a Site User
+#### As a Site User
 
 | ID | User Story | Feature | Test Case ID | Test Steps | Expected Result | Actual Result | Status | Comments | GIF/Link |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -140,7 +142,7 @@
 | [31](https://github.com/Freedy-FR/CI-P5-MagnaPlate/issues/31) | As a Site User, I can see a list of all creators and click on them to see more details and their related products. | All Creators Page, Creators Details | TC004, TC005 | View list of creators and click for details. | Creator details and related products are displayed. | Creator details and related products were displayed. | Pass | - | <details><summary>All Creators Page</summary><img src="assets/readme/features/08-1-feature-all-creators.gif"></details><br><details><summary>Creators Details</summary><img src="assets/readme/features/08-2-feature-creators-details.gif"></details><br> |
 | [32](https://github.com/Freedy-FR/CI-P5-MagnaPlate/issues/32) | As a Site User, I want the project's style to be consistent across all pages and components, so that the user experience is seamless and professional. | Consistent Style | TC001 | Review all pages for style consistency. | Style is consistent across all pages and components. | Style was consistent across all pages and components. | Pass | - | N/A |
 
-### As a Site Admin
+#### As a Site Admin
 
 | ID | User Story | Feature | Test Case ID | Test Steps | Expected Result | Actual Result | Status | Comments | GIF/Link |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -152,7 +154,7 @@
 | [28](https://github.com/Freedy-FR/CI-P5-MagnaPlate/issues/28) | As a Site Admin, I can add, remove or edit creators to the website's database. | Creator Management | TC007, TC008, TC009 | Add, edit, and delete creators. | Creator management works correctly. | Creator management worked correctly. | Pass | - | <details><summary>Add Creator</summary><img src="assets/readme/feature-admin/04-admin-feature-add-creator.gif"></details><br><details><summary>Edit Creator</summary><img src="assets/readme/feature-admin/05-admin-feature-edit-creator.gif"></details><br><details><summary>Delete Creator</summary><img src="assets/readme/feature-admin/06-admin-feature-delete-creator.gif"></details><br> |
 | [29](https://github.com/Freedy-FR/CI-P5-MagnaPlate/issues/29) | As a Site Admin, I can add, remove or edit categories to the website's database. | Category Management | TC007, TC008, TC009 | Add, edit, and delete categories. | Category management works correctly. | Category management worked correctly. | Pass | - | <details><summary>Add Category</summary><img src="assets/readme/feature-admin/10-admin-feature-add-category.gif"></details><br><details><summary>Edit Category</summary><img src="assets/readme/feature-admin/11-admin-feature-edit-category.gif"></details><br><details><summary>Delete Category</summary><img src="assets/readme/feature-admin/12-admin-feature-delete-category.gif"></details><br> |
 
-### As a Developer
+#### As a Developer
 
 | ID | User Story | Feature | Test Case ID | Test Steps | Expected Result | Actual Result | Status | Comments | GIF/Link |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -161,9 +163,9 @@
 | [35](https://github.com/Freedy-FR/CI-P5-MagnaPlate/issues/35) | As a Developer, I want a comprehensive documentation system so that it is easy to understand, maintain, and collaborate on the codebase. | Comprehensive Documentation | TC001 | Review documentation for comprehensiveness. | Documentation is comprehensive and easy to understand. | Documentation was comprehensive and easy to understand. | Pass | - | N/A |
 
 
-## Bugs and Fixes
+### Bugs and Fixes
 
-### Fixed Bugs
+#### Fixed Bugs
 
 1. **Bug:** There was a JavaScript error preventing the carousel from functioning correctly.
 
@@ -276,16 +278,17 @@
       </details>
       <br>
 
-### Identified Bugs
+#### Identified Bugs
 
    - No other bugs identified.
 
+## Validation
 
-## W3C HTML Validation
+### W3C HTML Validation
 
 As part of ensuring the highest standards of web development practices, each HTML template within the project was validated using the W3C HTML Validator. This process helps to identify and resolve any potential markup issues, ensuring that the code adheres to current web standards and best practices. Below are the validation reports for each template:
 
-### Core
+#### Core
 
 - ``base.html``, ``main-nav.html``, ``mobile-header.html``, ``index.html``, ``footer.html``
    <details><summary>Index HTML Validation</summary>
@@ -365,7 +368,7 @@ As part of ensuring the highest standards of web development practices, each HTM
    </details>
    <br>
 
-### Site Management
+#### Site Management
 
 - ``site_management.html``
    <details><summary>Site Management HTML Validation</summary>
@@ -498,4 +501,231 @@ As part of ensuring the highest standards of web development practices, each HTM
    <img src="assets/readme/testing/validation/html/management/22-validation-html-customer-detail.webp">
    </details>
    <br>
+
+### wave.webaim Validation
+
+As part of ensuring the highest standards of accessibility, each HTML template within the project was validated using the wave.webaim tool. This process helps to identify and resolve any potential accessibility issues, ensuring that the website is usable for people with disabilities. Below are the validation reports for each template:
+
+#### Core
+
+- ``base.html``, ``main-nav.html``, ``mobile-header.html``, ``index.html``, ``footer.html``
+   <details><summary>Index Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/core/01-accessibility-html-index.webp">
+   </details>
+   <br>
+
+- ``products.html``
+   <details><summary>Products Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/core/02-accessibility-html-products.webp">
+   </details>
+   <br>
+
+- ``product_detail.html``, ``all_products.html``
+   <details><summary>Product Detail Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/core/03-accessibility-html-products-detail.webp">
+   </details>
+   <br>
+
+- ``all_creators.html``
+   <details><summary>All Creators Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/core/04-accessibility-html-all-creators.webp">
+   </details>
+   <br>
+
+- ``creator_detail.html``
+   <details><summary>Creator Detail Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/core/05-accessibility-html-creators-details.webp">
+   </details>
+   <br>
+
+- ``profile.html``
+   <details><summary>Profile Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/core/06-accessibility-html-profile.webp">
+   </details>
+   <br>
+
+- ``cart.html``
+   <details><summary>Cart Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/core/07-accessibility-html-cart.webp">
+   </details>
+   <br>
+
+- ``checkout.html``
+   <details><summary>Checkout Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/core/08-accessibility-html-checkout.webp">
+   </details>
+   <br>
+
+- ``checkout_success.html``
+   <details><summary>Checkout Success Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/core/09-accessibility-html-checkout-success.webp">
+   </details>
+   <br>
+
+- ``faq.html``
+   <details><summary>FAQ Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/core/10-accessibility-html-faq.webp">
+   </details>
+   <br>
+
+- ``contact_us.html``
+   <details><summary>Contact Us Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/core/11-accessibility-html-contact-us.webp">
+   </details>
+   <br>
+
+- ``about_us.html``
+   <details><summary>About Us Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/core/12-accessibility-html-about-us.webp">
+   </details>
+   <br>
+
+- ``customer_support.html``
+   <details><summary>Customer Support Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/core/13-accessibility-html-customer-support.webp">
+   </details>
+   <br>
+
+#### Site Management
+
+- ``site_management.html``
+   <details><summary>Site Management Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/01-accessibility-html-site-management.webp">
+   </details>
+   <br>
+
+- ``product_management.html``
+   <details><summary>Product Management Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/02-accessibility-html-product-management.webp">
+   </details>
+   <br>
+
+- ``add_product.html``
+   <details><summary>Add Product Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/03-accessibility-html-product-add.webp">
+   </details>
+   <br>
+
+- ``edit_product.html``
+   <details><summary>Edit Product Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/04-accessibility-html-product-edit.webp">
+   </details>
+   <br>
+
+- ``creator_management.html``
+   <details><summary>Creator Management Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/05-accessibility-html-creator-management.webp">
+   </details>
+   <br>
+
+- ``add_creator.html``
+   <details><summary>Add Creator Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/06-accessibility-html-creator-add.webp">
+   </details>
+   <br>
+
+- ``edit_creator.html``
+   <details><summary>Edit Creator Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/07-accessibility-html-creator-edit.webp">
+   </details>
+   <br>
+
+- ``collection_management.html``
+   <details><summary>Collection Management Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/08-accessibility-html-collection-management.webp">
+   </details>
+   <br>
+
+- ``add_collection.html``
+   <details><summary>Add Collection Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/09-accessibility-html-collection-add.webp">
+   </details>
+   <br>
+
+- ``edit_collection.html``
+   <details><summary>Edit Collection Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/10-accessibility-html-collection-edit.webp">
+   </details>
+   <br>
+
+- ``category_management.html``
+   <details><summary>Category Management Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/11-accessibility-html-category-management.webp">
+   </details>
+   <br>
+
+- ``add_category.html``
+   <details><summary>Add Category Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/12-accessibility-html-category-add.webp">
+   </details>
+   <br>
+
+- ``edit_category.html``
+   <details><summary>Edit Category Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/13-accessibility-html-category-edit.webp">
+   </details>
+   <br>
+
+- ``carousel_management.html``
+   <details><summary>Carousel Management Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/14-accessibility-html-carousel-management.webp">
+   </details>
+   <br>
+
+- ``add_carousel.html``
+   <details><summary>Add Carousel Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/15-accessibility-html-carousel-add.webp">
+   </details>
+   <br>
+
+- ``edit_carousel.html``
+   <details><summary>Edit Carousel Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/16-accessibility-html-carousel-edit.webp">
+   </details>
+   <br>
+
+- ``create_newsletter.html``
+   <details><summary>Create Newsletter Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/17-accessibility-html-newsletter-create.webp">
+   </details>
+   <br>
+
+- ``edit_newsletter.html``
+   <details><summary>Edit Newsletter Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/18-accessibility-html-newsletter-edit.webp">
+   </details>
+   <br>
+
+- ``send_newsletters.html``
+   <details><summary>Send Newsletters Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/19-accessibility-html-newsletter-send.webp">
+   </details>
+   <br>
+
+- ``subscription_list.html``
+   <details><summary>Subscription List Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/20-accessibility-html-newsletter-list.webp">
+   </details>
+   <br>
+
+- ``customer_support_list.html``
+   <details><summary>Customer Support List Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/21-accessibility-html-customer-list.webp">
+   </details>
+   <br>
+
+- ``customer_support_detail.html``
+   <details><summary>Customer Support Detail Accessibility Validation</summary>
+   <img src="assets/readme/testing/validation/accessibility/management/22-accessibility-html-customer-detail.webp">
+   </details>
+   <br>
+
+
+### jigsaw.w3
+
+jigsaw.w3 was used to validate the CSS code to ensure it follows the web standards.
+
+### Python Linter
+
+A Python linter was used to ensure that the Python code follows the PEP 8 standards.
 

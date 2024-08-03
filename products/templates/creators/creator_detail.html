@@ -4,8 +4,8 @@
 {% block title %}{{ creator.name }}{% endblock %}
 {% block meta_keywords %}
   {{ creator.name }},
-  {% for collection in collections %}{{ collection }},{% endfor %}
-  {% for category in categories %}{{ category }}, {% endfor %}
+  {% for collection in creator_collections %}{{ collection }},{% endfor %}
+  {% for category in creator_categories %}{{ category }}, {% endfor %}
   MagnaPlate creators, artist profiles, magnetic poster creators, designer stories,
   home decor artists, unique wall art, creative designs.
 {% endblock %}
@@ -53,13 +53,13 @@
             <div class="border-top pt-1">
                 <h5 class="fw-bold fs-6">Collections</h5>
                 <ul class="ms-3">
-                    {% for collection in collections %}
+                    {% for collection in creator_collections %}
                     <li class="small">{{ collection }}</li>
                     {% endfor %}
                 </ul>
                 <h5 class="fst-italic fs-6">Categories</h5>
                 <ul class="ms-3">
-                    {% for category in categories %}
+                    {% for category in creator_categories %}
                     <li class="small">{{ category }}</li>
                     {% endfor %}
                 </ul>

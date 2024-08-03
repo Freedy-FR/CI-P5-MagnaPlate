@@ -21,6 +21,7 @@ from django.utils import timezone
 from .models import Product, Collection, Creator, Category
 from favorites.models import FavoriteProduct, FavoriteCreator
 from .forms import ProductForm, CreatorForm, CategoryForm, CollectionForm
+from .context_processors import global_collections_and_creators
 import datetime
 
 
@@ -253,8 +254,8 @@ class CreatorDetailView(DetailView):
             'category__friendly_name', flat=True
         ).distinct()
 
-        context['collections'] = collections
-        context['categories'] = categories
+        context['creator_collections'] = collections
+        context['creator_categories'] = categories
 
         products_list = creator.products.all()
         paginator = Paginator(products_list, 6)
@@ -272,6 +273,9 @@ class CreatorDetailView(DetailView):
             ).exists()
         else:
             context['is_favorite'] = False
+        
+        global_context = global_collections_and_creators(self.request)
+        context.update(global_context)
 
         return context
 
