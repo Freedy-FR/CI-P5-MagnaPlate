@@ -15,14 +15,14 @@ This project is highly relevant as the trend of online shopping continues to gro
 
 - [MagnaPlate](#magnaplate)
   - [Introduction](#introduction)
-  - [Table Content](#table-of-contents)
+  - [Table Contents](#table-of-contents)
   - [User Experience - UX](#user-experience---ux)
     - [User Stories](#user-stories)
     - [Agile Methodology](#agile-methodology)
     - [The Scope](#the-scope)
       - [Main Site Goals](#main-site-goals)
   - [Design](#design)
-    - [Colours](#colour-scheme-for-magnaplate-website)
+    - [Colors](#color-scheme-for-magnaplate-website)
     - [Typography](#typography)
     - [Imagery](#imagery)
     - [Carousel](#carousel)
@@ -210,19 +210,19 @@ Feel free to explore the Kanban Board for a visual representation of the user st
 
 ## Design
 
-### Colour Scheme for MagnaPlate Website
+### color Scheme for MagnaPlate Website
 
-The Colour scheme for the MagnaPlate website was meticulously selected to enrich the visual appeal of the plates (posters) and provide an engaging user experience. The Colours were chosen from [Coolors](https://coolors.co/), ensuring a harmonious blend that enhances the aesthetic quality of the site.
+The color scheme for the MagnaPlate website was meticulously selected to enrich the visual appeal of the plates (posters) and provide an engaging user experience. The Colours were chosen from [Coolors](https://coolors.co/), ensuring a harmonious blend that enhances the aesthetic quality of the site.
 
-#### Colour Palette:
+#### color Palette:
 
 - **FBFBFB (White)**: This bright, clean shade is used for the background, offering a crisp and neutral canvas that makes other Colours and content stand out.
 
 - **EEEEEE (Light Gray)**: A soft, light gray tone that adds subtle depth and contrast to the design elements without overpowering them.
 
-- **4F4F4F (Medium Gray)**: Used for text and secondary elements, this medium gray ensures readability and complements the overall Colour scheme.
+- **4F4F4F (Medium Gray)**: Used for text and secondary elements, this medium gray ensures readability and complements the overall color scheme.
 
-- **000000 (Black)**: The primary Colour for text, providing strong contrast and excellent legibility against the white and light gray backgrounds.
+- **000000 (Black)**: The primary color for text, providing strong contrast and excellent legibility against the white and light gray backgrounds.
 
 - **2846A1 (Dark Blue)**: This deep blue shade is employed in headers and key navigation elements, evoking a sense of trust and stability.
 
@@ -236,7 +236,7 @@ The Colour scheme for the MagnaPlate website was meticulously selected to enrich
 
 The use of these Colours has been consistently maintained throughout the website and checked for contrast to allow easy accessibility. The combination of these carefully selected Colours ensures that the MagnaPlate website is not only visually appealing but also user-friendly and accessible to all visitors.
 
-  <details><summary>Colour palette</summary>
+  <details><summary>Color palette</summary>
   <img src="assets/readme/design/design-colours.webp">
   </details>
   <br>
