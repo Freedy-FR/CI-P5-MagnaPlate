@@ -502,7 +502,7 @@ As part of ensuring the highest standards of web development practices, each HTM
    </details>
    <br>
 
-### wave.webaim Validation
+### wave.webaim Accessibility Validation
 
 As part of ensuring the highest standards of accessibility, each HTML template within the project was validated using the wave.webaim tool. This process helps to identify and resolve any potential accessibility issues, ensuring that the website is usable for people with disabilities. Below are the validation reports for each template:
 
@@ -510,79 +510,79 @@ As part of ensuring the highest standards of accessibility, each HTML template w
 
 - ``base.html``, ``main-nav.html``, ``mobile-header.html``, ``index.html``, ``footer.html``
    <details><summary>Index Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/core/01-accessibility-html-index.webp">
+   <img src="assets/readme/testing/validation/accessibility/core/01-validation-wave-index.webp">
    </details>
    <br>
 
 - ``products.html``
    <details><summary>Products Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/core/02-accessibility-html-products.webp">
+   <img src="assets/readme/testing/validation/accessibility/core/02-validation-wave-products.webp">
    </details>
    <br>
 
 - ``product_detail.html``, ``all_products.html``
    <details><summary>Product Detail Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/core/03-accessibility-html-products-detail.webp">
+   <img src="assets/readme/testing/validation/accessibility/core/03-validation-wave-product-detail.webp">
    </details>
    <br>
 
 - ``all_creators.html``
    <details><summary>All Creators Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/core/04-accessibility-html-all-creators.webp">
+   <img src="assets/readme/testing/validation/accessibility/core/04-validation-wave-all-creators.webp">
    </details>
    <br>
 
 - ``creator_detail.html``
    <details><summary>Creator Detail Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/core/05-accessibility-html-creators-details.webp">
+   <img src="assets/readme/testing/validation/accessibility/core/05-validation-wave-creators-detail.webp">
    </details>
    <br>
 
 - ``profile.html``
    <details><summary>Profile Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/core/06-accessibility-html-profile.webp">
+   <img src="assets/readme/testing/validation/accessibility/core/06-validation-wave-profile.webp">
    </details>
    <br>
 
 - ``cart.html``
    <details><summary>Cart Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/core/07-accessibility-html-cart.webp">
+   <img src="assets/readme/testing/validation/accessibility/core/07-validation-wave-cart.webp">
    </details>
    <br>
 
 - ``checkout.html``
    <details><summary>Checkout Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/core/08-accessibility-html-checkout.webp">
+   <img src="assets/readme/testing/validation/accessibility/core/08-validation-wave-checkout.webp">
    </details>
    <br>
 
 - ``checkout_success.html``
    <details><summary>Checkout Success Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/core/09-accessibility-html-checkout-success.webp">
+   <img src="assets/readme/testing/validation/accessibility/core/09-validation-wave-checkout-success.webp">
    </details>
    <br>
 
 - ``faq.html``
    <details><summary>FAQ Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/core/10-accessibility-html-faq.webp">
+   <img src="assets/readme/testing/validation/accessibility/core/10-validation-wave-faq.webp">
    </details>
    <br>
 
 - ``contact_us.html``
    <details><summary>Contact Us Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/core/11-accessibility-html-contact-us.webp">
+   <img src="assets/readme/testing/validation/accessibility/core/11-validation-wave-contact-us.webp">
    </details>
    <br>
 
 - ``about_us.html``
    <details><summary>About Us Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/core/12-accessibility-html-about-us.webp">
+   <img src="assets/readme/testing/validation/accessibility/core/12-validation-wave-about-us.webp">
    </details>
    <br>
 
 - ``customer_support.html``
    <details><summary>Customer Support Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/core/13-accessibility-html-customer-support.webp">
+   <img src="assets/readme/testing/validation/accessibility/core/13-validation-wave-customer-support.webp">
    </details>
    <br>
 
@@ -590,133 +590,133 @@ As part of ensuring the highest standards of accessibility, each HTML template w
 
 - ``site_management.html``
    <details><summary>Site Management Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/01-accessibility-html-site-management.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/01-validation-wave-management-site-management.webp">
    </details>
    <br>
 
 - ``product_management.html``
    <details><summary>Product Management Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/02-accessibility-html-product-management.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/02-validation-wave-management-product-management.webp">
    </details>
    <br>
 
 - ``add_product.html``
    <details><summary>Add Product Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/03-accessibility-html-product-add.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/03-validation-wave-management-product-add.webp">
    </details>
    <br>
 
 - ``edit_product.html``
    <details><summary>Edit Product Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/04-accessibility-html-product-edit.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/04-validation-wave-management-product-edit.webp">
    </details>
    <br>
 
 - ``creator_management.html``
    <details><summary>Creator Management Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/05-accessibility-html-creator-management.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/05-validation-wave-management-creator-management.webp">
    </details>
    <br>
 
 - ``add_creator.html``
    <details><summary>Add Creator Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/06-accessibility-html-creator-add.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/06-validation-wave-management-creator-add.webp">
    </details>
    <br>
 
 - ``edit_creator.html``
    <details><summary>Edit Creator Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/07-accessibility-html-creator-edit.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/07-validation-wave-management-creator-edit.webp">
    </details>
    <br>
 
 - ``collection_management.html``
    <details><summary>Collection Management Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/08-accessibility-html-collection-management.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/08-validation-wave-management-collection-management.webp">
    </details>
    <br>
 
 - ``add_collection.html``
    <details><summary>Add Collection Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/09-accessibility-html-collection-add.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/09-validation-wave-management-collection-add.webp">
    </details>
    <br>
 
 - ``edit_collection.html``
    <details><summary>Edit Collection Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/10-accessibility-html-collection-edit.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/10-validation-wave-management-collection-edit.webp">
    </details>
    <br>
 
 - ``category_management.html``
    <details><summary>Category Management Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/11-accessibility-html-category-management.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/11-validation-wave-management-category-management.webp">
    </details>
    <br>
 
 - ``add_category.html``
    <details><summary>Add Category Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/12-accessibility-html-category-add.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/12-validation-wave-management-category-add.webp">
    </details>
    <br>
 
 - ``edit_category.html``
    <details><summary>Edit Category Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/13-accessibility-html-category-edit.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/13-validation-wave-management-category-edit.webp">
    </details>
    <br>
 
 - ``carousel_management.html``
    <details><summary>Carousel Management Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/14-accessibility-html-carousel-management.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/14-validation-wave-management-carousel-management.webp">
    </details>
    <br>
 
 - ``add_carousel.html``
    <details><summary>Add Carousel Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/15-accessibility-html-carousel-add.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/15-validation-wave-management-carousel-add.webp">
    </details>
    <br>
 
 - ``edit_carousel.html``
    <details><summary>Edit Carousel Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/16-accessibility-html-carousel-edit.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/16-validation-wave-management-carousel-edit.webp">
    </details>
    <br>
 
 - ``create_newsletter.html``
    <details><summary>Create Newsletter Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/17-accessibility-html-newsletter-create.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/17-validation-wave-management-newsletter-create.webp">
    </details>
    <br>
 
 - ``edit_newsletter.html``
    <details><summary>Edit Newsletter Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/18-accessibility-html-newsletter-edit.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/18-validation-wave-management-newsletter-edit.webp">
    </details>
    <br>
 
 - ``send_newsletters.html``
    <details><summary>Send Newsletters Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/19-accessibility-html-newsletter-send.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/19-validation-wave-management-newsletter-send.webp">
    </details>
    <br>
 
 - ``subscription_list.html``
    <details><summary>Subscription List Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/20-accessibility-html-newsletter-list.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/20-validation-wave-management-newsletter-subscription-list.webp">
    </details>
    <br>
 
 - ``customer_support_list.html``
    <details><summary>Customer Support List Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/21-accessibility-html-customer-list.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/21-validation-wave-management-customer-support-list.webp">
    </details>
    <br>
 
 - ``customer_support_detail.html``
    <details><summary>Customer Support Detail Accessibility Validation</summary>
-   <img src="assets/readme/testing/validation/accessibility/management/22-accessibility-html-customer-detail.webp">
+   <img src="assets/readme/testing/validation/accessibility/management/22-validation-wave-management-customer-support-detail.webp">
    </details>
    <br>
 
