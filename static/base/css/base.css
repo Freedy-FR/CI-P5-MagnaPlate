@@ -300,3 +300,9 @@ main {
 .text-footer {
     color: var(--black-color) !important;
 }
+
+/* Checkout Card */
+
+.card-notification {
+    color: var(--bright-red-color) !important;
+}

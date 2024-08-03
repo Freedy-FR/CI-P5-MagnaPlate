@@ -33,6 +33,7 @@
             <form method="post" action="{% url 'favorites:toggle_favorite_creator' creator.id %}">
                 {% csrf_token %}
                 <button type="submit" class="favorite-icon-creator">
+                  <span class="d-none">Favorite Link</span>
                     <span class="icon-background">
                         {% if is_favorite %}
                         <i class="fa-solid fa-heart full_heart"></i>
