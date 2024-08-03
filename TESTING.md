@@ -721,9 +721,49 @@ As part of ensuring the highest standards of accessibility, each HTML template w
    <br>
 
 
-### jigsaw.w3
+### jigsaw.w3 CSS Validation
 
-jigsaw.w3 was used to validate the CSS code to ensure it follows the web standards.
+The jigsaw.w3 CSS Validator was used to ensure our CSS adheres to web standards. Due to Bootstrap classes, which can cause validation errors, we used direct input for checking.
+
+**Result: No errors found.** Some warnings appeared due to vendor-specific properties used by Bootstrap.
+
+
+- ``base.css``
+   <details><summary>Base CSS Validation</summary>
+   <img src="assets/readme/testing/validation/css/01-validation-base.webp">
+   </details>
+   <br>
+
+- ``cart.css``
+   <details><summary>Cart CSS Validation</summary>
+   <img src="assets/readme/testing/validation/css/02-validation-cart.webp">
+   </details>
+   <br>
+
+- ``checkout.css``
+   <details><summary>Checkout CSS Validation</summary>
+   <img src="assets/readme/testing/validation/css/03-validation-checkout.webp">
+   </details>
+   <br>
+
+- ``footer.css``
+   <details><summary>Footer CSS Validation</summary>
+   <img src="assets/readme/testing/validation/css/04-validation-footer.webp">
+   </details>
+   <br>
+
+- ``home.css``
+   <details><summary>Home CSS Validation</summary>
+   <img src="assets/readme/testing/validation/css/05-validation-home.webp">
+   </details>
+   <br>
+
+- ``product.css``
+   <details><summary>Product CSS Validation</summary>
+   <img src="assets/readme/testing/validation/css/06-validation-product.webp">
+   </details>
+   <br>
+
 
 ### Python Linter
 
