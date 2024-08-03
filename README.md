@@ -1247,7 +1247,7 @@ Search Engine Optimisation or SEO techniques were adopted to try to create more 
 - [Gunicorn](https://gunicorn.org/) as the server for deployment
 - [Dj-database-url](https://pypi.org/project/dj-database-url/) to parse the database URL from the environment variables
 - [Psycopg2](https://pypi.org/project/psycopg2/) as an adaptor for Python and PostgreSQL databases
-- [Allauth](https://django-allauth.readthedocs.io/en/latest/installation.html) for authentication, registration, and account management
+- [Allauth](https://docs.allauth.org/en/latest/) for authentication, registration, and account management
 - [Stripe](https://pypi.org/project/stripe/) for processing online and credit card purchases
 - [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) to style the forms
 - [Pillow](https://pypi.org/project/Pillow/) to process and save images
@@ -1578,6 +1578,8 @@ Below is a screenshot of the MagnaPlate - Stripe dashboard.
 ### Acknowledgements 
 
 - To Code Institute for the support and attention.
+- [Grawnya](https://github.com/Grawnya/the-roastery-ecommerce-store) - for the README template.
+- [Pedro Cristo](https://github.com/PedroCristo/portfolio_project_5) - for the README template.
 
 ### Special Thanks
 
